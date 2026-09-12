@@ -57,7 +57,7 @@
 .v15-result-years .actual{color:var(--state-color,var(--atlas-amber))}
 .v15-result-years .arrow{font-size:.42em;color:var(--atlas-muted);letter-spacing:0}
 .v15-result-distance{margin:0;font-size:clamp(1.05rem,1.5vw,1.35rem);font-weight:750;color:var(--atlas-ink)}
-.v15-result-note{margin:0;color:var(--atlas-muted);line-height:1.45}
+.v15-result-note{margin:0;color:#b7c0ca;line-height:1.45}
 .v15-essential{display:grid;gap:10px;margin:0 0 20px;padding:0 0 18px;border-bottom:1px solid var(--atlas-line)}
 .v15-essential p{margin:0!important;max-width:58ch;line-height:1.5;color:#dce3e8}
 .v15-context-button{min-height:46px;border:1px solid var(--atlas-line);background:transparent;color:var(--atlas-ink);padding:10px 14px;border-radius:3px;font-weight:750;text-align:left}
