@@ -1,4 +1,6 @@
-/* QUÉ AÑO v1.4 — atmósfera, lectura editorial e imágenes abiertas como progressive enhancement. */
+/* QUÉ AÑO v1.4 — atmósfera, lectura editorial e imágenes abiertas como progressive enhancement.
+ * v1.7: la inspección visual usa el contrato de render y deja de observar mutaciones del DOM.
+ */
 (function(){
   'use strict';
 
@@ -8,7 +10,6 @@
   const COMMONS='https://commons.wikimedia.org/w/api.php';
   const ALLOWED_LICENSE=/^(public domain|pd|cc0|cc by(?:[- ]sa)?(?:[- ]\d(?:\.\d)?)?|cc-by(?:-sa)?(?:-\d(?:\.\d)?)?)$/i;
   let renderKey='';
-  let observer=null;
 
   function currentQuestion(){
     try{if(typeof round==='undefined'||!round?.questionIds)return null;return QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
@@ -110,6 +111,7 @@
   const ambient=new AmbientEngine();ambient.install();
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState!=='visible'&&ambient.enabled){clearInterval(ambient.timer);ambient.timer=null}else if(document.visibilityState==='visible'&&ambient.enabled&&!ambient.timer){ambient.chord();ambient.timer=setInterval(()=>ambient.chord(),3600)}});
 
-  observer=new MutationObserver(()=>inspect());observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
+  window.__QYA_RUNTIME__?.onRender(inspect);
+  inspect();
   window.__QA_V14__={version:VERSION,findOpenMedia,licenseAllowed,relevant,ambient,inspect,cacheKey:CACHE_KEY};
 })();
