@@ -19,6 +19,10 @@
     const unit=a.error===1?'año':'años';
     return `${a.error} ${unit} ${a.guess<a.actual?'antes':'después'}`;
   }
+  function updateConfirmCTA(){
+    const b=document.querySelector('.atlas-v12.is-question #primaryAction');
+    if(b&&round?.phase==='question'){b.textContent=`Confirmar ${round.guess}`;b.setAttribute('aria-label',`Confirmar respuesta: ${round.guess}`)}
+  }
 
   /* Timer absoluto: ocultar la pestaña puede detener el repaint, nunca el reloj. */
   const legacyTimerCompute=qaTimerComputeRemaining;
@@ -43,18 +47,14 @@
 
   qaTimerPause=function(){
     if(!qaTimer?.key)return;
-    qaTimer.paused=true;
-    qaTimerClearInterval();
-    qaTimerPaint();
+    qaTimer.paused=true;qaTimerClearInterval();qaTimerPaint();
   };
 
   qaTimerResume=function(){
     if(!qaTimer?.key||qaTimer.expired||!round||round.phase!=='question')return;
-    qaTimer.paused=false;
-    qaTimerClearInterval();
+    qaTimer.paused=false;qaTimerClearInterval();
     if(qaTimerComputeRemaining()<=0){qaTimerLoop();return}
-    qaTimerPaint();
-    qaTimer.interval=setInterval(qaTimerLoop,100);
+    qaTimerPaint();qaTimer.interval=setInterval(qaTimerLoop,100);
   };
 
   if(window.__QA_TIMER__){window.__QA_TIMER__.pause=qaTimerPause;window.__QA_TIMER__.resume=qaTimerResume}
@@ -63,21 +63,17 @@
   const baseCommitAnswer=commitAnswer;
   commitAnswer=function(skipped=false,options={}){
     const q=currentQuestion(),before=qaTimerSnapshot();
-    const out=baseCommitAnswer(skipped,options);
-    const a=currentAnswer();
-    track(skipped?'answer_skipped':'answer_confirmed',{
-      question_id:q?.id||null,
-      estimated_year:a?.guess??null,
-      response_ms:a?.elapsedMs??before.elapsedMs??null,
-      timed_out:Boolean(a?.timedOut)
-    });
+    const out=baseCommitAnswer(skipped,options);const a=currentAnswer();
+    track(skipped?'answer_skipped':'answer_confirmed',{question_id:q?.id||null,estimated_year:a?.guess??null,response_ms:a?.elapsedMs??before.elapsedMs??null,timed_out:Boolean(a?.timedOut)});
     return out;
   };
 
   const baseNextQuestion=nextQuestion;
-  nextQuestion=function(){
-    const q=currentQuestion();track('next_question',{question_id:q?.id||null,question_position:(round?.index??0)+1});return baseNextQuestion();
-  };
+  nextQuestion=function(){const q=currentQuestion();track('next_question',{question_id:q?.id||null,question_position:(round?.index??0)+1});return baseNextQuestion()};
+
+  /* CTA sincronizado también cuando ±1/±10 llama setYear sin disparar input. */
+  const baseSetYear=setYear;
+  setYear=function(value,opts={}){const out=baseSetYear(value,opts);requestAnimationFrame(updateConfirmCTA);return out};
 
   /* Ambiente deja de competir en header y se administra desde Ajustes. */
   const baseOpenSettings=openSettings;
@@ -92,9 +88,7 @@
     const note=host.querySelector('.source-note');if(note)note.textContent='QUÉ AÑO 1.5 beta · 300 hitos. Juego, fallback visual y sonidos funcionales siguen disponibles offline.';
   };
 
-  function setChrome(inGame){
-    document.body.classList.toggle('v15-in-game',Boolean(inGame));
-  }
+  function setChrome(inGame){document.body.classList.toggle('v15-in-game',Boolean(inGame))}
 
   function simplifyHeader(){
     const session=document.querySelector('.atlas-header-session');if(!session||session.querySelector('.v15-progress-text'))return;
@@ -104,10 +98,8 @@
   function simplifyQuestion(q){
     const surface=document.querySelector('.atlas-v12.is-question');if(!surface||!q)return;
     simplifyHeader();
-    const fig=surface.querySelector('.atlas-question-image');
-    if(fig){const useful=q.imageType==='documentary'&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;fig.classList.toggle('v15-documentary',Boolean(useful))}
-    const primary=surface.querySelector('#primaryAction');
-    if(primary){primary.textContent=`Confirmar ${round.guess}`;primary.setAttribute('aria-label',`Confirmar respuesta: ${round.guess}`)}
+    const fig=surface.querySelector('.atlas-question-image');if(fig){const useful=q.imageType==='documentary'&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;fig.classList.toggle('v15-documentary',Boolean(useful))}
+    updateConfirmCTA();
   }
 
   function simplifyFeedback(q,a){
@@ -117,8 +109,7 @@
     if(reveal&&!reveal.querySelector('.v15-result-hero')){
       const hero=document.createElement('div');hero.className='v15-result-hero';
       const years=document.createElement('div');years.className='v15-result-years';
-      if(a.skipped)years.innerHTML=`<span class="actual">${a.actual}</span>`;
-      else years.innerHTML=`<span>${a.guess}</span><span class="arrow" aria-hidden="true">→</span><span class="actual">${a.actual}</span>`;
+      if(a.skipped)years.innerHTML=`<span class="actual">${a.actual}</span>`;else years.innerHTML=`<span>${a.guess}</span><span class="arrow" aria-hidden="true">→</span><span class="actual">${a.actual}</span>`;
       const distance=document.createElement('p');distance.className='v15-result-distance';distance.textContent=resultDistance(a);
       const note=document.createElement('p');note.className='v15-result-note';note.textContent=a.timedOut?'Se agotaron los 15 segundos y registramos la estimación que estaba seleccionada.':a.skipped?'Queda guardada para repaso.':'Tu ubicación temporal queda registrada para el repaso.';
       hero.append(years,distance,note);reveal.prepend(hero);
@@ -131,11 +122,8 @@
       const fact=document.createElement('p');fact.textContent=ext.what||q.fact||`${q.title}: ${q.year}.`;essential.append(fact);
       if(ext.locate){const locate=document.createElement('p');locate.textContent=ext.locate;essential.append(locate)}
       const doc=learn.querySelector('.atlas-document');
-      if(doc){
-        doc.classList.add('v15-collapsed-context');
-        const button=document.createElement('button');button.type='button';button.className='v15-context-button';button.dataset.v15Action='context-toggle';button.setAttribute('aria-expanded','false');button.textContent='Ver contexto e imagen';
-        doc.before(essential,button);
-      }else learn.querySelector('.atlas-learn-head')?.after(essential);
+      if(doc){doc.classList.add('v15-collapsed-context');const button=document.createElement('button');button.type='button';button.className='v15-context-button';button.dataset.v15Action='context-toggle';button.setAttribute('aria-expanded','false');button.textContent='Ver contexto e imagen';doc.before(essential,button)}
+      else learn.querySelector('.atlas-learn-head')?.after(essential);
     }
     const primary=surface.querySelector('#primaryAction');if(primary)primary.textContent=round.index===round.questionIds.length-1?'Ver resultados':'Siguiente';
   }
@@ -149,10 +137,7 @@
   const baseRenderGame=renderGame;
   renderGame=function(){const out=baseRenderGame();inspect();return out};
 
-  document.addEventListener('input',e=>{
-    if(e.target?.id!=='yearInput'&&e.target?.id!=='yearSlider')return;
-    requestAnimationFrame(()=>{const b=document.querySelector('.atlas-v12.is-question #primaryAction');if(b&&round?.phase==='question'){b.textContent=`Confirmar ${round.guess}`;b.setAttribute('aria-label',`Confirmar respuesta: ${round.guess}`)}});
-  },true);
+  document.addEventListener('input',e=>{if(e.target?.id==='yearInput'||e.target?.id==='yearSlider')requestAnimationFrame(updateConfirmCTA)},true);
 
   document.addEventListener('click',e=>{
     const ambient=e.target.closest?.('#v15AmbientSetting');
@@ -163,8 +148,7 @@
     if(open){doc.querySelector('.v13-context-extra')?.removeAttribute('hidden');track('context_expanded',{question_id:currentQuestion()?.id||null})}
   },true);
 
-  observer=new MutationObserver(()=>inspect());observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});
-  inspect();
+  observer=new MutationObserver(()=>inspect());observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
 
   window.__QA_V15__={version:VERSION,inspect,remaining:()=>qaTimerComputeRemaining(),timerDeadline:()=>qaTimer?.deadline||null};
 })();
