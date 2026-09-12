@@ -17,8 +17,9 @@ async function boot(page,{width=1366,height=768,start=true}={}){
 
 async function answer(page){await page.locator('#primaryAction').click();await expect(page.locator('.atlas-v12.is-answered')).toBeVisible()}
 
-function summaryFixture(){
-  return `(()=>{const qs=QUESTIONS.slice(0,5),errs=[18,3,0,12,1],answers=qs.map((q,i)=>({id:q.id,title:q.title,category:q.category,actual:q.year,guess:q.year+(i%2?errs[i]:-errs[i]),error:errs[i],points:points(errs[i]),skipped:false,assisted:false,memorySaved:true,date:dateKey()}));const s={uid:'v16-summary',date:dateKey(),mode:'daily',challenge:999,answers,avg:answers.reduce((n,a)=>n+a.error,0)/answers.length,total:answers.reduce((n,a)=>n+a.points,0),exact:1,omitted:0,newDiscoveries:0,newAchievements:[]};lastSummary=s;renderSummary(s)})()`;
+async function finishCurrentRound(page){
+  await page.evaluate(()=>{let step=0;const errors=[18,3,0,12,1];while(round){if(round.phase==='question'){const q=QUESTION_BY_ID.get(round.questionIds[round.index]),error=errors[Math.min(step,errors.length-1)];let guess=q.year+error;if(guess>GLOBAL_MAX_YEAR)guess=q.year-error;if(guess<GLOBAL_MIN_YEAR)guess=q.year;setYear(guess);commitAnswer(false)}if(round?.phase==='answer'){step++;nextQuestion()}}});
+  await expect(page.locator('.summary-v11')).toBeVisible();
 }
 
 test('feedback enseña sobre el hito antes de ubicarlo en el atlas',async({page})=>{
@@ -40,8 +41,8 @@ test('dificultad se aclara sin añadir chrome visible',async({page})=>{
   await boot(page);const d=page.locator('.atlas-header-meta span').nth(1);await expect(d).toBeVisible();await expect(d).toHaveAttribute('title','Dificultad editorial estimada. No modifica el puntaje.');
 });
 
-test('resumen final convierte la partida en cinco aprendizajes y una recomendación',async({page})=>{
-  await boot(page,{start:false});await page.evaluate(summaryFixture());
+test('resumen final convierte la partida real en cinco aprendizajes y una recomendación',async({page})=>{
+  await boot(page);await finishCurrentRound(page);
   await expect(page.locator('.summary-head h1')).toHaveText('Archivo de hoy completo');
   await expect(page.locator('.v16-learned-item')).toHaveCount(5);await expect(page.locator('.v16-review-next')).toBeVisible();
   await expect(page.locator('.v16-review-actions .summary-primary')).toBeVisible();
@@ -64,10 +65,11 @@ test('capturas v1.6: resultado, contexto y resumen en desktop y móvil',async({p
   fs.mkdirSync(shotDir,{recursive:true});
   await boot(page,{width:1366,height:768});await answer(page);await page.screenshot({path:path.join(shotDir,'v16-desktop-feedback.png'),fullPage:true});
   await page.locator('.v16-context-button').click();await page.screenshot({path:path.join(shotDir,'v16-desktop-context.png'),fullPage:true});
-  await page.evaluate(summaryFixture());await page.screenshot({path:path.join(shotDir,'v16-desktop-summary.png'),fullPage:true});
-  await page.setViewportSize({width:390,height:844});await page.evaluate(()=>{showView('hoy',{focus:false});startDaily()});await answer(page);await page.screenshot({path:path.join(shotDir,'v16-mobile-feedback-390x844.png'),fullPage:true});
+  await finishCurrentRound(page);await page.screenshot({path:path.join(shotDir,'v16-desktop-summary.png'),fullPage:true});
+
+  await boot(page,{width:390,height:844});await answer(page);await page.screenshot({path:path.join(shotDir,'v16-mobile-feedback-390x844.png'),fullPage:true});
   await page.locator('.v16-context-button').click();await page.screenshot({path:path.join(shotDir,'v16-mobile-context-390x844.png'),fullPage:true});
-  await page.evaluate(summaryFixture());await page.screenshot({path:path.join(shotDir,'v16-mobile-summary-390x844.png'),fullPage:true});
+  await finishCurrentRound(page);await page.screenshot({path:path.join(shotDir,'v16-mobile-summary-390x844.png'),fullPage:true});
 });
 
 test('integridad histórica sigue congelada en 300 hitos',async({page})=>{
