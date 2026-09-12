@@ -4,29 +4,31 @@
   "totals": {
     "questions": 300,
     "manual_verified": 19,
-    "structured_corroborated": 134,
-    "needs_review": 117,
-    "item_specific_reference": 30,
-    "details": 131,
-    "media": 65,
-    "genericLabels": 98
+    "structured_corroborated": 176,
+    "needs_review": 45,
+    "item_specific_reference": 60,
+    "details": 165,
+    "media": 34,
+    "genericLabels": 6
   },
   "categoryStatus": {
     "Tecnología": {
       "manual_verified": 6,
-      "structured_corroborated": 18,
-      "needs_review": 14
+      "structured_corroborated": 21,
+      "needs_review": 7,
+      "item_specific_reference": 4
     },
     "Historia": {
       "manual_verified": 2,
-      "structured_corroborated": 19,
-      "needs_review": 17
+      "structured_corroborated": 28,
+      "item_specific_reference": 3,
+      "needs_review": 5
     },
     "Ciencia": {
       "manual_verified": 5,
-      "needs_review": 27,
-      "item_specific_reference": 5,
-      "structured_corroborated": 1
+      "structured_corroborated": 10,
+      "item_specific_reference": 13,
+      "needs_review": 10
     },
     "Cine": {
       "needs_review": 5,
@@ -35,25 +37,26 @@
     },
     "Música": {
       "manual_verified": 1,
-      "structured_corroborated": 24,
-      "item_specific_reference": 7,
-      "needs_review": 5
+      "structured_corroborated": 25,
+      "item_specific_reference": 8,
+      "needs_review": 3
     },
     "Videojuegos": {
       "manual_verified": 2,
-      "structured_corroborated": 24,
-      "needs_review": 3,
-      "item_specific_reference": 8
+      "structured_corroborated": 25,
+      "item_specific_reference": 9,
+      "needs_review": 1
     },
     "Chile": {
-      "needs_review": 28,
+      "structured_corroborated": 17,
       "manual_verified": 3,
-      "structured_corroborated": 7
+      "needs_review": 8,
+      "item_specific_reference": 10
     },
     "Cultura": {
-      "structured_corroborated": 16,
-      "needs_review": 18,
-      "item_specific_reference": 3
+      "structured_corroborated": 25,
+      "needs_review": 6,
+      "item_specific_reference": 6
     }
   },
   "issues": {
@@ -63,110 +66,16 @@
     "autoPromotions": [],
     "manualLost": [],
     "genericLabels": [
-      "bitcoin",
-      "pokemon",
-      "chile62",
-      "retorno90",
-      "mineros",
-      "copa2015",
-      "netflixstream",
-      "dynatac",
-      "applem1",
-      "dna",
-      "heart_transplant",
-      "ivf",
-      "cubancrisis",
-      "mandela",
-      "shakira",
-      "nobelneruda",
-      "rios1998",
-      "terremoto27f",
-      "email1971",
-      "cd1982",
-      "barbie",
-      "friends",
-      "breakingbad",
-      "got",
-      "arpanet",
-      "linuxkernel",
-      "firstsms",
       "qrcode",
-      "usb",
-      "mpesa",
-      "android",
       "alphago",
-      "upiindia",
-      "clubedaesquina",
-      "witcher3",
-      "mafalda",
-      "simpsons",
-      "sailormoon",
-      "pokemonanime",
-      "firstdoodle",
-      "emoji",
-      "tedonline",
-      "btsdebut",
-      "everest",
-      "solarcell",
-      "atomicclock",
       "platetectonics",
-      "ctscan",
-      "smallpox",
       "pcr",
-      "ozonehole",
       "firstexoplanet",
-      "isszarya",
-      "shenzhou5",
-      "hayabusareturn",
-      "crispr2012",
-      "homonaledi",
-      "tuyouyou",
-      "gravwaves",
-      "change4",
-      "blackholeimage",
-      "sarscov2genome",
-      "mrnavaccine",
-      "hopemars",
-      "osirisrex",
-      "womenvotechile",
-      "tvchile",
-      "vinadelmarfestival",
-      "tvn",
-      "allendelection",
-      "teletonchile",
-      "chileapec",
-      "chileinternet",
-      "lagospresident",
-      "tlcue",
-      "bacheletfirst",
-      "transantiago",
-      "chile_oecd",
-      "studentmovement",
-      "lollachile",
-      "almainauguration",
-      "bearstory",
-      "eclipsechile",
-      "conventionelection",
-      "panam2023",
-      "indiarepublic",
-      "koreanarmistice",
-      "ghanaindependence",
-      "bangladesh",
-      "solidaritypoland",
-      "tiananmen",
-      "southafricaelection",
-      "eurolaunch",
-      "arabspingtunisia",
-      "brexitvote",
-      "eritreaethiopiapeace",
-      "beirutexplosion",
-      "talibankabul"
+      "homonaledi"
     ],
     "invalidDetails": [],
     "invalidMedia": [],
-    "suspiciousMedia": [
-      "thewall"
-    ],
+    "suspiciousMedia": [],
     "temporalContradictionMisclassified": []
   },
   "pass": {
@@ -176,7 +85,7 @@
     "noAutomaticVerification": true,
     "specificLabels": false,
     "valuableDetails": true,
-    "mediaRightsAndProvenance": false,
+    "mediaRightsAndProvenance": true,
     "contradictionsQuarantined": true,
     "all": false
   }
