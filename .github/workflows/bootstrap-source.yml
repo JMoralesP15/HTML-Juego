@@ -21,6 +21,7 @@ jobs:
           test -f source_bundle.tar.gz || exit 0
           tar -xzf source_bundle.tar.gz
           rm source_bundle.tar.gz
+          rm -f .github/workflows/bootstrap-source.yml
 
       - name: Commit expanded source
         run: |
