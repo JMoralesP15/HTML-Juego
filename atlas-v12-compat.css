@@ -24,3 +24,12 @@ html[data-motion="reduced"] .atlas-summary button{
   transition:none!important;
   animation:none!important;
 }
+@media(max-width:380px){
+  html,body{max-width:100%;overflow-x:clip}
+  .app-shell,.view,.atlas-v12,.atlas-summary,.atlas-question-layout,.atlas-estimator,.atlas-instrument{max-width:100%;min-width:0}
+  .main-nav{width:100%;max-width:100%;overflow:hidden!important}
+  .atlas-year-instrument{width:100%!important;max-width:100%!important;grid-template-columns:44px 44px minmax(82px,86px) 44px 44px!important;gap:3px!important}
+  .atlas-core{width:86px!important;max-width:86px!important}
+  .atlas-core .year-readout{width:78%!important;height:78%!important}
+  .atlas-core .year-input{font-size:1.62rem!important;width:4.15ch!important;letter-spacing:-.06em!important}
+}
