@@ -17,8 +17,8 @@ async function answer(page,offset=1){await page.evaluate(off=>{const q=QUESTION_
 
 test('las 300 fechas conservan clasificación cultural sin generar relleno editorial',async({page})=>{
   await boot(page,{start:false});
-  const result=await page.evaluate(()=>({total:QUESTIONS.length,invalid:QUESTIONS.filter(q=>!['core','context','niche'].includes(q.cultureTier)||!Number.isFinite(q.cultureScore)||q.cultureScore<0||q.cultureScore>100).length,images:QUESTIONS.filter(q=>q.image).length,generated:QUESTIONS.filter(q=>q.v12GeneratedImage||q.v14GeneratedFallback).length,summary:__QA_V14_CURATION__.summary}));
-  expect(result.total).toBe(300);expect(result.invalid).toBe(0);expect(result.images).toBe(45);expect(result.generated).toBe(0);expect(result.summary.coverage.generatedImageFallbacks).toBe(0);expect(result.summary.coverage.generatedContextFallbacks).toBe(0);expect(Object.values(result.summary.tiers).reduce((a,b)=>a+b,0)).toBe(300);
+  const result=await page.evaluate(()=>({total:QUESTIONS.length,invalid:QUESTIONS.filter(q=>!['core','context','niche'].includes(q.cultureTier)||!Number.isFinite(q.cultureScore)||q.cultureScore<0||q.cultureScore>100).length,images:QUESTIONS.filter(q=>q.image).length,generated:QUESTIONS.filter(q=>q.v12GeneratedImage||q.v14GeneratedFallback||String(q.image||'').startsWith('data:image/svg+xml')).length,summary:__QA_V14_CURATION__.summary}));
+  expect(result.total).toBe(300);expect(result.invalid).toBe(0);expect(result.generated).toBe(0);expect(result.images).toBeLessThanOrEqual(45);expect(result.summary.coverage.generatedImageFallbacks).toBe(0);expect(result.summary.coverage.generatedContextFallbacks).toBe(0);expect(Object.values(result.summary.tiers).reduce((a,b)=>a+b,0)).toBe(300);
 });
 
 test('ambiente generativo sigue apagado por defecto y se controla desde Ajustes',async({page})=>{

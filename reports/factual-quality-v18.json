@@ -1,0 +1,92 @@
+{
+  "version": "1.8.0-beta.1",
+  "methodology": "Static semantic gate. Corroboration is not manual verification; image absence is valid.",
+  "totals": {
+    "questions": 300,
+    "manual_verified": 19,
+    "structured_corroborated": 176,
+    "needs_review": 45,
+    "item_specific_reference": 60,
+    "details": 165,
+    "media": 34,
+    "genericLabels": 6
+  },
+  "categoryStatus": {
+    "Tecnología": {
+      "manual_verified": 6,
+      "structured_corroborated": 21,
+      "needs_review": 7,
+      "item_specific_reference": 4
+    },
+    "Historia": {
+      "manual_verified": 2,
+      "structured_corroborated": 28,
+      "item_specific_reference": 3,
+      "needs_review": 5
+    },
+    "Ciencia": {
+      "manual_verified": 5,
+      "structured_corroborated": 10,
+      "item_specific_reference": 13,
+      "needs_review": 10
+    },
+    "Cine": {
+      "needs_review": 5,
+      "structured_corroborated": 25,
+      "item_specific_reference": 7
+    },
+    "Música": {
+      "manual_verified": 1,
+      "structured_corroborated": 25,
+      "item_specific_reference": 8,
+      "needs_review": 3
+    },
+    "Videojuegos": {
+      "manual_verified": 2,
+      "structured_corroborated": 25,
+      "item_specific_reference": 9,
+      "needs_review": 1
+    },
+    "Chile": {
+      "structured_corroborated": 17,
+      "manual_verified": 3,
+      "needs_review": 8,
+      "item_specific_reference": 10
+    },
+    "Cultura": {
+      "structured_corroborated": 25,
+      "needs_review": 6,
+      "item_specific_reference": 6
+    }
+  },
+  "issues": {
+    "missingEvidence": [],
+    "extraEvidence": [],
+    "yearMismatches": [],
+    "autoPromotions": [],
+    "manualLost": [],
+    "genericLabels": [
+      "qrcode",
+      "alphago",
+      "platetectonics",
+      "pcr",
+      "firstexoplanet",
+      "homonaledi"
+    ],
+    "invalidDetails": [],
+    "invalidMedia": [],
+    "suspiciousMedia": [],
+    "temporalContradictionMisclassified": []
+  },
+  "pass": {
+    "questionCount": true,
+    "evidenceCoverage": true,
+    "yearInvariant": true,
+    "noAutomaticVerification": true,
+    "specificLabels": false,
+    "valuableDetails": true,
+    "mediaRightsAndProvenance": true,
+    "contradictionsQuarantined": true,
+    "all": false
+  }
+}

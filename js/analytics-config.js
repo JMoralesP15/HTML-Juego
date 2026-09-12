@@ -1,4 +1,4 @@
-/* QUÉ AÑO v1.7 analytics configuration.
+/* QUÉ AÑO v1.8 analytics configuration.
  * The PostHog client key is intentionally a browser-side project key, not a secret.
  * Analytics is disabled for file://, localhost and automated QA so offline play remains untouched.
  */
@@ -9,7 +9,7 @@
   const localHost = host === 'localhost' || host === '127.0.0.1' || host === '[::1]';
 
   window.QUE_ANO_ANALYTICS_CONFIG = Object.freeze({
-    version: '1.7.0-beta.1',
+    version: '1.8.0-beta.1',
     enabled: !automated && protocol === 'https:' && !localHost,
     apiHost: 'https://us.i.posthog.com',
     projectKey: 'phc_vVvmeyHXHfNajoXMVHP3z6cPmqpMJMzr2jbhjRmyYRYS',

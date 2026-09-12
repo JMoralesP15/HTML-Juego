@@ -1,0 +1,51 @@
+name: Editorial factual enrichment v1.8
+
+on:
+  push:
+    branches:
+      - feature/factual-editorial-verification-v1.8
+    paths:
+      - js/content.js
+      - js/editorial.js
+      - tools/factual-enrichment-v18.mjs
+      - tools/factual-quality-report-v18.mjs
+      - package.json
+      - .github/workflows/editorial-enrich-v18.yml
+
+permissions:
+  contents: write
+
+jobs:
+  enrich:
+    if: ${{ !contains(github.event.head_commit.message, '[factual-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/factual-editorial-verification-v1.8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Normalize lockfile to package metadata
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Build factual evidence and open-media manifest
+        run: npm run enrich:factual
+      - name: Validate factual evidence semantics
+        id: factual_gate
+        continue-on-error: true
+        run: npm run report:factual
+      - name: Commit reproducible batch outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json js/editorial-verification-v18.js reports/factual-verification-v18.json reports/factual-quality-v18.json
+          if git diff --cached --quiet; then
+            echo "No factual manifest changes"
+          else
+            git commit -m "chore: generate v1.8 factual evidence manifest [factual-generated]"
+            git push origin HEAD:feature/factual-editorial-verification-v1.8
+          fi
+      - name: Enforce factual gate
+        if: ${{ steps.factual_gate.outcome != 'success' }}
+        run: exit 1

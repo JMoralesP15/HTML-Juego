@@ -1,20 +1,22 @@
 {
   "name": "que-ano",
-  "version": "1.7.0-beta.1",
+  "version": "1.8.0-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
     "audit": "node tools/audit.mjs",
+    "enrich:factual": "node tools/factual-enrichment-v18.mjs",
     "report:content": "node tools/content-report.mjs",
     "report:culture": "node tools/culture-report.mjs",
     "report:architecture": "node tools/architecture-report.mjs",
     "report:editorial": "node tools/editorial-quality-report.mjs",
     "report:editorial-backlog": "node tools/editorial-review-backlog.mjs",
+    "report:factual": "node tools/factual-quality-report-v18.mjs",
     "test": "node tools/test.mjs",
-    "qa:visual": "playwright test tests/archive-night.spec.mjs tests/atlas-v12.spec.mjs tests/visual.spec.mjs tests/product-v13.spec.mjs tests/curation-v14.spec.mjs tests/v15-simplification.spec.mjs tests/v16-learning-ux.spec.mjs",
+    "qa:visual": "playwright test tests/archive-night.spec.mjs tests/atlas-v12.spec.mjs tests/visual.spec.mjs tests/product-v13.spec.mjs tests/curation-v14.spec.mjs tests/v15-simplification.spec.mjs tests/v16-learning-ux.spec.mjs tests/review-console.spec.mjs",
     "qa:accessibility": "playwright test tests/accessibility.spec.mjs",
     "qa:regression": "playwright test tests/regression.spec.mjs",
-    "qa:all": "npm test && npm run audit && npm run report:content && npm run report:culture && npm run report:architecture && npm run report:editorial && npm run report:editorial-backlog && npm run qa:accessibility && npm run qa:regression && npm run qa:visual",
+    "qa:all": "npm test && npm run audit && npm run report:content && npm run report:culture && npm run report:architecture && npm run report:editorial && npm run report:editorial-backlog && npm run report:factual && npm run qa:accessibility && npm run qa:regression && npm run qa:visual",
     "serve": "python -m http.server 8000"
   },
   "devDependencies": {

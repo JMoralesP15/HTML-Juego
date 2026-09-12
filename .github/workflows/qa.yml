@@ -11,6 +11,7 @@ on:
       - feature/curation-atmosphere-v1.4
       - feature/learning-result-ux-v1.6
       - feature/architecture-editorial-consolidation-v1.7
+      - feature/factual-editorial-verification-v1.8
 
 permissions:
   contents: read
@@ -42,6 +43,8 @@ jobs:
         run: npm run report:editorial
       - name: Editorial review backlog
         run: npm run report:editorial-backlog
+      - name: Factual verification quality
+        run: npm run report:factual
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Generate canonical visual baselines during bootstrap
@@ -63,5 +66,7 @@ jobs:
             reports/architecture-v17.json
             reports/editorial-quality-v17.json
             reports/editorial-review-backlog-v17.json
+            reports/factual-quality-v18.json
+            reports/factual-verification-v18.json
           if-no-files-found: ignore
           retention-days: 14
