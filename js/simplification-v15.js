@@ -57,7 +57,19 @@
     qaTimerPaint();qaTimer.interval=setInterval(qaTimerLoop,100);
   };
 
-  if(window.__QA_TIMER__){window.__QA_TIMER__.pause=qaTimerPause;window.__QA_TIMER__.resume=qaTimerResume}
+  if(window.__QA_TIMER__){
+    window.__QA_TIMER__.pause=qaTimerPause;
+    window.__QA_TIMER__.resume=qaTimerResume;
+    window.__QA_TIMER__.setRemaining=function(ms){
+      if(!qaTimer?.key)return;
+      const next=Math.max(0,Math.min(QA_TIMER_DURATION_MS,Number(ms)||0));
+      qaTimer.remainingMs=next;qaTimer.deadline=Date.now()+next;qaTimer.expired=false;qaTimerPaint();
+    };
+    window.__QA_TIMER__.expire=function(){
+      if(!qaTimer?.key)return;
+      qaTimer.remainingMs=0;qaTimer.deadline=Date.now()-1;qaTimerLoop();
+    };
+  }
 
   /* Telemetría explícita de las acciones de v1.5. */
   const baseCommitAnswer=commitAnswer;
