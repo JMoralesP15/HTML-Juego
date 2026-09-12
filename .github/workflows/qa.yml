@@ -26,6 +26,16 @@ jobs:
           node-version: 24
       - name: Bootstrap deterministic lockfile
         run: npm install --package-lock-only --ignore-scripts
+      - name: Commit normalized v1.7 lockfile once
+        if: github.ref == 'refs/heads/feature/architecture-editorial-consolidation-v1.7' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(v1.7): normalize package lock metadata"
+            git push origin HEAD:feature/architecture-editorial-consolidation-v1.7
+          fi
       - name: Install pinned dependencies
         run: npm ci
       - name: Unit and contract tests
@@ -48,16 +58,6 @@ jobs:
         run: npm run qa:accessibility
       - name: Visual browser QA
         run: npm run qa:visual
-      - name: Commit generated lockfile, report and visual baselines
-        if: github.ref == 'refs/heads/feature/instrumentation-consolidation-v1.2.1' && github.event_name == 'push'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json reports/content-metrics.json tests/*-snapshots || true
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: lock v1.2.1 dependencies and visual baselines"
-            git push
-          fi
       - name: Upload QA artifacts
         if: always()
         uses: actions/upload-artifact@v4
