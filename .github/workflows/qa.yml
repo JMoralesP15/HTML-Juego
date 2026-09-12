@@ -40,6 +40,8 @@ jobs:
         run: npm run report:architecture
       - name: Editorial provenance debt
         run: npm run report:editorial
+      - name: Editorial review backlog
+        run: npm run report:editorial-backlog
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Generate canonical visual baselines during bootstrap
@@ -60,5 +62,6 @@ jobs:
             reports/culture-curation-v14.json
             reports/architecture-v17.json
             reports/editorial-quality-v17.json
+            reports/editorial-review-backlog-v17.json
           if-no-files-found: ignore
           retention-days: 14
