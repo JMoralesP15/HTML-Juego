@@ -7,6 +7,8 @@ on:
       - main
       - infra/pages-setup
       - feature/instrumentation-consolidation-v1.2.1
+      - feature/product-loop-v1.3
+      - feature/curation-atmosphere-v1.4
 
 permissions:
   contents: write
@@ -30,6 +32,8 @@ jobs:
         run: npm run audit
       - name: Editorial and geography report
         run: npm run report:content
+      - name: General-culture curation report
+        run: npm run report:culture
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Generate canonical visual baselines during bootstrap
@@ -48,7 +52,7 @@ jobs:
             git commit -m "chore: lock v1.2.1 dependencies and visual baselines"
             git push
           fi
-      - name: Upload browser captures
+      - name: Upload QA artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -56,5 +60,7 @@ jobs:
           path: |
             test-results/screenshots
             test-results/playwright
+            reports/content-metrics.json
+            reports/culture-curation-v14.json
           if-no-files-found: ignore
           retention-days: 14
