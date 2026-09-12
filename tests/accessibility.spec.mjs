@@ -29,7 +29,14 @@ async function assertAccessible(page, label) {
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     .analyze();
   const relevant = results.violations.filter(v => v.impact === 'critical' || v.impact === 'serious');
-  const compact = relevant.map(v => ({ id: v.id, impact: v.impact, help: v.help, nodes: v.nodes.length }));
+  const compact = relevant.map(v => ({
+    id: v.id,
+    impact: v.impact,
+    help: v.help,
+    nodes: v.nodes.length,
+    targets: v.nodes.slice(0, 8).map(n => n.target),
+    samples: v.nodes.slice(0, 4).map(n => n.html)
+  }));
   expect(compact, `${label}: violaciones relevantes de accesibilidad\n${JSON.stringify(compact, null, 2)}`).toEqual([]);
 }
 
