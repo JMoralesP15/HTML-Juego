@@ -1,0 +1,17 @@
+{
+  "name": "que-ano-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node tools/audit.mjs",
+    "test": "node tools/test.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.13",
+    "storybook": "latest",
+    "@storybook/html-vite": "latest"
+  }
+}
