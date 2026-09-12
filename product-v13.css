@@ -44,7 +44,7 @@
 }
 
 @media (max-width:390px){
-  .atlas-year-instrument{grid-template-columns:42px 42px minmax(114px,126px) 42px 42px!important;gap:3px!important}.atlas-year-instrument .year-step{width:42px!important;height:42px!important;min-width:42px!important}.atlas-core{width:120px!important;max-width:120px!important}.atlas-core .year-input{font-size:2.5rem!important}
+  .atlas-year-instrument{grid-template-columns:44px 44px minmax(114px,126px) 44px 44px!important;gap:3px!important}.atlas-year-instrument .year-step{width:44px!important;height:44px!important;min-width:44px!important}.atlas-core{width:120px!important;max-width:120px!important}.atlas-core .year-input{font-size:2.5rem!important}
   .atlas-editorial{padding-inline:15px!important}.atlas-instrument{padding-inline:9px!important}.v13-feedback-sequence{font-size:.53rem!important;gap:7px!important}.v13-set-card footer{flex-direction:column;align-items:stretch}.v13-set-card footer .secondary{width:100%}
 }
 
