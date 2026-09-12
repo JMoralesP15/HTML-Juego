@@ -56,7 +56,7 @@ for (const size of sizes) {
   test(`Pregunta ${size.name}`, async ({page}) => {
     const errors=await boot(page,size);
     await expect(page.locator('#yearInput')).toBeVisible();
-    await expect(page.locator('#primaryAction')).toContainText('Responder');
+    await expect(page.locator('#primaryAction')).toContainText('Revelar año');
     await assertFrame(page);
     const box=await page.locator('#yearInput').boundingBox();
     const plus=await page.locator('[data-action="adjust"][data-step="1"]').boundingBox();
