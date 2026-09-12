@@ -3,8 +3,16 @@
  */
 
 :is(button,input,[tabindex],a):focus,
-:is(button,input,[tabindex],a):focus-visible{
-  outline:2px solid var(--atlas-cyan,#7acff2)!important;
+:is(button,input,[tabindex],a):focus-visible,
+html body #yearInput:focus,
+html body #yearInput:focus-visible,
+html body #primaryAction:focus,
+html body #primaryAction:focus-visible,
+html body [data-action="skip"]:focus,
+html body [data-action="skip"]:focus-visible{
+  outline-style:solid!important;
+  outline-width:2px!important;
+  outline-color:var(--atlas-cyan,#7acff2)!important;
   outline-offset:3px!important;
 }
 
