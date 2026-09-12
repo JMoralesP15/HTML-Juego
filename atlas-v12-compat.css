@@ -1,0 +1,26 @@
+/* v1.2 accessibility/regression patch. */
+.atlas-core .year-input:focus,
+.atlas-core .year-input:focus-visible,
+.atlas-v12 button:focus,
+.atlas-v12 button:focus-visible,
+.atlas-summary button:focus,
+.atlas-summary button:focus-visible{
+  outline:3px solid var(--atlas-cyan)!important;
+  outline-offset:3px!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .atlas-v12 .atlas-year-instrument .year-step,
+  .atlas-v12 .timer-progress,
+  .atlas-v12 .year-step,
+  .atlas-summary button{
+    transition:none!important;
+    animation:none!important;
+  }
+}
+html[data-motion="reduced"] .atlas-v12 .atlas-year-instrument .year-step,
+html[data-motion="reduced"] .atlas-v12 .timer-progress,
+html[data-motion="reduced"] .atlas-v12 .year-step,
+html[data-motion="reduced"] .atlas-summary button{
+  transition:none!important;
+  animation:none!important;
+}
