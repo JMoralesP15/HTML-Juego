@@ -32,6 +32,8 @@ jobs:
       - name: Build factual evidence and open-media manifest
         run: npm run enrich:factual
       - name: Validate factual evidence semantics
+        id: factual_gate
+        continue-on-error: true
         run: npm run report:factual
       - name: Commit reproducible batch outputs
         run: |
@@ -44,3 +46,6 @@ jobs:
             git commit -m "chore: generate v1.8 factual evidence manifest [factual-generated]"
             git push origin HEAD:feature/factual-editorial-verification-v1.8
           fi
+      - name: Enforce factual gate
+        if: ${{ steps.factual_gate.outcome != 'success' }}
+        run: exit 1
