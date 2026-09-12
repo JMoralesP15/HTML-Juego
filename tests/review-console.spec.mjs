@@ -13,22 +13,24 @@ async function boot(page,{width=1440,height=1000}={}){
   await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.0-beta.1');
 }
 
-test('consola carga las 300 fichas y prioriza revisión editorial',async({page})=>{
+test('consola carga las 300 fichas y mantiene las tres dimensiones base',async({page})=>{
   await boot(page);
   await expect(page.locator('#metricReviewed')).toContainText('/ 300');
   await expect(page.locator('.queue-item')).toHaveCount(300);
   await expect(page.locator('#reviewCard h2')).toBeVisible();
-  await expect(page.locator('.section-head')).toHaveCount(4);
+  await expect(page.getByRole('heading',{name:/1 · Hecho y fuente/i})).toBeVisible();
+  await expect(page.getByRole('heading',{name:/3 · Fotografía \/ imagen/i})).toBeVisible();
 });
 
 test('decisiones independientes persisten en localStorage',async({page})=>{
   await boot(page);
   await page.locator('[data-status-group="factualStatus"][data-status-value="approved"]').click();
-  await page.locator('[data-status-group="textStatus"][data-status-value="approved"]').click();
+  const textButton=page.locator('[data-status-group="textStatus"][data-status-value="approved"]');
+  if(await textButton.isVisible())await textButton.click();
   await page.locator('[data-status-group="mediaStatus"][data-status-value="no_photo"]').click();
   const id=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());
   const saved=await page.evaluate(id=>JSON.parse(localStorage.getItem('que-ano-editorial-review-v18')).records[id],id);
-  expect(saved.factualStatus).toBe('approved');expect(saved.textStatus).toBe('approved');expect(saved.mediaStatus).toBe('no_photo');
+  expect(saved.factualStatus).toBe('approved');expect(saved.mediaStatus).toBe('no_photo');
   await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__);const restored=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],id);expect(restored.mediaStatus).toBe('no_photo');
 });
 
@@ -43,7 +45,7 @@ test('filtros separan pendientes y evidencia automática',async({page})=>{
 
 test('atajos permiten aprobar y navegar sin escribir credenciales',async({page})=>{
   await boot(page);const first=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());
-  await page.keyboard.press('a');const approved=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],first);expect(approved.factualStatus).toBe('approved');expect(approved.textStatus).toBe('approved');
+  await page.keyboard.press('a');const approved=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],first);expect(approved.factualStatus).toBe('approved');
   await page.keyboard.press('ArrowRight');const next=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());expect(next).not.toBe(first);
 });
 
