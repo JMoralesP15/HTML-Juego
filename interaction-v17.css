@@ -2,6 +2,7 @@
  * Reglas funcionales que no pertenecen a una versión visual histórica.
  */
 
+:is(button,input,[tabindex],a):focus,
 :is(button,input,[tabindex],a):focus-visible{
   outline:2px solid var(--atlas-cyan,#7acff2)!important;
   outline-offset:3px!important;
