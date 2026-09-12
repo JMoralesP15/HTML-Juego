@@ -1,0 +1,1927 @@
+{
+  "methodology": {
+    "reviewPriority": "High = reviewNeeded without source URL; Medium = reviewNeeded with source URL. This is triage, not factual verification.",
+    "imageClassification": "Generated editorial plate = embedded SVG created by content-v12; existing asset = non-embedded image. Existing does not automatically mean verified."
+  },
+  "totalQuestions": 300,
+  "categories": {
+    "Chile": 38,
+    "Ciencia": 38,
+    "Historia": 38,
+    "Tecnología": 38,
+    "Cine": 37,
+    "Cultura": 37,
+    "Música": 37,
+    "Videojuegos": 37
+  },
+  "difficulties": {
+    "media": 120,
+    "facil": 105,
+    "dificil": 75
+  },
+  "regions": {
+    "Estados Unidos": 96,
+    "Chile": 39,
+    "Japón": 32,
+    "Reino Unido": 24,
+    "Europa": 9,
+    "Argentina": 8,
+    "China": 8,
+    "Global": 8,
+    "Latinoamérica": 6,
+    "Corea del Sur": 5,
+    "India": 5,
+    "Rusia/URSS": 5,
+    "México": 4,
+    "Sudáfrica": 4,
+    "Brasil": 3,
+    "España": 3,
+    "Polonia": 3,
+    "Argelia": 2,
+    "Francia": 2,
+    "Afganistán": 1,
+    "África Oriental": 1,
+    "Alemania": 1,
+    "Antártida": 1,
+    "Bangladesh": 1,
+    "Bélgica": 1,
+    "Canadá": 1,
+    "Checoslovaquia": 1,
+    "Corea": 1,
+    "Cuba": 1,
+    "Egipto": 1,
+    "Emiratos Árabes Unidos": 1,
+    "Estonia": 1,
+    "Finlandia": 1,
+    "Ghana": 1,
+    "Hong Kong": 1,
+    "Indonesia": 1,
+    "Irak": 1,
+    "Irán": 1,
+    "Irlanda": 1,
+    "Islandia": 1,
+    "Italia": 1,
+    "Kenia": 1,
+    "Líbano": 1,
+    "Medio Oriente": 1,
+    "Nepal": 1,
+    "Países Bajos": 1,
+    "Portugal": 1,
+    "Ruanda": 1,
+    "Suiza": 1,
+    "Túnez": 1,
+    "Ucrania": 1,
+    "Ucrania/URSS": 1,
+    "Vietnam": 1
+  },
+  "regionConcentration": {
+    "top4": [
+      [
+        "Estados Unidos",
+        96
+      ],
+      [
+        "Chile",
+        39
+      ],
+      [
+        "Japón",
+        32
+      ],
+      [
+        "Reino Unido",
+        24
+      ]
+    ],
+    "top4Count": 191,
+    "top4Share": 0.6366666666666667
+  },
+  "coverage": {
+    "withImage": 180,
+    "generatedEditorialPlates": 135,
+    "existingImageAssets": 45,
+    "withExtendedContext": 220,
+    "contextPendingReview": 202,
+    "contextNotMarkedForReview": 18
+  },
+  "pendingReview": [
+    {
+      "id": "2001film",
+      "title": "2001: Odisea del espacio",
+      "category": "Cine",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "abbeyroad",
+      "title": "Abbey Road",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "adele21",
+      "title": "21",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "aeroplane",
+      "title": "In the Aeroplane Over the Sea",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "airbnb",
+      "title": "Airbnb",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "akiraanime",
+      "title": "Akira",
+      "category": "Cine",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "akiramanga",
+      "title": "Akira (manga)",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "alien",
+      "title": "Alien",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "alphago",
+      "title": "AlphaGo vence a Lee Sedol",
+      "category": "Tecnología",
+      "region": "Corea del Sur",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "amazon",
+      "title": "Amazon",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "amongus",
+      "title": "Among Us",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "amoresperros",
+      "title": "Amores perros",
+      "category": "Cine",
+      "region": "México",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "android",
+      "title": "Primer teléfono Android",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "applem1",
+      "title": "Chip Apple M1",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "arpanet",
+      "title": "Primer enlace de ARPANET",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "artaud",
+      "title": "Artaud",
+      "category": "Música",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "backtoblack",
+      "title": "Back to Black",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "badbunny",
+      "title": "Un Verano Sin Ti",
+      "category": "Música",
+      "region": "Latinoamérica",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "baldursgate3",
+      "title": "Baldur's Gate 3",
+      "category": "Videojuegos",
+      "region": "Bélgica",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "barbie",
+      "title": "Primera muñeca Barbie",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "battlealgiers",
+      "title": "La batalla de Argel",
+      "category": "Cine",
+      "region": "Argelia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "berlinwall",
+      "title": "Caída del Muro de Berlín",
+      "category": "Historia",
+      "region": "Europa",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "bigbrother",
+      "title": "Big Brother",
+      "category": "Cultura",
+      "region": "Países Bajos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "bitcoin",
+      "title": "Red Bitcoin",
+      "category": "Tecnología",
+      "region": "Global",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "blackmyth",
+      "title": "Black Myth: Wukong",
+      "category": "Videojuegos",
+      "region": "China",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "bladerunner",
+      "title": "Blade Runner",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "bocanada",
+      "title": "Bocanada",
+      "category": "Música",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "breakingbad",
+      "title": "Breaking Bad (serie)",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "btsdebut",
+      "title": "Debut de BTS",
+      "category": "Cultura",
+      "region": "Corea del Sur",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "bttf",
+      "title": "Volver al futuro",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "buenavista",
+      "title": "Buena Vista Social Club",
+      "category": "Música",
+      "region": "Cuba",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "cd1982",
+      "title": "Primer disco compacto",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "celeste",
+      "title": "Celeste",
+      "category": "Videojuegos",
+      "region": "Canadá",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "centenario",
+      "title": "Copa América Centenario",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "chatgpt",
+      "title": "ChatGPT",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "chile62",
+      "title": "Mundial de Chile",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "chungkingexpress",
+      "title": "Chungking Express",
+      "category": "Cine",
+      "region": "Hong Kong",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "cienanos",
+      "title": "Cien años de soledad",
+      "category": "Cultura",
+      "region": "Latinoamérica",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "cinemaparadiso",
+      "title": "Cinema Paradiso",
+      "category": "Cine",
+      "region": "Italia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "cityofgod",
+      "title": "Ciudad de Dios",
+      "category": "Cine",
+      "region": "Latinoamérica",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "clubedaesquina",
+      "title": "Clube da Esquina",
+      "category": "Música",
+      "region": "Brasil",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "construcao",
+      "title": "Construção",
+      "category": "Música",
+      "region": "Brasil",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "copa2015",
+      "title": "Primera Copa América de Chile",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "covid",
+      "title": "Pandemia de COVID-19",
+      "category": "Ciencia",
+      "region": "Global",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "cubancrisis",
+      "title": "Crisis de los Misiles de Cuba",
+      "category": "Historia",
+      "region": "Global",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "cubanrev",
+      "title": "Revolución Cubana",
+      "category": "Historia",
+      "region": "Latinoamérica",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "darkside",
+      "title": "The Dark Side of the Moon",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "darksouls",
+      "title": "Dark Souls",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "davinci",
+      "title": "El código Da Vinci",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "derechovivir",
+      "title": "El derecho de vivir en paz",
+      "category": "Música",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "discoelysium",
+      "title": "Disco Elysium",
+      "category": "Videojuegos",
+      "region": "Estonia",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "discovery",
+      "title": "Discovery",
+      "category": "Música",
+      "region": "Europa",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "dna",
+      "title": "Doble hélice del ADN",
+      "category": "Ciencia",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "doom",
+      "title": "Doom",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "dragonball",
+      "title": "Dragon Ball (manga)",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "dynamo",
+      "title": "Dynamo",
+      "category": "Música",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "dynatac",
+      "title": "Primera llamada móvil",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "ebay",
+      "title": "eBay",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "elmalquerer",
+      "title": "El mal querer",
+      "category": "Música",
+      "region": "España",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "email1971",
+      "title": "Primer correo electrónico",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "emoji",
+      "title": "Primer conjunto de emoji",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "estallido2019",
+      "title": "Estallido social",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "et",
+      "title": "E.T., el extraterrestre",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "exorcist",
+      "title": "El exorcista",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "facebook",
+      "title": "Facebook",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "falklands",
+      "title": "Guerra de las Malvinas",
+      "category": "Historia",
+      "region": "Latinoamérica",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "firstdoodle",
+      "title": "Primer Google Doodle",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "firstsms",
+      "title": "Primer mensaje SMS",
+      "category": "Tecnología",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "fortnite",
+      "title": "Fortnite Battle Royale",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "fourhundredblows",
+      "title": "Los 400 golpes",
+      "category": "Cine",
+      "region": "Francia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "friends",
+      "title": "Friends (serie)",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "gagarin",
+      "title": "Yuri Gagarin",
+      "category": "Ciencia",
+      "region": "Rusia/URSS",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "gangnam",
+      "title": "Gangnam Style",
+      "category": "Cultura",
+      "region": "Corea del Sur",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "garfield",
+      "title": "Garfield",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "genome",
+      "title": "Proyecto Genoma Humano",
+      "category": "Ciencia",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "getzgilberto",
+      "title": "Getz/Gilberto",
+      "category": "Música",
+      "region": "Brasil",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "godfather",
+      "title": "El Padrino",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "goodreads",
+      "title": "Goodreads",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "google",
+      "title": "Google",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "got",
+      "title": "Game of Thrones (serie)",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "gta3",
+      "title": "Grand Theft Auto III",
+      "category": "Videojuegos",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "hades",
+      "title": "Hades",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "halflife",
+      "title": "Half-Life",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "hamilton",
+      "title": "Hamilton",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "harrypotter",
+      "title": "Harry Potter y la piedra filosofal",
+      "category": "Cultura",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "heart_transplant",
+      "title": "Primer trasplante de corazón",
+      "category": "Ciencia",
+      "region": "Sudáfrica",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "hellokitty",
+      "title": "Hello Kitty",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "homogenic",
+      "title": "Homogenic",
+      "category": "Música",
+      "region": "Islandia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "inrainbows",
+      "title": "In Rainbows",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "instagram",
+      "title": "Instagram",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "intel4004",
+      "title": "Intel 4004",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "ivf",
+      "title": "Primer bebé por fecundación in vitro",
+      "category": "Ciencia",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "jaws",
+      "title": "Tiburón",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "journeygame",
+      "title": "Journey",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "jurassic",
+      "title": "Jurassic Park",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "jwst",
+      "title": "James Webb",
+      "category": "Ciencia",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "kida",
+      "title": "Kid A",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "kindle",
+      "title": "Amazon Kindle",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "kindofblue",
+      "title": "Kind of Blue",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "lastofus",
+      "title": "The Last of Us",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "likeavirgin",
+      "title": "Like a Virgin",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "linuxkernel",
+      "title": "Anuncio del kernel Linux",
+      "category": "Tecnología",
+      "region": "Finlandia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "lionking",
+      "title": "El Rey León",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "londoncalling",
+      "title": "London Calling",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "lotr",
+      "title": "El Señor de los Anillos: La Comunidad del Anillo",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "lotrbook",
+      "title": "La Comunidad del Anillo",
+      "category": "Cultura",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "mac",
+      "title": "Macintosh",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "mafalda",
+      "title": "Primera tira de Mafalda",
+      "category": "Cultura",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "mandela",
+      "title": "Liberación de Nelson Mandela",
+      "category": "Historia",
+      "region": "Sudáfrica",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "matrix",
+      "title": "The Matrix",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "mercadolibre",
+      "title": "Mercado Libre",
+      "category": "Tecnología",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "metroid",
+      "title": "Metroid",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "minecraft",
+      "title": "Minecraft",
+      "category": "Videojuegos",
+      "region": "Europa",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "mineros",
+      "title": "Rescate de los 33 mineros",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "miseducation",
+      "title": "The Miseducation of Lauryn Hill",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "motomami",
+      "title": "Motomami",
+      "category": "Música",
+      "region": "España",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "mpesa",
+      "title": "Lanzamiento de M-Pesa",
+      "category": "Tecnología",
+      "region": "Kenia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "mtv",
+      "title": "MTV",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "n64",
+      "title": "Nintendo 64",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "napster",
+      "title": "Napster",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "netflixstream",
+      "title": "Streaming de Netflix",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "netscape",
+      "title": "Netscape Navigator",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "nevermind",
+      "title": "Nevermind",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "nobelneruda",
+      "title": "Nobel de Literatura para Neruda",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "okcomputer",
+      "title": "OK Computer",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "oldboy",
+      "title": "Oldboy",
+      "category": "Cine",
+      "region": "Corea del Sur",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "pacman",
+      "title": "Pac-Man",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "panslabyrinth",
+      "title": "El laberinto del fauno",
+      "category": "Cine",
+      "region": "España",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "parasite",
+      "title": "Parasite",
+      "category": "Cine",
+      "region": "Corea del Sur",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "paypal",
+      "title": "PayPal",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "pokemon",
+      "title": "Pokémon Red & Green",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "pokemonanime",
+      "title": "Anime de Pokémon",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "poliovaccine",
+      "title": "Vacuna contra la polio",
+      "category": "Ciencia",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "pong",
+      "title": "Pong",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "portal",
+      "title": "Portal",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "portraitladyfire",
+      "title": "Retrato de una mujer en llamas",
+      "category": "Cine",
+      "region": "Francia",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "ps2",
+      "title": "PlayStation 2",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "psycho",
+      "title": "Psicosis",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "pulp",
+      "title": "Pulp Fiction",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "qrcode",
+      "title": "Invención del código QR",
+      "category": "Tecnología",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "ram",
+      "title": "Random Access Memories",
+      "category": "Música",
+      "region": "Europa",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "rashomon",
+      "title": "Rashomon",
+      "category": "Cine",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "recatacanes",
+      "title": "Re",
+      "category": "Música",
+      "region": "México",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "residentevil",
+      "title": "Resident Evil",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "retorno90",
+      "title": "Retorno a la democracia",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "rios1998",
+      "title": "Marcelo Ríos, número 1 del mundo",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "roma",
+      "title": "Roma",
+      "category": "Cine",
+      "region": "México",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "rrr",
+      "title": "RRR",
+      "category": "Cine",
+      "region": "India",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "rubik",
+      "title": "Cubo de Rubik",
+      "category": "Cultura",
+      "region": "Europa",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "rumours",
+      "title": "Rumours",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "sailormoon",
+      "title": "Sailor Moon (manga)",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "secretoojos",
+      "title": "El secreto de sus ojos",
+      "category": "Cine",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "sept11",
+      "title": "Atentados del 11 de septiembre",
+      "category": "Historia",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "sesamestreet",
+      "title": "Sesame Street",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "sevensamurai",
+      "title": "Los siete samuráis",
+      "category": "Cine",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "sf2",
+      "title": "Street Fighter II",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "shadowcolossus",
+      "title": "Shadow of the Colossus",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "shakira",
+      "title": "¿Dónde Están los Ladrones?",
+      "category": "Música",
+      "region": "Latinoamérica",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "siempreeshoy",
+      "title": "Siempre es hoy",
+      "category": "Música",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "simcity",
+      "title": "SimCity",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "simpsons",
+      "title": "Los Simpson como serie",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "sims",
+      "title": "The Sims",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "snes",
+      "title": "Super Nintendo",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "spaceinvaders",
+      "title": "Space Invaders",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "spirited",
+      "title": "El viaje de Chihiro",
+      "category": "Cine",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "spotify",
+      "title": "Spotify",
+      "category": "Cultura",
+      "region": "Europa",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "starwars",
+      "title": "Star Wars",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "supermario",
+      "title": "Super Mario Bros.",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "tamagotchi",
+      "title": "Tamagotchi",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "tedonline",
+      "title": "Charlas TED en línea",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "teletubbies",
+      "title": "Teletubbies",
+      "category": "Cultura",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "terremoto27f",
+      "title": "Terremoto y tsunami del 27F",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "tetris",
+      "title": "Tetris",
+      "category": "Videojuegos",
+      "region": "Rusia/URSS",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "thewall",
+      "title": "The Wall",
+      "category": "Música",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "thriller",
+      "title": "Thriller",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "tiktok",
+      "title": "TikTok",
+      "category": "Tecnología",
+      "region": "China",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "titanic",
+      "title": "Titanic",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "toystory",
+      "title": "Toy Story",
+      "category": "Cine",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "tpab",
+      "title": "To Pimp a Butterfly",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "transeurope",
+      "title": "Trans-Europe Express",
+      "category": "Música",
+      "region": "Alemania",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "twitter",
+      "title": "Twitter",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "uber",
+      "title": "Uber",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "upiindia",
+      "title": "Pagos UPI en India",
+      "category": "Tecnología",
+      "region": "India",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "usb",
+      "title": "Primera especificación USB",
+      "category": "Tecnología",
+      "region": "Global",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "ussr",
+      "title": "Disolución de la URSS",
+      "category": "Historia",
+      "region": "Rusia/URSS",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "valdivia1960",
+      "title": "Terremoto de Valdivia",
+      "category": "Chile",
+      "region": "Chile",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    },
+    {
+      "id": "velvetbanana",
+      "title": "The Velvet Underground & Nico",
+      "category": "Música",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "vhs",
+      "title": "VHS",
+      "category": "Cultura",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "wechat",
+      "title": "WeChat",
+      "category": "Tecnología",
+      "region": "China",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "whatsapp",
+      "title": "WhatsApp",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "wii",
+      "title": "Nintendo Wii",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "wikipedia",
+      "title": "Wikipedia",
+      "category": "Cultura",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "wildtales",
+      "title": "Relatos salvajes",
+      "category": "Cine",
+      "region": "Argentina",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "win95",
+      "title": "Windows y el menú Inicio",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "witcher3",
+      "title": "The Witcher 3",
+      "category": "Videojuegos",
+      "region": "Polonia",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "wordle",
+      "title": "Wordle",
+      "category": "Cultura",
+      "region": "Reino Unido",
+      "hasSource": true,
+      "imageClass": "none",
+      "priority": "medium"
+    },
+    {
+      "id": "wow",
+      "title": "World of Warcraft",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "xbox",
+      "title": "Xbox",
+      "category": "Videojuegos",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "youtube",
+      "title": "YouTube",
+      "category": "Tecnología",
+      "region": "Estados Unidos",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "ytumama",
+      "title": "Y tu mamá también",
+      "category": "Cine",
+      "region": "México",
+      "hasSource": true,
+      "imageClass": "generated_editorial_plate",
+      "priority": "medium"
+    },
+    {
+      "id": "zelda",
+      "title": "The Legend of Zelda",
+      "category": "Videojuegos",
+      "region": "Japón",
+      "hasSource": true,
+      "imageClass": "existing_asset",
+      "priority": "medium"
+    }
+  ]
+}
