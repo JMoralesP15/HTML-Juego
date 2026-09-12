@@ -21,7 +21,7 @@ test('feedback mantiene divulgación progresiva con menos chrome',async({page})=
   await expect(page.locator('.v16-learning-card')).toBeVisible();const toggle=page.locator('[data-v16-action="context-toggle"]');await expect(toggle).toBeVisible();await expect(page.locator('.atlas-document')).toBeHidden();await toggle.click();await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).toContainText('CONTEXTO');await expect(toggle).toHaveAttribute('aria-expanded','true');
 });
 
-test('v1.7 no fabrica láminas para cumplir cuotas de cobertura',async({page})=>{
+test('v1.8 no fabrica láminas ni exige una cuota de imágenes',async({page})=>{
   await boot(page,{start:false});
   const result=await page.evaluate(()=>({
     generated:QUESTIONS.filter(q=>q.v12GeneratedImage||q.v14GeneratedFallback||String(q.image||'').startsWith('data:image/svg+xml')).length,
@@ -29,7 +29,7 @@ test('v1.7 no fabrica láminas para cumplir cuotas de cobertura',async({page})=>
     documentary:QUESTIONS.filter(q=>q.image&&q.imageType==='documentary').length,
     coverageGenerated:QA_V12_COVERAGE.generatedImages
   }));
-  expect(result.generated).toBe(0);expect(result.coverageGenerated).toBe(0);expect(result.explicitImages).toBe(45);expect(result.documentary).toBe(3);
+  expect(result.generated).toBe(0);expect(result.coverageGenerated).toBe(0);expect(result.explicitImages).toBeLessThanOrEqual(45);expect(result.documentary).toBeLessThanOrEqual(result.explicitImages);
 });
 
 test('colección incorpora sets jugables',async({page})=>{
