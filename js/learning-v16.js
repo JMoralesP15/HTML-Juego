@@ -102,13 +102,18 @@
 
   function decorateSummary(s=lastSummary){
     const root=document.querySelector('.summary-v11');if(!root||!s)return;
-    const key=`${s.uid||s.date}:${s.total}:${s.answers?.length||0}`;if(root.dataset.v16==='1'&&lastSummaryKey===key)return;lastSummaryKey=key;root.dataset.v16='1';
+    const expected=s.answers?.length||0,key=`${s.uid||s.date}:${s.total}:${expected}`;
+    const alreadyComplete=root.querySelectorAll('.v16-learned-item').length===expected&&!!root.querySelector('.v16-review-next');
+    if(alreadyComplete&&lastSummaryKey===key)return;
+
     const h=root.querySelector('.summary-head h1');if(h&&s.mode==='daily')h.textContent='Archivo de hoy completo';
-    const roundSection=root.querySelector('.summary-round');
-    if(roundSection){
-      const items=s.answers.map((a,i)=>{const q=displayQuestion(a.id)||QUESTION_BY_ID.get(a.id),cue=q?learningCue(q):'';return `<button class="v16-learned-item" data-action="detail" data-id="${esc(a.id)}"><span class="v16-learned-index">${String(i+1).padStart(2,'0')}</span><span><b>${esc(q?.title||a.title)} · ${a.actual}</b><small>${esc(cue||'Hito guardado en tu archivo.')}</small></span><strong>${a.skipped?'Repasar':a.error===0?'Exacta':`${a.error} ${a.error===1?'año':'años'}`}</strong></button>`}).join('');
-      roundSection.innerHTML=`<div class="summary-section-title"><div><span class="eyebrow">QUÉ APRENDISTE HOY</span><h2>Cinco fechas, cinco ideas para recordar</h2></div><span class="summary-section-hint">Toca un hito para abrir su ficha</span></div><div class="v16-learned-list">${items}</div>`;
-    }
+    const signature=root.querySelector('.answer-signature.archive-signature,.answer-signature');
+    const roundSection=root.querySelector('.summary-round')||signature?.parentElement;
+    if(!roundSection)return;
+
+    const items=s.answers.map((a,i)=>{const q=displayQuestion(a.id)||QUESTION_BY_ID.get(a.id),cue=q?learningCue(q):'';return `<button class="v16-learned-item" data-action="detail" data-id="${esc(a.id)}"><span class="v16-learned-index">${String(i+1).padStart(2,'0')}</span><span><b>${esc(q?.title||a.title)} · ${a.actual}</b><small>${esc(cue||'Hito guardado en tu archivo.')}</small></span><strong>${a.skipped?'Repasar':a.error===0?'Exacta':`${a.error} ${a.error===1?'año':'años'}`}</strong></button>`}).join('');
+    roundSection.innerHTML=`<div class="summary-section-title"><div><span class="eyebrow">QUÉ APRENDISTE HOY</span><h2>Cinco fechas, cinco ideas para recordar</h2></div><span class="summary-section-hint">Toca un hito para abrir su ficha</span></div><div class="v16-learned-list">${items}</div>`;
+
     root.querySelector('.v16-review-next')?.remove();
     const candidates=reviewCandidates(s),next=document.createElement('section');next.className='v16-review-next';
     const names=candidates.slice(0,2).map(a=>displayQuestion(a.id)?.title||a.title);
@@ -116,7 +121,9 @@
     const footer=root.querySelector('.summary-footer'),actions=next.querySelector('.v16-review-actions'),primary=footer?.querySelector('.summary-primary');if(primary&&actions)actions.append(primary);
     footer?.before(next);
     if(footer)footer.classList.add('v16-summary-footer');
-    track('summary_learning_seen',{mode:s.mode,questions_count:s.answers.length,review_candidates:candidates.length});
+
+    lastSummaryKey=key;root.dataset.v16='1';
+    track('summary_learning_seen',{mode:s.mode,questions_count:expected,review_candidates:candidates.length});
   }
 
   const baseRenderSummary=renderSummary;
