@@ -3,7 +3,7 @@
   'use strict';
 
   const VERSION='1.5.0-beta.1';
-  let observer=null;
+  let observer=null,inspectQueued=false;
 
   function currentQuestion(){
     try{if(typeof round==='undefined'||!round?.questionIds)return null;return QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
@@ -19,9 +19,14 @@
     const unit=a.error===1?'año':'años';
     return `${a.error} ${unit} ${a.guess<a.actual?'antes':'después'}`;
   }
+  function setTextIfChanged(el,text){if(el&&el.textContent!==text)el.textContent=text}
+  function setAttrIfChanged(el,name,value){if(el&&el.getAttribute(name)!==value)el.setAttribute(name,value)}
   function updateConfirmCTA(){
     const b=document.querySelector('.atlas-v12.is-question #primaryAction');
-    if(b&&round?.phase==='question'){b.textContent=`Confirmar ${round.guess}`;b.setAttribute('aria-label',`Confirmar respuesta: ${round.guess}`)}
+    if(b&&round?.phase==='question'){
+      const text=`Confirmar ${round.guess}`;
+      setTextIfChanged(b,text);setAttrIfChanged(b,'aria-label',`Confirmar respuesta: ${round.guess}`);
+    }
   }
 
   /* Timer absoluto: ocultar la pestaña puede detener el repaint, nunca el reloj. */
@@ -91,7 +96,7 @@
   const baseOpenSettings=openSettings;
   openSettings=function(){
     baseOpenSettings();
-    const host=document.getElementById('dialogContent');if(!host)return;
+    const host=document.getElementById('dialogContent');if(!host||host.querySelector('#v15AmbientSetting'))return;
     const ambient=window.__QA_V14__?.ambient;
     const row=document.createElement('div');row.className='settings-row v15-ambient-setting';
     const copy=document.createElement('div'),b=document.createElement('b'),small=document.createElement('small');b.textContent='Ambiente musical';small.textContent='Capa generativa opcional. Nunca se reproduce sin una acción tuya.';copy.append(b,small);
@@ -100,17 +105,25 @@
     const note=host.querySelector('.source-note');if(note)note.textContent='QUÉ AÑO 1.5 beta · 300 hitos. Juego, fallback visual y sonidos funcionales siguen disponibles offline.';
   };
 
-  function setChrome(inGame){document.body.classList.toggle('v15-in-game',Boolean(inGame))}
+  function setChrome(inGame){
+    const should=Boolean(inGame);if(document.body.classList.contains('v15-in-game')!==should)document.body.classList.toggle('v15-in-game',should);
+  }
 
   function simplifyHeader(){
-    const session=document.querySelector('.atlas-header-session');if(!session||session.querySelector('.v15-progress-text'))return;
-    const span=document.createElement('span');span.className='v15-progress-text';span.textContent=`${(round?.index??0)+1} / ${round?.questionIds?.length||5}`;session.append(span);
+    const session=document.querySelector('.atlas-header-session');if(!session)return;
+    let span=session.querySelector('.v15-progress-text');
+    if(!span){span=document.createElement('span');span.className='v15-progress-text';session.append(span)}
+    setTextIfChanged(span,`${(round?.index??0)+1} / ${round?.questionIds?.length||5}`);
   }
 
   function simplifyQuestion(q){
     const surface=document.querySelector('.atlas-v12.is-question');if(!surface||!q)return;
     simplifyHeader();
-    const fig=surface.querySelector('.atlas-question-image');if(fig){const useful=q.imageType==='documentary'&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;fig.classList.toggle('v15-documentary',Boolean(useful))}
+    const fig=surface.querySelector('.atlas-question-image');
+    if(fig){
+      const useful=Boolean(q.imageType==='documentary'&&!q.v12GeneratedImage&&!q.v14GeneratedFallback);
+      if(fig.classList.contains('v15-documentary')!==useful)fig.classList.toggle('v15-documentary',useful);
+    }
     updateConfirmCTA();
   }
 
@@ -137,13 +150,17 @@
       if(doc){doc.classList.add('v15-collapsed-context');const button=document.createElement('button');button.type='button';button.className='v15-context-button';button.dataset.v15Action='context-toggle';button.setAttribute('aria-expanded','false');button.textContent='Ver contexto e imagen';doc.before(essential,button)}
       else learn.querySelector('.atlas-learn-head')?.after(essential);
     }
-    const primary=surface.querySelector('#primaryAction');if(primary)primary.textContent=round.index===round.questionIds.length-1?'Ver resultados':'Siguiente';
+    const primary=surface.querySelector('#primaryAction');if(primary)setTextIfChanged(primary,round.index===round.questionIds.length-1?'Ver resultados':'Siguiente');
   }
 
   function inspect(){
     const surface=document.querySelector('#view .atlas-v12');setChrome(Boolean(surface));if(!surface)return;
     const q=currentQuestion();if(!q)return;
     if(round?.phase==='question')simplifyQuestion(q);else if(round?.phase==='answer')simplifyFeedback(q,currentAnswer());
+  }
+  function queueInspect(){
+    if(inspectQueued)return;inspectQueued=true;
+    requestAnimationFrame(()=>{inspectQueued=false;inspect()});
   }
 
   const baseRenderGame=renderGame;
@@ -153,14 +170,14 @@
 
   document.addEventListener('click',e=>{
     const ambient=e.target.closest?.('#v15AmbientSetting');
-    if(ambient){const engine=window.__QA_V14__?.ambient;if(engine){engine.toggle();ambient.textContent=engine.enabled?'Desactivar':'Activar';ambient.setAttribute('aria-pressed',String(engine.enabled))}return}
+    if(ambient){const engine=window.__QA_V14__?.ambient;if(engine){engine.toggle();setTextIfChanged(ambient,engine.enabled?'Desactivar':'Activar');setAttrIfChanged(ambient,'aria-pressed',String(engine.enabled))}return}
     const toggle=e.target.closest?.('[data-v15-action="context-toggle"]');if(!toggle)return;
     const doc=toggle.nextElementSibling?.classList?.contains('atlas-document')?toggle.nextElementSibling:document.querySelector('.atlas-document');if(!doc)return;
-    const open=doc.classList.toggle('v15-context-open');doc.classList.toggle('v15-collapsed-context',!open);toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Ocultar contexto':'Ver contexto e imagen';
+    const open=!doc.classList.contains('v15-context-open');doc.classList.toggle('v15-context-open',open);doc.classList.toggle('v15-collapsed-context',!open);setAttrIfChanged(toggle,'aria-expanded',String(open));setTextIfChanged(toggle,open?'Ocultar contexto':'Ver contexto e imagen');
     if(open){doc.querySelector('.v13-context-extra')?.removeAttribute('hidden');track('context_expanded',{question_id:currentQuestion()?.id||null})}
   },true);
 
-  observer=new MutationObserver(()=>inspect());observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
+  observer=new MutationObserver(queueInspect);observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
 
   window.__QA_V15__={version:VERSION,inspect,remaining:()=>qaTimerComputeRemaining(),timerDeadline:()=>qaTimer?.deadline||null};
 })();
