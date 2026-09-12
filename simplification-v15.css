@@ -12,6 +12,7 @@
 
 /* Cabecera de ronda: categoría+dificultad y un único 2/5. */
 .atlas-v12 .atlas-header{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"meta session"!important;gap:10px 18px!important;padding:14px var(--atlas-pad)!important}
+.atlas-v12 .atlas-header-meta span:nth-child(1),.atlas-v12 .atlas-header-meta span:nth-child(2){display:inline-block!important}
 .atlas-v12 .atlas-header-meta span:nth-child(n+3){display:none!important}
 .atlas-v12 .atlas-header-session{align-self:center!important}
 .atlas-v12 .atlas-header-session>*{display:none!important}
