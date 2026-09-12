@@ -12,6 +12,7 @@ on:
       - feature/learning-result-ux-v1.6
       - feature/architecture-editorial-consolidation-v1.7
       - feature/factual-editorial-verification-v1.8
+      - feature/editorial-assist-v1.8.1
 
 permissions:
   contents: read
