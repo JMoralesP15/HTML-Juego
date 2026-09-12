@@ -1,23 +1,45 @@
-# QUÉ AÑO 1.1.2 RC
+# QUÉ AÑO 1.2.1 — Instrumentation & Consolidation
 
-Objetivo: congelar el loop principal antes de v1.2.
+## Propósito
 
-## Cambios principales
-- Pregunta desktop recompuesta para aprovechar el ancho disponible.
-- YearSelector separado en cinco zonas inequívocas y protegido contra solapamientos.
-- Ritmo vertical móvil corregido para pantallas altas y bajas.
-- Feedback reorganizado como resultado + contexto editorial.
-- TemporalScale adaptativa por magnitud del error, evitando falsa precisión en distancias grandes.
-- Resumen convertido en cierre editorial con puntuación dominante y firma navegable de la partida.
-- Eliminado el modal redundante “Tus respuestas”; cada hito del resumen abre su propio contexto.
-- Progreso de rondas adaptable al tamaño real de la sesión.
-- QA Playwright ampliado a estados cercanos, lejanos, revelados, resumen móvil, repaso y foco.
+Esta versión estabiliza la línea v1.2 antes de nuevas decisiones de UX/UI o jugabilidad. No modifica el banco de años/IDs/calendario ni incorpora una nueva mecánica principal.
 
-## Deuda residual esperada
-- B / v1.2: ampliar cobertura visual del banco y la Colección.
-- C / editorial: revisar fuentes genéricas heredadas.
-- C / editorial: ampliar extendedContext más allá de las 19 preguntas actuales.
-- D / nice-to-have: regresión pixel-perfect automatizada contra snapshots aprobados.
+## Cambios de v1.2.1
 
-## Freeze
-Si las pruebas funcionales, audit y Playwright pasan en el entorno QA del usuario y la revisión visual no detecta bloqueadores, Pregunta, Feedback y Resumen quedan congelados para v1.2 salvo bug, accesibilidad, regresión o evidencia nueva de usuario.
+- versionado unificado en `1.2.1`;
+- dependencias fijadas, con lockfile generado por CI antes del cierre del candidato;
+- PostHog opcional y no bloqueante;
+- cuatro feature flags de experimentos preparadas e inactivas;
+- auditoría axe-core en flujos canónicos;
+- regresión visual canónica desktop/mobile;
+- reporte de cobertura editorial y geográfica;
+- retiro del scaffold Storybook v1.1 no conectado a producción;
+- documentación de arquitectura y roadmap condicionado por datos;
+- staging/preview en Vercel como complemento de GitHub Pages.
+
+## Invariantes
+
+- 300 preguntas esperadas.
+- 365 días de schedule y cooldown mínimo de 52 días según auditoría existente.
+- calendario publicado de 1.096 días sin mismatches.
+- cero assets faltantes.
+- cero date leaks.
+- funcionamiento `file://` preservado.
+- analítica no requerida para ejecutar ninguna interacción.
+
+## Criterios antes de aprobar merge
+
+1. tests funcionales existentes pasan;
+2. QA browser existente pasa;
+3. axe sin violaciones críticas/relevantes acordadas;
+4. snapshots visuales reproducibles;
+5. auditoría de contenido intacta;
+6. `package-lock.json` presente y CI usando `npm ci`;
+7. staging Vercel accesible;
+8. documentación y Jira conciliados con evidencia real;
+9. PR revisado por una persona;
+10. `main` no se modifica automáticamente.
+
+## Deuda deliberadamente postergada
+
+La superposición `archive-night*` / `atlas-v12*` sigue siendo la principal deuda estructural. Se documenta y controla mediante regresión antes de intentar una refactorización más profunda. Hacer esa cirugía al mismo tiempo que se introduce analítica habría aumentado demasiado el riesgo de atribución y regresión.

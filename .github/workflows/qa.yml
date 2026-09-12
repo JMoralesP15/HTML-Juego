@@ -6,25 +6,55 @@ on:
     branches:
       - main
       - infra/pages-setup
+      - feature/instrumentation-consolidation-v1.2.1
+
+permissions:
+  contents: write
 
 jobs:
-  test:
+  qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: npm install
-      - run: npm test
-      - run: npm run audit
-      - run: npx playwright install --with-deps chromium
-      - run: npm run qa:visual
-      - name: Upload screenshots
+      - name: Bootstrap deterministic lockfile
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Unit and contract tests
+        run: npm test
+      - name: Content integrity audit
+        run: npm run audit
+      - name: Editorial and geography report
+        run: npm run report:content
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Generate canonical visual baselines during bootstrap
+        run: npm run qa:regression -- --update-snapshots
+      - name: Accessibility QA
+        run: npm run qa:accessibility
+      - name: Visual browser QA
+        run: npm run qa:visual
+      - name: Commit generated lockfile, report and visual baselines
+        if: github.ref == 'refs/heads/feature/instrumentation-consolidation-v1.2.1' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json reports/content-metrics.json tests/*-snapshots || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: lock v1.2.1 dependencies and visual baselines"
+            git push
+          fi
+      - name: Upload browser captures
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-screenshots
-          path: test-results/screenshots
+          name: visual-qa-screenshots
+          path: |
+            test-results/screenshots
+            test-results/playwright
           if-no-files-found: ignore
+          retention-days: 14
