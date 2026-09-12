@@ -80,15 +80,14 @@
     const key=`${round?.uid||'run'}:${round?.index||0}:${q.id}`;
     decorateDifficulty();
     const learn=surface.querySelector('.atlas-learn');if(!learn)return;
-    learn.querySelector('.v15-essential')?.remove();
-    learn.querySelector('.v15-context-button')?.remove();
-    learn.querySelector('.v16-learning-card')?.remove();
-    learn.querySelector('.v16-context-button')?.remove();
+    const legacyEssential=learn.querySelector('.v15-essential'),legacyToggle=learn.querySelector('.v15-context-button');
+    if(legacyEssential)legacyEssential.hidden=true;if(legacyToggle)legacyToggle.hidden=true;
 
-    const card=makeLearningCard(q),doc=learn.querySelector('.atlas-document');
-    const toggle=document.createElement('button');toggle.type='button';toggle.className='v16-context-button';toggle.dataset.v16Action='context-toggle';toggle.setAttribute('aria-expanded','false');toggle.textContent='Profundizar';
-    if(doc){doc.classList.add('v16-context');doc.classList.remove('v15-context-open');doc.classList.add('v15-collapsed-context');rebuildDeepContext(doc,q);doc.before(card,toggle)}
-    else learn.querySelector('.atlas-learn-head')?.after(card,toggle);
+    let card=learn.querySelector('.v16-learning-card'),toggle=learn.querySelector('.v16-context-button');
+    const doc=learn.querySelector('.atlas-document');
+    if(!card){card=makeLearningCard(q);if(doc)doc.before(card);else learn.querySelector('.atlas-learn-head')?.after(card)}
+    if(!toggle){toggle=document.createElement('button');toggle.type='button';toggle.className='v16-context-button';toggle.dataset.v16Action='context-toggle';toggle.setAttribute('aria-expanded','false');toggle.textContent='Profundizar';if(doc)doc.before(toggle);else card.after(toggle)}
+    if(doc&&doc.dataset.v16Question!==q.id){doc.dataset.v16Question=q.id;doc.classList.add('v16-context');doc.classList.remove('v15-context-open');doc.classList.add('v15-collapsed-context');rebuildDeepContext(doc,q)}
 
     const note=surface.querySelector('.v15-result-note');if(note)note.textContent=a.skipped?'Fecha revelada y guardada para repaso.':a.timedOut?'Se agotó el tiempo; registramos el año que estaba seleccionado.':'La fecha queda registrada para tu repaso.';
     const primary=surface.querySelector('#primaryAction');if(primary){primary.textContent=round.index===round.questionIds.length-1?'Ver resultados →':'Siguiente →';primary.setAttribute('aria-label',round.index===round.questionIds.length-1?'Ver resultados':'Ir a la siguiente pregunta')}
@@ -122,6 +121,7 @@
   const baseRenderSummary=renderSummary;
   renderSummary=function(s){const out=baseRenderSummary(s);decorateSummary(s);return out};
 
+  const baseOpenDetail=openDetail;
   openDetail=function(id){
     const q=displayQuestion(id);if(!q)return;
     const s=getState(),seen=discoveredIds(s).has(id),revealedInOrder=s.timelineDraft?.answered&&s.timelineDraft.ids.includes(id),answeredNow=round?.phase==='answer'&&round.questionIds[round.index]===id;if(!seen&&!revealedInOrder&&!answeredNow)return;
