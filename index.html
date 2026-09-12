@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b1016">
-  <meta name="application-name" content="QUÉ AÑO 1.5.0 beta">
-  <meta name="description" content="Cinco hitos, quince segundos cada uno. Un atlas cultural interactivo para estimar, revelar, ubicar y aprender.">
-  <title>QUÉ AÑO · v1.5.0 beta</title>
+  <meta name="application-name" content="QUÉ AÑO 1.6.0 beta">
+  <meta name="description" content="Cinco hitos, quince segundos cada uno. Un atlas cultural interactivo para estimar, revelar, comprender y recordar.">
+  <title>QUÉ AÑO · v1.6.0 beta</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="archive-night.css">
   <link rel="stylesheet" href="archive-night-polish.css">
@@ -15,12 +15,13 @@
   <link rel="stylesheet" href="product-v13-mobile-fix.css">
   <link rel="stylesheet" href="curation-v14.css">
   <link rel="stylesheet" href="simplification-v15.css">
+  <link rel="stylesheet" href="learning-v16.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al juego</a>
   <div class="app-shell">
     <header class="topbar">
-      <a class="brand" href="#hoy" aria-label="QUÉ AÑO, ir a Hoy">QUÉ AÑO<span class="version">1.5 beta</span></a>
+      <a class="brand" href="#hoy" aria-label="QUÉ AÑO, ir a Hoy">QUÉ AÑO<span class="version">1.6 beta</span></a>
       <div class="header-actions"><span id="weeklyActivity" class="weekly"></span><button id="soundToggle" class="icon-button" aria-label="Activar sonido" aria-pressed="false">Sonido: no</button><button id="settingsButton" class="icon-button" aria-label="Abrir configuración">Ajustes</button></div>
     </header>
     <nav class="main-nav" aria-label="Secciones del juego">
@@ -35,7 +36,7 @@
   <dialog id="detailDialog" aria-labelledby="dialogTitle"><div class="dialog-header"><h2 id="dialogTitle"></h2><button id="closeDialog" class="icon-button" aria-label="Cerrar ventana">Cerrar ×</button></div><div id="dialogContent"></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <p id="answerAnnouncement" class="sr-only" role="status" aria-live="polite"></p>
-  <div id="storageWarning" class="storage-warning" role="status" hidden>El progreso se conserva sólo mientras esta pestaña esté abierta. Exporta una copia desde Ajustes.</div>
+  <div id="storageWarning" class="storage-warning" role="status" hidden>No pudimos guardar tu progreso en este navegador. La partida sigue funcionando, pero al cerrar la pestaña podrías perder el avance. Puedes exportar una copia desde Ajustes.</div>
   <input id="backupInput" type="file" accept="application/json,.json" hidden>
   <input id="editorInput" type="file" accept="application/json,.json" hidden>
   <noscript>Activa JavaScript para jugar. Este juego no necesita conexión.</noscript>
@@ -58,5 +59,6 @@
   <script src="js/product-v13.js"></script>
   <script src="js/experience-v14.js"></script>
   <script src="js/simplification-v15.js"></script>
+  <script src="js/learning-v16.js"></script>
 </body>
 </html>

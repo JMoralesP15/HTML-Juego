@@ -10,7 +10,7 @@ async function boot(page, { start = true } = {}) {
   await page.addInitScript(() => { window.__QUE_ANO_DISABLE_ANALYTICS__ = true; });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(url);
-  await page.waitForFunction(() => typeof defaultState === 'function' && typeof __QA_V15__ === 'object' && document.getElementById('view'));
+  await page.waitForFunction(() => typeof defaultState === 'function' && typeof __QA_V15__ === 'object' && typeof __QA_V16__ === 'object' && document.getElementById('view'));
   await page.evaluate((shouldStart) => {
     const state = defaultState();state.onboardingSeen = true;setState(state);round = null;lastSummary = null;
     const dialog = document.getElementById('detailDialog');if (dialog?.open) dialog.close();showView('hoy', { focus: false });if (shouldStart) startDaily();
@@ -31,7 +31,7 @@ test('axe · pantalla inicial y pregunta', async ({ page }) => {
 test('axe · feedback, contexto progresivo y ficha', async ({ page }) => {
   await boot(page);await page.evaluate(() => {const q=QUESTION_BY_ID.get(round.questionIds[round.index]);setYear(q.year);commitAnswer();const dialog=document.getElementById('detailDialog');if(dialog?.open)dialog.close()});
   await assertAccessible(page, 'Feedback');
-  const toggle=page.locator('[data-v15-action="context-toggle"]');await toggle.click();await assertAccessible(page,'Feedback expandido');
+  const toggle=page.locator('[data-v16-action="context-toggle"]');await expect(toggle).toBeVisible();await toggle.click();await assertAccessible(page,'Feedback expandido');
   await page.evaluate(()=>openDetail(round.questionIds[round.index]));await expect(page.locator('#detailDialog')).toHaveAttribute('open','');await assertAccessible(page,'Ficha completa');
 });
 
