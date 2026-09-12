@@ -83,7 +83,13 @@ test('Feedback cercano, lejano y fecha revelada', async ({page}) => {
   await page.screenshot({path:'test-results/screenshots/feedback-cercano-1440x900.png',fullPage:true});
 
   await boot(page,sizes[0]);
-  await answerWithOffset(page,40);
+  await page.evaluate(() => {
+    const candidate = QUESTIONS.find(q => q.year + 40 <= GLOBAL_MAX_YEAR);
+    if (!candidate) throw new Error('No existe una pregunta válida para probar +40 años.');
+    round.questionIds[round.index] = candidate.id;
+    setYear(candidate.year + 40);
+    commitAnswer();
+  });
   await expect(page.locator('.scale-wide, .scale-decades')).toBeVisible();
   await page.screenshot({path:'test-results/screenshots/feedback-lejano-1440x900.png',fullPage:true});
 
