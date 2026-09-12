@@ -1,0 +1,431 @@
+{
+  "version": "1.0",
+  "images": [
+    {
+      "id": "walkman",
+      "file": "assets/pista_01.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Reproductor de casetes con auriculares.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "ibmpc",
+      "file": "assets/pista_02.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Ordenador beige con teclado y monitor.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "web",
+      "file": "assets/pista_04.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Globo terráqueo con conexiones.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "google",
+      "file": "assets/pista_05.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Lupa sobre una red de conexiones.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "ipod",
+      "file": "assets/pista_06.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Reproductor de música con rueda circular.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "iphone",
+      "file": "assets/pista_07.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Teléfono de pantalla táctil.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "bitcoin",
+      "file": "assets/pista_08.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Moneda dorada con circuitos.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "apollo11",
+      "file": "assets/apollo11.jpg",
+      "type": "documentary",
+      "role": "support",
+      "alt": "Buzz Aldrin sobre la superficie lunar, fotografiado durante Apollo 11",
+      "credit": "NASA / Neil Armstrong · AS11-40-5903",
+      "source": "https://images.nasa.gov/details/as11-40-5903"
+    },
+    {
+      "id": "berlinwall",
+      "file": "assets/pista_37.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Apertura en un muro con grafitis y personas celebrando.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "hubble",
+      "file": "assets/hubble.webp",
+      "type": "documentary",
+      "role": "support",
+      "alt": "El telescopio Hubble en órbita sobre la Tierra",
+      "credit": "NASA · Telescopio Hubble en órbita",
+      "source": "https://science.nasa.gov/mission/hubble/overview/the-history-of-hubble/"
+    },
+    {
+      "id": "dolly",
+      "file": "assets/pista_10.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Retrato de una oveja blanca.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "curiosity",
+      "file": "assets/curiosity.jpg",
+      "type": "documentary",
+      "role": "context",
+      "alt": "Autorretrato de Curiosity en Windjana, Marte; imagen posterior al aterrizaje",
+      "credit": "NASA / JPL-Caltech / MSSS · Windjana, 2014",
+      "source": "https://science.nasa.gov/mission/msl-curiosity/"
+    },
+    {
+      "id": "jaws",
+      "file": "assets/pista_13.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Aleta de tiburón en el mar.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "alien",
+      "file": "assets/pista_15.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Huevo de criatura extraterrestre.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "bttf",
+      "file": "assets/pista_16.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Automóvil con luces y estelas de fuego.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "jurassic",
+      "file": "assets/pista_17.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Silueta de dinosaurio tras una valla.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "titanic",
+      "file": "assets/pista_18.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Transatlántico iluminado de noche.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "matrix",
+      "file": "assets/pista_19.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Columnas de símbolos luminosos.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "spirited",
+      "file": "assets/pista_20.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Personaje enmascarado sobre un puente.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "sgtpepper",
+      "file": "assets/pista_21.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Banda tocando sobre un escenario.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "darkside",
+      "file": "assets/pista_22.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Prisma que separa la luz en colores.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "nevermind",
+      "file": "assets/pista_23.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Guitarra eléctrica.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "kida",
+      "file": "assets/pista_24.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Montañas junto a un lago.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "gameboy",
+      "file": "assets/pista_25.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Consola portátil con pantalla monocroma.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "minecraft",
+      "file": "assets/pista_30.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Paisaje cúbico con árboles y agua.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "plebiscito88",
+      "file": "assets/pista_31.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Urna con bandera chilena.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "mineros",
+      "file": "assets/pista_32.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Cápsula de rescate y trabajadores.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "rubik",
+      "file": "assets/pista_43.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Cubo de caras multicolores.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "dna",
+      "file": "assets/pista_11.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Modelo de doble hélice.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "sputnik",
+      "file": "assets/pista_38.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Satélite esférico con antenas.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "heart_transplant",
+      "file": "assets/pista_42.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Equipo médico en un quirófano.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "cubancrisis",
+      "file": "assets/pista_39.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Buques frente a una costa.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "mandela",
+      "file": "assets/pista_40.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Persona saliendo por unas puertas abiertas.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "tetris",
+      "file": "assets/pista_26.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Bloques de colores encajados.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "supermario",
+      "file": "assets/pista_27.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Botas y seta roja de un videojuego.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "valdivia1960",
+      "file": "assets/pista_33.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Gran ola junto a una ciudad costera.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "nobelneruda",
+      "file": "assets/pista_35.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Libro con medallón dorado.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "rios1998",
+      "file": "assets/pista_34.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Raqueta y pelota de tenis.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "estallido2019",
+      "file": "assets/pista_36.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Pasajeros y tren en una estación de metro.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "cd1982",
+      "file": "assets/pista_44.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Disco compacto iridiscente.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "mtv",
+      "file": "assets/pista_45.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Equipo de televisión filmando una actuación.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "barbie",
+      "file": "assets/pista_46.webp",
+      "type": "illustration",
+      "role": "support",
+      "alt": "Ilustración de apoyo: Silueta rosa de una muñeca.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "dragonball",
+      "file": "assets/pista_47.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Viñetas de manga.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "friends",
+      "file": "assets/pista_48.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Sofá con tazas de café.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    },
+    {
+      "id": "zelda",
+      "file": "assets/pista_29.webp",
+      "type": "illustration",
+      "role": "context",
+      "alt": "Ilustración de apoyo: Espada y escudo de fantasía.",
+      "credit": "Ilustración original generada para QUÉ AÑO v0.8",
+      "source": null
+    }
+  ],
+  "removed": [
+    {
+      "id": "mac",
+      "reason": "La ilustración representaba un iMac, no el Macintosh original."
+    },
+    {
+      "id": "starwars",
+      "reason": "La nave representada correspondía a Star Trek."
+    },
+    {
+      "id": "playstation",
+      "reason": "El mando con palancas analógicas era posterior al lanzamiento japonés preguntado."
+    }
+  ],
+  "replaced": [
+    "apollo11",
+    "hubble",
+    "curiosity"
+  ],
+  "nasaMediaPolicy": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+  "illustrationProvenance": "Las 42 ilustraciones conservadas provienen del paquete previo del usuario, etiquetadas como generadas para QUÉ AÑO v0.8. Son apoyos visuales; no fotografías documentales."
+}
