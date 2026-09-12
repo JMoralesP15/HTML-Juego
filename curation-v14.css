@@ -3,6 +3,9 @@
 .v14-ambient{border-color:color-mix(in srgb,var(--atlas-cyan) 30%,var(--atlas-line))!important;color:#c8d4dc!important}
 .v14-ambient[aria-pressed="true"]{border-color:color-mix(in srgb,var(--atlas-cyan) 72%,var(--atlas-line))!important;background:#13232b!important;color:#e5f5f8!important}
 
+/* Evita que el acento aleatorio de categoría deje la fase por debajo del contraste mínimo. */
+.archive-phase{color:#cbd6de!important}
+
 .v14-culture-badge{margin-left:auto;display:inline-flex;align-items:center;min-height:22px;padding:3px 8px;border:1px solid var(--atlas-line);border-radius:999px;font:800 .52rem/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;color:#cbd4db;background:#111a23}
 .v14-culture-badge.tier-core{border-color:color-mix(in srgb,var(--atlas-good) 48%,var(--atlas-line));color:var(--atlas-good)}
 .v14-culture-badge.tier-context{border-color:color-mix(in srgb,var(--atlas-amber) 48%,var(--atlas-line));color:var(--atlas-amber)}
