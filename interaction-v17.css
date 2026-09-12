@@ -1,0 +1,26 @@
+/* QUÉ AÑO v1.7 — contrato transversal de interacción y accesibilidad.
+ * Reglas funcionales que no pertenecen a una versión visual histórica.
+ */
+
+:is(button,input,[tabindex],a):focus-visible{
+  outline:2px solid var(--atlas-cyan,#7acff2)!important;
+  outline-offset:3px!important;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+  }
+  .atlas-v12 .year-step,
+  .atlas-v12 .year-input,
+  .atlas-v12 .primary,
+  .atlas-v12 .secondary,
+  .atlas-v12 .text-button,
+  .atlas-v12 .atlas-timer,
+  .atlas-v12 .timer-progress,
+  .v16-context-button,
+  .v16-learned-item{
+    transition:none!important;
+    animation:none!important;
+  }
+}
