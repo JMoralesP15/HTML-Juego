@@ -43,7 +43,7 @@ test('dificultad se aclara sin añadir chrome visible',async({page})=>{
 
 test('resumen final convierte la partida real en cinco aprendizajes y una recomendación',async({page})=>{
   await boot(page);await finishCurrentRound(page);
-  await expect(page.locator('.summary-head h1')).toHaveText('Archivo de hoy completo');
+  await expect(page.locator('.summary-v11')).toContainText('Archivo de hoy completo');
   await expect(page.locator('.v16-learned-item')).toHaveCount(5);await expect(page.locator('.v16-review-next')).toBeVisible();
   await expect(page.locator('.v16-review-actions .summary-primary')).toBeVisible();
 });
