@@ -53,5 +53,14 @@ for(const q of QUESTIONS){
   q.editorialVerified=true;
   q.editorialReviewState='verified';
   q.editorialVerificationVersion='v1.8-manual-batch-1';
+  const generated=window.__QA_V18_EVIDENCE__?.rows?.[q.id];
+  if(generated){
+    generated.status='manual_verified';
+    generated.manualVerified=true;
+    generated.sourceUrl=patch.source;
+    generated.sourceLabel=patch.sourceLabel;
+    generated.issues=(generated.issues||[]).filter(x=>!['inherited_wikipedia_url_unresolved','source_recovered_by_search','temporal_claims_do_not_match_expected_year'].includes(x));
+    generated.evidence={...(generated.evidence||{}),manualSource:patch.source};
+  }
 }
 window.__QA_V18_MANUAL_FACTS__=Object.freeze({version:'1.8.0-beta.1',ids:Object.freeze(Object.keys(V18_MANUAL_FACTS))});
