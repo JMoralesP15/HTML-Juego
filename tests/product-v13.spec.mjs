@@ -10,7 +10,7 @@ async function boot(page,{width=1440,height=900,start=true}={}){
   await page.setViewportSize({width,height});
   await page.goto(url);
   await page.waitForFunction(()=>typeof startDaily==='function'&&typeof __QA_V13__==='object');
-  await page.evaluate(start=>{const s=defaultState();s.onboardingSeen=true;setState(s);round=null;lastSummary=null;showView('hoy',{focus:false});if(start)startDaily()},start);
+  await page.evaluate(start=>{const s=defaultState();s.onboardingSeen=true;setState(s);round=null;lastSummary=null;const d=document.getElementById('detailDialog');if(d?.open)d.close();showView('hoy',{focus:false});if(start)startDaily()},start);
 }
 
 async function answerCurrent(page,offset=0){
