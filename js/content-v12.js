@@ -1,7 +1,7 @@
 /* QUÉ AÑO v1.2 — contenido contextual seguro y láminas editoriales offline.
    No cambia IDs, años ni calendario. Enriquece únicamente la capa de lectura posterior a la respuesta. */
 
-const QA_V12_CONTENT_VERSION='1.2-context-1';
+const QA_V12_CONTENT_VERSION='1.2-context-2';
 const QA_V12_IMAGE_TARGET=180;
 const QA_V12_CONTEXT_TARGET=220;
 
@@ -30,7 +30,7 @@ function qaV12TemporalCopy(q){
 }
 function qaV12BuildContext(q){
   const what=q.context||q.fact||`El archivo sitúa ${q.title} en ${q.year}.`;
-  const why=q.significance||`Esta ficha se clasifica en ${q.subcategory||q.category}; esa clasificación permite compararla con otros hitos de ${q.category.toLowerCase()} sin introducir hechos que no estén respaldados por el banco.`;
+  const why=q.significance||'';
   const locate=qaV12TemporalCopy(q);
   return {what,why,locate,sourceLabel:q.sourceLabel||'',source:q.source||'',reviewNeeded:!q.editorialVerified,method:q.editorialVerified?'editorial-verificado':'hecho-fuente + relación cronológica del banco'};
 }
