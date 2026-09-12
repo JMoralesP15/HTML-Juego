@@ -1,0 +1,32 @@
+name: Bootstrap full source
+
+on:
+  push:
+    branches: [infra/pages-setup]
+    paths: [source_bundle.tar.gz]
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: infra/pages-setup
+
+      - name: Expand source bundle
+        run: |
+          test -f source_bundle.tar.gz || exit 0
+          tar -xzf source_bundle.tar.gz
+          rm source_bundle.tar.gz
+
+      - name: Commit expanded source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: expand full RC source"
+          git push origin HEAD:infra/pages-setup
