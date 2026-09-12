@@ -1,0 +1,7 @@
+/* Narrow viewport containment for v1.3 feedback. Kept separate while the product preview is under visual review. */
+@media (max-width:760px){
+  .atlas-feedback{min-width:0!important;max-width:100%!important;overflow-x:clip!important}
+  .atlas-feedback>*{min-width:0!important;max-width:100%!important;box-sizing:border-box}
+  .v13-feedback-sequence{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+  .atlas-reveal,.atlas-learn,.atlas-document,.atlas-document-copy,.atlas-score-ledger,.atlas-locate{min-width:0!important;max-width:100%!important;box-sizing:border-box}
+}
