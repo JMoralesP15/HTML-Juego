@@ -3,7 +3,9 @@ name: Bootstrap full source
 on:
   push:
     branches: [infra/pages-setup]
-    paths: [source_bundle.tar.gz]
+    paths:
+      - source_bundle.tar.gz
+      - .github/workflows/bootstrap-source.yml
 
 permissions:
   contents: write
@@ -21,6 +23,7 @@ jobs:
           test -f source_bundle.tar.gz || exit 0
           tar -xzf source_bundle.tar.gz
           rm source_bundle.tar.gz
+          rm -f .github/workflows/qa.yml
           rm -f .github/workflows/bootstrap-source.yml
 
       - name: Commit expanded source
