@@ -37,6 +37,7 @@
 .atlas-v12.is-question .atlas-slider{margin-top:18px!important;padding-top:0!important}
 .atlas-v12.is-question .atlas-slider .range-ends{margin-top:6px!important}
 .atlas-v12.is-question .atlas-slider .range-ends span:nth-child(2){visibility:hidden!important}
+.atlas-v12.is-question .atlas-slider .range-ends>span:first-child,.atlas-v12.is-question .atlas-slider .range-ends>span:last-child{color:#b7c0ca!important;opacity:1!important}
 .atlas-v12.is-question .timer-readout{top:10%!important}
 .atlas-v12.is-question .timer-readout b{font-size:.82rem!important}
 
