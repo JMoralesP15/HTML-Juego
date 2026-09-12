@@ -1,0 +1,155 @@
+/* QUÉ AÑO v1.6 — aprendizaje, resultado y cierre de sesión.
+ * Capa de producto: no cambia IDs, años, calendario, scheduler ni persistencia.
+ */
+(function(){
+  'use strict';
+
+  const VERSION='1.6.0-beta.1';
+  let observer=null,queued=false,lastFeedbackKey='',lastSummaryKey='';
+
+  const clean=value=>String(value||'').replace(/\s+/g,' ').trim();
+  const sentences=value=>clean(value).match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(clean).filter(Boolean)||[];
+  const same=(a,b)=>clean(a).toLocaleLowerCase('es')===clean(b).toLocaleLowerCase('es');
+  const firstSentence=value=>sentences(value)[0]||clean(value);
+  const sourceName=value=>clean(value).replace(/\s*[·|-]\s*referencia general\s*$/i,'').replace(/\s*[·|-]\s*referencia heredada\s*$/i,'')||'Fuente';
+
+  function currentQuestion(){
+    try{if(typeof round==='undefined'||!round?.questionIds)return null;return displayQuestion(round.questionIds[round.index])||QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
+  }
+  function currentAnswer(){
+    try{return round?.phase==='answer'?round.answers?.[round.index]||round.answers?.at?.(-1)||null:null}catch{return null}
+  }
+  function track(name,props={}){try{window.qyaAnalytics?.track?.(name,{app_version:VERSION,app_surface:'learning_v16',...props})}catch{}}
+
+  function learningFor(q){
+    if(!q)return {what:'',importance:'',memory:'',context:'',temporal:''};
+    const fact=clean(q.fact),context=clean(q.context),significance=clean(q.significance),contextSentences=sentences(context);
+    const what=firstSentence(context||fact||`${q.title} corresponde a ${q.year}.`);
+    let importance=significance;
+    if(!importance&&contextSentences.length>1)importance=contextSentences.slice(1,3).join(' ');
+    let memory='';
+    if(fact&&!same(fact,what)&&!/^(preguntamos|la fecha que preguntamos)/i.test(fact))memory=fact;
+    if(!memory&&contextSentences.length>2)memory=contextSentences.at(-1);
+    if(memory&&same(memory,importance))memory='';
+    const ext=typeof qaExtendedContext==='function'?qaExtendedContext(q):(q.extendedContext||{});
+    return {what,importance,memory,context:context||fact,temporal:clean(ext?.locate),source:clean(q.source),sourceLabel:sourceName(q.sourceLabel)};
+  }
+
+  function learningBlocks(q){
+    const l=learningFor(q),rows=[];
+    if(l.what)rows.push(['Qué fue',l.what]);
+    if(l.importance&&!same(l.importance,l.what))rows.push(['Por qué importa',l.importance]);
+    if(l.memory&&!same(l.memory,l.what)&&!same(l.memory,l.importance))rows.push(['Dato para recordar',l.memory]);
+    return rows.slice(0,3);
+  }
+
+  function makeLearningCard(q){
+    const card=document.createElement('section');card.className='v16-learning-card';card.setAttribute('aria-label','Aprendizaje esencial');
+    const head=document.createElement('div');head.className='v16-learning-head';head.innerHTML='<span class="eyebrow">APRENDIZAJE ESENCIAL</span><p>La fecha es el punto de entrada. Esto es lo importante del hito.</p>';card.append(head);
+    for(const [label,value] of learningBlocks(q)){
+      const block=document.createElement('div');block.className='v16-learning-block';
+      const b=document.createElement('b'),p=document.createElement('p');b.textContent=label;p.textContent=value;block.append(b,p);card.append(block);
+    }
+    return card;
+  }
+
+  function rebuildDeepContext(doc,q){
+    if(!doc||!q)return;
+    const l=learningFor(q),copy=doc.querySelector('.atlas-document-copy');
+    if(q.v12GeneratedImage||q.v14GeneratedFallback){
+      const fig=doc.querySelector('.atlas-document-image');if(fig)fig.remove();doc.classList.remove('has-image');doc.classList.add('no-image');
+    }
+    if(!copy)return;
+    const parts=[];
+    if(l.context)parts.push(`<section><span>CONTEXTO</span><p>${esc(l.context)}</p></section>`);
+    if(l.importance&&!same(l.importance,l.context))parts.push(`<section><span>POR QUÉ IMPORTA</span><p>${esc(l.importance)}</p></section>`);
+    if(l.temporal)parts.push(`<section class="v16-temporal-secondary"><span>UBICACIÓN TEMPORAL</span><p>${esc(l.temporal)}</p></section>`);
+    const src=l.source&&safeURL(l.source)?`<a class="atlas-source" href="${esc(safeURL(l.source))}" target="_blank" rel="noopener noreferrer">Fuente · ${esc(l.sourceLabel)} ↗</a>`:'';
+    copy.innerHTML=`${parts.join('')}<footer>${src}<small>Contenido complementario. La ubicación temporal es secundaria al contexto del hito.</small></footer>`;
+    doc.querySelectorAll('.v14-editorial-note').forEach(x=>x.remove());
+  }
+
+  function decorateDifficulty(){
+    const d=document.querySelector('.atlas-header-meta span:nth-child(2)');if(!d)return;
+    d.title='Dificultad editorial estimada. No modifica el puntaje.';
+    d.setAttribute('aria-label',`${d.textContent.trim()}. Dificultad editorial estimada; no modifica el puntaje.`);
+  }
+
+  function decorateFeedback(){
+    const surface=document.querySelector('.atlas-v12.is-answered'),q=currentQuestion(),a=currentAnswer();if(!surface||!q||!a)return;
+    const key=`${round?.uid||'run'}:${round?.index||0}:${q.id}`;
+    decorateDifficulty();
+    const learn=surface.querySelector('.atlas-learn');if(!learn)return;
+    learn.querySelector('.v15-essential')?.remove();
+    learn.querySelector('.v15-context-button')?.remove();
+    learn.querySelector('.v16-learning-card')?.remove();
+    learn.querySelector('.v16-context-button')?.remove();
+
+    const card=makeLearningCard(q),doc=learn.querySelector('.atlas-document');
+    const toggle=document.createElement('button');toggle.type='button';toggle.className='v16-context-button';toggle.dataset.v16Action='context-toggle';toggle.setAttribute('aria-expanded','false');toggle.textContent='Profundizar';
+    if(doc){doc.classList.add('v16-context');doc.classList.remove('v15-context-open');doc.classList.add('v15-collapsed-context');rebuildDeepContext(doc,q);doc.before(card,toggle)}
+    else learn.querySelector('.atlas-learn-head')?.after(card,toggle);
+
+    const note=surface.querySelector('.v15-result-note');if(note)note.textContent=a.skipped?'Fecha revelada y guardada para repaso.':a.timedOut?'Se agotó el tiempo; registramos el año que estaba seleccionado.':'La fecha queda registrada para tu repaso.';
+    const primary=surface.querySelector('#primaryAction');if(primary){primary.textContent=round.index===round.questionIds.length-1?'Ver resultados →':'Siguiente →';primary.setAttribute('aria-label',round.index===round.questionIds.length-1?'Ver resultados':'Ir a la siguiente pregunta')}
+    if(lastFeedbackKey!==key){lastFeedbackKey=key;track('learning_context_seen',{question_id:q.id,question_position:(round?.index??0)+1,learning_blocks:learningBlocks(q).length})}
+  }
+
+  function reviewCandidates(s){
+    return (s?.answers||[]).filter(a=>a.skipped||Number(a.error)>5).sort((a,b)=>(b.skipped?1:0)-(a.skipped?1:0)||(Number(b.error)||0)-(Number(a.error)||0));
+  }
+  function learningCue(q){const l=learningFor(q);return firstSentence(l.importance||l.memory||l.what||q.fact||q.context)}
+
+  function decorateSummary(s=lastSummary){
+    const root=document.querySelector('.summary-v11');if(!root||!s)return;
+    const key=`${s.uid||s.date}:${s.total}:${s.answers?.length||0}`;if(root.dataset.v16==='1'&&lastSummaryKey===key)return;lastSummaryKey=key;root.dataset.v16='1';
+    const h=root.querySelector('.summary-head h1');if(h&&s.mode==='daily')h.textContent='Archivo de hoy completo';
+    const roundSection=root.querySelector('.summary-round');
+    if(roundSection){
+      const items=s.answers.map((a,i)=>{const q=displayQuestion(a.id)||QUESTION_BY_ID.get(a.id),cue=q?learningCue(q):'';return `<button class="v16-learned-item" data-action="detail" data-id="${esc(a.id)}"><span class="v16-learned-index">${String(i+1).padStart(2,'0')}</span><span><b>${esc(q?.title||a.title)} · ${a.actual}</b><small>${esc(cue||'Hito guardado en tu archivo.')}</small></span><strong>${a.skipped?'Repasar':a.error===0?'Exacta':`${a.error} ${a.error===1?'año':'años'}`}</strong></button>`}).join('');
+      roundSection.innerHTML=`<div class="summary-section-title"><div><span class="eyebrow">QUÉ APRENDISTE HOY</span><h2>Cinco fechas, cinco ideas para recordar</h2></div><span class="summary-section-hint">Toca un hito para abrir su ficha</span></div><div class="v16-learned-list">${items}</div>`;
+    }
+    root.querySelector('.v16-review-next')?.remove();
+    const candidates=reviewCandidates(s),next=document.createElement('section');next.className='v16-review-next';
+    const names=candidates.slice(0,2).map(a=>displayQuestion(a.id)?.title||a.title);
+    next.innerHTML=`<div><span class="eyebrow">PARA TU PRÓXIMO REPASO</span><h2>${names.length?`Conviene volver a ${esc(names.join(names.length===2?' y ':''))}`:'No hay una fecha urgente para recuperar'}</h2><p>${names.length?'Seleccionamos las mayores desviaciones u omisiones de esta sesión.':'Tus cinco respuestas quedaron dentro de un rango que no exige recuperación inmediata.'}</p></div><div class="v16-review-actions"></div>`;
+    const footer=root.querySelector('.summary-footer'),actions=next.querySelector('.v16-review-actions'),primary=footer?.querySelector('.summary-primary');if(primary&&actions)actions.append(primary);
+    footer?.before(next);
+    if(footer)footer.classList.add('v16-summary-footer');
+    track('summary_learning_seen',{mode:s.mode,questions_count:s.answers.length,review_candidates:candidates.length});
+  }
+
+  const baseRenderSummary=renderSummary;
+  renderSummary=function(s){const out=baseRenderSummary(s);decorateSummary(s);return out};
+
+  openDetail=function(id){
+    const q=displayQuestion(id);if(!q)return;
+    const s=getState(),seen=discoveredIds(s).has(id),revealedInOrder=s.timelineDraft?.answered&&s.timelineDraft.ids.includes(id),answeredNow=round?.phase==='answer'&&round.questionIds[round.index]===id;if(!seen&&!revealedInOrder&&!answeredNow)return;
+    const l=learningFor(q),st=s.questionStats[id],src=l.source&&safeURL(l.source),photo=safeAsset(q.image),usePhoto=photo&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;
+    const blocks=[];if(l.context)blocks.push(`<section><b>Contexto</b><p>${esc(l.context)}</p></section>`);if(l.importance&&!same(l.importance,l.context))blocks.push(`<section><b>Por qué importa</b><p>${esc(l.importance)}</p></section>`);if(q.fact&&!same(q.fact,l.context))blocks.push(`<section><b>Dato de la fecha</b><p>${esc(q.fact)}</p></section>`);
+    openDialog(q.title,`<div class="v16-detail-head"><strong class="feedback-year">${q.year}</strong><span class="pill cat">${esc(q.category)}</span></div><div class="v16-detail-body">${blocks.join('')}</div>${usePhoto?`<figure class="v16-detail-image"><img src="${photo}" alt="${esc(q.imageAlt)}"><figcaption>${esc(q.imageCredit||'Imagen de apoyo')}${q.imageLicense?` · ${esc(q.imageLicense)}`:''}</figcaption></figure>`:''}${src?`<p class="source-note">Fuente · <a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(l.sourceLabel)}</a></p>`:''}${st?`<div class="metric-row v16-detail-metrics"><div class="metric"><b>${st.attempts}</b><span>intentos</span></div><div class="metric"><b>${fmt(st.avgError)}</b><span>error medio</span></div><div class="metric"><b>${fmt(st.bestError,0)}</b><span>mejor error</span></div></div>`:''}`);
+    track('detail_opened',{question_id:q.id,source:'v16_detail'});
+  };
+
+  function decorateQuestion(){
+    const surface=document.querySelector('.atlas-v12.is-question');if(!surface)return;decorateDifficulty();
+  }
+  function inspect(){
+    if(document.querySelector('.atlas-v12.is-question'))decorateQuestion();
+    if(document.querySelector('.atlas-v12.is-answered'))decorateFeedback();
+    if(document.querySelector('.summary-v11'))decorateSummary(lastSummary);
+  }
+  function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;inspect()})}
+
+  document.addEventListener('click',e=>{
+    const toggle=e.target.closest?.('[data-v16-action="context-toggle"]');if(!toggle)return;
+    const surface=toggle.closest('.atlas-v12.is-answered'),doc=surface?.querySelector('.atlas-document');if(!doc)return;
+    const open=toggle.getAttribute('aria-expanded')==='true';
+    toggle.setAttribute('aria-expanded',String(!open));toggle.textContent=open?'Profundizar':'Ocultar contexto';
+    doc.classList.toggle('v15-collapsed-context',open);doc.classList.toggle('v15-context-open',!open);
+    if(!open){doc.querySelector('.v13-context-extra')?.removeAttribute('hidden');track('context_expanded',{question_id:currentQuestion()?.id||null,source:'v16_progressive'})}
+  },true);
+
+  observer=new MutationObserver(queue);observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
+  window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,decorateSummary,inspect});
+})();
