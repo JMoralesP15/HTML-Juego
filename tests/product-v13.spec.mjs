@@ -6,7 +6,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
 
 async function boot(page,{width=1440,height=900,start=true}={}){
-  await page.addInitScript(()=>{window.__QUE_ANO_DISABLE_ANALYTICS__=true});await page.setViewportSize({width,height});await page.goto(url);await page.waitForFunction(()=>typeof startDaily==='function'&&typeof __QA_V13__==='object'&&typeof __QA_V15__==='object');
+  await page.addInitScript(()=>{window.__QUE_ANO_DISABLE_ANALYTICS__=true});await page.setViewportSize({width,height});await page.goto(url);await page.waitForFunction(()=>typeof startDaily==='function'&&typeof __QA_V13__==='object'&&typeof __QA_V15__==='object'&&typeof __QA_V16__==='object');
   await page.evaluate(start=>{const s=defaultState();s.onboardingSeen=true;setState(s);round=null;lastSummary=null;const d=document.getElementById('detailDialog');if(d?.open)d.close();showView('hoy',{focus:false});if(start)startDaily()},start);
 }
 async function answerCurrent(page,offset=0){await page.evaluate(off=>{const q=QUESTION_BY_ID.get(round.questionIds[round.index]);setYear(Math.max(GLOBAL_MIN_YEAR,Math.min(GLOBAL_MAX_YEAR,q.year+off)));commitAnswer(false)},offset)}
@@ -17,8 +17,8 @@ test('mobile prioriza pregunta, año y timer sin overflow horizontal',async({pag
 });
 
 test('feedback mantiene divulgación progresiva con menos chrome',async({page})=>{
-  await boot(page);await answerCurrent(page,1);await expect(page.locator('.v13-feedback-sequence')).toBeHidden();await expect(page.locator('[data-v13-action="context-toggle"]')).toBeHidden();
-  const toggle=page.locator('[data-v15-action="context-toggle"]');await expect(toggle).toBeVisible();const extra=page.locator('.v13-context-extra');await expect(extra).toBeHidden();await toggle.click();await expect(extra).toBeVisible();await expect(extra).toContainText('EN EL MAPA DEL TIEMPO');await expect(toggle).toHaveAttribute('aria-expanded','true');
+  await boot(page);await answerCurrent(page,1);await expect(page.locator('.v13-feedback-sequence')).toBeHidden();await expect(page.locator('[data-v13-action="context-toggle"]')).toBeHidden();await expect(page.locator('[data-v15-action="context-toggle"]')).toBeHidden();
+  await expect(page.locator('.v16-learning-card')).toBeVisible();const toggle=page.locator('[data-v16-action="context-toggle"]');await expect(toggle).toBeVisible();await expect(page.locator('.atlas-document')).toBeHidden();await toggle.click();await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).toContainText('CONTEXTO');await expect(toggle).toHaveAttribute('aria-expanded','true');
 });
 
 test('láminas editoriales se distribuyen en varias familias visuales',async({page})=>{
