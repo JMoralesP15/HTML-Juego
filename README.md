@@ -1,16 +1,19 @@
-# QUÉ AÑO v1.2.1
+# QUÉ AÑO
 
-Juego web estático de estimación temporal con cinco hitos por sesión. La versión `1.2.1` es una iteración de **instrumentación y consolidación**: no amplía el gameplay principal, sino que estabiliza dependencias, CI, observabilidad, accesibilidad y regresión visual.
+Juego web estático de estimación temporal: cinco hitos por sesión, 15 segundos por respuesta y un cierre orientado a aprendizaje y repaso.
 
-## Estado de ramas
+## Estado actual
 
-- `main`: canal público/estable. No se actualiza automáticamente desde esta rama.
-- `infra/pages-setup`: integración que contenía la versión funcional v1.2 previa a esta intervención.
-- `feature/instrumentation-consolidation-v1.2.1`: candidato actual. Todo cambio de v1.2.1 se valida aquí antes de revisión humana.
+- **Público estable:** v1.5 en GitHub Pages desde `infra/pages-setup`.
+- **v1.6:** aprendizaje/resultados, PR #7 en borrador. No publicada ni fusionada a `main`.
+- **v1.7 beta:** consolidación arquitectónica y calidad editorial en `feature/architecture-editorial-consolidation-v1.7`. Esta es la rama de trabajo actual.
+- **`main`:** referencia histórica atrasada. No debe usarse para inferir el estado público actual.
+
+La fuente narrativa canónica del proyecto es `docs/CONTEXT_CURRENT_TRUTH.md`. La evolución anterior se conserva mediante `docs/CONTEXT_ARCHIVE_INDEX.md`.
 
 ## Ejecutar
 
-El juego conserva su modo offline: abre `index.html` directamente. La analítica se desactiva en `file://` y no participa en ninguna decisión de gameplay.
+El juego conserva su modo offline: puede abrirse `index.html` directamente. La analítica se desactiva en `file://`, localhost y QA automatizado; nunca participa en decisiones de gameplay.
 
 Para QA con Node 24:
 
@@ -19,28 +22,38 @@ npm ci
 npm test
 npm run audit
 npm run report:content
+npm run report:culture
+npm run report:architecture
+npm run report:editorial
 npx playwright install --with-deps chromium
 npm run qa:accessibility
 npm run qa:regression
 npm run qa:visual
 ```
 
-## Alcance de v1.2.1
+## Qué cambia en v1.7
 
-- versionado coherente;
-- dependencias fijadas y lockfile reproducible;
-- PostHog no bloqueante y sin texto libre/PII;
-- feature flags preparadas pero inactivas durante baseline;
-- axe-core en flujos canónicos;
-- snapshots visuales canónicos desktop/mobile;
-- reporte automatizado de cobertura editorial y diversidad geográfica;
-- Vercel para staging/preview, manteniendo GitHub Pages como estable;
-- documentación de arquitectura y decisiones posteriores al baseline.
+v1.7 no añade mecánicas. Reduce deuda acumulada:
 
-## Arquitectura
+- introduce un contrato único de ciclo de render para las capas de producto;
+- elimina MutationObservers de presentación v1.4-v1.6 y el wrapper visual de `setView` v1.3;
+- consolida los estilos de producto v1.3-v1.6 en `experience-v17.css`, reduciendo el cascade activo de 10 a 6 hojas;
+- deja de generar automáticamente láminas SVG y contexto para alcanzar cuotas artificiales de cobertura;
+- diferencia procedencia, revisión pendiente y verificación editorial explícita;
+- incorpora presupuestos de deuda arquitectónica y editorial a CI;
+- mantiene intactos IDs, años, calendario, scheduler, persistencia, timer, scoring, offline, accesibilidad, Repaso, Sets y Learning Gain.
 
-La aplicación sigue siendo HTML/CSS/JS clásico para preservar ejecución local. Consulta `docs/ARCHITECTURE.md` y `docs/ANALYTICS.md`.
+## Calidad editorial
 
-## Política de cambios
+Una URL no significa que un hito haya sido fact-checkeado. Un score cultural tampoco. Desde v1.7 `editorialVerified` es el único estado interno tratado como verificación explícita. Una pregunta puede no tener imagen; esa ausencia es preferible a una placa genérica que aparente evidencia documental.
 
-Los IDs, años, calendario publicado y banco de preguntas no se modifican en v1.2.1 salvo corrección objetiva y trazable. Un despliegue o una métrica nueva no equivale a evidencia de mejora UX: primero baseline, después experimento. La estadística, para desgracia de quienes prefieren los botones brillantes, exige observar antes de concluir.
+Los reportes se generan en:
+
+- `reports/content-metrics.json`
+- `reports/culture-curation-v14.json`
+- `reports/architecture-v17.json`
+- `reports/editorial-quality-v17.json`
+
+## Gobernanza
+
+Antes de cambiar producto, clasificar la evidencia como **observada**, **derivada**, **objetivo** o **recomendación**. Los prompts y tests históricos son trazabilidad, no constitución eterna. Ninguna edición preview se publica o fusiona a `main` automáticamente.

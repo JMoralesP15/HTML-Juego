@@ -1,11 +1,12 @@
 /* QUÉ AÑO v1.6 — aprendizaje, resultado y cierre de sesión.
  * Capa de producto: no cambia IDs, años, calendario, scheduler ni persistencia.
+ * v1.7: resumen/feedback se sincronizan por el contrato de render, no por MutationObserver ni wrapper de renderSummary.
  */
 (function(){
   'use strict';
 
   const VERSION='1.6.0-beta.1';
-  let observer=null,queued=false,lastFeedbackKey='',lastSummaryKey='';
+  let lastFeedbackKey='',lastSummaryKey='';
 
   const clean=value=>String(value||'').replace(/\s+/g,' ').trim();
   const sentences=value=>clean(value).match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(clean).filter(Boolean)||[];
@@ -126,9 +127,6 @@
     track('summary_learning_seen',{mode:s.mode,questions_count:expected,review_candidates:candidates.length});
   }
 
-  const baseRenderSummary=renderSummary;
-  renderSummary=function(s){const out=baseRenderSummary(s);decorateSummary(s);return out};
-
   const baseOpenDetail=openDetail;
   openDetail=function(id){
     const q=displayQuestion(id);if(!q)return;
@@ -147,7 +145,6 @@
     if(document.querySelector('.atlas-v12.is-answered'))decorateFeedback();
     if(document.querySelector('.summary-v11'))decorateSummary(lastSummary);
   }
-  function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;inspect()})}
 
   document.addEventListener('click',e=>{
     const toggle=e.target.closest?.('[data-v16-action="context-toggle"]');if(!toggle)return;
@@ -158,6 +155,7 @@
     if(!open)track('context_expanded',{question_id:currentQuestion()?.id||null,source:'v16_progressive'});
   },true);
 
-  observer=new MutationObserver(queue);observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
+  window.__QYA_RUNTIME__?.onRender(inspect);
+  inspect();
   window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,decorateSummary,inspect});
 })();

@@ -21,8 +21,15 @@ test('feedback mantiene divulgación progresiva con menos chrome',async({page})=
   await expect(page.locator('.v16-learning-card')).toBeVisible();const toggle=page.locator('[data-v16-action="context-toggle"]');await expect(toggle).toBeVisible();await expect(page.locator('.atlas-document')).toBeHidden();await toggle.click();await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).toContainText('CONTEXTO');await expect(toggle).toHaveAttribute('aria-expanded','true');
 });
 
-test('láminas editoriales se distribuyen en varias familias visuales',async({page})=>{
-  await boot(page,{start:false});const result=await page.evaluate(()=>({families:QA_V12_COVERAGE.visualFamilies,generated:QUESTIONS.filter(q=>q.v12GeneratedImage).length,assigned:QUESTIONS.filter(q=>q.v12GeneratedImage&&q.v12VisualFamily).length}));expect(Object.keys(result.families).length).toBeGreaterThanOrEqual(5);expect(Object.values(result.families).reduce((a,b)=>a+b,0)).toBe(result.generated);expect(result.assigned).toBe(result.generated);
+test('v1.7 no fabrica láminas para cumplir cuotas de cobertura',async({page})=>{
+  await boot(page,{start:false});
+  const result=await page.evaluate(()=>({
+    generated:QUESTIONS.filter(q=>q.v12GeneratedImage||q.v14GeneratedFallback||String(q.image||'').startsWith('data:image/svg+xml')).length,
+    explicitImages:QUESTIONS.filter(q=>q.image).length,
+    documentary:QUESTIONS.filter(q=>q.image&&q.imageType==='documentary').length,
+    coverageGenerated:QA_V12_COVERAGE.generatedImages
+  }));
+  expect(result.generated).toBe(0);expect(result.coverageGenerated).toBe(0);expect(result.explicitImages).toBe(45);expect(result.documentary).toBe(3);
 });
 
 test('colección incorpora sets jugables',async({page})=>{

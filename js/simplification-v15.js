@@ -1,9 +1,10 @@
-/* QUÉ AÑO v1.5 — simplificación, claridad y timer de tiempo real. */
+/* QUÉ AÑO v1.5 — simplificación, claridad y timer de tiempo real.
+ * v1.7: las decoraciones visuales usan el contrato de render compartido.
+ */
 (function(){
   'use strict';
 
   const VERSION='1.5.0-beta.1';
-  let observer=null,inspectQueued=false;
 
   function currentQuestion(){
     try{if(typeof round==='undefined'||!round?.questionIds)return null;return QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
@@ -102,7 +103,7 @@
     const copy=document.createElement('div'),b=document.createElement('b'),small=document.createElement('small');b.textContent='Ambiente musical';small.textContent='Capa generativa opcional. Nunca se reproduce sin una acción tuya.';copy.append(b,small);
     const button=document.createElement('button');button.type='button';button.id='v15AmbientSetting';button.className='secondary';button.textContent=ambient?.enabled?'Desactivar':'Activar';button.setAttribute('aria-pressed',String(Boolean(ambient?.enabled)));
     row.append(copy,button);host.querySelector('.settings-row')?.after(row);
-    const note=host.querySelector('.source-note');if(note)note.textContent='QUÉ AÑO 1.5 beta · 300 hitos. Juego, fallback visual y sonidos funcionales siguen disponibles offline.';
+    const note=host.querySelector('.source-note');if(note)note.textContent='QUÉ AÑO 1.7 beta · 300 hitos. Juego, fallback visual y sonidos funcionales siguen disponibles offline.';
   };
 
   function setChrome(inGame){
@@ -158,13 +159,6 @@
     const q=currentQuestion();if(!q)return;
     if(round?.phase==='question')simplifyQuestion(q);else if(round?.phase==='answer')simplifyFeedback(q,currentAnswer());
   }
-  function queueInspect(){
-    if(inspectQueued)return;inspectQueued=true;
-    requestAnimationFrame(()=>{inspectQueued=false;inspect()});
-  }
-
-  const baseRenderGame=renderGame;
-  renderGame=function(){const out=baseRenderGame();inspect();return out};
 
   document.addEventListener('input',e=>{if(e.target?.id==='yearInput'||e.target?.id==='yearSlider')requestAnimationFrame(updateConfirmCTA)},true);
 
@@ -177,7 +171,8 @@
     if(open){doc.querySelector('.v13-context-extra')?.removeAttribute('hidden');track('context_expanded',{question_id:currentQuestion()?.id||null})}
   },true);
 
-  observer=new MutationObserver(queueInspect);observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
+  window.__QYA_RUNTIME__?.onRender(inspect);
+  inspect();
 
   window.__QA_V15__={version:VERSION,inspect,remaining:()=>qaTimerComputeRemaining(),timerDeadline:()=>qaTimer?.deadline||null};
 })();

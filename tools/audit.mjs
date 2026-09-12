@@ -1,4 +1,4 @@
-// Node.js 18+ · no installation required. Run: node tools/audit.mjs
+// Node.js 18+ · structural integrity audit. Run: node tools/audit.mjs
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -11,8 +11,15 @@ const bank=run('auditQuestionBank()'),schedule=run('simulateSchedule(365)');
 const questions=run('QUESTIONS'),isEmbedded=url=>typeof url==='string'&&url.startsWith('data:image/svg+xml;charset=utf-8,');
 const missingAssets=questions.filter(q=>q.image&&!isEmbedded(q.image)&&!fs.existsSync(path.join(root,q.image))).map(q=>q.id);
 const dateLeaks=questions.filter(q=>(q.title+' '+q.prompt).includes(String(q.year))).map(q=>q.id);
-const coverage={images:questions.filter(q=>q.image).length,extendedContext:questions.filter(q=>q.extendedContext).length,embeddedEditorial:questions.filter(q=>isEmbedded(q.image)).length,reviewNeeded:questions.filter(q=>q.extendedContext?.reviewNeeded).length};
+const coverage={
+  images:questions.filter(q=>q.image).length,
+  documentaryImages:questions.filter(q=>q.image&&q.imageType==='documentary').length,
+  generatedEditorial:questions.filter(q=>isEmbedded(q.image)||q.v12GeneratedImage||q.v14GeneratedFallback).length,
+  explicitLearningText:questions.filter(q=>q.context||q.fact||q.significance).length,
+  sources:questions.filter(q=>q.source).length,
+  extendedContext:questions.filter(q=>q.extendedContext).length
+};
 const calendar=run(`(()=>{generateDailyScheduleThrough(1095);let mismatches=0;for(const [key,row] of PUBLISHED_CALENDAR){const e=DAILY_SCHEDULE_CACHE.get(challengeNumber(parseDateKey(key))-1);if(!e||JSON.stringify(e.questions.map(q=>q.id))!==JSON.stringify(row.ids)||e.specialTheme!==row.specialTheme)mismatches++}return {days:PUBLISHED_CALENDAR.size,mismatches}})()`);
-const report={bank:{...bank,images:coverage.images,extendedContext:coverage.extendedContext},coverage,schedule,calendar,missingAssets,dateLeaks};
+const report={bank:{...bank,images:coverage.images,extendedContext:coverage.extendedContext},coverage,schedule,calendar,missingAssets,dateLeaks,policy:{syntheticCoverageQuota:false,missingImageAllowed:true,verificationRequiresExplicitFlag:true}};
 console.log(JSON.stringify(report,null,2));
-if(bank.total!==300||Object.entries(bank.issues).some(([k,v])=>k!=='nearDuplicates'&&v.length)||missingAssets.length||dateLeaks.length||!schedule.allSpecialsValid||schedule.repeatsUnder30||calendar.mismatches||calendar.days!==1096||coverage.images<150||coverage.extendedContext<150)process.exitCode=1;
+if(bank.total!==300||Object.entries(bank.issues).some(([k,v])=>k!=='nearDuplicates'&&v.length)||missingAssets.length||dateLeaks.length||!schedule.allSpecialsValid||schedule.repeatsUnder30||calendar.mismatches||calendar.days!==1096||coverage.sources!==300||coverage.explicitLearningText!==300||coverage.generatedEditorial!==0)process.exitCode=1;

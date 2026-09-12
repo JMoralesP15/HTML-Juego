@@ -1,6 +1,7 @@
 /* QUÉ AÑO — product iteration v1.3 preview.
  * Real product changes only: mobile hierarchy, progressive historical feedback,
  * collection sets and a learning-oriented review loop. No calendar/year mutations.
+ * v1.7: presentation decoration now subscribes to the canonical render lifecycle.
  */
 (function(){
   'use strict';
@@ -139,9 +140,6 @@
     }
   }
 
-  const baseSetView=window.setView||setView;
-  setView=function(html){const result=baseSetView(html);qaV13Decorate(document);return result};
-
   document.addEventListener('click',event=>{
     const target=event.target.closest?.('[data-v13-action]');if(!target||target.disabled)return;
     const action=target.dataset.v13Action;
@@ -155,6 +153,7 @@
     if(action==='smart-review')qaV13SmartReview();
   });
 
+  window.__QYA_RUNTIME__?.onRender(()=>qaV13Decorate(document));
   qaV13Decorate(document);
   window.__QA_V13__=Object.freeze({learningGain:qaV13LearningGain,sets:V13_SETS.map(({id,title})=>({id,title})),renderCollectionSets:qaV13RenderCollectionSets});
 })();
