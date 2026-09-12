@@ -25,7 +25,7 @@
   function learningFor(q){
     if(!q)return {what:'',importance:'',memory:'',context:'',temporal:''};
     const fact=clean(q.fact),context=clean(q.context),significance=clean(q.significance),contextSentences=sentences(context);
-    const what=firstSentence(context||fact||`${q.title} corresponde a ${q.year}.`);
+    const what=firstSentence(context||fact);
     let importance=significance;
     if(!importance&&contextSentences.length>1)importance=contextSentences.slice(1,3).join(' ');
     let memory='';
@@ -58,7 +58,7 @@
     if(!doc||!q)return;
     const l=learningFor(q),copy=doc.querySelector('.atlas-document-copy');
     if(q.v12GeneratedImage||q.v14GeneratedFallback){
-      const fig=doc.querySelector('.atlas-document-image');if(fig)img.remove();doc.classList.remove('has-image');doc.classList.add('no-image');
+      const fig=doc.querySelector('.atlas-document-image');if(fig)fig.remove();doc.classList.remove('has-image');doc.classList.add('no-image');
     }
     if(!copy)return;
     const parts=[];
@@ -148,7 +148,7 @@
     const open=toggle.getAttribute('aria-expanded')==='true';
     toggle.setAttribute('aria-expanded',String(!open));toggle.textContent=open?'Profundizar':'Ocultar contexto';
     doc.classList.toggle('v15-collapsed-context',open);doc.classList.toggle('v15-context-open',!open);
-    if(!open){doc.querySelector('.v13-context-extra')?.removeAttribute('hidden');track('context_expanded',{question_id:currentQuestion()?.id||null,source:'v16_progressive'})}
+    if(!open)track('context_expanded',{question_id:currentQuestion()?.id||null,source:'v16_progressive'});
   },true);
 
   observer=new MutationObserver(queue);observer.observe(document.getElementById('view')||document.body,{childList:true,subtree:true});inspect();
