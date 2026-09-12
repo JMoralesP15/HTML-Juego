@@ -1,4 +1,4 @@
-// QUÉ AÑO v1.8 — reproducible factual corroboration and open-media batch pipeline.
+// QUÉ AÑO v1.8 — reproducible factual corroboration and documentary-media pipeline.
 // Automated Wikimedia evidence NEVER promotes editorialVerified. Manual verification remains explicit in editorial.js.
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -13,160 +13,74 @@ const norm=v=>clean(v).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCa
 const chunk=(a,n)=>Array.from({length:Math.ceil(a.length/n)},(_,i)=>a.slice(i*n,(i+1)*n));
 
 async function jsonFetch(url,attempt=1){
-  try{
-    const res=await fetch(url,{headers:{'User-Agent':USER_AGENT,'Api-User-Agent':USER_AGENT,'Accept':'application/json'}});
-    if(!res.ok)throw new Error(`HTTP ${res.status} ${url}`);
-    return await res.json();
-  }catch(error){
-    if(attempt>=3)throw error;
-    await sleep(500*attempt);
-    return jsonFetch(url,attempt+1);
-  }
+  try{const res=await fetch(url,{headers:{'User-Agent':USER_AGENT,'Api-User-Agent':USER_AGENT,'Accept':'application/json'}});if(!res.ok)throw new Error(`HTTP ${res.status} ${url}`);return await res.json()}
+  catch(error){if(attempt>=3)throw error;await sleep(500*attempt);return jsonFetch(url,attempt+1)}
 }
-
-function loadQuestions(){
-  const sandbox={console,Date,Map,Set,Math,JSON,Intl,URL,encodeURIComponent};sandbox.window=sandbox;
-  const ctx=vm.createContext(sandbox);
-  for(const name of ['content','editorial'])vm.runInContext(fs.readFileSync(path.join(root,'js',`${name}.js`),'utf8'),ctx,{filename:`${name}.js`});
-  return vm.runInContext('QUESTIONS.map(q=>({...q}))',ctx);
-}
-
+function loadQuestions(){const sandbox={console,Date,Map,Set,Math,JSON,Intl,URL,encodeURIComponent};sandbox.window=sandbox;const ctx=vm.createContext(sandbox);for(const name of ['content','editorial'])vm.runInContext(fs.readFileSync(path.join(root,'js',`${name}.js`),'utf8'),ctx,{filename:`${name}.js`});return vm.runInContext('QUESTIONS.map(q=>({...q}))',ctx)}
 const questions=loadQuestions();
 const originalYears=Object.fromEntries(questions.map(q=>[q.id,q.year]));
-const propertyNames={P571:'inicio/fundación',P575:'descubrimiento o invención',P577:'publicación/estreno',P580:'inicio',P585:'fecha del acontecimiento'};
-const relationNames={P112:'fundador',P170:'creador',P50:'autor',P57:'director',P176:'fabricante',P123:'editorial',P264:'sello',P17:'país',P276:'lugar',P495:'país de origen'};
-const relationPriority=['P112','P170','P50','P57','P176','P123','P264','P276','P17','P495'];
-const temporalPriority=q=>{
-  const kind=norm(q.kind);
-  if(/fundacion|creacion|inicio/.test(kind))return ['P571','P580','P585','P577','P575'];
-  if(/publicacion|estreno|lanzamiento|edicion|debut/.test(kind))return ['P577','P571','P585','P580','P575'];
-  if(/descubrimiento|invencion/.test(kind))return ['P575','P585','P577','P571','P580'];
-  return ['P585','P580','P571','P577','P575'];
+
+const propertyNames={P571:'inicio/fundación',P575:'descubrimiento o invención',P577:'publicación/estreno',P580:'inicio',P582:'fin',P585:'fecha del acontecimiento',P576:'disolución/cierre',P606:'primer vuelo',P619:'lanzamiento espacial',P1191:'primera representación',P1619:'apertura oficial'};
+const relationNames={P112:'fundador',P170:'creador',P50:'autor',P57:'director',P176:'fabricante',P178:'desarrollador',P123:'editorial',P264:'sello',P175:'intérprete',P17:'país',P276:'lugar',P495:'país de origen'};
+const relationPriority=q=>{
+  if(q.category==='Tecnología'||q.category==='Videojuegos')return ['P178','P176','P112','P170','P123','P17','P276'];
+  if(q.category==='Cine')return ['P57','P170','P276','P17','P495'];
+  if(q.category==='Música')return ['P175','P264','P170','P495','P17'];
+  if(q.category==='Cultura')return ['P50','P170','P175','P123','P276','P17'];
+  return ['P276','P17','P170','P112','P50'];
 };
-function wikiInfo(source){
-  try{
-    const u=new URL(source);if(!/(^|\.)wikipedia\.org$/i.test(u.hostname))return null;
-    const m=u.pathname.match(/^\/wiki\/(.+)$/);if(!m)return null;
-    return {host:u.hostname,title:decodeURIComponent(m[1]).replace(/_/g,' '),api:`https://${u.hostname}/w/api.php`};
-  }catch{return null}
-}
+const temporalPriority=q=>{
+  const kind=norm(q.kind),base=['P585','P580','P582','P571','P577','P575','P576','P606','P619','P1191','P1619'];
+  if(/fundacion|creacion|inicio/.test(kind))return ['P571','P580','P585','P577','P1619','P582','P576'];
+  if(/publicacion|estreno|lanzamiento|edicion|debut/.test(kind))return ['P577','P619','P1191','P1619','P571','P585','P580','P606'];
+  if(/descubrimiento|invencion/.test(kind))return ['P575','P585','P577','P571'];
+  if(/cierre|fin|disolucion/.test(kind))return ['P582','P576','P585','P577','P580'];
+  return base;
+};
+function wikiInfo(source){try{const u=new URL(source);if(!/(^|\.)wikipedia\.org$/i.test(u.hostname))return null;const m=u.pathname.match(/^\/wiki\/(.+)$/);if(!m)return null;return {host:u.hostname,title:decodeURIComponent(m[1]).replace(/_/g,' '),api:`https://${u.hostname}/w/api.php`}}catch{return null}}
 function timeValue(claim){const v=claim?.mainsnak?.datavalue?.value;return v&&typeof v==='object'&&typeof v.time==='string'?v:null}
 function timeYear(v){const m=String(v?.time||'').match(/^([+-])(\d{4,})-/);if(!m)return null;const n=Number(m[2]);return m[1]==='-'?-n:n}
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-function formatExactDate(v){
-  if(!v||Number(v.precision)<10)return '';
-  const m=String(v.time).match(/^\+(\d{4,})-(\d{2})-(\d{2})/);if(!m)return '';
-  const year=Number(m[1]),month=Number(m[2]),day=Number(m[3]);
-  if(month<1||month>12)return '';
-  if(Number(v.precision)>=11&&day>0)return `${day} de ${MONTHS[month-1]} de ${year}`;
-  return `${MONTHS[month-1]} de ${year}`;
-}
+function formatExactDate(v){if(!v||Number(v.precision)<10)return '';const m=String(v.time).match(/^\+(\d{4,})-(\d{2})-(\d{2})/);if(!m)return '';const year=Number(m[1]),month=Number(m[2]),day=Number(m[3]);if(month<1||month>12)return '';if(Number(v.precision)>=11&&day>0)return `${day} de ${MONTHS[month-1]} de ${year}`;return `${MONTHS[month-1]} de ${year}`}
 function claimEntityId(claim){const v=claim?.mainsnak?.datavalue?.value;return v&&typeof v==='object'&&v['entity-type']==='item'&&v.id?v.id:null}
 function firstLabel(entity){return clean(entity?.labels?.es?.value||entity?.labels?.en?.value||'')}
 function getClaims(entity,prop){return Array.isArray(entity?.claims?.[prop])?entity.claims[prop]:[]}
-function sourceLabelFor(page){return page?.title?`Wikipedia · ${page.title}`:null}
+function canonicalWikiUrl(host,title){return `https://${host}/wiki/${encodeURIComponent(title.replace(/ /g,'_')).replace(/%2F/g,'/')}`}
 
 const rows=new Map(questions.map(q=>[q.id,{id:q.id,title:q.title,year:q.year,category:q.category,kind:q.kind,region:q.region||null,status:q.editorialVerified?'manual_verified':'needs_review',manualVerified:Boolean(q.editorialVerified),sourceUrl:q.source||null,sourceLabel:q.sourceLabel||null,wikimedia:null,evidence:{},detail:null,media:null,issues:[]}]))
-
-// Phase 1: resolve exact Wikipedia pages in deterministic batches.
-const groups=new Map();
-for(const q of questions){if(q.editorialVerified)continue;const w=wikiInfo(q.source);if(!w)continue;const arr=groups.get(w.host)||[];arr.push({q,w});groups.set(w.host,arr)}
 const pageById=new Map();
-for(const [host,items] of groups){
-  for(const batch of chunk(items,25)){
-    const p=new URLSearchParams({action:'query',format:'json',formatversion:'2',redirects:'1',prop:'extracts|pageprops|pageimages',exintro:'1',explaintext:'1',piprop:'name|original|thumbnail',pithumbsize:'1200',titles:batch.map(x=>x.w.title).join('|'),origin:'*'});
-    const data=await jsonFetch(`https://${host}/w/api.php?${p}`);
-    const remap=new Map();
-    for(const n of data?.query?.normalized||[])remap.set(norm(n.from),n.to);
-    for(const r of data?.query?.redirects||[])remap.set(norm(r.from),r.to);
-    const pages=data?.query?.pages||[];
-    for(const item of batch){
-      let target=remap.get(norm(item.w.title))||item.w.title;
-      target=remap.get(norm(target))||target;
-      const page=pages.find(x=>norm(x.title)===norm(target))||pages.find(x=>norm(x.title)===norm(item.w.title));
-      const row=rows.get(item.q.id);
-      if(!page||page.missing){row.issues.push('wikipedia_page_unresolved');continue}
-      pageById.set(item.q.id,{...page,host});
-      row.sourceLabel=sourceLabelFor(page);
-      row.wikimedia={host,pageTitle:page.title,qid:page.pageprops?.wikibase_item||null,introYearMention:new RegExp(`(^|\\D)${item.q.year}(\\D|$)`).test(page.extract||''),pageImage:page.pageimage||null};
-      row.status='item_specific_reference';
-    }
-    await sleep(80);
-  }
+function attachPage(q,page,host,{recovered=false}={}){const row=rows.get(q.id);pageById.set(q.id,{...page,host});row.sourceUrl=canonicalWikiUrl(host,page.title);row.sourceLabel=`Wikipedia · ${page.title}`;row.wikimedia={host,pageTitle:page.title,qid:page.pageprops?.wikibase_item||null,introYearMention:new RegExp(`(^|\\D)${q.year}(\\D|$)`).test(page.extract||''),pageImage:page.pageimage||null};row.status='item_specific_reference';if(recovered)row.issues.push('source_recovered_by_search')}
+
+// 1. Resolve the inherited exact Wikipedia URLs in batches.
+const groups=new Map();for(const q of questions){if(q.editorialVerified)continue;const w=wikiInfo(q.source);if(!w)continue;const a=groups.get(w.host)||[];a.push({q,w});groups.set(w.host,a)}
+for(const [host,items] of groups){for(const batch of chunk(items,25)){const p=new URLSearchParams({action:'query',format:'json',formatversion:'2',redirects:'1',prop:'extracts|pageprops|pageimages',exintro:'1',explaintext:'1',piprop:'name|original|thumbnail',pithumbsize:'1200',titles:batch.map(x=>x.w.title).join('|'),origin:'*'});const data=await jsonFetch(`https://${host}/w/api.php?${p}`);const remap=new Map();for(const n of data?.query?.normalized||[])remap.set(norm(n.from),n.to);for(const r of data?.query?.redirects||[])remap.set(norm(r.from),r.to);const pages=data?.query?.pages||[];for(const item of batch){let target=remap.get(norm(item.w.title))||item.w.title;target=remap.get(norm(target))||target;const page=pages.find(x=>norm(x.title)===norm(target))||pages.find(x=>norm(x.title)===norm(item.w.title));if(page&&!page.missing)attachPage(item.q,page,host);else rows.get(item.q.id).issues.push('inherited_wikipedia_url_unresolved')}await sleep(80)}}
+
+// 2. Recover moved/deleted inherited URLs via constrained title search. Search results remain references, not verification.
+for(const q of questions){
+  if(q.editorialVerified||pageById.has(q.id))continue;const w=wikiInfo(q.source);if(!w)continue;
+  const sp=new URLSearchParams({action:'query',format:'json',formatversion:'2',list:'search',srnamespace:'0',srlimit:'5',srsearch:q.title,origin:'*'});const search=await jsonFetch(`https://${w.host}/w/api.php?${sp}`);const candidates=search?.query?.search||[];const qTokens=norm(q.title).split(' ').filter(t=>t.length>=4);const ranked=candidates.map(c=>{const t=norm(c.title),snippet=clean(c.snippet),overlap=qTokens.filter(x=>t.includes(x)).length;const score=(t===norm(q.title)?8:0)+overlap*2+(new RegExp(`(^|\\D)${q.year}(\\D|$)`).test(snippet)?3:0);return {c,score}}).sort((a,b)=>b.score-a.score);if(!ranked[0]||ranked[0].score<2)continue;
+  const pp=new URLSearchParams({action:'query',format:'json',formatversion:'2',redirects:'1',prop:'extracts|pageprops|pageimages',exintro:'1',explaintext:'1',piprop:'name|original|thumbnail',pithumbsize:'1200',titles:ranked[0].c.title,origin:'*'});const detail=await jsonFetch(`https://${w.host}/w/api.php?${pp}`);const page=(detail?.query?.pages||[]).find(x=>!x.missing);if(page)attachPage(q,page,w.host,{recovered:true});await sleep(90);
 }
 
-// Phase 2: load Wikidata entities and inspect explicit temporal claims.
-const qids=[...new Set([...pageById.values()].map(p=>p.pageprops?.wikibase_item).filter(Boolean))];
-const entities={};
-for(const batch of chunk(qids,40)){
-  const p=new URLSearchParams({action:'wbgetentities',format:'json',ids:batch.join('|'),props:'claims|labels|descriptions',languages:'es|en',languagefallback:'1',origin:'*'});
-  const data=await jsonFetch(`https://www.wikidata.org/w/api.php?${p}`);Object.assign(entities,data.entities||{});await sleep(80);
-}
+// 3. Corroborate expected years with structured time claims.
+const qids=[...new Set([...pageById.values()].map(p=>p.pageprops?.wikibase_item).filter(Boolean))],entities={};
+for(const batch of chunk(qids,40)){const p=new URLSearchParams({action:'wbgetentities',format:'json',ids:batch.join('|'),props:'claims|labels|descriptions',languages:'es|en',languagefallback:'1',origin:'*'});const data=await jsonFetch(`https://www.wikidata.org/w/api.php?${p}`);Object.assign(entities,data.entities||{});await sleep(80)}
 const relatedIds=new Set();
-for(const q of questions){
-  if(q.editorialVerified)continue;const row=rows.get(q.id),qid=row.wikimedia?.qid,entity=qid&&entities[qid];if(!entity)continue;
-  const temporal=[];let match=null;
-  for(const prop of temporalPriority(q)){
-    for(const claim of getClaims(entity,prop)){
-      const value=timeValue(claim);if(!value)continue;const year=timeYear(value);temporal.push({property:prop,label:propertyNames[prop],year,precision:value.precision,exactDate:formatExactDate(value)});
-      if(!match&&year===q.year)match={property:prop,label:propertyNames[prop],value,exactDate:formatExactDate(value)};
-    }
-  }
-  row.evidence.temporalClaims=temporal;
-  if(match){row.status='structured_corroborated';row.evidence.yearMatch={property:match.property,label:match.label,year:q.year,exactDate:match.exactDate||null}}
-  else if(temporal.length){row.status='needs_review';row.issues.push('temporal_claims_do_not_match_expected_year')}
-  for(const prop of relationPriority){const id=getClaims(entity,prop).map(claimEntityId).find(Boolean);if(id){relatedIds.add(id);row.evidence.related={property:prop,label:relationNames[prop],id};break}}
-}
-const relatedEntities={};
-for(const batch of chunk([...relatedIds],50)){
-  const p=new URLSearchParams({action:'wbgetentities',format:'json',ids:batch.join('|'),props:'labels',languages:'es|en',languagefallback:'1',origin:'*'});
-  const data=await jsonFetch(`https://www.wikidata.org/w/api.php?${p}`);Object.assign(relatedEntities,data.entities||{});await sleep(80);
-}
-for(const q of questions){
-  const row=rows.get(q.id);if(row.status!=='structured_corroborated')continue;
-  const parts=[];const exact=row.evidence.yearMatch?.exactDate;
-  if(exact)parts.push(`La fecha estructurada sitúa este hito el ${exact}.`);
-  const rel=row.evidence.related,label=rel&&firstLabel(relatedEntities[rel.id]);
-  if(label&&norm(label)!==norm(q.title)&&!norm(q.title).includes(norm(label))){parts.push(`El registro identifica ${rel.label==='país'||rel.label==='país de origen'||rel.label==='lugar'?'como '+rel.label+' a':'a'} ${label}${rel.label==='país'||rel.label==='país de origen'||rel.label==='lugar'?'':` como ${rel.label}`}.`)}
-  const detail=clean(parts.join(' '));
-  const existing=norm(`${q.title} ${q.prompt} ${q.fact||''} ${q.context||''}`);
-  if(detail&&detail.length>=45&&!existing.includes(norm(detail)))row.detail=detail;
-}
+for(const q of questions){if(q.editorialVerified)continue;const row=rows.get(q.id),entity=row.wikimedia?.qid&&entities[row.wikimedia.qid];if(!entity)continue;const temporal=[];let match=null;for(const prop of temporalPriority(q)){for(const claim of getClaims(entity,prop)){const value=timeValue(claim);if(!value)continue;const year=timeYear(value);temporal.push({property:prop,label:propertyNames[prop]||prop,year,precision:value.precision,exactDate:formatExactDate(value)});if(!match&&year===q.year)match={property:prop,label:propertyNames[prop]||prop,value,exactDate:formatExactDate(value)}}}row.evidence.temporalClaims=temporal;if(match){row.status='structured_corroborated';row.evidence.yearMatch={property:match.property,label:match.label,year:q.year,exactDate:match.exactDate||null}}else if(temporal.length){row.status='needs_review';row.issues.push('temporal_claims_do_not_match_expected_year')}for(const prop of relationPriority(q)){const id=getClaims(entity,prop).map(claimEntityId).find(Boolean);if(id){relatedIds.add(id);row.evidence.related={property:prop,label:relationNames[prop]||prop,id};break}}}
+const relatedEntities={};for(const batch of chunk([...relatedIds],50)){const p=new URLSearchParams({action:'wbgetentities',format:'json',ids:batch.join('|'),props:'labels',languages:'es|en',languagefallback:'1',origin:'*'});const data=await jsonFetch(`https://www.wikidata.org/w/api.php?${p}`);Object.assign(relatedEntities,data.entities||{});await sleep(80)}
+function temporalSentence(q,date){const k=norm(q.kind);if(/fundacion|creacion/.test(k))return `La fecha de fundación registrada es el ${date}.`;if(/lanzamiento/.test(k))return `El lanzamiento figura fechado el ${date}.`;if(/estreno/.test(k))return `El estreno figura fechado el ${date}.`;if(/publicacion|edicion/.test(k))return `La publicación figura fechada el ${date}.`;if(/descubrimiento/.test(k))return `El descubrimiento figura fechado el ${date}.`;return `La fecha concreta registrada para el hito es el ${date}.`}
+function relationSentence(rel,label){if(!rel||!label)return '';if(['país','país de origen','lugar'].includes(rel.label))return `La misma ficha sitúa el hito en ${label}.`;const article=/^[aeiouáéíóúh]/i.test(rel.label)?'al':'al';return `La ficha identifica ${article} ${rel.label} como ${label}.`}
+for(const q of questions){const row=rows.get(q.id);if(row.status!=='structured_corroborated')continue;const parts=[],exact=row.evidence.yearMatch?.exactDate;if(exact)parts.push(temporalSentence(q,exact));const rel=row.evidence.related,label=rel&&firstLabel(relatedEntities[rel.id]);if(label&&norm(label)!==norm(q.title)&&!norm(q.title).includes(norm(label)))parts.push(relationSentence(rel,label));const detail=clean(parts.join(' ')),existing=norm(`${q.title} ${q.prompt} ${q.fact||''} ${q.context||''}`);if(detail&&detail.length>=45&&!existing.includes(norm(detail)))row.detail=detail}
 
-// Phase 3: inspect exact article lead images and retain only open-licensed, non-generic candidates.
-const imageCandidates=[];
-for(const q of questions){const page=pageById.get(q.id);if(!page?.pageimage)continue;const file=/^(File|Archivo):/i.test(page.pageimage)?page.pageimage:`File:${page.pageimage}`;imageCandidates.push({q,page,file,host:page.host})}
+// 4. Accept only exact-page lead media with open rights AND evidence of temporal/entity relevance.
+const imageCandidates=[];for(const q of questions){const page=pageById.get(q.id);if(!page?.pageimage)continue;const file=/^(File|Archivo):/i.test(page.pageimage)?page.pageimage:`File:${page.pageimage}`;imageCandidates.push({q,page,file,host:page.host})}
 const imageGroups=new Map();for(const x of imageCandidates){const a=imageGroups.get(x.host)||[];a.push(x);imageGroups.set(x.host,a)}
-const badFile=/\b(logo|logotipo|poster|p[oó]ster|cover|portada|car[aá]tula|icon|icono|flag|bandera|seal|sello|map|mapa|escudo)\b/i;
+const badTerms=new Set(['logo','logotipo','poster','cover','portada','caratula','icon','icono','flag','bandera','seal','sello','map','mapa','escudo']);
 const allowedLicense=value=>{const x=clean(value).toLowerCase();if(/\b(nc|nd)\b|noncommercial|no derivatives/.test(x))return false;return /public domain|dominio p[uú]blico|\bpd\b|\bcc0\b|cc[- ]?by(?:[- ]sa)?\b/.test(x)};
-for(const [host,items] of imageGroups){
-  for(const batch of chunk(items,5)){
-    const p=new URLSearchParams({action:'query',format:'json',formatversion:'2',prop:'imageinfo',iiprop:'url|mime|size|extmetadata',iiurlwidth:'1200',iiextmetadatalanguage:'es',iiextmetadatafilter:'LicenseShortName|LicenseUrl|Artist|Credit|ImageDescription',titles:batch.map(x=>x.file).join('|'),origin:'*'});
-    const data=await jsonFetch(`https://${host}/w/api.php?${p}`);const pages=data?.query?.pages||[];
-    for(const item of batch){
-      const f=pages.find(x=>norm(x.title.replace(/^(File|Archivo):/i,''))===norm(item.file.replace(/^(File|Archivo):/i,'')));const info=f?.imageinfo?.[0],meta=info?.extmetadata||{};const row=rows.get(item.q.id);
-      if(!info){continue}
-      const license=clean(meta.LicenseShortName?.value),description=clean(meta.ImageDescription?.value),artist=clean(meta.Artist?.value||meta.Credit?.value||'');
-      if(badFile.test(item.file)||badFile.test(description)){row.issues.push('lead_image_rejected_generic_asset');continue}
-      if(!allowedLicense(license)){row.issues.push('lead_image_rejected_license');continue}
-      if(Number(info.width||0)<640){row.issues.push('lead_image_rejected_resolution');continue}
-      const src=info.thumburl||info.url;if(!/^https:\/\//.test(src||'')){continue}
-      row.media={src,sourcePage:info.descriptionurl||`https://${host}/wiki/${encodeURIComponent(f.title.replace(/ /g,'_'))}`,artist:artist||'Autor indicado en la ficha del archivo',license,licenseUrl:clean(meta.LicenseUrl?.value)||null,description:description||`Imagen principal abierta asociada a ${item.page.title}`,fileTitle:f.title,selectionMethod:'exact_article_lead_open_license',articleTitle:item.page.title,width:info.width||null,height:info.height||null,mime:info.mime||null};
-    }
-    await sleep(120);
-  }
-}
+function relevantMedia(q,file,description){const text=`${file} ${description}`,n=norm(text),words=n.split(' '),tokens=norm(q.title).split(' ').filter(t=>t.length>=4&&!['primer','primera','nuevo','nueva','evento','red'].includes(t));if(words.some(w=>badTerms.has(w)))return {ok:false,reason:'generic_asset'};const yearHit=new RegExp(`(^|\\D)${q.year}(\\D|$)`).test(text),overlap=tokens.filter(t=>n.includes(t)).length;const otherYears=[...text.matchAll(/\b(19\d{2}|20\d{2})\b/g)].map(m=>Number(m[1])),distant=otherYears.some(y=>Math.abs(y-q.year)>3);const score=1+Math.min(overlap,2)*2+(yearHit?4:0)-(distant&&!yearHit?4:0);return {ok:score>=5,reason:score>=5?'accepted':'weak_historical_relevance',score,yearHit,overlap}}
+for(const [host,items] of imageGroups){for(const batch of chunk(items,5)){const p=new URLSearchParams({action:'query',format:'json',formatversion:'2',prop:'imageinfo',iiprop:'url|mime|size|extmetadata',iiurlwidth:'1200',iiextmetadatalanguage:'es',iiextmetadatafilter:'LicenseShortName|LicenseUrl|Artist|Credit|ImageDescription',titles:batch.map(x=>x.file).join('|'),origin:'*'});const data=await jsonFetch(`https://${host}/w/api.php?${p}`),pages=data?.query?.pages||[];for(const item of batch){const f=pages.find(x=>norm(x.title.replace(/^(File|Archivo):/i,''))===norm(item.file.replace(/^(File|Archivo):/i,''))),info=f?.imageinfo?.[0],meta=info?.extmetadata||{},row=rows.get(item.q.id);if(!info)continue;const license=clean(meta.LicenseShortName?.value),description=clean(meta.ImageDescription?.value),artist=clean(meta.Artist?.value||meta.Credit?.value||''),rel=relevantMedia(item.q,item.file,description);if(!rel.ok){row.issues.push(`lead_image_rejected_${rel.reason}`);continue}if(!allowedLicense(license)){row.issues.push('lead_image_rejected_license');continue}if(Number(info.width||0)<640){row.issues.push('lead_image_rejected_resolution');continue}const src=info.thumburl||info.url;if(!/^https:\/\//.test(src||''))continue;row.media={src,sourcePage:info.descriptionurl||canonicalWikiUrl(host,f.title),artist:artist||'Autor indicado en la ficha del archivo',license,licenseUrl:clean(meta.LicenseUrl?.value)||null,description:description||`Imagen principal abierta asociada a ${item.page.title}`,fileTitle:f.title,selectionMethod:'exact_article_lead_open_license',articleTitle:item.page.title,relevance:{score:rel.score,yearHit:rel.yearHit,titleTokenOverlap:rel.overlap},width:info.width||null,height:info.height||null,mime:info.mime||null}}await sleep(120)}}
 
-// Manual rows keep their stronger v1.7 status and existing editorial content.
-for(const q of questions){const row=rows.get(q.id);if(q.editorialVerified){row.status='manual_verified';row.sourceLabel=q.sourceLabel;row.evidence={manualSource:q.source};row.detail=null}}
-
-const evidence=Object.fromEntries([...rows].map(([id,row])=>[id,row]));
-const counts=[...rows.values()].reduce((a,r)=>(a[r.status]=(a[r.status]||0)+1,a),{});
-const report={version:'1.8.0-beta.1',generatedAt:new Date().toISOString(),methodology:{manual_verified:'Explicit editorial review from editorial.js only.',structured_corroborated:'Expected year matches a relevant Wikidata time claim attached to the exact Wikipedia topic page. This is corroboration, not independent manual verification.',item_specific_reference:'Exact topic page resolved but no relevant structured year match was found.',needs_review:'Unresolved source or relevant structured dates did not match the game year.',media:'Only exact article lead images with explicit PD/CC0/CC BY/CC BY-SA metadata, adequate resolution and non-generic filename/description are accepted.'},totals:{questions:questions.length,...counts,details:[...rows.values()].filter(r=>r.detail).length,acceptedMedia:[...rows.values()].filter(r=>r.media).length,issues:[...rows.values()].filter(r=>r.issues.length).length},rows:[...rows.values()]};
-
-const js=`/* QUÉ AÑO v1.8 — GENERATED factual evidence overlay.\n * Do not hand-edit: run tools/factual-enrichment-v18.mjs. Automated corroboration never sets editorialVerified.\n */\nconst QA_V18_EVIDENCE=${JSON.stringify(evidence,null,2)};\nfor(const q of QUESTIONS){\n  const e=QA_V18_EVIDENCE[q.id];\n  if(!e)continue;\n  q.v18Evidence=e;\n  if(e.sourceLabel)q.sourceLabel=e.sourceLabel;\n  if(e.detail&&!q.context)q.context=e.detail;\n  if(e.media)q.v18Media=e.media;\n}\nwindow.__QA_V18_EVIDENCE__={version:'1.8.0-beta.1',rows:QA_V18_EVIDENCE};\n`;
-fs.writeFileSync(path.join(root,'js','editorial-verification-v18.js'),js);
-const out=path.join(root,'reports');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'factual-verification-v18.json'),JSON.stringify(report,null,2)+'\n');
-
-if(questions.length!==300||questions.some(q=>originalYears[q.id]!==q.year))throw new Error('Historical identity/year invariant failed');
-console.log(JSON.stringify(report.totals,null,2));
+for(const q of questions){const row=rows.get(q.id);if(q.editorialVerified){row.status='manual_verified';row.sourceUrl=q.source;row.sourceLabel=q.sourceLabel;row.evidence={manualSource:q.source};row.detail=null}}
+const evidence=Object.fromEntries([...rows].map(([id,row])=>[id,row]));const counts=[...rows.values()].reduce((a,r)=>(a[r.status]=(a[r.status]||0)+1,a),{});const report={version:'1.8.0-beta.1',generatedAt:new Date().toISOString(),methodology:{manual_verified:'Explicit editorial review from editorial.js only.',structured_corroborated:'Expected year matches a relevant Wikidata time claim attached to a resolved Wikipedia topic page. This is corroboration, not independent manual verification.',item_specific_reference:'A specific topic page resolved but no relevant structured year match was found.',needs_review:'Source ambiguity or relevant structured dates did not match the game year.',media:'Only exact-page lead files with open rights and a historical relevance score >=5 are integrated.'},totals:{questions:questions.length,...counts,details:[...rows.values()].filter(r=>r.detail).length,acceptedMedia:[...rows.values()].filter(r=>r.media).length,issues:[...rows.values()].filter(r=>r.issues.length).length},rows:[...rows.values()]};
+const js=`/* QUÉ AÑO v1.8 — GENERATED factual evidence overlay.\n * Do not hand-edit: run tools/factual-enrichment-v18.mjs. Automated corroboration never sets editorialVerified.\n */\nconst QA_V18_EVIDENCE=${JSON.stringify(evidence,null,2)};\nfor(const q of QUESTIONS){\n  const e=QA_V18_EVIDENCE[q.id];\n  if(!e)continue;\n  q.v18Evidence=e;\n  if(e.sourceUrl)q.source=e.sourceUrl;\n  if(e.sourceLabel)q.sourceLabel=e.sourceLabel;\n  if(e.detail&&!q.context)q.context=e.detail;\n  if(e.media)q.v18Media=e.media;\n}\nwindow.__QA_V18_EVIDENCE__={version:'1.8.0-beta.1',rows:QA_V18_EVIDENCE};\n`;
+fs.writeFileSync(path.join(root,'js','editorial-verification-v18.js'),js);const out=path.join(root,'reports');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'factual-verification-v18.json'),JSON.stringify(report,null,2)+'\n');if(questions.length!==300||questions.some(q=>originalYears[q.id]!==q.year))throw new Error('Historical identity/year invariant failed');console.log(JSON.stringify(report.totals,null,2));
