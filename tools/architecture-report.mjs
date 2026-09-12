@@ -26,13 +26,14 @@ for(const {src,code} of activeSources){
 }
 const versionedScripts=scripts.filter(x=>/-v\d+\.js$/.test(x));
 const patchStyles=css.filter(x=>/(compat|fix|polish)/i.test(x));
+const patchScripts=scripts.filter(x=>/(compat|fix|polish)/i.test(x));
 const report={
   methodology:'Static active-runtime inventory from index.html. Counts layering/coupling signals; it is not a cyclomatic-complexity score.',
   active:{stylesheets:css.length,scripts:scripts.length,css,scripts},
-  debtSignals:{mutationObservers,lifecycleAssignments,behaviorAssignments,versionedScripts,patchStyles},
-  budgets:{stylesheetsMax:6,mutationObserversMax:0,lifecycleAssignmentsMax:1},
-  pass:{stylesheets:css.length<=6,mutationObservers:mutationObservers.length===0,lifecycleAssignments:lifecycleAssignments.length<=1},
-  nextTargets:{patchStyles:0,versionedPresentationScripts:0,behaviorMonkeyPatches:'migrate only when parity tests exist; do not trade reliability for a cosmetic count'}
+  debtSignals:{mutationObservers,lifecycleAssignments,behaviorAssignments,versionedScripts,patchStyles,patchScripts},
+  budgets:{stylesheetsMax:6,mutationObserversMax:0,lifecycleAssignmentsMax:1,patchLayersMax:0},
+  pass:{stylesheets:css.length<=6,mutationObservers:mutationObservers.length===0,lifecycleAssignments:lifecycleAssignments.length<=1,patchLayers:patchStyles.length===0&&patchScripts.length===0},
+  nextTargets:{versionedPresentationScripts:0,behaviorMonkeyPatches:'migrate only when parity tests exist; do not trade reliability for a cosmetic count'}
 };
 report.pass.all=Object.values(report.pass).every(Boolean);
 const out=path.join(root,'reports');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'architecture-v17.json'),JSON.stringify(report,null,2)+'\n');
