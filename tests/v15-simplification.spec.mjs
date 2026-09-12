@@ -9,7 +9,7 @@ async function boot(page,{width=1366,height=768,start=true}={}){
   await page.addInitScript(()=>{window.__QUE_ANO_DISABLE_ANALYTICS__=true});
   await page.setViewportSize({width,height});
   await page.goto(url);
-  await page.waitForFunction(()=>typeof __QA_V15__==='object');
+  await page.waitForFunction(()=>typeof __QA_V15__==='object'&&typeof __QA_V16__==='object');
   await page.evaluate(start=>{const s=defaultState();s.onboardingSeen=true;setState(s);round=null;lastSummary=null;const d=document.getElementById('detailDialog');if(d?.open)d.close();showView('hoy',{focus:false});if(start)startDaily()},start);
 }
 
@@ -48,9 +48,9 @@ test('al regresar después del deadline se registra timeout',async({page})=>{
   const a=await page.evaluate(()=>round.answers[round.index]);expect(a.timedOut).toBe(true);
 });
 
-test('Enter confirma la estimación y abre feedback simplificado',async({page})=>{
+test('Enter confirma la estimación y abre feedback de aprendizaje',async({page})=>{
   await boot(page);const input=page.locator('#yearInput');await input.focus();await input.press('Enter');
-  await expect(page.locator('.v15-result-hero')).toBeVisible();await expect(page.locator('.v15-essential')).toBeVisible();await expect(page.locator('.v13-feedback-sequence')).toBeHidden();
+  await expect(page.locator('.v15-result-hero')).toBeVisible();await expect(page.locator('.v16-learning-card')).toBeVisible();await expect(page.locator('.v15-essential')).toBeHidden();await expect(page.locator('.v13-feedback-sequence')).toBeHidden();
 });
 
 test('No lo sé sigue funcionando',async({page})=>{
@@ -60,8 +60,8 @@ test('No lo sé sigue funcionando',async({page})=>{
 
 test('contexto rico queda bajo demanda',async({page})=>{
   await boot(page);await page.locator('#primaryAction').click();
-  const button=page.locator('[data-v15-action="context-toggle"]');await expect(button).toBeVisible();await expect(button).toHaveAttribute('aria-expanded','false');await expect(page.locator('.atlas-document')).toBeHidden();
-  await button.click();await expect(button).toHaveAttribute('aria-expanded','true');await expect(page.locator('.atlas-document')).toBeVisible();
+  const button=page.locator('[data-v16-action="context-toggle"]');await expect(button).toBeVisible();await expect(button).toHaveAttribute('aria-expanded','false');await expect(page.locator('.atlas-document')).toBeHidden();
+  await button.click();await expect(button).toHaveAttribute('aria-expanded','true');await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).not.toContainText(/Referencia heredada|pendiente de revisión editorial/i);
 });
 
 test('la pantalla normal oculta metadata editorial interna',async({page})=>{
