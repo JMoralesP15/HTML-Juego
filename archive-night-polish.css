@@ -8,5 +8,5 @@
 @media(max-width:380px){
   .main-nav button{font-size:.63rem}
   .main-nav .nav-symbol{font-size:.88rem}
-  .archive-night .year-input{width:4.05ch!important}
+  .archive-night .year-input{font-size:2.75rem!important;width:3.75ch!important;max-width:100%}
 }
