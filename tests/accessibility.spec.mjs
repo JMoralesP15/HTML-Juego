@@ -17,6 +17,8 @@ async function boot(page, { start = true } = {}) {
     setState(state);
     round = null;
     lastSummary = null;
+    const dialog = document.getElementById('detailDialog');
+    if (dialog?.open) dialog.close();
     showView('hoy', { focus: false });
     if (shouldStart) startDaily();
   }, start);
@@ -44,6 +46,8 @@ test('axe · feedback y contexto', async ({ page }) => {
     const q = QUESTION_BY_ID.get(round.questionIds[round.index]);
     setYear(q.year);
     commitAnswer();
+    const dialog = document.getElementById('detailDialog');
+    if (dialog?.open) dialog.close();
   });
   await assertAccessible(page, 'Feedback');
   await page.locator('[data-action="detail"]').first().click();
