@@ -1,0 +1,10 @@
+{
+  "schema":"que-ano-audit-baseline-v1.8.3",
+  "auditDate":"2026-09-13",
+  "weights":{"traceability":0.2,"fileClassification":0.2,"runtimeOwnership":0.2,"contracts":0.15,"techDebt":0.1,"cssGlobalAnalysis":0.1,"testMapping":0.05},
+  "components":{"traceability":1,"fileClassification":1,"runtimeOwnership":1,"contracts":1,"techDebt":1,"cssGlobalAnalysis":1,"testMapping":1},
+  "metrics":{"traceabilityCoverage":1,"runtimeFileClassificationCoverage":1,"contractCoverage":1,"ownershipRatio":0.3333333333333333,"ownershipNumerator":6,"ownershipDenominator":18,"testProtectionRatio":0.7777777777777778,"testProtectionNumerator":14,"testProtectionDenominator":18,"auditCompletenessScore":100},
+  "observed":{"activeScripts":24,"activeStylesheets":5,"contracts":18,"staticCollisionCount":15},
+  "unresolved":[{"id":"MEDIA_ASYNC_PRECEDENCE","files":["js/experience-v14.js","js/experience-v18.js"],"reason":"v1.4 media selection is asynchronous; static load order alone cannot prove that curated v1.8 media always remains final."}],
+  "interpretation":"Completeness measures audit coverage, not architecture quality. Explicit UNKNOWN or REQUIRES_BROWSER states count as complete when evidence limits are documented."
+}

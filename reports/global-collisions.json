@@ -1,0 +1,23 @@
+{
+  "schema":"que-ano-global-collisions-v1.8.3",
+  "auditDate":"2026-09-13",
+  "methodology":"Confirmed high-impact collisions from loaded runtime. Run the v1.8.3 scanner for the exhaustive regex-assisted inventory.",
+  "collisions":[
+    {"symbol":"refreshHeader","owners":["js/game.js","js/archive-night.js"],"effectiveOwner":"js/archive-night.js"},
+    {"symbol":"renderCover","owners":["js/game.js","js/archive-night.js"],"effectiveOwner":"js/archive-night.js"},
+    {"symbol":"answerDeltaCopy","owners":["js/game.js","js/archive-night.js"],"effectiveOwner":"js/archive-night.js"},
+    {"symbol":"temporalScale","owners":["js/game.js","js/archive-night.js","js/atlas-v12.js"],"effectiveOwner":"js/atlas-v12.js"},
+    {"symbol":"renderGame","owners":["js/game.js","js/archive-night.js","js/atlas-v12.js"],"effectiveOwner":"js/atlas-v12.js"},
+    {"symbol":"renderSummary","owners":["js/archive-night.js","js/atlas-v12.js"],"effectiveOwner":"js/atlas-v12.js"},
+    {"symbol":"summarySignature","owners":["js/archive-night.js","js/atlas-v12.js"],"effectiveOwner":"js/atlas-v12.js"},
+    {"symbol":"commitAnswer","owners":["js/game.js","js/atlas-v12.js","js/simplification-v15.js"],"effectiveOwner":"js/simplification-v15.js wrapper"},
+    {"symbol":"setYear","owners":["js/game.js","js/simplification-v15.js"],"effectiveOwner":"js/simplification-v15.js wrapper"},
+    {"symbol":"showView","owners":["js/game.js","js/atlas-v12.js"],"effectiveOwner":"js/atlas-v12.js wrapper"},
+    {"symbol":"setView","owners":["js/game.js","js/runtime-contract.js"],"effectiveOwner":"js/runtime-contract.js wrapper"},
+    {"symbol":"qaTimerComputeRemaining","owners":["js/atlas-v12.js","js/simplification-v15.js"],"effectiveOwner":"js/simplification-v15.js"},
+    {"symbol":"qaTimerStart","owners":["js/atlas-v12.js","js/simplification-v15.js"],"effectiveOwner":"js/simplification-v15.js"},
+    {"symbol":"qaTimerPause","owners":["js/atlas-v12.js","js/simplification-v15.js"],"effectiveOwner":"js/simplification-v15.js"},
+    {"symbol":"qaTimerResume","owners":["js/atlas-v12.js","js/simplification-v15.js"],"effectiveOwner":"js/simplification-v15.js"}
+  ],
+  "obsoleteCandidatesPolicy":"A shadowed symbol is only OBSOLETE_CANDIDATE. Removal requires parity evidence."
+}
