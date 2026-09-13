@@ -29,7 +29,7 @@ test('axe · pantalla inicial y pregunta', async ({ page }) => {
 });
 
 test('axe · feedback, contexto progresivo y ficha', async ({ page }) => {
-  await boot(page);await page.evaluate(() => {const q=QUESTION_BY_ID.get(round.questionIds[round.index]);setYear(q.year);commitAnswer();const dialog=document.getElementById('detailDialog');if(dialog?.open)dialog.close()});
+  await boot(page);await page.evaluate(() => {const original=qaExtendedContext;qaExtendedContext=q=>({...original(q),locate:'Este proceso histórico conecta transformaciones sociales de varias generaciones.'});const q=QUESTION_BY_ID.get(round.questionIds[round.index]);setYear(q.year);commitAnswer();const dialog=document.getElementById('detailDialog');if(dialog?.open)dialog.close()});
   await assertAccessible(page, 'Feedback');
   const toggle=page.locator('[data-v16-action="context-toggle"]');await expect(toggle).toBeVisible();await toggle.click();await assertAccessible(page,'Feedback expandido');
   await page.evaluate(()=>openDetail(round.questionIds[round.index]));await expect(page.locator('#detailDialog')).toHaveAttribute('open','');await assertAccessible(page,'Ficha completa');
