@@ -43,6 +43,8 @@ jobs:
         run: npm run audit
       - name: Compile editorial review batch v1.8.7
         run: npm run compile:editorial:v187
+      - name: Validate human-review refinements v1.8.7-c
+        run: npm run validate:editorial:v187c
       - name: Editorial and geography report
         run: npm run report:content
       - name: General-culture curation report
@@ -79,6 +81,8 @@ jobs:
             test-results/screenshots
             test-results/playwright
             reports/editorial-batch-v187.json
+            reports/editorial-v187c-validation.json
+            reports/editorial-review-media-v187c.json
             reports/content-metrics.json
             reports/culture-curation-v14.json
             reports/architecture-v17.json
