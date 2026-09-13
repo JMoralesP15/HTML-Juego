@@ -18,7 +18,8 @@
     lastReason=reason;
     if(queued)return;
     queued=true;
-    requestAnimationFrame(notify);
+    // Finish presentation in the same task, before the browser can paint legacy copy.
+    queueMicrotask(notify);
   }
   function onRender(fn){
     if(typeof fn!=='function')return ()=>{};
