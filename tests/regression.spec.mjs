@@ -50,6 +50,7 @@ async function answer(page, offset = 0) {
     commitAnswer();
   }, offset);
   await expect(page.locator('.atlas-v12.is-answered')).toBeVisible();
+  await expect(page.locator('.v16-learning-card')).toBeVisible();
 }
 
 async function finishRound(page, offset = 0) {
