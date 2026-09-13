@@ -1,0 +1,434 @@
+{
+  "schema": "que-ano-editorial-proposals-v1.8.7-batch02",
+  "version": "1.8.7-b",
+  "count": 61,
+  "items": {
+    "bttf": {
+      "summary": "Back to the Future convirtió un viaje accidental a 1955 en una comedia de ciencia ficción sobre familia, identidad y consecuencias. La combinación de aventura, humor y una máquina del tiempo tan reconocible como el DeLorean ayudó a convertirla en una de las películas más influyentes y populares del cine comercial de los años ochenta.",
+      "expanded": "Dirigida por Robert Zemeckis y producida por Steven Spielberg, la película sigue a Marty McFly cuando altera involuntariamente el encuentro entre sus padres y debe reparar la historia antes de regresar a 1985. Su éxito dio origen a dos secuelas y consolidó una forma de mezclar ciencia ficción con comedia adolescente que sería muy imitada. La relación entre Marty y Doc Brown también se volvió uno de sus rasgos más recordados.",
+      "dateNote": "El hito toma el estreno comercial de Back to the Future en 1985.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "pulp": {
+      "summary": "Pulp Fiction reorganizó el relato criminal en capítulos no lineales y convirtió conversaciones cotidianas, violencia abrupta y humor negro en una mezcla muy reconocible. La película de Quentin Tarantino ganó la Palma de Oro y ayudó a llevar una sensibilidad asociada al cine independiente estadounidense hacia un público internacional mucho más amplio.",
+      "expanded": "La historia entrecruza a dos sicarios, un boxeador, una pareja de asaltantes y la esposa de un jefe criminal mediante episodios presentados fuera del orden cronológico. Su montaje obliga al espectador a reconstruir relaciones y consecuencias, mientras el diálogo ocupa un lugar tan importante como la acción. El éxito crítico y comercial reforzó la posición de Tarantino y mostró que una película de estructura poco convencional podía convertirse en un fenómeno masivo.",
+      "dateNote": "El año corresponde a su estreno y a la obtención de la Palma de Oro en 1994.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "titanic": {
+      "summary": "Titanic convirtió el naufragio de 1912 en un melodrama de gran escala que combinó reconstrucción histórica, romance y efectos visuales. La película de James Cameron se transformó en un fenómeno mundial, ganó once premios Óscar y durante años ocupó el primer lugar entre las películas de mayor recaudación de la historia.",
+      "expanded": "La trama ficticia de Jack y Rose permitió recorrer distintos espacios y clases sociales del transatlántico antes del choque con el iceberg. Cameron combinó decorados de gran tamaño, modelos, efectos digitales y exploraciones reales del pecio para construir una sensación de detalle histórico. Su éxito mostró hasta qué punto una producción extremadamente costosa podía recuperar la inversión a escala global y mantener una larga vida cultural mucho después de su estreno.",
+      "dateNote": "El hito usa el estreno de Titanic en 1997, no el naufragio histórico de 1912.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "matrix": {
+      "summary": "The Matrix mezcló acción, filosofía y ciencia ficción alrededor de una pregunta inquietante: qué ocurriría si la realidad cotidiana fuera una simulación. Su estilo visual, especialmente el llamado bullet time, renovó el lenguaje de las escenas de acción y convirtió la película en una referencia cultural de finales de los noventa.",
+      "expanded": "La historia sigue a Neo, un programador que descubre que la humanidad vive dentro de una realidad artificial controlada por máquinas. Las hermanas Wachowski combinaron artes marciales, efectos digitales y referencias a la filosofía, la religión y el cyberpunk. Además de su éxito comercial, la película impulsó nuevas técnicas de fotografía y composición visual y dejó conceptos, frases e imágenes que continuaron circulando fuera del cine durante décadas.",
+      "dateNote": "El año corresponde al estreno comercial de The Matrix en 1999.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "rashomon": {
+      "summary": "Rashomon convirtió un mismo crimen en varias versiones incompatibles y mostró que la memoria y el testimonio pueden depender del interés de quien cuenta la historia. La película de Akira Kurosawa ganó el León de Oro en Venecia y abrió una puerta decisiva para la difusión internacional del cine japonés.",
+      "expanded": "El relato reconstruye una muerte y una agresión mediante testimonios de distintos personajes, cada uno con contradicciones y motivos propios. Esa estructura dio origen a la expresión “efecto Rashomon”, utilizada para describir situaciones en que varias personas recuerdan de manera distinta un mismo hecho. El reconocimiento obtenido en festivales europeos también ayudó a que directores japoneses fueran vistos y estudiados con mayor atención fuera de Japón durante la década de 1950.",
+      "dateNote": "El hito toma el estreno japonés de 1950; el León de Oro llegó en 1951.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "sevensamurai": {
+      "summary": "Los siete samuráis combinó drama histórico, acción y retratos de grupo en la historia de una aldea que contrata guerreros para defenderse de bandidos. Akira Kurosawa convirtió la preparación, el trabajo colectivo y la batalla final en un modelo narrativo que influiría en westerns, películas de guerra y aventuras posteriores.",
+      "expanded": "La película dedica buena parte de su duración a reunir al grupo, conocer a los campesinos y organizar la defensa antes del enfrentamiento. Esa estructura permite que cada samurái tenga una personalidad distinta y que la acción dependa de decisiones tácticas y relaciones humanas. Su influencia puede rastrearse en remakes y en numerosas historias posteriores basadas en reunir especialistas para una misión común, desde westerns hasta cine de acción contemporáneo.",
+      "dateNote": "El año corresponde al estreno japonés de la película en 1954.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "psycho": {
+      "summary": "Psicosis alteró las expectativas del thriller al desplazar tempranamente el centro de la historia y convertir un motel aparentemente corriente en un espacio de amenaza. Alfred Hitchcock utilizó montaje, música y sugerencia visual para producir tensión con recursos relativamente contenidos, dejando una huella enorme en el cine de suspenso y terror.",
+      "expanded": "La famosa escena de la ducha es un ejemplo de cómo el montaje puede sugerir más violencia de la que realmente muestra la cámara. Hitchcock también sorprendió al público al romper convenciones narrativas sobre quién debía ocupar el centro de la película. El éxito de Psicosis demostró que una producción en blanco y negro, realizada con un presupuesto menor que otras obras del director, podía convertirse en un acontecimiento comercial y cambiar las reglas del género.",
+      "dateNote": "El hito toma el estreno de Psicosis en 1960.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "2001film": {
+      "summary": "2001: A Space Odyssey trató el viaje espacial con una escala visual y sonora poco habitual para su época. Stanley Kubrick y Arthur C. Clarke combinaron evolución humana, inteligencia artificial y exploración cósmica en una película que privilegia imágenes, música y ambigüedad antes que explicaciones directas.",
+      "expanded": "La película sigue varios saltos temporales, desde grupos prehumanos hasta una misión hacia Júpiter controlada en parte por la computadora HAL 9000. Sus efectos visuales fueron diseñados antes de la llegada del ser humano a la Luna y buscaban representar con seriedad el movimiento en gravedad cero y el aspecto de las naves. Su ritmo y final abierto dividieron inicialmente a parte del público, pero con el tiempo se convirtió en una obra central de la ciencia ficción cinematográfica.",
+      "dateNote": "El año corresponde al estreno de la película en 1968.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "akiraanime": {
+      "summary": "Akira llevó a la animación japonesa una visión monumental de Neo-Tokio, combinando conflicto juvenil, poder estatal y transformación tecnológica. Su detalle visual y su distribución internacional ayudaron a ampliar el público del anime fuera de Japón y convirtieron la película en una referencia recurrente de la estética cyberpunk.",
+      "expanded": "Basada en el manga de Katsuhiro Otomo y dirigida por el propio autor, la película utiliza una enorme cantidad de dibujos y una animación especialmente fluida para representar persecuciones, multitudes y destrucción urbana. La historia concentra parte del manga alrededor de Kaneda y Tetsuo, dos jóvenes vinculados a experimentos militares. Su circulación en video y salas extranjeras durante los años siguientes fue importante para la expansión internacional del anime dirigido a públicos adultos.",
+      "dateNote": "El hito toma el estreno japonés de Akira en 1988.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "oldboy": {
+      "summary": "Oldboy convirtió una historia de secuestro y venganza en un thriller extremo sobre memoria, culpa y manipulación. La película de Park Chan-wook destacó por su puesta en escena, sus giros narrativos y una famosa pelea filmada de manera lateral, consolidándose como una obra clave de la expansión internacional del cine surcoreano.",
+      "expanded": "El protagonista, Oh Dae-su, es liberado después de pasar quince años encerrado sin saber quién lo hizo ni por qué. Su búsqueda de respuestas conduce a una trama en la que la violencia física importa tanto como el control de la información y los recuerdos. El reconocimiento internacional, incluido el Gran Premio del Festival de Cannes, ayudó a aumentar la visibilidad de Park Chan-wook y del cine surcoreano durante los primeros años del siglo XXI.",
+      "dateNote": "El hito toma el estreno surcoreano de 2003; el premio en Cannes llegó en 2004.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "roma": {
+      "summary": "Roma transformó recuerdos de infancia de Alfonso Cuarón en un retrato íntimo de una trabajadora doméstica y una familia de Ciudad de México a comienzos de los años setenta. Filmada en blanco y negro, conectó experiencias privadas con tensiones sociales y políticas y tuvo una circulación mundial impulsada por Netflix.",
+      "expanded": "La película sigue a Cleo mientras trabaja en una casa del barrio Roma y atraviesa cambios personales en paralelo a la crisis familiar de sus empleadores. Cuarón utilizó planos largos, sonido detallado y reconstrucciones urbanas para observar la vida cotidiana sin convertirla en simple fondo histórico. Roma obtuvo el León de Oro en Venecia y ganó, entre otros premios, el Óscar a mejor película internacional y el de dirección, reforzando el debate sobre la distribución digital y las salas.",
+      "dateNote": "El año corresponde al estreno y circuito de festivales de Roma en 2018.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "portraitladyfire": {
+      "summary": "Retrato de una mujer en llamas construyó una historia de deseo y observación entre una pintora y la joven a la que debe retratar. Céline Sciamma utilizó silencios, miradas y composición visual para explorar quién mira a quién y cómo el recuerdo puede preservar una relación incluso después de terminar.",
+      "expanded": "Ambientada en la Francia del siglo XVIII, la película sigue a Marianne, contratada para pintar en secreto el retrato matrimonial de Héloïse. A medida que ambas pasan tiempo juntas, el encargo se convierte en una relación afectiva y en una reflexión sobre arte, consentimiento y memoria. La película ganó el premio al mejor guion en Cannes y fue ampliamente celebrada por la precisión de su puesta en escena y por situar la mirada femenina en el centro del relato.",
+      "dateNote": "El hito toma su estreno en festivales y salas durante 2019.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "rrr": {
+      "summary": "RRR convirtió una amistad ficticia entre dos figuras de la resistencia anticolonial india en un espectáculo de acción de enorme escala. La película en telugu de S. S. Rajamouli combinó melodrama, coreografías, efectos visuales y una energía desbordante que facilitó un éxito internacional inusual para una producción india fuera de sus mercados habituales.",
+      "expanded": "La historia imagina un encuentro entre Alluri Sitarama Raju y Komaram Bheem, personajes históricos que en realidad no vivieron las aventuras mostradas en la película. Rajamouli utiliza esa libertad para construir secuencias de acción deliberadamente exageradas y números musicales integrados al conflicto político. La canción “Naatu Naatu” obtuvo el Óscar a mejor canción original, mientras la película circuló ampliamente en plataformas y salas internacionales, ampliando la visibilidad global del cine telugu.",
+      "dateNote": "El año corresponde al estreno comercial de RRR en 2022.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "thriller": {
+      "summary": "Thriller convirtió el pop de Michael Jackson en un fenómeno global que unió ventas discográficas, videoclips y una estrategia de difusión masiva. El álbum reunió canciones de estilos distintos y terminó estableciendo un récord de ventas que lo volvió una referencia inevitable para medir el alcance comercial de la música popular.",
+      "expanded": "Producido principalmente por Quincy Jones junto a Jackson, el disco incluye temas como Billie Jean, Beat It y la canción que le da título. Sus videos ayudaron a ampliar la presencia de artistas negros en MTV y a convertir el videoclip en una herramienta promocional de enorme importancia. El impacto del álbum no dependió de un solo sencillo: varios temas tuvieron gran difusión y sostuvieron sus ventas durante un periodo excepcionalmente largo.",
+      "dateNote": "El hito toma la publicación de Thriller en 1982.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "likeavirgin": {
+      "summary": "Like a Virgin consolidó a Madonna como una figura central del pop de los años ochenta y convirtió su imagen pública en parte inseparable de la música. El álbum combinó canciones orientadas al baile con una estrategia visual provocadora que ayudó a definir cómo una estrella pop podía controlar su propia narrativa mediática.",
+      "expanded": "El segundo álbum de Madonna fue producido en gran parte por Nile Rodgers y contiene canciones como Material Girl y Like a Virgin. La presentación de esta última en los MTV Video Music Awards de 1984 se convirtió en uno de los momentos más comentados de su carrera. El éxito del disco amplió su audiencia internacional y reforzó una forma de pop en la que videoclips, moda, actuaciones y controversia funcionaban como partes coordinadas de un mismo proyecto artístico.",
+      "dateNote": "El año corresponde a la publicación de Like a Virgin en 1984.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "abbeyroad": {
+      "summary": "Abbey Road reunió a The Beatles en una de sus últimas sesiones de estudio y convirtió su lado B en una larga secuencia de canciones enlazadas. Aunque Let It Be aparecería después, este fue el último álbum que los cuatro grabaron juntos de principio a fin y quedó asociado a una de las portadas más imitadas de la música popular.",
+      "expanded": "El disco fue grabado en gran parte en los estudios de EMI que más tarde adoptarían oficialmente el nombre Abbey Road. Incluye canciones como Come Together, Something y Here Comes the Sun, además del medley que ocupa buena parte de la segunda mitad. El uso cuidadoso del estudio, los arreglos y las transiciones muestra a la banda trabajando con gran precisión en un momento en que sus relaciones internas ya estaban muy tensionadas.",
+      "dateNote": "El hito toma la publicación de Abbey Road en 1969; Let It Be se publicó en 1970 pero fue grabado antes.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "thewall": {
+      "summary": "The Wall convirtió el aislamiento emocional en una narrativa completa sobre un músico que levanta una barrera imaginaria entre sí mismo y el mundo. Pink Floyd combinó rock, efectos sonoros y personajes recurrentes en un álbum conceptual que luego se expandió a conciertos escénicos y a una película.",
+      "expanded": "Roger Waters desarrolló la historia alrededor de Pink, un personaje marcado por pérdidas, educación autoritaria, fama y alienación. Canciones como Another Brick in the Wall, Part 2 resumen la metáfora de cada experiencia dolorosa como un ladrillo más en esa barrera psicológica. El proyecto trascendió el formato de disco: la banda diseñó conciertos con un muro construido físicamente en el escenario y, pocos años después, la narrativa llegó al cine.",
+      "dateNote": "El hito toma la publicación del álbum doble The Wall en 1979.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "rumours": {
+      "summary": "Rumours transformó conflictos sentimentales dentro de Fleetwood Mac en canciones de enorme alcance popular. Mientras varias relaciones entre integrantes se desintegraban, el grupo produjo un disco de pop y rock cuidadosamente construido que convirtió tensiones personales en un repertorio capaz de conectar con millones de oyentes.",
+      "expanded": "Durante la grabación, las parejas formadas por Stevie Nicks y Lindsey Buckingham y por Christine y John McVie atravesaban rupturas, mientras Mick Fleetwood también enfrentaba problemas personales. Muchas letras dialogan indirectamente con esas relaciones, lo que dio al álbum una tensión poco común entre intimidad y producción pulida. Canciones como Dreams, Go Your Own Way y Don’t Stop ayudaron a sostener ventas extraordinarias y una larga presencia cultural.",
+      "dateNote": "El año corresponde a la publicación de Rumours en 1977.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "adele21": {
+      "summary": "21 convirtió la voz de Adele y un conjunto de canciones sobre ruptura sentimental en uno de los mayores éxitos discográficos del siglo XXI. En una época de transición hacia el streaming, el álbum demostró que un repertorio centrado en interpretación vocal y composición tradicional todavía podía alcanzar ventas globales extraordinarias.",
+      "expanded": "El disco incluye canciones como Rolling in the Deep, Someone Like You y Set Fire to the Rain. Su éxito fue gradual y persistente: permaneció durante meses en los primeros lugares de distintos mercados y acumuló numerosos premios, incluidos varios Grammy. La producción mezcla soul, pop y elementos de country y gospel sin depender de una estética electrónica dominante, lo que ayudó a diferenciar a Adele dentro del panorama comercial de comienzos de la década de 2010.",
+      "dateNote": "El hito toma la publicación de 21 en 2011.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "badbunny": {
+      "summary": "Un Verano Sin Ti convirtió una mezcla de reguetón, dembow, indie y referencias caribeñas en uno de los discos más escuchados de 2022. Bad Bunny organizó el álbum como una secuencia asociada al verano, la fiesta y la nostalgia, y reforzó el alcance global de la música urbana en español.",
+      "expanded": "El álbum incluye colaboraciones y cambios de estilo que van desde bases de reguetón hasta influencias de mambo, merengue y pop alternativo. Su enorme rendimiento en plataformas de streaming mostró que un lanzamiento principalmente en español podía competir de forma sostenida en los principales mercados internacionales. Más allá de las cifras, el disco consolidó a Bad Bunny como una figura capaz de ampliar las fronteras comerciales del pop latino sin abandonar el español como idioma principal.",
+      "dateNote": "El año corresponde a la publicación de Un Verano Sin Ti en 2022.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "shakira": {
+      "summary": "¿Dónde están los ladrones? consolidó a Shakira como una de las voces más visibles del pop latino de finales de los noventa. El álbum combinó rock, pop y referencias latinoamericanas con letras de tono personal y social, y amplió considerablemente su presencia fuera de Colombia.",
+      "expanded": "El título nació después del robo de una maleta que contenía letras y materiales de trabajo de la cantante. Producido junto a Emilio Estefan y otros colaboradores, el disco incluye canciones como Ciega, sordomuda y Ojos así. Su éxito en América Latina y el mercado hispano de Estados Unidos preparó el terreno para la expansión internacional que Shakira alcanzaría pocos años después con su primer gran proyecto en inglés.",
+      "dateNote": "El hito toma la publicación del álbum en 1998.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "kindofblue": {
+      "summary": "Kind of Blue llevó el jazz modal a una audiencia enorme mediante piezas que dejaban más espacio a la improvisación sobre escalas y estructuras relativamente abiertas. Miles Davis reunió a músicos excepcionales y produjo un álbum de sonido sereno y flexible que terminó convirtiéndose en una de las grabaciones más influyentes de la historia del jazz.",
+      "expanded": "En las sesiones participaron, entre otros, John Coltrane, Cannonball Adderley, Bill Evans y Paul Chambers. En lugar de depender de progresiones armónicas muy densas, varias composiciones ofrecían marcos modales que permitían a los solistas explorar melodías con mayor libertad. Esa combinación de accesibilidad, sutileza y enorme nivel interpretativo ayudó a que el álbum trascendiera el público especializado y se transformara en una puerta de entrada habitual al jazz moderno.",
+      "dateNote": "El año corresponde a la grabación y publicación de Kind of Blue en 1959.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "getzgilberto": {
+      "summary": "Getz/Gilberto reunió el saxofón de Stan Getz con la guitarra y la voz de João Gilberto y ayudó a llevar la bossa nova brasileña a un público internacional masivo. Su sonido íntimo y relajado convirtió el álbum en uno de los cruces más influyentes entre jazz estadounidense y música brasileña.",
+      "expanded": "El disco contó también con Antônio Carlos Jobim y con la participación vocal de Astrud Gilberto. La interpretación de The Girl from Ipanema se transformó en un éxito internacional y ganó reconocimiento en los Grammy. El álbum mostró que una producción contenida, con arreglos ligeros y gran énfasis en el fraseo, podía cruzar barreras lingüísticas y comerciales, fortaleciendo la presencia de la bossa nova en Estados Unidos y otros mercados.",
+      "dateNote": "El hito toma la publicación de Getz/Gilberto en 1964; las sesiones se realizaron en 1963.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "bocanada": {
+      "summary": "Bocanada marcó el regreso de Gustavo Cerati a un álbum solista después del final de Soda Stereo y mostró una orientación más electrónica y atmosférica. El disco mezcló programación, samplers, guitarras y arreglos orquestales para construir una identidad propia, separada del sonido de su antigua banda.",
+      "expanded": "Cerati trabajó con productores y músicos en un repertorio que combina canciones de estructura pop con pasajes más experimentales. Temas como Puente, Engaña y Bocanada muestran el interés del músico por integrar electrónica, rock y texturas ambientales sin abandonar la melodía. Con el tiempo el álbum fue adquiriendo un lugar central dentro de su obra solista y es citado con frecuencia como uno de los discos latinoamericanos más representativos de fines de los noventa.",
+      "dateNote": "El hito toma la publicación de Bocanada en 1999.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "motomami": {
+      "summary": "Motomami llevó a Rosalía hacia un pop fragmentado que combina reguetón, electrónica, flamenco, baladas y sonidos experimentales. El álbum alterna momentos muy producidos con otros deliberadamente desnudos y convirtió esa inestabilidad estilística en parte central de su identidad artística.",
+      "expanded": "Rosalía trabajó con múltiples productores y colaboradores, pero mantuvo una fuerte presencia autoral en canciones que juegan con ritmos urbanos, voces procesadas y referencias tradicionales. Temas como Saoko y Hentai muestran extremos distintos de esa propuesta. El disco recibió una respuesta crítica muy amplia y ganó el Grammy Latino a álbum del año, consolidando a Rosalía como una artista capaz de moverse entre circuitos comerciales y experimentales sin separar claramente ambos mundos.",
+      "dateNote": "El hito toma la publicación de Motomami en 2022.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "pacman": {
+      "summary": "Pac-Man reemplazó disparos y naves por un laberinto, comida y cuatro fantasmas con comportamientos distintos. Su diseño accesible amplió el público de los salones recreativos y convirtió al personaje amarillo en uno de los primeros iconos de los videojuegos reconocibles incluso fuera de ese medio.",
+      "expanded": "Diseñado por Toru Iwatani para Namco, el juego propone recorrer un laberinto mientras se comen puntos y se evitan fantasmas, salvo durante breves periodos de poder. La sencillez de la regla oculta una estructura estratégica basada en rutas y patrones de movimiento. El éxito de Pac-Man produjo secuelas, mercancías y adaptaciones y mostró que los videojuegos podían construir personajes y marcas con una presencia cultural comparable a otros productos de entretenimiento.",
+      "dateNote": "El hito toma el lanzamiento original de Pac-Man en Japón en 1980.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "tetris": {
+      "summary": "Tetris convirtió piezas geométricas que caen en una regla casi universal: completar líneas sin dejar huecos. Creado por Alexey Pajitnov en la Unión Soviética, el juego demostró que una mecánica extremadamente simple podía sostener una experiencia profunda y atravesar plataformas, idiomas y generaciones.",
+      "expanded": "Pajitnov desarrolló Tetris mientras trabajaba en un centro de computación de Moscú. El juego se difundió primero entre computadores y luego alcanzó una audiencia enorme gracias a versiones comerciales, especialmente la incluida con Game Boy. La disputa internacional por sus derechos es casi tan conocida como su diseño. Su permanencia se explica por una estructura que combina aprendizaje inmediato, aumento progresivo de dificultad y una búsqueda constante de eficiencia espacial.",
+      "dateNote": "El hito toma la creación de Tetris en 1984; su expansión comercial internacional ocurrió después.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "supermario": {
+      "summary": "Super Mario Bros. convirtió desplazamiento lateral, saltos precisos y secretos escondidos en una de las fórmulas más influyentes del diseño de videojuegos. Su éxito en Nintendo Entertainment System ayudó a consolidar a Mario como personaje central de Nintendo y a redefinir el mercado doméstico tras la crisis de comienzos de los ochenta.",
+      "expanded": "Diseñado por un equipo encabezado por Shigeru Miyamoto y Takashi Tezuka, el juego introduce sus reglas de manera gradual a través del propio nivel, sin depender de largas explicaciones. La variedad de enemigos, tuberías, objetos y rutas secretas dio profundidad a una estructura sencilla. Su enorme difusión junto a la NES ayudó a recuperar la confianza del público en las consolas domésticas y estableció convenciones que todavía aparecen en juegos de plataformas décadas después.",
+      "dateNote": "El hito toma el lanzamiento japonés de Super Mario Bros. en 1985.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "sf2": {
+      "summary": "Street Fighter II convirtió el combate uno contra uno en un sistema competitivo basado en personajes muy distintos, movimientos especiales y lectura del rival. Su popularidad en arcades ayudó a crear una cultura de enfrentamiento directo entre jugadores y estableció buena parte del vocabulario moderno de los juegos de lucha.",
+      "expanded": "Capcom diseñó un elenco con estilos, velocidades y alcances diferentes, lo que hacía que cada enfrentamiento exigiera aprender tanto al propio personaje como al oponente. La posibilidad de que un segundo jugador interrumpiera una partida para desafiar al primero fue esencial para su dimensión social. Versiones posteriores ampliaron el reparto y ajustaron el equilibrio, mientras las conversiones domésticas llevaron esa competencia a millones de hogares.",
+      "dateNote": "El hito toma el lanzamiento arcade de Street Fighter II en 1991.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "wow": {
+      "summary": "World of Warcraft convirtió el universo de Warcraft en un mundo persistente habitado simultáneamente por millones de jugadores. Su combinación de exploración, misiones, grupos y progresión de personajes hizo más accesible el género de los MMORPG y transformó la forma en que una gran audiencia entendía los juegos en línea.",
+      "expanded": "Blizzard construyó Azeroth como un espacio compartido donde los jugadores podían avanzar de manera individual o colaborar en mazmorras, bandas y actividades sociales. El diseño redujo varias barreras presentes en MMORPG anteriores y ofreció un ritmo de recompensas muy claro. Con expansiones periódicas, el juego mantuvo una comunidad enorme durante años y convirtió expresiones como raid, guild o quest en parte del vocabulario habitual de una generación de jugadores.",
+      "dateNote": "El hito toma el lanzamiento comercial de World of Warcraft en 2004.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "ps2": {
+      "summary": "PlayStation 2 combinó una consola de videojuegos con reproducción de DVD en un momento en que ese formato audiovisual se expandía rápidamente. Su amplio catálogo, la compatibilidad con muchos juegos de la primera PlayStation y una larga vida comercial la convirtieron en una de las consolas más vendidas de la historia.",
+      "expanded": "Sony lanzó la consola primero en Japón y luego en otros mercados durante 2000. El lector de DVD aumentó su atractivo como dispositivo para el salón, mientras el apoyo de numerosos estudios produjo un catálogo extremadamente diverso. Series como Grand Theft Auto, Final Fantasy, Metal Gear Solid y Gran Turismo tuvieron entregas muy visibles en la plataforma. Su éxito consolidó a PlayStation como una de las marcas dominantes de la industria durante esa generación.",
+      "dateNote": "El hito toma el lanzamiento inicial de PlayStation 2 en 2000.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "fortnite": {
+      "summary": "Fortnite pasó de un proyecto cooperativo de supervivencia a un battle royale gratuito que reunió a enormes comunidades alrededor de partidas, temporadas y eventos en vivo. Su modelo de actualizaciones constantes y objetos cosméticos ayudó a convertir el juego en una plataforma cultural además de un producto competitivo.",
+      "expanded": "Epic Games lanzó primero Fortnite: Save the World, pero el modo Battle Royale modificó rápidamente la escala del proyecto. Cien jugadores compiten hasta que queda un vencedor mientras construyen estructuras y exploran un mapa que cambia con el tiempo. Conciertos, colaboraciones con películas y marcas y eventos narrativos dentro del juego ampliaron su función social. El modelo free-to-play financiado por cosméticos se volvió especialmente influyente en la industria.",
+      "dateNote": "El hito toma el lanzamiento de Fortnite y de su modo Battle Royale durante 2017.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "amongus": {
+      "summary": "Among Us transformó tareas simples y acusaciones entre jugadores en un juego social sobre confianza, engaño y observación. Aunque apareció en 2018, su popularidad explotó dos años después gracias a transmisiones en línea y al contexto de reuniones virtuales durante la pandemia.",
+      "expanded": "Los participantes interpretan tripulantes de una nave mientras uno o más impostores intentan eliminarlos sin ser descubiertos. El núcleo del juego ocurre en las discusiones, donde cada persona debe justificar movimientos, recordar acciones y decidir a quién creer. Streamers y creadores de contenido ayudaron a multiplicar su audiencia durante 2020. Ese crecimiento tardío mostró cómo un juego pequeño podía encontrar un público masivo mucho después de su lanzamiento original.",
+      "dateNote": "El hito toma el lanzamiento original de Among Us en 2018; su explosión de popularidad ocurrió principalmente en 2020.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "pong": {
+      "summary": "Pong redujo el tenis de mesa a dos barras y un punto en movimiento, pero esa simplicidad fue suficiente para demostrar que los videojuegos podían funcionar como negocio de entretenimiento público. El éxito de la máquina arcade de Atari ayudó a impulsar la primera gran expansión comercial de la industria.",
+      "expanded": "Inspirado por juegos electrónicos anteriores, Pong fue desarrollado en Atari por Allan Alcorn como un proyecto inicial. Una de las primeras máquinas instaladas en un bar generó suficiente interés como para convencer a la empresa de producirlo a mayor escala. Su control inmediato y sus partidas cortas eran ideales para espacios públicos. El fenómeno provocó numerosos imitadores y preparó el terreno para versiones domésticas durante los años siguientes.",
+      "dateNote": "El hito toma el lanzamiento comercial de Pong por Atari en 1972.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "zelda": {
+      "summary": "The Legend of Zelda convirtió la exploración de un mundo abierto en el centro de una aventura que premiaba curiosidad, memoria y experimentación. En lugar de avanzar sólo por una secuencia fija de niveles, el jugador podía descubrir secretos, objetos y rutas, una idea que influiría profundamente en los juegos de aventura posteriores.",
+      "expanded": "Diseñado por Nintendo bajo la dirección de Shigeru Miyamoto y Takashi Tezuka, el juego presenta a Link recorriendo Hyrule para reunir fragmentos de la Trifuerza y enfrentar a Ganon. Su estructura permite visitar muchas zonas en órdenes diferentes y obliga a interpretar pistas del entorno. La versión para Famicom Disk System apareció primero en Japón, mientras la edición occidental para NES popularizó además el uso de una batería interna para guardar progreso.",
+      "dateNote": "El hito toma el lanzamiento japonés del primer The Legend of Zelda en 1986.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "darksouls": {
+      "summary": "Dark Souls convirtió un mundo interconectado, combates exigentes y una narrativa fragmentaria en una fórmula que cambiaría el diseño de juegos de acción. Su dificultad no depende sólo de reflejos: obliga a observar enemigos, administrar recursos y aprender de cada derrota.",
+      "expanded": "FromSoftware construyó Lordran como un espacio cuyos atajos y conexiones se descubren gradualmente, dando una fuerte sensación de lugar. El juego comunica buena parte de su historia mediante descripciones de objetos, arquitectura y encuentros en lugar de largas escenas explicativas. Sus sistemas de mensajes y apariciones de otros jugadores también mezclan experiencia individual y presencia comunitaria. El impacto fue tan grande que el término soulslike pasó a describir un subgénero entero.",
+      "dateNote": "El hito toma el lanzamiento de Dark Souls en 2011.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "baldursgate3": {
+      "summary": "Baldur’s Gate 3 llevó reglas y decisiones propias de Dungeons & Dragons a un videojuego de rol con enorme libertad para resolver problemas. Conversaciones, exploración y combate admiten numerosas alternativas, y muchas decisiones producen consecuencias que reaparecen horas después.",
+      "expanded": "Larian Studios construyó el juego sobre una adaptación de la quinta edición de Dungeons & Dragons y permitió combinar habilidades, objetos y elementos del entorno de formas poco previsibles. El énfasis en personajes con historias propias y en elecciones persistentes refuerza la sensación de campaña de mesa. Tras varios años en acceso anticipado, el lanzamiento completo recibió una respuesta crítica y comercial excepcional y obtuvo numerosos premios a juego del año.",
+      "dateNote": "El hito toma el lanzamiento completo de Baldur’s Gate 3 en 2023, no el inicio del acceso anticipado en 2020.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "valdivia1960": {
+      "summary": "El terremoto de Valdivia de 1960 fue el sismo de mayor magnitud registrado instrumentalmente y desencadenó un tsunami que cruzó el océano Pacífico. Su impacto modificó ciudades, costas y ríos del sur de Chile y convirtió el desastre en una referencia mundial para la sismología y la gestión del riesgo.",
+      "expanded": "El sismo principal alcanzó magnitud 9,5 y ocurrió después de una secuencia de terremotos que ya había afectado el centro-sur del país. El tsunami golpeó la costa chilena y llegó horas más tarde a lugares tan distantes como Hawái y Japón. En la zona de Valdivia, hundimientos del terreno y deslizamientos alteraron profundamente el paisaje. La catástrofe reforzó el estudio de los procesos de subducción y la necesidad de sistemas internacionales de alerta de tsunami.",
+      "dateNote": "El hito toma el gran terremoto del 22 de mayo de 1960.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "golpe1973": {
+      "summary": "El golpe de Estado del 11 de septiembre de 1973 derrocó al gobierno de Salvador Allende y dio inicio a una dictadura militar encabezada por Augusto Pinochet. El quiebre institucional marcó profundamente la política chilena y estuvo acompañado por persecución, prisión, tortura, ejecuciones y exilio de opositores.",
+      "expanded": "Las Fuerzas Armadas y Carabineros tomaron el control de puntos estratégicos mientras La Moneda fue bombardeada y Allende murió en el palacio presidencial. Después del golpe se disolvió el Congreso, se restringieron libertades políticas y se estableció una junta militar. Las violaciones sistemáticas de derechos humanos cometidas durante la dictadura fueron posteriormente documentadas por comisiones oficiales y procesos judiciales. El periodo terminó con la transición democrática iniciada en 1990.",
+      "dateNote": "El hito corresponde al golpe de Estado del 11 de septiembre de 1973.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "nobelneruda": {
+      "summary": "Pablo Neruda recibió el Premio Nobel de Literatura en 1971, convirtiéndose en el segundo autor chileno en obtenerlo después de Gabriela Mistral. La Academia Sueca destacó una obra poética capaz de dar vida a los destinos y sueños de un continente.",
+      "expanded": "Neruda había desarrollado una obra muy diversa, desde la poesía amorosa de Veinte poemas de amor y una canción desesperada hasta proyectos históricos y políticos como Canto general. El Nobel confirmó una proyección internacional que ya llevaba décadas. Su figura, sin embargo, no se reduce al premio: también tuvo una intensa actividad política y diplomática, y su legado literario sigue conviviendo con debates críticos sobre aspectos de su vida personal y pública.",
+      "dateNote": "El hito toma la concesión del Premio Nobel de Literatura a Neruda en 1971.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "rios1998": {
+      "summary": "Ricardo Lagos se convirtió en 1998 en una figura central de la política chilena al ganar la primaria presidencial de la Concertación frente a Andrés Zaldívar. Ese proceso abrió el camino a la elección de 1999-2000, en la que Lagos sería elegido presidente de la República.",
+      "expanded": "La primaria de 1998 fue un mecanismo inédito a gran escala dentro de la Concertación para definir una candidatura presidencial mediante participación ciudadana. Lagos, del bloque socialista y socialdemócrata, obtuvo una victoria amplia sobre Zaldívar, representante de la Democracia Cristiana. El resultado modificó los equilibrios internos de la coalición y preparó una elección presidencial estrecha frente a Joaquín Lavín, que terminó resolviéndose en segunda vuelta en enero de 2000.",
+      "dateNote": "El hito toma la primaria de la Concertación realizada en 1998, no la elección presidencial posterior.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "terremoto27f": {
+      "summary": "El terremoto del 27 de febrero de 2010 alcanzó magnitud 8,8 y afectó una extensa zona del centro-sur de Chile. El posterior tsunami golpeó varias localidades costeras y convirtió las fallas de alerta y coordinación en uno de los principales temas de evaluación pública después de la emergencia.",
+      "expanded": "El sismo ocurrió de madrugada y produjo daños severos en viviendas, infraestructura, carreteras y servicios. Minutos después, olas de tsunami afectaron localidades costeras, especialmente en las regiones del Maule y Biobío. La catástrofe dejó cientos de fallecidos y abrió un proceso prolongado de reconstrucción. También impulsó cambios en protocolos de emergencia, telecomunicaciones y sistemas de alerta, al quedar en evidencia problemas de coordinación institucional durante las primeras horas.",
+      "dateNote": "El hito corresponde al terremoto y tsunami del 27 de febrero de 2010.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "tvn": {
+      "summary": "Televisión Nacional de Chile comenzó sus transmisiones regulares en 1969 como una red estatal con aspiración de cobertura nacional. Su creación buscó conectar distintas regiones mediante una misma señal y terminó convirtiéndola en uno de los actores principales de la televisión chilena.",
+      "expanded": "Antes de TVN, la televisión chilena estaba dominada por canales vinculados a universidades y con cobertura principalmente regional. La nueva empresa estatal desarrolló una red de estaciones y repetidoras que amplió gradualmente su alcance por el país. A lo largo de las décadas, TVN ha operado bajo modelos institucionales distintos y ha cumplido funciones informativas, culturales y de entretenimiento. Su historia también refleja las transformaciones políticas y tecnológicas de la televisión chilena.",
+      "dateNote": "El hito toma el inicio de las transmisiones regulares de TVN en 1969.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "womenvotechile": {
+      "summary": "Chile reconoció en 1949 el derecho de las mujeres a votar en elecciones presidenciales y parlamentarias, ampliando una ciudadanía política que hasta entonces estaba restringida. La reforma culminó décadas de organización feminista y complementó avances previos que permitían votar en elecciones municipales.",
+      "expanded": "Las mujeres habían obtenido derecho a participar en elecciones municipales durante la década de 1930, pero continuaban excluidas de las elecciones nacionales. Organizaciones como el Movimiento Pro-Emancipación de las Mujeres de Chile impulsaron campañas sostenidas por la igualdad política. La ley promulgada en 1949 permitió que las mujeres participaran plenamente en comicios parlamentarios y presidenciales; la primera elección presidencial en que pudieron ejercer ese derecho fue la de 1952.",
+      "dateNote": "El hito toma la promulgación de la ley de sufragio femenino pleno en 1949; la primera elección presidencial con participación femenina fue en 1952.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "tvchile": {
+      "summary": "La televisión chilena tuvo una de sus primeras transmisiones experimentales públicas en 1957, cuando equipos universitarios comenzaron a demostrar que era posible producir y recibir imágenes televisivas localmente. Ese periodo precedió al desarrollo de los canales universitarios y, más tarde, de una red estatal de alcance nacional.",
+      "expanded": "Las primeras experiencias televisivas chilenas surgieron en universidades que desarrollaban equipos y laboratorios de electrónica. Las transmisiones iniciales tenían un alcance limitado y todavía no existía una industria televisiva estable. En los años siguientes aparecieron canales ligados a la Pontificia Universidad Católica de Valparaíso, la Universidad Católica de Chile y la Universidad de Chile. Esa etapa experimental permitió formar técnicos, crear programación local y preparar la expansión del medio durante la década de 1960.",
+      "dateNote": "El hito toma 1957 como referencia para una de las primeras transmisiones televisivas experimentales públicas en Chile, antes de la televisión regular.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "vinadelmarfestival": {
+      "summary": "El Festival Internacional de la Canción de Viña del Mar comenzó en 1960 como una actividad musical vinculada a la temporada turística de la ciudad. Con el tiempo pasó de un concurso local a uno de los espectáculos televisivos más visibles de América Latina.",
+      "expanded": "Las primeras ediciones se realizaron en un formato mucho más pequeño que el actual y combinaron competencia musical con presentaciones de artistas. A medida que creció la televisión chilena, el festival aumentó su audiencia y se transformó en un evento anual de gran exposición mediática. La Quinta Vergara se consolidó como su escenario emblemático y el comportamiento del público, conocido como el Monstruo, pasó a formar parte del relato cultural asociado al certamen.",
+      "dateNote": "El hito toma la primera edición del festival en 1960.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "allendelection": {
+      "summary": "Salvador Allende obtuvo la primera mayoría relativa en la elección presidencial chilena de 1970 y fue ratificado posteriormente por el Congreso Nacional. Su llegada a La Moneda convirtió a Chile en un caso observado internacionalmente por intentar una transición al socialismo mediante instituciones electorales y constitucionales.",
+      "expanded": "Allende encabezó la coalición Unidad Popular y compitió principalmente con Jorge Alessandri y Radomiro Tomic. Como ningún candidato superó la mitad de los votos, la Constitución exigía que el Congreso eligiera entre las dos primeras mayorías. Tras un acuerdo de garantías constitucionales, el Congreso ratificó a Allende. Su gobierno impulsó nacionalizaciones y reformas sociales en un contexto de polarización creciente, crisis económica y fuerte intervención de actores internos y externos.",
+      "dateNote": "El hito toma la elección presidencial y ratificación de Allende en 1970.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "coppernationalization": {
+      "summary": "Chile nacionalizó constitucionalmente la gran minería del cobre en 1971 mediante una reforma aprobada por unanimidad en el Congreso. La medida transfirió al Estado el control de grandes yacimientos que estaban en manos de compañías extranjeras y reforzó la idea del cobre como recurso estratégico nacional.",
+      "expanded": "La reforma constitucional permitió expropiar grandes empresas cupríferas y fue presentada por el gobierno de Salvador Allende como una decisión de soberanía económica. El proceso tuvo antecedentes en políticas de chilenización desarrolladas durante el gobierno anterior. La nacionalización modificó de manera duradera la estructura de propiedad del sector y sentó bases para el papel que posteriormente tendría Codelco. El cobre continuó siendo una fuente central de exportaciones e ingresos fiscales para Chile.",
+      "dateNote": "El hito toma la reforma constitucional de nacionalización del cobre aprobada en 1971.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "metrosantiago": {
+      "summary": "El Metro de Santiago inició operaciones en 1975 con el primer tramo de la Línea 1 entre San Pablo y La Moneda. La apertura introdujo un sistema de transporte subterráneo de gran capacidad que durante las décadas siguientes se expandiría hasta convertirse en una pieza central de la movilidad metropolitana.",
+      "expanded": "La planificación de una red de metro venía desarrollándose desde años anteriores como respuesta al crecimiento urbano y a la congestión de Santiago. El primer tramo recorría el eje Alameda y conectaba sectores occidentales con el centro. Nuevas líneas y extensiones fueron incorporándose progresivamente, modificando patrones de viaje y desarrollo urbano. Con el tiempo, Metro de Santiago se integró con buses y otros modos de transporte y pasó a movilizar diariamente a una parte significativa de la población.",
+      "dateNote": "El hito toma el inicio de operaciones comerciales del Metro de Santiago en 1975.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "cienanos": {
+      "summary": "Cien años de soledad convirtió la historia de la familia Buendía y del pueblo de Macondo en una narración donde lo cotidiano y lo extraordinario conviven sin fronteras claras. La novela de Gabriel García Márquez se volvió una obra emblemática del llamado Boom latinoamericano y alcanzó una difusión mundial excepcional.",
+      "expanded": "A lo largo de varias generaciones, la novela repite nombres, deseos, conflictos y formas de soledad mientras Macondo pasa del aislamiento a la modernización y la violencia política. García Márquez mezcla episodios inspirados en la historia colombiana con sucesos fantásticos narrados como parte normal del mundo. Su éxito internacional amplió la presencia de la literatura latinoamericana en otros idiomas y convirtió el realismo mágico en una etiqueta conocida mucho más allá de la región.",
+      "dateNote": "El hito toma la primera publicación de Cien años de soledad en 1967.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "cd1982": {
+      "summary": "El disco compacto llegó al mercado comercial en 1982 como un soporte digital de audio desarrollado principalmente por Philips y Sony. Su lectura mediante láser eliminó el contacto físico de una aguja con la superficie y ayudó a desplazar gradualmente al vinilo y al casete durante las décadas siguientes.",
+      "expanded": "El CD almacenaba audio digital en un disco óptico pequeño y permitía acceder a pistas sin el desgaste mecánico propio de otros formatos. Los primeros reproductores y discos eran costosos, pero la producción masiva redujo precios y aceleró su adopción. Durante los años noventa el formato dominó gran parte de la industria musical y también preparó el terreno para otros usos de la tecnología óptica, como CD-ROM y posteriormente DVD.",
+      "dateNote": "El hito toma el inicio de la comercialización del CD de audio en 1982.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "mtv": {
+      "summary": "MTV comenzó a emitir en 1981 con una programación centrada en videoclips musicales y convirtió la televisión en una herramienta decisiva para promocionar artistas. La imagen, la moda y la narrativa audiovisual pasaron a tener un peso mucho mayor en la manera en que una canción alcanzaba al público juvenil.",
+      "expanded": "El canal abrió su señal con un mensaje que anunciaba la llegada de una nueva forma de televisión musical. Durante los años siguientes, los videoclips se volvieron una parte central de las campañas discográficas y artistas como Michael Jackson, Madonna y Prince utilizaron el formato para construir identidades visuales muy reconocibles. MTV también influyó en lenguaje, moda y cultura juvenil, aunque su programación y representación fueron objeto de debates y cambios a lo largo del tiempo.",
+      "dateNote": "El hito toma el inicio de emisiones de MTV en 1981.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "barbie": {
+      "summary": "Barbie apareció en 1959 como una muñeca adulta destinada a permitir juegos de roles más amplios que los asociados a muñecos infantiles. Creada por Ruth Handler para Mattel, su diseño, vestuario y profesiones cambiantes la convirtieron en uno de los productos de juguetería más reconocibles del mundo.",
+      "expanded": "La muñeca fue presentada en la American International Toy Fair de Nueva York y rápidamente desarrolló un universo de ropa, accesorios y personajes. A lo largo de las décadas, Mattel utilizó Barbie para representar numerosas profesiones y estilos de vida, al mismo tiempo que recibió críticas por sus ideales corporales y de consumo. Los rediseños posteriores incorporaron más tipos de cuerpo, tonos de piel y referencias culturales, mostrando cómo una marca de juguete puede adaptarse a cambios sociales.",
+      "dateNote": "El hito toma la presentación comercial de Barbie en 1959.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "dragonball": {
+      "summary": "Dragon Ball comenzó como manga en 1984 y combinó aventura, humor y artes marciales alrededor de Son Goku. La obra de Akira Toriyama creció desde una búsqueda inspirada libremente en Viaje al Oeste hasta una saga de combates que tendría enorme influencia sobre el manga y el anime de acción posteriores.",
+      "expanded": "La serie apareció inicialmente en la revista Weekly Shōnen Jump y fue ampliando progresivamente su escala, sus personajes y sus enfrentamientos. Las adaptaciones animadas multiplicaron su difusión internacional durante los años siguientes. Recursos hoy habituales en el shōnen, como torneos, transformaciones, rivales que se vuelven aliados y aumentos sucesivos de poder, quedaron fuertemente asociados a Dragon Ball, que se convirtió en una puerta de entrada al anime para públicos de numerosos países.",
+      "dateNote": "El hito toma el inicio de publicación del manga Dragon Ball en 1984.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "friends": {
+      "summary": "Friends convirtió la vida cotidiana de seis jóvenes adultos en Nueva York en una de las comedias televisivas más influyentes de los años noventa. Su mezcla de relaciones, trabajo y amistad produjo personajes y situaciones reconocibles que continuaron circulando mucho después de que terminara la serie.",
+      "expanded": "La serie sigue a Rachel, Ross, Monica, Chandler, Joey y Phoebe a través de cambios laborales, romances y conflictos cotidianos. Su estructura de comedia de situación se apoyaba en un elenco coral y en escenarios recurrentes como el apartamento de Monica y la cafetería Central Perk. El éxito internacional de las retransmisiones y, más tarde, del streaming permitió que nuevas generaciones la descubrieran, convirtiéndola en un ejemplo de larga vida comercial para una serie televisiva.",
+      "dateNote": "El hito toma el estreno televisivo de Friends en 1994.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "breakingbad": {
+      "summary": "Breaking Bad siguió la transformación de Walter White desde profesor de química hasta productor de metanfetamina y utilizó ese recorrido para explorar poder, orgullo y justificación moral. La serie convirtió una premisa criminal en un estudio prolongado de cómo decisiones pequeñas pueden acumular consecuencias irreversibles.",
+      "expanded": "Creada por Vince Gilligan, la serie comienza cuando White recibe un diagnóstico médico grave y decide fabricar droga junto a un antiguo alumno. Con el tiempo, la motivación económica inicial se mezcla con ambición, control y deseo de reconocimiento. La narración usa detalles visuales, anticipaciones y consecuencias acumulativas para mostrar la evolución de los personajes. Su recepción crítica y popular ayudó a consolidar la idea de la televisión serializada como espacio para relatos dramáticos de gran complejidad.",
+      "dateNote": "El hito toma el estreno de Breaking Bad en 2008.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "got": {
+      "summary": "Game of Thrones llevó la fantasía política de George R. R. Martin a una serie televisiva de escala poco habitual, con múltiples familias, territorios y conflictos narrados en paralelo. Su éxito convirtió intrigas dinásticas, dragones y guerras medievales ficticias en un fenómeno global de conversación semanal.",
+      "expanded": "La adaptación de HBO comenzó siguiendo de cerca las novelas de A Song of Ice and Fire y fue ampliando progresivamente su escala de producción. La serie se hizo conocida por eliminar personajes centrales, mantener conflictos moralmente ambiguos y utilizar escenarios naturales de varios países. Su enorme audiencia impulsó el valor comercial de las grandes producciones televisivas de fantasía. El final, sin embargo, provocó una recepción mucho más dividida que las primeras temporadas.",
+      "dateNote": "El hito toma el estreno de la primera temporada de Game of Thrones en 2011.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "lotrbook": {
+      "summary": "El Señor de los Anillos convirtió la Tierra Media de J. R. R. Tolkien en una narración épica sobre poder, amistad, guerra y pérdida. Publicada en tres volúmenes entre 1954 y 1955, la obra redefinió el alcance de la fantasía moderna y ejerció una influencia enorme sobre literatura, juegos y cine.",
+      "expanded": "Tolkien desarrolló lenguas, genealogías, mapas e historias previas que daban al mundo ficticio una profundidad poco común. La trama sigue el intento de destruir el Anillo Único mientras distintos pueblos enfrentan el regreso de Sauron. Aunque suele llamarse trilogía, Tolkien concibió la obra como una sola novela dividida por razones editoriales. Su éxito consolidó muchas convenciones posteriores de la fantasía épica y abrió un mercado masivo para mundos ficticios extensamente construidos.",
+      "dateNote": "El hito toma la publicación del primer volumen, La Comunidad del Anillo, en 1954; los otros dos aparecieron entre 1954 y 1955.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "mafalda": {
+      "summary": "Mafalda apareció en 1964 como una niña curiosa que observa política, guerra, desigualdad y vida familiar con una mezcla de ingenuidad e ironía. Quino utilizó situaciones domésticas muy breves para convertir problemas mundiales en preguntas comprensibles y mordaces.",
+      "expanded": "La historieta se publicó en distintos medios argentinos y reunió alrededor de Mafalda a personajes con visiones muy diferentes del mundo, como Susanita, Manolito, Felipe y Libertad. Sus conversaciones permiten abordar consumismo, autoritarismo, educación y roles de género sin abandonar el humor cotidiano. Aunque Quino dejó de dibujar nuevas tiras en 1973, Mafalda continuó reeditándose y traduciéndose, hasta convertirse en uno de los personajes más reconocibles de la historieta latinoamericana.",
+      "dateNote": "El hito toma el inicio de publicación regular de Mafalda en 1964.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "emoji": {
+      "summary": "Los primeros conjuntos de emoji modernos fueron desarrollados en Japón a fines de los años noventa para añadir información visual breve a los mensajes móviles. Shigetaka Kurita diseñó un conjunto de pequeños pictogramas para el servicio i-mode de NTT DoCoMo, antecedente directo del uso global actual.",
+      "expanded": "El conjunto original incluía símbolos sobre clima, transporte, emociones y actividades cotidianas, pensados para transmitir información en pantallas pequeñas y con pocos caracteres. Otros operadores japoneses desarrollaron sistemas similares y durante años existieron incompatibilidades entre plataformas. La incorporación posterior de emoji al estándar Unicode permitió que los mismos códigos pudieran circular entre dispositivos y sistemas operativos distintos, facilitando su expansión mundial durante la década de 2010.",
+      "dateNote": "El hito toma 1999 como referencia para el conjunto de emoji de NTT DoCoMo diseñado por Shigetaka Kurita.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    },
+    "wordle": {
+      "summary": "Wordle convirtió una palabra diaria de cinco letras en un ritual compartido gracias a una regla sencilla y a la posibilidad de publicar resultados sin revelar la respuesta. Creado por Josh Wardle, pasó de ser un proyecto personal a un fenómeno global en pocos meses.",
+      "expanded": "Cada jugador dispone de seis intentos y recibe pistas de color que indican si una letra está ausente, presente o en la posición correcta. Al existir sólo una palabra por día, la experiencia limita el tiempo de juego y sincroniza a toda la comunidad alrededor del mismo desafío. La cuadrícula de resultados compartible ayudó a su difusión en redes sociales. Su crecimiento llevó a que The New York Times adquiriera el juego a comienzos de 2022.",
+      "dateNote": "El hito toma la publicación pública de Wordle en 2021; su expansión masiva y adquisición ocurrieron en 2022.",
+      "confidence": "medium",
+      "confidenceReason": "Borrador editorial apoyado en la fuente factual existente del banco; requiere validación humana final de redacción y fuente."
+    }
+  }
+}
