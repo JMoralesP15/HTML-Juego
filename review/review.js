@@ -3,7 +3,7 @@
  */
 (function(){
   'use strict';
-  const VERSION='1.8.7-draft.1';
+  const VERSION='1.8.7-draft.2';
   const STORAGE_KEY='que-ano-editorial-review-v18';
   const LEGACY_V181_KEY='que-ano-editorial-proposals-v181-batch01';
   const evidence=(window.__QA_V18_EVIDENCE__?.rows)||{};
@@ -11,7 +11,9 @@
   const byId=new Map(questions.map(q=>[q.id,q]));
   const v181=window.__QA_EDITORIAL_PROPOSALS_V181__?.items||{};
   const v182=window.__QA_EDITORIAL_PROPOSALS_V182__?.items||{};
-  const v181Ids=new Set(Object.keys(v181)),v182Ids=new Set(Object.keys(v182));
+  const batchV187=new Map((window.__QA_EDITORIAL_BATCH_V187__?.items||[]).map(x=>[x.id,x]));
+  const batch02Ids=new Set(window.__QA_EDITORIAL_BATCH02_V187__?.ids||[]);
+  const v181Ids=new Set(Object.keys(v181));
   const priority={needs_review:0,item_specific_reference:1,structured_corroborated:2,manual_verified:3};
   const factualStates=['pending','approved','doubtful','incorrect','review_source'];
   const textStates=['pending','approved','edit','generic','redundant'];
@@ -21,8 +23,9 @@
   const asset=v=>{if(!v)return'';if(/^https?:|^data:|^blob:/.test(v))return v;return `../${String(v).replace(/^\.\//,'')}`};
   const $=id=>document.getElementById(id);
   const proposalFor=id=>v182[id]||v181[id]||null;
-  const batchFor=id=>v182Ids.has(id)?'batch-02-100':v181Ids.has(id)?'batch-01-50':'none';
-  const candidateFor=(q,e)=>e?.media||q?.v18Media||null;
+  const batchItemFor=id=>batchV187.get(id)||null;
+  const batchFor=id=>batch02Ids.has(id)?'batch-02-100':v181Ids.has(id)?'batch-01-50':'none';
+  const candidateFor=(q,e)=>batchItemFor(q.id)?.mediaCandidate||e?.media||q?.v18Media||null;
 
   let store=loadStore(),filtered=[],currentId=null;
 
@@ -56,6 +59,16 @@
   function evidenceFor(id){return evidence[id]||byId.get(id)?.v18Evidence||null}
   function statusLabel(s){return ({manual_verified:'Verificada manualmente',structured_corroborated:'Corroborada estructuralmente',item_specific_reference:'Referencia específica',needs_review:'Requiere revisión'})[s]||s||'Sin evidencia'}
   function statusTone(s){return s==='manual_verified'?'good':s==='needs_review'?'bad':'warn'}
+  function learningFor(q,p){
+    const item=batchItemFor(q.id);
+    return {
+      summary:item?.learning?.summary??p?.summary??q.context??q.fact??'',
+      expanded:item?.learning?.expanded??p?.expanded??q.significance??'',
+      dateNote:item?.learning?.dateNote??p?.dateNote??'',
+      check:item?.textCheck||null,
+      source:item?.textSource|| (p?'proposal':'current_bank')
+    };
+  }
   function allRows(){return questions.map(q=>({q,e:evidenceFor(q.id),r:record(q.id),p:proposalFor(q.id),batch:batchFor(q.id)})).sort((a,b)=>(priority[a.e?.status]??4)-(priority[b.e?.status]??4)||a.q.category.localeCompare(b.q.category,'es')||a.q.title.localeCompare(b.q.title,'es'))}
 
   function populateCategories(){const cats=[...new Set(questions.map(q=>q.category))].sort((a,b)=>a.localeCompare(b,'es'));$('categoryFilter').insertAdjacentHTML('beforeend',cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join(''))}
@@ -92,19 +105,24 @@
     const row=filtered.find(x=>x.q.id===currentId);
     if(!row){$('reviewCard').innerHTML='<div class="empty-state">No hay fichas disponibles con los filtros actuales.</div>';return}
     const {q,e,p,batch}=row,r=record(q.id),candidate=candidateFor(q,e),currentImage=q.v18LegacyImage||q.image||'';
+    const learning=learningFor(q,p),batchItem=batchItemFor(q.id);
     const currentCaption=q.imageCredit?`${esc(q.imageCredit)}${q.imageLicense?` · ${esc(q.imageLicense)}`:''}`:'';
     const candidateCaption=candidate?`${esc(candidate.artist||'Autor no indicado')} · ${esc(candidate.license||'Licencia no indicada')}<br>${candidate.sourcePage?sourceLink(candidate.sourcePage,'Procedencia y licencia'):''}`:'';
     const issues=e?.issues||[];
-    const summary=r.edits.summary??p?.summary??'',expanded=r.edits.expanded??p?.expanded??'',dateNote=r.edits.dateNote??p?.dateNote??'';
+    const summary=r.edits.summary??learning.summary,expanded=r.edits.expanded??learning.expanded,dateNote=r.edits.dateNote??learning.dateNote;
+    const contractualText=batch!=='none'||Boolean(p);
+    const textState=batchItem?.textCheck;
+    const textChip=p?'propuesta contractual':batchItem?textState?.summaryOk&&textState?.expandedOk&&textState?.noMetadiscourse?'contenido actual compatible':'contenido actual · requiere ajuste':'contenido actual';
+    const photoChip=batchItem?.mediaCandidate?'foto real candidata':candidate?'candidata previa':'sin candidata';
     $('reviewCard').innerHTML=`
       <header class="record-header"><div><span class="kicker">${esc(q.id)}</span><h2>${esc(q.title)}</h2><div class="record-meta"><span class="chip">${q.year}</span><span class="chip">${esc(q.category)}</span><span class="chip">${esc(q.region||'Sin región')}</span>${batch!=='none'?`<span class="chip good">${esc(batch)}</span>`:''}<span class="chip ${statusTone(e?.status)}">${esc(statusLabel(e?.status))}</span></div></div><div class="evidence-status">${complete(r)?approved(r)?'<strong style="color:var(--good)">REVISIÓN COMPLETA · APROBADA</strong>':'<strong style="color:var(--warn)">REVISIÓN COMPLETA · CON OBSERVACIONES</strong>':'Pendiente de hecho, texto y visual'}</div></header>
       <div class="review-grid"><section class="pane">
-        <div class="section"><div class="section-head"><h3>1 · Hecho y fuente</h3></div><div class="section-body"><div class="copy-block"><span>Pregunta</span><p>${esc(q.prompt||'')}</p></div><div class="copy-block"><span>Dato actual</span><p>${esc(q.fact||'Sin dato breve')}</p></div><div class="source-row"><span class="chip ${statusTone(e?.status)}">${esc(statusLabel(e?.status))}</span>${sourceLink(p?.source||e?.sourceUrl||q.source,p?.sourceLabel||e?.sourceLabel||q.sourceLabel)}</div>${e?.evidence?.yearMatch?`<div class="copy-block" style="margin-top:.8rem"><span>Corroboración temporal</span><p>${esc(e.evidence.yearMatch.label||'Fecha')}: ${esc(e.evidence.yearMatch.exactDate||e.evidence.yearMatch.year||q.year)}</p></div>`:''}${issues.length?`<ul class="issue-list">${issues.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<div style="margin-top:.9rem">${statusButtons('factualStatus',r.factualStatus,[['approved','✓ Correcto','good'],['doubtful','? Dudoso','warn'],['review_source','↗ Revisar fuente','warn'],['incorrect','✕ Incorrecto','bad']])}</div></div></div>
-        <div class="section"><div class="section-head"><h3>2 · Contenido textual</h3><span class="chip">${p?'propuesta narrativa':'contenido actual'}</span></div><div class="section-body">
-          ${p?`<div class="compare"><div class="compare-card"><h4>Actual</h4><p>${esc(q.context||q.fact||'Sin contexto explícito')}</p></div><div class="compare-card"><h4>Propuesta contractual</h4><p>${esc(summary||'Sin resumen')}</p></div></div><div class="editor-fields" style="margin-top:.85rem"><label>Aprendizaje breve visible<textarea data-edit="summary">${esc(summary)}</textarea></label><label>Contexto ampliado opcional<textarea data-edit="expanded">${esc(expanded)}</textarea></label><label>Nota cronológica opcional<textarea data-edit="dateNote">${esc(dateNote)}</textarea></label></div>${p.imageBrief?`<div class="copy-block" style="margin-top:.8rem"><span>Imagen ideal según propuesta</span><p>${esc(p.imageBrief)}</p></div>`:''}`:`<div class="editor-fields"><label>Dato breve<input data-edit="fact" value="${esc(r.edits.fact??q.fact??'')}"></label><label>Contexto<textarea data-edit="context">${esc(r.edits.context??q.context??'')}</textarea></label><label>Relevancia<textarea data-edit="significance">${esc(r.edits.significance??q.significance??'')}</textarea></label></div>`}
+        <div class="section"><div class="section-head"><h3>1 · Hecho y fuente</h3></div><div class="section-body"><div class="copy-block"><span>Pregunta</span><p>${esc(q.prompt||'')}</p></div><div class="copy-block"><span>Dato actual</span><p>${esc(q.fact||'Sin dato breve')}</p></div><div class="source-row"><span class="chip ${statusTone(e?.status)}">${esc(statusLabel(e?.status))}</span>${sourceLink(p?.source||batchItem?.sourceUrl||e?.sourceUrl||q.source,p?.sourceLabel||batchItem?.sourceLabel||e?.sourceLabel||q.sourceLabel)}</div>${e?.evidence?.yearMatch?`<div class="copy-block" style="margin-top:.8rem"><span>Corroboración temporal</span><p>${esc(e.evidence.yearMatch.label||'Fecha')}: ${esc(e.evidence.yearMatch.exactDate||e.evidence.yearMatch.year||q.year)}</p></div>`:''}${issues.length?`<ul class="issue-list">${issues.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<div style="margin-top:.9rem">${statusButtons('factualStatus',r.factualStatus,[['approved','✓ Correcto','good'],['doubtful','? Dudoso','warn'],['review_source','↗ Revisar fuente','warn'],['incorrect','✕ Incorrecto','bad']])}</div></div></div>
+        <div class="section"><div class="section-head"><h3>2 · Contenido textual</h3><span class="chip">${esc(textChip)}</span></div><div class="section-body">
+          ${contractualText?`<div class="compare"><div class="compare-card"><h4>Actual</h4><p>${esc(q.context||q.fact||'Sin contexto explícito')}</p></div><div class="compare-card"><h4>${p?'Propuesta contractual':'Borrador para ajustar'}</h4><p>${esc(summary||'Sin resumen')}</p></div></div><div class="editor-fields" style="margin-top:.85rem"><label>Aprendizaje breve visible<textarea data-edit="summary">${esc(summary)}</textarea></label><label>Contexto ampliado opcional<textarea data-edit="expanded">${esc(expanded)}</textarea></label><label>Nota cronológica opcional<textarea data-edit="dateNote">${esc(dateNote)}</textarea></label></div>${textState?`<div class="copy-block" style="margin-top:.8rem"><span>Diagnóstico del contrato</span><p>${textState.summaryWords} palabras visibles · ${textState.expandedWords} ampliadas · ${textState.noMetadiscourse?'sin metadiscurso':'revisar metadiscurso'}.</p></div>`:''}${p?.imageBrief?`<div class="copy-block" style="margin-top:.8rem"><span>Imagen ideal según propuesta</span><p>${esc(p.imageBrief)}</p></div>`:''}`:`<div class="editor-fields"><label>Dato breve<input data-edit="fact" value="${esc(r.edits.fact??q.fact??'')}"></label><label>Contexto<textarea data-edit="context">${esc(r.edits.context??q.context??'')}</textarea></label><label>Relevancia<textarea data-edit="significance">${esc(r.edits.significance??q.significance??'')}</textarea></label></div>`}
           <div style="margin-top:.9rem">${statusButtons('textStatus',r.textStatus,[['approved','✓ Aprobar texto','good'],['edit','✎ Editar','warn'],['generic','Muy genérico','warn'],['redundant','Redundante','bad']])}</div></div></div>
       </section><section class="pane">
-        <div class="section"><div class="section-head"><h3>3 · Contenido visual</h3><span class="chip">${candidate?'candidata disponible':'sin candidata'}</span></div><div class="section-body"><div class="compare">${imageCard('Actual',currentImage,currentCaption)}${imageCard('Candidata documental',candidate?.src,candidateCaption)}</div>${candidate?.description?`<div class="copy-block" style="margin-top:.8rem"><span>Descripción documental</span><p>${esc(candidate.description)}</p></div>`:''}<div style="margin-top:.9rem">${statusButtons('mediaStatus',r.mediaStatus,[['approved','✓ Aprobar visual','good'],['irrelevant','Irrelevante','warn'],['anachronistic','Anacrónica','bad'],['rights_review','Revisar derechos','warn'],['no_photo','Sin foto está bien','good']])}</div><div class="status-group" style="margin-top:.6rem">${candidate?`<button class="status-btn ${r.mediaChoice==='candidate'?'selected':''}" data-media-choice="candidate">Usar candidata</button>`:''}${currentImage?`<button class="status-btn ${r.mediaChoice==='current'?'selected':''}" data-media-choice="current">Mantener actual</button>`:''}<button class="status-btn ${r.mediaChoice==='none'?'selected':''}" data-media-choice="none">No usar imagen</button></div></div></div>
+        <div class="section"><div class="section-head"><h3>3 · Contenido visual</h3><span class="chip">${esc(photoChip)}</span></div><div class="section-body"><div class="compare">${imageCard('Actual',currentImage,currentCaption)}${imageCard(batchItem?.mediaCandidate?'Fotografía real candidata':'Candidata documental',candidate?.src,candidateCaption)}</div>${candidate?.description?`<div class="copy-block" style="margin-top:.8rem"><span>Descripción documental</span><p>${esc(candidate.description)}</p></div>`:''}${batchItem?.mediaCandidate?`<div class="copy-block" style="margin-top:.8rem"><span>Señales automáticas</span><p>Coincidencia semántica: ${esc((batchItem.mediaCandidate.matchedEntityTokens||[]).join(', ')||'sí')} · ${batchItem.mediaCandidate.exactYear?'menciona el año del hito':'sin año exacto en metadata'}${batchItem.mediaCandidate.originalYear?` · fecha de imagen ${batchItem.mediaCandidate.originalYear}`:''}. La aprobación humana sigue siendo obligatoria.</p></div>`:''}<div style="margin-top:.9rem">${statusButtons('mediaStatus',r.mediaStatus,[['approved','✓ Aprobar visual','good'],['irrelevant','Irrelevante','warn'],['anachronistic','Anacrónica','bad'],['rights_review','Revisar derechos','warn'],['no_photo','Sin foto está bien','good']])}</div><div class="status-group" style="margin-top:.6rem">${candidate?`<button class="status-btn ${r.mediaChoice==='candidate'?'selected':''}" data-media-choice="candidate">Usar candidata</button>`:''}${currentImage?`<button class="status-btn ${r.mediaChoice==='current'?'selected':''}" data-media-choice="current">Mantener actual</button>`:''}<button class="status-btn ${r.mediaChoice==='none'?'selected':''}" data-media-choice="none">No usar imagen</button></div></div></div>
         <div class="section note-box"><div class="section-head"><h3>Nota del revisor</h3></div><div class="section-body"><textarea id="reviewNote" placeholder="Qué corregir, qué fuente buscar o por qué la imagen no sirve…">${esc(r.note||'')}</textarea></div></div>
       </section></div>`;
     $('currentPosition').textContent=`${filtered.findIndex(x=>x.q.id===currentId)+1} / ${filtered.length}`;
@@ -132,5 +150,5 @@
   document.addEventListener('keydown',e=>{if(/input|textarea|select/i.test(e.target?.tagName||''))return;if(e.key==='ArrowLeft'){e.preventDefault();navigate(-1)}else if(e.key==='ArrowRight'){e.preventDefault();navigate(1)}else if(e.key.toLowerCase()==='a'){e.preventDefault();approveAvailable()}else if(e.key.toLowerCase()==='r'){e.preventDefault();markReview()}else if(e.key.toLowerCase()==='n'){e.preventDefault();acceptNoPhoto()}});
 
   migrateLegacyV181();populateCategories();applyFilters({keepCurrent:false});
-  window.__QA_EDITORIAL_REVIEW_CONSOLE__={version:VERSION,getCurrent:()=>currentId,getStore:()=>JSON.parse(JSON.stringify(store)),proposalFor,batchFor,applyFilters,exportStore};
+  window.__QA_EDITORIAL_REVIEW_CONSOLE__={version:VERSION,getCurrent:()=>currentId,getStore:()=>JSON.parse(JSON.stringify(store)),proposalFor,batchItemFor,batchFor,learningFor,applyFilters,exportStore};
 })();
