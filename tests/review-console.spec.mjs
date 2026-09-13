@@ -172,6 +172,9 @@ test('archivo subido se incorpora al JSON exportado sin aprobación automática'
   const downloading=page.waitForEvent('download');await page.locator('#exportButton').click();
   const download=await downloading,exported=JSON.parse(fs.readFileSync(await download.path(),'utf8'));
   expect(exported.records[id].customImages[0].src).toBe(saved.customImages[0].src);
+  await page.evaluate(()=>localStorage.removeItem('que-ano-editorial-review-v18'));await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__);
+  await page.locator('#importInput').setInputFiles({name:'review.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});
+  await expect.poll(()=>page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id]?.customImages?.length||0,id)).toBe(1);
   await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__);
   await expect(page.locator('.visual-candidate-grid img[src^="data:image/jpeg"]')).toBeVisible();
 });
@@ -198,4 +201,16 @@ test('las imágenes manuales del original no pasan al evento de reemplazo',async
   await page.locator('[data-preview-image]').click();await expect(page.locator('#customImagePreview')).toBeVisible();await page.locator('[data-add-image]').click();
   const added=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getCandidates(api.getCurrent())});
   expect(added).toHaveLength(1);expect(added[0].eventScope).toBe('replacement:0');
+});
+
+test('si falta espacio no se pierde la revisión ni se simula guardar una imagen',async({page})=>{
+  await boot(page);await openImageForm(page);
+  await page.locator('#customImageFile').setInputFiles({name:'foto.png',mimeType:'image/png',buffer:tinyPNG});
+  await page.locator('#customImageCredit').fill('Archivo de prueba');
+  await page.locator('[data-preview-image]').click();await expect(page.locator('#customImagePreview')).toBeVisible();
+  await page.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key==='que-ano-editorial-review-v18'&&Object.values(JSON.parse(value).records||{}).some(r=>r.customImages?.length))throw new DOMException('Quota','QuotaExceededError');return original.call(this,key,value)}});
+  await page.locator('[data-add-image]').click();
+  await expect(page.locator('#customImageMessage')).toContainText('No se pudo guardar');
+  const saved=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getStore().records[api.getCurrent()]});
+  expect(saved.customImages||[]).toHaveLength(0);await expect(page.locator('#customImagePreview')).toBeVisible();
 });
