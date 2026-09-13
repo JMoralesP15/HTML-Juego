@@ -1,5 +1,6 @@
-/* QUÉ AÑO v1.5 — simplificación, claridad y timer de tiempo real.
+/* QUÉ AÑO v1.5 — simplificación y claridad.
  * v1.7: las decoraciones visuales usan el contrato de render compartido.
+ * v1.8.5: SCORING_TIMER pertenece a Atlas; esta capa ya no redefine el reloj.
  */
 (function(){
   'use strict';
@@ -30,54 +31,7 @@
     }
   }
 
-  /* Timer absoluto: ocultar la pestaña puede detener el repaint, nunca el reloj. */
-  const legacyTimerCompute=qaTimerComputeRemaining;
-  qaTimerComputeRemaining=function(){
-    if(!qaTimer?.key)return QA_TIMER_DURATION_MS;
-    if(Number.isFinite(qaTimer.deadline))return Math.max(0,qaTimer.deadline-Date.now());
-    return legacyTimerCompute();
-  };
-
-  qaTimerStart=function(){
-    const key=qaTimerKey();if(!key)return;
-    if(qaTimer.key!==key){
-      qaTimerClearInterval();
-      qaTimer={key,interval:null,remainingMs:QA_TIMER_DURATION_MS,deadline:Date.now()+QA_TIMER_DURATION_MS,lastTickAt:null,paused:document.visibilityState!=='visible',expired:false,announced5:false,lastSoundSecond:null};
-    }else if(!Number.isFinite(qaTimer.deadline)){
-      qaTimer.deadline=Date.now()+Math.max(0,Number(qaTimer.remainingMs)||QA_TIMER_DURATION_MS);
-    }
-    qaTimer.paused=document.visibilityState!=='visible';
-    qaTimerClearInterval();qaTimerPaint();
-    if(!qaTimer.paused)qaTimer.interval=setInterval(qaTimerLoop,100);
-  };
-
-  qaTimerPause=function(){
-    if(!qaTimer?.key)return;
-    qaTimer.paused=true;qaTimerClearInterval();qaTimerPaint();
-  };
-
-  qaTimerResume=function(){
-    if(!qaTimer?.key||qaTimer.expired||!round||round.phase!=='question')return;
-    qaTimer.paused=false;qaTimerClearInterval();
-    if(qaTimerComputeRemaining()<=0){qaTimerLoop();return}
-    qaTimerPaint();qaTimer.interval=setInterval(qaTimerLoop,100);
-  };
-
-  if(window.__QA_TIMER__){
-    window.__QA_TIMER__.pause=qaTimerPause;
-    window.__QA_TIMER__.resume=qaTimerResume;
-    window.__QA_TIMER__.setRemaining=function(ms){
-      if(!qaTimer?.key)return;
-      const next=Math.max(0,Math.min(QA_TIMER_DURATION_MS,Number(ms)||0));
-      qaTimer.remainingMs=next;qaTimer.deadline=Date.now()+next;qaTimer.expired=false;qaTimerPaint();
-    };
-    window.__QA_TIMER__.expire=function(){
-      if(!qaTimer?.key)return;
-      qaTimer.remainingMs=0;qaTimer.deadline=Date.now()-1;qaTimerLoop();
-    };
-  }
-
-  /* Telemetría explícita de las acciones de v1.5. */
+  /* Telemetría explícita de las acciones de v1.5. El dominio timer/scoring no se redefine aquí. */
   const baseCommitAnswer=commitAnswer;
   commitAnswer=function(skipped=false,options={}){
     const q=currentQuestion(),before=qaTimerSnapshot();
