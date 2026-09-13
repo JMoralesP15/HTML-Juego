@@ -1,0 +1,21 @@
+{
+  "schema": "que-ano-editorial-review-media-summary-v1.8.8",
+  "targetIds": 141,
+  "replacementEvents": 30,
+  "replacementVariants": 60,
+  "searchedOriginals": 141,
+  "searchedReplacements": 60,
+  "foundOriginals": 111,
+  "foundReplacements": 59,
+  "originalCoverage": 0.7872340425531915,
+  "replacementCoverage": 0.9833333333333333,
+  "noCandidate": 4,
+  "errors": 27,
+  "totalCandidates": 1026,
+  "publishable": 455,
+  "reviewOnly": 571,
+  "publishableShare": 0.4434697855750487,
+  "maxPerEvent": 8,
+  "workflowRun": 34742030821,
+  "artifactId": 10313586200
+}
