@@ -1,4 +1,4 @@
-# QUÉ AÑO — Contract Registry v1.8.6
+# QUÉ AÑO — Contract Registry v1.8.7
 
 El registro describe el runtime observado, no la arquitectura deseada. `UNIQUE` significa un propietario efectivo sin otro writer canónico cargado conocido; `SHARED` describe responsabilidad repartida de forma explícita; `CONFLICT` indica múltiples capas capaces de alterar el mismo comportamiento. Código renombrado como legacy sigue siendo transicional y no se considera autorización de borrado.
 
@@ -21,20 +21,20 @@ El registro describe el runtime observado, no la arquitectura deseada. `UNIQUE` 
 | 15 | ACCESSIBILITY | DOM + `interaction-v17.css` + tests | responsabilidad transversal | SHARED | DIRECT | `accessibility.spec` | mantener como gate transversal |
 | 16 | VISUAL_SYSTEM | 5 CSS activos | cascade entre generaciones | CONFLICT | DIRECT | `regression.spec`, `visual.spec` | reducir cascade sólo con capturas/baselines congeladas |
 | 17 | QA_RELEASE | workflow + suites | reports y Playwright | SHARED | INDIRECT | `.github/workflows/qa.yml` | mantener captura determinista y artifacts; no regenerar baselines automáticamente |
-| 18 | EDITORIAL_REVIEW_TOOL | `review.js` + `editorial-assist-v181.js` | decisiones/almacenamiento separados | CONFLICT | DIRECT | `review-console.spec`, `editorial-assist-v181.spec` | converger stores/decisiones antes de ampliar lotes |
+| 18 | EDITORIAL_REVIEW_TOOL | `review/review.js` | propuestas v1.8.1/v1.8.2 y evidencia/media se consumen en una sola consola y un solo store; el overlay v1.8.1 fue retirado | UNIQUE | DIRECT | `review-console.spec` | mantener un solo esquema de decisión y migraciones explícitas; no reintroducir overlays paralelos |
 
 ## Métricas contractuales
 
 - Contratos auditados: 18/18.
-- Propietario único sin competidor canónico cargado conocido: 8/18 (`RENDER_GAME`, `CONTENT_BANK`, `SCHEDULER`, `CALENDAR`, `STORAGE`, `SCORING_TIMER`, `NAVIGATION`, `ANALYTICS`).
-- `ownership_ratio = 8 / 18 = 0.4444`.
+- Propietario único sin competidor canónico cargado conocido: 9/18 (`RENDER_GAME`, `CONTENT_BANK`, `SCHEDULER`, `CALENDAR`, `STORAGE`, `SCORING_TIMER`, `NAVIGATION`, `ANALYTICS`, `EDITORIAL_REVIEW_TOOL`).
+- `ownership_ratio = 9 / 18 = 0.5000`.
 - Protección DIRECT observable: 14/18.
 - `test_protection_ratio = 14 / 18 = 0.7778`.
-- Ratchet estructural objetivo v1.8.6: colisiones estáticas <= 23, behavior patches <= 13, MutationObservers = 0, render subscriptions <= 7. CI debe validar estos límites contra el scanner regenerado.
+- Ratchet estructural objetivo v1.8.7: ownership contractual >= 0.5000; colisiones estáticas <= 23, behavior patches <= 13, MutationObservers = 0, render subscriptions <= 7.
 
 ## Invariantes
 
-300 IDs y años; calendario y scheduler; fórmula de timer/scoring `timer-v1`; persistencia; Repaso, Sets y Learning Gain; accesibilidad y offline. Analítica y media remota nunca deben bloquear el juego.
+300 IDs y años; calendario y scheduler; fórmula de timer/scoring `timer-v1`; persistencia del juego; Repaso, Sets y Learning Gain; accesibilidad y offline. Analítica y media remota nunca deben bloquear el juego. La consola editorial puede migrar su propio store local, pero no cambia el schema de persistencia del gameplay.
 
 ## Regla de retirada
 
