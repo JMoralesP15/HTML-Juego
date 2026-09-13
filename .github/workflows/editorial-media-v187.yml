@@ -1,0 +1,60 @@
+name: Editorial media batch v1.8.7
+
+on:
+  push:
+    branches:
+      - feature/editorial-media-batch-v1.8.7
+    paths:
+      - js/content.js
+      - js/editorial-proposals-v182-history.js
+      - js/editorial-proposals-v182-science.js
+      - js/editorial-proposals-v182-tech.js
+      - reports/factual-verification-v18.json
+      - tools/editorial-batch-v187.mjs
+      - tools/commons-photo-batch-v187.mjs
+      - tools/export-editorial-batch-js-v187.mjs
+      - package.json
+      - .github/workflows/editorial-media-v187.yml
+
+permissions:
+  contents: write
+
+jobs:
+  media-batch:
+    if: ${{ !contains(github.event.head_commit.message, '[media-v187-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/editorial-media-batch-v1.8.7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Compile 100-event editorial batch
+        run: npm run compile:editorial:v187
+      - name: Discover open documentary photo candidates
+        run: npm run enrich:media:v187
+      - name: Export static manifest for reviewer
+        run: npm run export:editorial:v187
+      - name: Commit generated manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/editorial-batch-v187.json js/editorial-media-v187.js
+          if git diff --cached --quiet; then
+            echo "No v1.8.7 media manifest changes"
+          else
+            git commit -m "chore: generate v1.8.7 editorial media batch [media-v187-generated]"
+            git push origin HEAD:feature/editorial-media-batch-v1.8.7
+          fi
+      - name: Upload editorial batch artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-media-batch-v187
+          path: |
+            reports/editorial-batch-v187.json
+            js/editorial-media-v187.js
+          retention-days: 14
