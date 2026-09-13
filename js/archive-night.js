@@ -1,6 +1,7 @@
 /* ARCHIVO NOCTURNO — RC.2 visual/gameplay layer.
    Evidence-informed principles: curiosity/mastery over variable rewards,
-   finite sessions, structured visual richness, cognitive accessibility. */
+   finite sessions, structured visual richness, cognitive accessibility.
+   v1.8.6: conserva helpers visuales; Atlas es el writer canónico del renderer. */
 
 function archiveNumber(q){
   const m=String(q?.id||'').match(/\d+/g);
@@ -66,7 +67,8 @@ function answerDeltaCopy(a){
   return a.guess<a.actual?`${a.error} ${unit} antes.`:`${a.error} ${unit} después.`;
 }
 
-function temporalScale(a){
+/* Implementaciones históricas preservadas como evidencia de paridad. No escriben los símbolos canónicos. */
+function legacyArchiveTemporalScale(a){
   if(a.skipped)return `<div class="temporal-scale reveal-scale" role="img" aria-label="Fecha revelada: ${a.actual}. Queda para repaso"><div class="temporal-track"><i class="temporal-marker correct exact" style="--pos:50%"><b><small>AÑO REAL</small><span>${a.actual}</span></b></i></div><div class="temporal-distance"><strong>Fecha revelada</strong><span>Queda para repasar</span></div></div>`;
   if(a.error===0)return `<div class="temporal-scale exact-scale" role="img" aria-label="Tu estimación ${a.guess} coincide con el año real"><div class="temporal-track"><i class="temporal-marker exact" style="--pos:50%"><b><small>ESTIMACIÓN · REAL</small><span>${a.actual}</span></b></i></div><div class="temporal-distance"><strong>Exacta</strong><span>Mismo punto en el tiempo</span></div></div>`;
   const diff=Math.abs(a.guess-a.actual),unit=diff===1?'año':'años',guessFirst=a.guess<a.actual;
@@ -78,7 +80,7 @@ function temporalScale(a){
   return `<div class="temporal-scale ${cls}" role="img" aria-label="Tu estimación ${a.guess}; año real ${a.actual}; diferencia ${diff} ${unit}"><div class="temporal-track"><i class="temporal-marker guess" style="--pos:${guessPos}"><b><small>TU ESTIMACIÓN</small><span>${a.guess}</span></b></i><i class="temporal-marker correct" style="--pos:${correctPos}"><b><small>AÑO REAL</small><span>${a.actual}</span></b></i></div><div class="temporal-distance"><strong>${diff} ${unit} de distancia</strong><span>${a.guess<a.actual?'Tu estimación quedó antes':'Tu estimación quedó después'}</span>${note}</div></div>`;
 }
 
-function renderGame(){
+function legacyArchiveRenderGame(){
   if(!round)return;
   const q=displayQuestion(round.questionIds[round.index]);
   if(!q){toast('No se pudo recuperar esta pregunta.');return}
@@ -106,7 +108,7 @@ function renderGame(){
         </div>
         <p class="answer-delta">${esc(delta)}</p>
         <p class="answer-comparison">${a.skipped?'0 puntos · la fecha queda en repaso':`+${a.points} pts · la recompensa principal es ubicar la fecha`}</p>
-        <div class="archive-locate"><span class="archive-phase">03 · UBICA</span>${temporalScale(a)}</div>
+        <div class="archive-locate"><span class="archive-phase">03 · UBICA</span>${legacyArchiveTemporalScale(a)}</div>
       </section>
       <section class="feedback-context archive-learn" aria-labelledby="questionTitle">
         <span class="archive-phase">04 · APRENDE</span>
@@ -152,14 +154,14 @@ function renderGame(){
   setView(`<section class="surface game game-v11 archive-night ${answered?'is-answered':'is-question'}" aria-labelledby="questionTitle">${header}<div class="game-body ${answered?'answered':''}">${content}</div><footer class="game-footer">${footer}</footer></section>`);
 }
 
-function summarySignature(s){
+function legacyArchiveSummarySignature(s){
   return `<div class="answer-signature archive-signature" aria-label="Resumen de los ${s.answers.length} archivos">${s.answers.map((a,i)=>{
     const unit=a.error===1?'año':'años',status=a.skipped?'Revelada':a.error===0?'Exacta':`${a.error} ${unit}`;
     return `<button class="answer-signature-item" data-action="detail" data-id="${a.id}" style="--result:${resultColor(a)}" aria-label="${esc(a.title)}. ${status}. Abrir contexto"><span class="signature-index">${String(i+1).padStart(2,'0')}</span><span class="signature-copy"><b title="${esc(a.title)}">${esc(a.title)}</b><small>${a.skipped?`Año real ${a.actual}`:`Tu ${a.guess} · real ${a.actual}`}</small></span><strong>${status}</strong></button>`
   }).join('')}</div>`;
 }
 
-function renderSummary(s){
+function legacyArchiveRenderSummary(s){
   if(!s)return;
   lastSummary=s;
   const state=getState(),isDaily=s.mode==='daily',errors=s.answers.filter(a=>a.skipped||a.error>5),unlocked=(s.newAchievements||[]).map(id=>ACHIEVEMENTS.find(a=>a.id===id)).filter(Boolean),prior=state.sessions.filter(x=>x.date!==s.date&&Number.isFinite(x.avg)),priorAvg=prior.length>=3?mean(prior.map(x=>x.avg)):null;
@@ -171,7 +173,7 @@ function renderSummary(s){
     <header class="summary-head"><div><span class="eyebrow">${isDaily?`ARCHIVO #${s.challenge}`:s.mode==='review'?'REPASO COMPLETO':'PRÁCTICA COMPLETA'}</span><h1>${isDaily?'Archivo de hoy completo':'Sesión completada'}</h1></div><span class="summary-session-meta">${isDaily?archiveRhythmLabel(state):'Sesión sin presión de racha'}</span></header>
     <div class="summary-body">
       <section class="summary-result" aria-label="Lectura de la partida"><span class="archive-phase">LECTURA DE LA PARTIDA</span><div class="summary-scoreline"><div class="summary-score"><b>${fmt(s.avg)}</b><span>años de error medio</span></div><div class="summary-measures"><div><b>${s.exact}/${s.answers.length}</b><span>exactas</span></div><div><b>${fmt(s.total,0)}</b><span>puntos</span></div></div></div><p class="summary-narrative">${summaryNarrative(s,priorAvg)}</p>${isDaily&&Number.isFinite(priorAvg)&&Number.isFinite(s.avg)?`<p class="summary-comparison">Tu referencia previa era ${fmt(priorAvg)} años; hoy fue ${fmt(s.avg)}.</p>`:''}${s.omitted?`<small>${s.omitted} fecha${s.omitted===1?'':'s'} revelada${s.omitted===1?'':'s'}; el promedio usa solo estimaciones.</small>`:''}</section>
-      <section class="summary-round"><div class="summary-section-title"><span class="eyebrow">LOS CINCO ARCHIVOS</span><span class="summary-section-hint">Abre un hito para volver a su contexto</span></div>${summarySignature(s)}</section>
+      <section class="summary-round"><div class="summary-section-title"><span class="eyebrow">LOS CINCO ARCHIVOS</span><span class="summary-section-hint">Abre un hito para volver a su contexto</span></div>${legacyArchiveSummarySignature(s)}</section>
       ${knowledge.length?`<section class="summary-rewards"><span class="eyebrow">CONOCIMIENTO ACUMULADO</span><div class="reward-lines">${knowledge.join('')}</div></section>`:''}
     </div>
     <footer class="summary-footer"><div class="summary-secondary-actions"><button class="secondary" data-view="coleccion">Colección</button><button class="secondary" data-action="share">Compartir</button></div>${action}</footer>
