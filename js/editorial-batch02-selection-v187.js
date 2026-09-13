@@ -9,3 +9,6 @@ window.__QA_EDITORIAL_BATCH02_V187__={batch:'batch-02-100',categories:{
 'Cultura':['cienanos','cd1982','mtv','barbie','dragonball','friends','breakingbad','got','lotrbook','mafalda','emoji','wordle']
 }};
 window.__QA_EDITORIAL_BATCH02_V187__.ids=Object.values(window.__QA_EDITORIAL_BATCH02_V187__.categories).flat();
+const registry=window.__QA_EDITORIAL_PROPOSALS_V182__=window.__QA_EDITORIAL_PROPOSALS_V182__||{batch:'batch-02-100',items:{},order:[]};
+for(const id of window.__QA_EDITORIAL_BATCH02_V187__.ids)if(!(id in registry.items))registry.items[id]=null;
+registry.order=[...window.__QA_EDITORIAL_BATCH02_V187__.ids];
