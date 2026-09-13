@@ -2,7 +2,7 @@
   "schema": "que-ano-editorial-batch-v1.8.7",
   "version": "1.8.7-b",
   "batch": "batch-02-100",
-  "generatedAt": "2026-09-13T05:00:19.695Z",
+  "generatedAt": "2026-09-13T06:08:19.000Z",
   "selectionRule": "100 IDs outside batch01; avoid records already materially touched in the human review when a same-category substitute exists; 12–13 per category.",
   "summary": {
     "total": 100,
@@ -14,13 +14,13 @@
     "sourceBlocked": 0,
     "legacyVisualCandidates": 7,
     "visualSearched": 100,
-    "searchSuccess": 80,
-    "noCandidate": 20,
-    "searchErrors": 0,
-    "candidatesTotal": 219,
-    "candidatesTechnicallyEligible": 219,
-    "candidatesContemporaneous": 127,
-    "laterOriginalArtifact": 17,
+    "searchSuccess": 68,
+    "noCandidate": 18,
+    "searchErrors": 14,
+    "candidatesTotal": 186,
+    "candidatesTechnicallyEligible": 186,
+    "candidatesContemporaneous": 106,
+    "laterOriginalArtifact": 13,
     "mediaPolicy": "Candidate discovery only. Open-license photographic candidates are ranked for human review; no candidate is auto-approved or published."
   },
   "items": [
@@ -780,11 +780,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 16.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 7.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/January_2008_Copenhagen_16.jpg/1280px-January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/2/28/January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_16.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/January_2008_Copenhagen_7.jpg/1280px-January_2008_Copenhagen_7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/January_2008_Copenhagen_7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_7.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
@@ -807,11 +807,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 33.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 16.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/January_2008_Copenhagen_33.jpg/1280px-January_2008_Copenhagen_33.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/0/0a/January_2008_Copenhagen_33.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_33.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/January_2008_Copenhagen_16.jpg/1280px-January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/28/January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_16.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
@@ -4612,49 +4612,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Chandrayaan-3\" 2023",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Chandrayaan-3\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Chandrayaan3\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Model of ISRO GSLV Mk III and Chandrayaan by ASCARS Team, Durga Puja 2023, Kameshwarganj Bhiswa, Bihar.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Model_of_ISRO_GSLV_Mk_III_and_Chandrayaan_by_ASCARS_Team%2C_Durga_Puja_2023%2C_Kameshwarganj_Bhiswa%2C_Bihar.jpg/1280px-Model_of_ISRO_GSLV_Mk_III_and_Chandrayaan_by_ASCARS_Team%2C_Durga_Puja_2023%2C_Kameshwarganj_Bhiswa%2C_Bihar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Model_of_ISRO_GSLV_Mk_III_and_Chandrayaan_by_ASCARS_Team%2C_Durga_Puja_2023%2C_Kameshwarganj_Bhiswa%2C_Bihar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Model_of_ISRO_GSLV_Mk_III_and_Chandrayaan_by_ASCARS_Team%2C_Durga_Puja_2023%2C_Kameshwarganj_Bhiswa%2C_Bihar.jpg",
-            "artist": "Samircreator",
-            "credit": "Own work",
-            "license": "CC BY 4.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-            "description": "Model of ISRO’s GSLV Mk III rocket and Chandrayaan mission, created by the ASCARS team and presented during Durga Puja 2023 at Kameshwarganj, Bhiswa, Parihar, Sitamarhi, Bihar, India.",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "chandrayaan"
-            ],
-            "eventYear": 2023,
-            "imageYear": 2023,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 12,
-            "rejectionWarnings": [
-              "attribution_required",
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -4698,108 +4677,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Back to the Future\" 1985",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Back to the Future\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Volver al futuro\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:1985 Toyota SR5 Pickup (25952052560).jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/1985_Toyota_SR5_Pickup_%2825952052560%29.jpg/1280px-1985_Toyota_SR5_Pickup_%2825952052560%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/7/70/1985_Toyota_SR5_Pickup_%2825952052560%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:1985_Toyota_SR5_Pickup_(25952052560).jpg",
-            "artist": "Bob P. B.",
-            "credit": "1985 Toyota SR5 Pickup",
-            "license": "CC BY 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-            "description": "1985 Toyota SR5 Pickup from the Back to the Future series displayed at World of Wheels Boston 2016. Owner: Gregory Ward, Rutland, MA",
-            "visualType": "later_photo_of_original_artifact",
-            "entityMatch": true,
-            "matchedAliases": [
-              "back",
-              "future"
-            ],
-            "eventYear": 1985,
-            "imageYear": 2016,
-            "temporalDeltaYears": 31,
-            "exactYear": true,
-            "contemporaneous": false,
-            "score": 15,
-            "rejectionWarnings": [
-              "later_photo_of_original_artifact",
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Back to the Future studio cars (2011).jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Back_to_the_Future_studio_cars_%282011%29.jpg/1280px-Back_to_the_Future_studio_cars_%282011%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Back_to_the_Future_studio_cars_%282011%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Back_to_the_Future_studio_cars_(2011).jpg",
-            "artist": "S. Perquin",
-            "credit": "Own work",
-            "license": "CC BY-SA 4.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-            "description": "Three studio cars from the set of Back to the Future Part II : A DeLorean time machine A 1985 Owosso Pulse Autocycle A modified 1959 Edsel Corsair",
-            "visualType": "later_photo_of_original_artifact",
-            "entityMatch": true,
-            "matchedAliases": [
-              "back",
-              "future"
-            ],
-            "eventYear": 1985,
-            "imageYear": 2011,
-            "temporalDeltaYears": 26,
-            "exactYear": true,
-            "contemporaneous": false,
-            "score": 13,
-            "rejectionWarnings": [
-              "later_photo_of_original_artifact",
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Take me to 1985! (36429546002).jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Take_me_to_1985%21_%2836429546002%29.jpg/1280px-Take_me_to_1985%21_%2836429546002%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/2/20/Take_me_to_1985%21_%2836429546002%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Take_me_to_1985!_(36429546002).jpg",
-            "artist": "Steve",
-            "credit": "Take me to 1985!",
-            "license": "CC BY-SA 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-            "description": "Take me to 1985!",
-            "visualType": "later_photo_of_original_artifact",
-            "entityMatch": true,
-            "matchedAliases": [
-              "back",
-              "future"
-            ],
-            "eventYear": 1985,
-            "imageYear": 2017,
-            "temporalDeltaYears": 32,
-            "exactYear": true,
-            "contemporaneous": false,
-            "score": 13,
-            "rejectionWarnings": [
-              "later_photo_of_original_artifact",
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -4843,106 +4742,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Pulp Fiction\" 1994",
-            "status": "ok",
-            "resultCount": 5
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Pulp Fiction\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Tiempos violentos\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Harold F. Cruickshank (photo).jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Harold_F._Cruickshank_%28photo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Harold_F._Cruickshank_%28photo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Harold_F._Cruickshank_(photo).jpg",
-            "artist": "Unknown author Unknown author",
-            "credit": "newspapers.com",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Harold F. Cruickshank (pulp writer)",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "pulp",
-              "fiction"
-            ],
-            "eventYear": 1994,
-            "imageYear": 1929,
-            "temporalDeltaYears": -65,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 12,
-            "rejectionWarnings": [
-              "high_temporal_delta"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:CloseBookPicture.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/CloseBookPicture.jpg/1280px-CloseBookPicture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/b/b7/CloseBookPicture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:CloseBookPicture.jpg",
-            "artist": "Andrew.cudzilo",
-            "credit": "Own work",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "An example image of how the books were, and continue to be stored in the collection. All books are contained in individual ziploc bags, which have kept the works in prime condition",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "pulp",
-              "fiction"
-            ],
-            "eventYear": 1994,
-            "imageYear": 2008,
-            "temporalDeltaYears": 14,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 10,
-            "rejectionWarnings": [
-              "high_temporal_delta"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Dortmund-Graffiti-IMG 6604.JPG",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Dortmund-Graffiti-IMG_6604.JPG/1280px-Dortmund-Graffiti-IMG_6604.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/5/50/Dortmund-Graffiti-IMG_6604.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Dortmund-Graffiti-IMG_6604.JPG",
-            "artist": "Mbdortmund",
-            "credit": "Own work",
-            "license": "CC BY-SA 3.0",
-            "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-            "description": "Dortmund, Graffiti",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "pulp",
-              "fiction"
-            ],
-            "eventYear": 1994,
-            "imageYear": 2009,
-            "temporalDeltaYears": 15,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 10,
-            "rejectionWarnings": [
-              "high_temporal_delta",
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -4986,102 +4807,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Titanic\" 1997",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Titanic\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"RMS Titanic\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Ice Patrol DVIDS1113963.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_Patrol_DVIDS1113963.jpg/1280px-Ice_Patrol_DVIDS1113963.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Ice_Patrol_DVIDS1113963.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Ice_Patrol_DVIDS1113963.jpg",
-            "artist": "U.S. Coast Guard photo by Petty Officer 1st Class Brandon Brewer",
-            "credit": "https://www.dvidshub.net/image/1113963",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "NEW YORK -?A Coast Guard C-130, based out of Air Station Elizabeth City, N.C., and carrying members of the International Ice Patrol, stationed in New London, Conn., flies past an iceberg in the waters near Newfoundland, Canada, June 10, 1997. The mission of the International Ice Patrol is to monitor iceberg locations near the Grand Banks of Newfoundland and provide updates to the maritime community. The tragic sinking of the passenger liner RMS Titanic in 1912 prompted the maritime nations with ships transiting the North Atlantic to establish an ice patrol in the area. U.S. Coast Guard photo by Petty Officer 1st Class Brandon Brewer.",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "titanic"
-            ],
-            "eventYear": 1997,
-            "imageYear": 1997,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 14,
-            "rejectionWarnings": [
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Hubble Pinpoints Optical Counterpart of Gamma Ray Burst in a Distant Galaxy (1997-20-488).jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Hubble_Pinpoints_Optical_Counterpart_of_Gamma_Ray_Burst_in_a_Distant_Galaxy_%281997-20-488%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Hubble_Pinpoints_Optical_Counterpart_of_Gamma_Ray_Burst_in_a_Distant_Galaxy_%281997-20-488%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Hubble_Pinpoints_Optical_Counterpart_of_Gamma_Ray_Burst_in_a_Distant_Galaxy_(1997-20-488).jpg",
-            "artist": "K. Sahu, M. Livio, L. Petro, D. Macchetto, STScI and NASA",
-            "credit": "Hubble Pinpoints Optical Counterpart of Gamma Ray Burst in a Distant Galaxy",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "This is a false-color Hubble Space Telescope image of the visible fireball which accompanied the gamma ray burst called GRB 970228. This is the first optical image ever taken which associates a gamma-ray burst source with a potential host galaxy. This observation provides strong supporting evidence that gamma-ray bursts are cosmological- they originate in distant galaxies across the universe. The burst was detected on February 28, 1997. The Hubble picture is a combination of two images taken on March 26 and April 7, with the Wide Field Planetary Camera 2 (in planetary camera mode). The arrow points to the fireball, which is a white blob immediately to the upper left of image center. Immediately to the lower right of center is an extended object (roughly resembling an \"E\") interpreted to be the host galaxy where the gamma-ray burst is embedded. A follow-up image taken on April 7 showed the fireball had faded, but not the extended source, supporting the interpretation it is a host galaxy at great distance. It may be a significant finding that the fireball is offset from the center of the galaxy. This rules out a supermassive black hole that could be at the galaxy's core, as the source of the gamma-ray burst. A more likely explanation is that the burst came from the titanic collision of two neutron stars, or a neutron star with a stellar-mass black hole, in the disk of the galaxy.",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "titanic"
-            ],
-            "eventYear": 1997,
-            "imageYear": 1997,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 12,
-            "rejectionWarnings": [
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Mysterious Fireball from a Cataclysmic Explosion (1997-22-490).jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/0/02/Mysterious_Fireball_from_a_Cataclysmic_Explosion_%281997-22-490%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/0/02/Mysterious_Fireball_from_a_Cataclysmic_Explosion_%281997-22-490%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Mysterious_Fireball_from_a_Cataclysmic_Explosion_(1997-22-490).jpg",
-            "artist": "Elena Pian (ITESRC), Andrew Fruchter (STScI) and NASA",
-            "credit": "Mysterious Fireball from a Cataclysmic Explosion",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "The visible fireball from a titanic explosion in deep space, called a gamma-ray burst, blazes in the center of this image, taken with the CCD camera (Charge Coupled Device) on the Space Telescope Imaging Spectrograph (STIS), a new instrument on Hubble Space Telescope. The burst occurred on May 8, and Hubble observations to acquire the fading fireball were made on June 2. No accompanying object, such as a host galaxy, can be found near the burst. This result adds to the puzzlement over of the source of these enigmatic explosions, because a previous Hubble image of another gamma-ray burst counterpart identified a potential host galaxy. If a galaxy is present, and at the distance suggested by Keck spectroscopy, it is much fainter than our Milky Way. A few faint galaxies are, however, seen several arcseconds from the source. If one of these is the host, then the gamma-ray burst is very far out in the galaxy's halo, well outside the galaxy's stellar disk.",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "titanic"
-            ],
-            "eventYear": 1997,
-            "imageYear": 1997,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 12,
-            "rejectionWarnings": [
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "needs_review"
     },
@@ -5125,79 +4872,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"The Matrix\" 1999",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"The Matrix\" photograph",
-            "status": "ok",
-            "resultCount": 15
-          }
-        ],
-        "candidates": [
-          {
-            "fileTitle": "File:Chlorargyrite, variety Buttermilcherz (IMG 1999).jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Chlorargyrite%2C_variety_Buttermilcherz_%28IMG_1999%29.jpg/1280px-Chlorargyrite%2C_variety_Buttermilcherz_%28IMG_1999%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/8/80/Chlorargyrite%2C_variety_Buttermilcherz_%28IMG_1999%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Chlorargyrite%2C_variety_Buttermilcherz_(IMG_1999).jpg",
-            "artist": "Manfred Groß",
-            "credit": "original picture from Manfred Groß is deposited in the Mail (look down at the permission)",
-            "license": "CC BY-SA 3.0 de",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-            "description": "Chlorargyrite Locality: Theuerdank Mine, St Andreasberg, St Andreasberg District, Harz, Lower Saxony, Germany Original description: Chlorargyrite step, variety \"buttermilk ore\", dried-in condition. Size overall: 17cm, height 14cm. I found the step by myself in 1995 on the old pit Theuerdank in St. Andrew on the berry mountain. When it came into daylight, it was white like snow, but after about 45 minutes, it became so gray-blue, as it is to see now. The blue-gray areas are in the form of buttermilk ore, the light to dark brown areas are \"earthy brown silver\". The matrix of the step consists of a quartz band and calcite. The buttermilk ore has two special features: On the one hand, once upon a time it was liquid and on the other hand, it has a photochromic character.",
-            "visualType": "later_photo_of_original_artifact",
-            "entityMatch": true,
-            "matchedAliases": [
-              "matrix"
-            ],
-            "eventYear": 1999,
-            "imageYear": 2006,
-            "temporalDeltaYears": 7,
-            "exactYear": true,
-            "contemporaneous": false,
-            "score": 8,
-            "rejectionWarnings": [
-              "later_photo_of_original_artifact",
-              "attribution_required",
-              "single_alias_match"
-            ],
-            "reviewRequired": true
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
-            "fileTitle": "File:Chyba v Matrixu.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Chyba_v_Matrixu.jpg/1280px-Chyba_v_Matrixu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/9/94/Chyba_v_Matrixu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Chyba_v_Matrixu.jpg",
-            "artist": "Medowy",
-            "credit": "Own work",
-            "license": "CC BY-SA 4.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-            "description": "Soutěžní kategorie: Příroda",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "matrix"
-            ],
-            "eventYear": 1999,
-            "imageYear": 2021,
-            "temporalDeltaYears": 22,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 7,
-            "rejectionWarnings": [
-              "high_temporal_delta",
-              "attribution_required",
-              "single_alias_match"
-            ],
-            "reviewRequired": true
+            "query": "\"Matrix I\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
-        ]
+        ],
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -5241,102 +4937,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Rashomon\" 1950",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Rashomon\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Rashōmon\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Rashomon (1950) Press Photo of Toshiro Mifune and Machiko Kyō.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg/1280px-Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/6/65/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Rashomon_(1950)_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg",
-            "artist": "Daiei Studios",
-            "credit": "Proof of publication with copyright notice: Worthpoint Image source (v1): Worthpoint Image source (v2): MoMA ( direct link (1) ) ( direct link (2) ) (direct link (1) is used) Image source (v2): IMdB",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Press photo of Toshiro Mifune and Machiko Kyō for the 1950 film Rashomon",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "rashomon"
-            ],
-            "eventYear": 1950,
-            "imageYear": 1952,
-            "temporalDeltaYears": 2,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 14,
-            "rejectionWarnings": [
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Rashomon (1950) Press Photo of Toshiro Mifune and Daisuke Kato.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Daisuke_Kato.jpg/1280px-Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Daisuke_Kato.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/7/77/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Daisuke_Kato.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Rashomon_(1950)_Press_Photo_of_Toshiro_Mifune_and_Daisuke_Kato.jpg",
-            "artist": "Daiei Studios",
-            "credit": "Proof of publication with copyright notice: Worthpoint Image source: TCM &lt;sub( direct link )",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Press photo of Toshiro Mifune and Daisuke Kato for the 1950 film Rashomon",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "rashomon"
-            ],
-            "eventYear": 1950,
-            "imageYear": 1952,
-            "temporalDeltaYears": 2,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 14,
-            "rejectionWarnings": [
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Rashomon (1950) Press Photo of Toshiro Mifune and Masayuki Mori.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Masayuki_Mori.jpg/1280px-Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Masayuki_Mori.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/5/52/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Masayuki_Mori.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Rashomon_(1950)_Press_Photo_of_Toshiro_Mifune_and_Masayuki_Mori.jpg",
-            "artist": "Daiei Studios",
-            "credit": "Proof of publication with copyright notice Worthpoint : front , back",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Press photo of (from left) Toshiro Mifune and Masayuki Mori for the 1950 film Rashomon",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "rashomon"
-            ],
-            "eventYear": 1950,
-            "imageYear": 1952,
-            "temporalDeltaYears": 2,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 14,
-            "rejectionWarnings": [
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -5380,99 +5002,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Seven Samurai\" 1954",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Seven Samurai\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Los siete samuráis\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Sekai-Geino-Gaho-1954-May-2.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/7/72/Sekai-Geino-Gaho-1954-May-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/7/72/Sekai-Geino-Gaho-1954-May-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sekai-Geino-Gaho-1954-May-2.jpg",
-            "artist": "Unknown author Unknown author",
-            "credit": "『世界芸能画報』1954年5月号、世界文化画報社。",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "『 七人の侍 』。三船敏郎。",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "seven",
-              "samurai"
-            ],
-            "eventYear": 1954,
-            "imageYear": 1954,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 17,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Sekai-Geino-Gaho-1954-May-3.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Sekai-Geino-Gaho-1954-May-3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Sekai-Geino-Gaho-1954-May-3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sekai-Geino-Gaho-1954-May-3.jpg",
-            "artist": "Unknown author Unknown author",
-            "credit": "『世界芸能画報』1954年5月号、世界文化画報社。",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "『 七人の侍 』",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "seven",
-              "samurai"
-            ],
-            "eventYear": 1954,
-            "imageYear": 1954,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 17,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Sekai-Geino-Gaho-1954-May-4.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Sekai-Geino-Gaho-1954-May-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Sekai-Geino-Gaho-1954-May-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sekai-Geino-Gaho-1954-May-4.jpg",
-            "artist": "Unknown author Unknown author",
-            "credit": "『世界芸能画報』1954年5月号、世界文化画報社。",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "『 七人の侍 』。三船敏郎。",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "seven",
-              "samurai"
-            ],
-            "eventYear": 1954,
-            "imageYear": 1954,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 17,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -5520,8 +5071,9 @@
         "queryAttempts": [
           {
             "query": "\"psychosis\" 1960",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"psychosis\" photograph",
@@ -9760,110 +9312,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"2010 Chile earthquake\" 2010",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"2010 Chile earthquake\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Terremoto de Chile de 2010\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:2010 Chile earthquake - Building destroyed in Concepción.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/4/49/2010_Chile_earthquake_-_Building_destroyed_in_Concepci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/4/49/2010_Chile_earthquake_-_Building_destroyed_in_Concepci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:2010_Chile_earthquake_-_Building_destroyed_in_Concepci%C3%B3n.jpg",
-            "artist": "Claudio Núñez",
-            "credit": "originally posted to Flickr as _MG_3277",
-            "license": "CC BY-SA 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-            "description": "En Concepción , el edificio Alto Río, de 20 pisos, colapsó producto del terremoto del 27 de febrero de 2010 .",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "terremoto",
-              "chile",
-              "2010",
-              "earthquake",
-              "concepcion"
-            ],
-            "eventYear": 2010,
-            "imageYear": 2010,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 32,
-            "rejectionWarnings": [
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:2010 Chile earthquake NOAA tsunami travel time projection 2010-02-27.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/5/51/2010_Chile_earthquake_NOAA_tsunami_travel_time_projection_2010-02-27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/5/51/2010_Chile_earthquake_NOAA_tsunami_travel_time_projection_2010-02-27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:2010_Chile_earthquake_NOAA_tsunami_travel_time_projection_2010-02-27.jpg",
-            "artist": "National Oceanic and Atmospheric Administration",
-            "credit": "http://wcatwc.arh.noaa.gov/2010/02/27/725245/06/ttvu725245-06.jpg",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Travel time projection of the 2010 Chile earthquake tsunami; (hour 0=06:34 UTC Feb 27).",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "tsunami",
-              "chile",
-              "2010",
-              "earthquake"
-            ],
-            "eventYear": 2010,
-            "imageYear": 2010,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 27,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:2010 Chile earthquake - Media in Talca.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/2010_Chile_earthquake_-_Media_in_Talca.jpg/1280px-2010_Chile_earthquake_-_Media_in_Talca.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/e/e9/2010_Chile_earthquake_-_Media_in_Talca.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:2010_Chile_earthquake_-_Media_in_Talca.jpg",
-            "artist": "Tomás Jorquera Sepúlveda",
-            "credit": "originally posted to Flickr as Centro de Atención",
-            "license": "CC BY 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-            "description": "El animador Sebastián Jiménez filmando el efecto del terremoto de 2010 en Talca .",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "terremoto",
-              "chile",
-              "2010",
-              "earthquake"
-            ],
-            "eventYear": 2010,
-            "imageYear": 2010,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 27,
-            "rejectionWarnings": [
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -9907,110 +9377,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Televisión Nacional de Chile\" 1969",
-            "status": "ok",
-            "resultCount": 2
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Televisión Nacional de Chile\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Primera transmisión nacional de TVN\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Sergio Livingstone - El Gráfico 1181 (1942).jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Sergio_Livingstone_-_El_Gr%C3%A1fico_1181_%281942%29.jpg/1280px-Sergio_Livingstone_-_El_Gr%C3%A1fico_1181_%281942%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Sergio_Livingstone_-_El_Gr%C3%A1fico_1181_%281942%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sergio_Livingstone_-_El_Gr%C3%A1fico_1181_(1942).jpg",
-            "artist": "Unknown author Unknown author",
-            "credit": "http://www.elgrafico.com.ar/thumbs.php?id=15084&w=600&h=800",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Sergio Roberto Livingstone Pohlhammer (Santiago, Chile, 26 de marzo de 1920) es un ex futbolista chileno que se desempeñaba como portero. Apodado el Sapo o Sapito (debido a sus atléticos saltos), fue la primera gran figura que tuvo el fútbol chileno y es uno de sus mayores ídolos de todos los tiempos. Estudió en el Colegio San Ignacio. En la actualidad es comentarista deportivo de Televisión Nacional de Chile y presentador del programa Zoom deportivo.",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "nacional",
-              "television",
-              "chile"
-            ],
-            "eventYear": 1969,
-            "imageYear": 1942,
-            "temporalDeltaYears": -27,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 17,
-            "rejectionWarnings": [
-              "high_temporal_delta"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Lo estamos grabando (3047396431).jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lo_estamos_grabando_%283047396431%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lo_estamos_grabando_%283047396431%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Lo_estamos_grabando_(3047396431).jpg",
-            "artist": "Institutanos from Santigago, Chile",
-            "credit": "Lo estamos grabando Uploaded by Diego Grez",
-            "license": "CC BY 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-            "description": "Foto apropósito del reportaje serio y sin sesgo de \"Informe Especial\" de TVN",
-            "visualType": "later_context_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "nacional",
-              "television",
-              "chile"
-            ],
-            "eventYear": 1969,
-            "imageYear": 2008,
-            "temporalDeltaYears": 39,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 17,
-            "rejectionWarnings": [
-              "high_temporal_delta",
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:TVN - panoramio.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/TVN_-_panoramio.jpg/1280px-TVN_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/6/6b/TVN_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:TVN_-_panoramio.jpg",
-            "artist": "gavin_62",
-            "credit": "https://web.archive.org/web/20161102190126/http://www.panoramio.com/photo/95684942",
-            "license": "CC BY 3.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-            "description": "TVN Santiago",
-            "visualType": "later_context_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "nacional",
-              "television",
-              "chile"
-            ],
-            "eventYear": 1969,
-            "imageYear": 2000,
-            "temporalDeltaYears": 31,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 15,
-            "rejectionWarnings": [
-              "high_temporal_delta",
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -10054,102 +9442,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"women's suffrage\" 1952",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"women's suffrage\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"sufragio femenino\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Carrie Chapman Catt - National Woman's Party Records.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Carrie_Chapman_Catt_-_National_Woman%27s_Party_Records.jpg/1280px-Carrie_Chapman_Catt_-_National_Woman%27s_Party_Records.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Carrie_Chapman_Catt_-_National_Woman%27s_Party_Records.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Carrie_Chapman_Catt_-_National_Woman's_Party_Records.jpg",
-            "artist": "Joint Suffrage Procession Committee(?), restored by Adam Cuerden",
-            "credit": "This image is available from the United States Library of Congress 's Manuscript Division under the digital ID mnwp.149004 . This tag does not indicate the copyright status of the attached work. A normal copyright tag is still required. See Commons:Licensing .",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "\"Mrs. Carrie Chapman Catt, Speaker at Continental Hall.\" Verso is stamped \"Joint Suffrage Procession Committee, 1420 F Street Northwest, Washington, D.C.\" See [1] for information about her speaking at Continental Hall. The original photograph was about 4x5.5\" (10x14 cm). However, after cropping, the dimensions as seen are about 4x5\" (10x13cm). [ 1 ]",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "women",
-              "suffrage",
-              "woman"
-            ],
-            "eventYear": 1952,
-            "imageYear": 1913,
-            "temporalDeltaYears": -39,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 17,
-            "rejectionWarnings": [
-              "high_temporal_delta"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Eva Perón votando 1951-Borroni-1970-72.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Eva_Per%C3%B3n_votando_1951-Borroni-1970-72.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Eva_Per%C3%B3n_votando_1951-Borroni-1970-72.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Eva_Per%C3%B3n_votando_1951-Borroni-1970-72.jpg",
-            "artist": "Pinélides Fusco",
-            "credit": "Eva Perón, Otelo Borroni y Roberto Vaca. CEAL, Buenos Aires, pag. 72, 1970",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Eva Duarte de Perón (Evita). Votando en el Hospital de Avellaneda 1951",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "women",
-              "suffrage"
-            ],
-            "eventYear": 1952,
-            "imageYear": 1951,
-            "temporalDeltaYears": -1,
-            "exactYear": false,
-            "contemporaneous": true,
-            "score": 16,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Eva Perón votando.jpg",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Eva_Per%C3%B3n_votando.jpg/1280px-Eva_Per%C3%B3n_votando.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Eva_Per%C3%B3n_votando.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Eva_Per%C3%B3n_votando.jpg",
-            "artist": "Pinélides Fusco",
-            "credit": "Eva Perón, Otelo Borroni y Roberto Vaca. CEAL, Buenos Aires, pag. 72, 1970",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Eva Duarte de Perón (Evita). Votando en el Hospital de Avellaneda",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "women",
-              "suffrage"
-            ],
-            "eventYear": 1952,
-            "imageYear": 1951,
-            "temporalDeltaYears": -1,
-            "exactYear": false,
-            "contemporaneous": true,
-            "score": 16,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -10193,22 +9507,25 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "no_candidate",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Chilean Formula Three Championship\" 1957",
-            "status": "ok",
-            "resultCount": 0
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Chilean Formula Three Championship\" photograph",
-            "status": "ok",
-            "resultCount": 0
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Fórmula 3 Chilena\"",
-            "status": "ok",
-            "resultCount": 1
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
         "candidates": []
@@ -10255,17 +9572,25 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "no_candidate",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Viña del Mar International Song Festival\" 1960",
-            "status": "ok",
-            "resultCount": 0
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Viña del Mar International Song Festival\" photograph",
-            "status": "ok",
-            "resultCount": 1
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Festival Internacional de la Canción de Viña del Mar\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
         "candidates": []
@@ -10312,105 +9637,28 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Salvador Allende\" 1970",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Salvador Allende\" photograph",
-            "status": "ok",
-            "resultCount": 15
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Elección de Salvador Allende\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:Salvador Allende-BCN.JPG",
-            "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Salvador_Allende-BCN.JPG/1280px-Salvador_Allende-BCN.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/3/30/Salvador_Allende-BCN.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Salvador_Allende-BCN.JPG",
-            "artist": "Biblioteca del Congreso Nacional de Chile",
-            "credit": "https://www.bcn.cl/historiapolitica/resenas_parlamentarias/wiki/Salvador_Allende_Gossens",
-            "license": "CC BY 3.0 cl",
-            "licenseUrl": "https://creativecommons.org/licenses/by/3.0/cl/deed.en",
-            "description": "Salvador Allende Gossens (Valparaíso, 26 de junio de 1908 – Santiago, 11 de septiembre de 1973) fue un médico y político socialista chileno, presidente de Chile entre el 4 de noviembre de 1970 y el 11 de septiembre de 1973.",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "salvador",
-              "allende",
-              "gossens",
-              "presidente"
-            ],
-            "eventYear": 1970,
-            "imageYear": 1970,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 27,
-            "rejectionWarnings": [
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Salvador Allende (1970).jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Salvador_Allende_%281970%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Salvador_Allende_%281970%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Salvador_Allende_(1970).jpg",
-            "artist": "Revista argentina Primera Plana, Nº 404, 27 de octubre de 1970",
-            "credit": "https://www.magicasruinas.com.ar/tapas/piehist753.htm",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Salvador Allende Gossens (Valparaíso, 26 de junio de 1908 - Santiago, 11 de septiembre de 1973) 1970 revista",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "salvador",
-              "allende",
-              "gossens"
-            ],
-            "eventYear": 1970,
-            "imageYear": 1970,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 24,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Revista-asi-371-chile-allende-zamacois-monzon-boca-en-jujuy MLA-O-106220706 8101.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Revista-asi-371-chile-allende-zamacois-monzon-boca-en-jujuy_MLA-O-106220706_8101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Revista-asi-371-chile-allende-zamacois-monzon-boca-en-jujuy_MLA-O-106220706_8101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Revista-asi-371-chile-allende-zamacois-monzon-boca-en-jujuy_MLA-O-106220706_8101.jpg",
-            "artist": "Revista Asi, Argentina",
-            "credit": "http://articulo.mercadolibre.com.ar/MLA-448207008-revista-asi-371-chile-allende-zamacois-monzon-boca-en-jujuy-_JM",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "Salvador Allende asume el cargo de Presidente de Chile en 1970. Frente a la Moneda con escolta",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "salvador",
-              "allende",
-              "presidente"
-            ],
-            "eventYear": 1970,
-            "imageYear": 1970,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 24,
-            "rejectionWarnings": [],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -10472,105 +9720,28 @@
         "mime": "image/jpeg"
       },
       "mediaSearch": {
-        "status": "found",
+        "status": "error",
         "queryAttempts": [
           {
             "query": "\"Nacionalización del cobre\" 1971",
-            "status": "ok",
-            "resultCount": 4
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Nacionalización del cobre\" photograph",
-            "status": "ok",
-            "resultCount": 1
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Nacionalizacion del cobre\"",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           }
         ],
-        "candidates": [
-          {
-            "fileTitle": "File:AllendeNacionalizacion.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:AllendeNacionalizacion.jpg",
-            "artist": "Biblioteca del Congreso Nacional - Chile",
-            "credit": "Imagen de Salvador Allende, vida politica y parlamentaria",
-            "license": "CC BY-SA 3.0 cl",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/cl/deed.en",
-            "description": "Salvador Allende firma el decreto promulgatorio de la reforma constitucional que da inicio a la nacionalizacion del cobre",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "nacionalizacion",
-              "cobre"
-            ],
-            "eventYear": 1971,
-            "imageYear": 1971,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 17,
-            "rejectionWarnings": [
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Allende nacionalizacion cobre.JPG",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Allende_nacionalizacion_cobre.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Allende_nacionalizacion_cobre.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Allende_nacionalizacion_cobre.JPG",
-            "artist": "Biblioteca del Congreso Nacional - Chile",
-            "credit": "http://historiapolitica.bcn.cl/JPG/b/b5c9bf8047a28bc3df6951aaf5d64292/Fc-011506_1024.png",
-            "license": "CC BY-SA 3.0 cl",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/cl/deed.en",
-            "description": "28/09/1971. Junto a autoridades durante firma del pago por Nacionalización del Cobre",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "nacionalizacion",
-              "cobre"
-            ],
-            "eventYear": 1971,
-            "imageYear": 1971,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 17,
-            "rejectionWarnings": [
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Salvador Allende en Rancagua por nacionalización del cobre.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Salvador_Allende_en_Rancagua_por_nacionalizaci%C3%B3n_del_cobre.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Salvador_Allende_en_Rancagua_por_nacionalizaci%C3%B3n_del_cobre.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Salvador_Allende_en_Rancagua_por_nacionalizaci%C3%B3n_del_cobre.jpg",
-            "artist": "Biblioteca del Congreso Nacional - Chile",
-            "credit": "http://historiapolitica.bcn.cl/JPG/b/b41646aaf233c632a1f13ffa9c40c280/Fc-011548_1024.png",
-            "license": "CC BY-SA 3.0 cl",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/cl/deed.en",
-            "description": "11/07/1971. En la plaza de Rancagua en el marco de las Actividades por la Nacionalización del Cobre.",
-            "visualType": "contemporaneous_documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "nacionalizacion",
-              "cobre"
-            ],
-            "eventYear": 1971,
-            "imageYear": 1971,
-            "temporalDeltaYears": 0,
-            "exactYear": true,
-            "contemporaneous": true,
-            "score": 17,
-            "rejectionWarnings": [
-              "attribution_required"
-            ],
-            "reviewRequired": true
-          }
-        ]
+        "candidates": []
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -10618,39 +9789,47 @@
         "queryAttempts": [
           {
             "query": "\"Santiago Metro\" 1975",
-            "status": "ok",
-            "resultCount": 2
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
           },
           {
             "query": "\"Santiago Metro\" photograph",
+            "status": "error",
+            "error": "HTTP 429",
+            "httpStatus": 429
+          },
+          {
+            "query": "\"Metro de Santiago\"",
             "status": "ok",
             "resultCount": 15
           }
         ],
         "candidates": [
           {
-            "fileTitle": "File:Monte Tabor, Santiago Metro.jpg",
+            "fileTitle": "File:Metro santiago.JPG",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Monte_Tabor%2C_Santiago_Metro.jpg/1280px-Monte_Tabor%2C_Santiago_Metro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Monte_Tabor%2C_Santiago_Metro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Monte_Tabor%2C_Santiago_Metro.jpg",
-            "artist": "Ignacio Olmedo Godoy",
-            "credit": "Image at Flickr",
-            "license": "CC BY 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-            "description": "Estación Monte Tabor en la línea 5 del Metro de Santiago",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Metro_santiago.JPG/1280px-Metro_santiago.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Metro_santiago.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Metro_santiago.JPG",
+            "artist": "Bachelot Pierre J-P",
+            "credit": "Own work",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "description": "Le métro au heures de pointes, Santiago de Chile, Chili.",
             "visualType": "later_context_photo",
             "entityMatch": true,
             "matchedAliases": [
               "metro",
-              "santiago"
+              "santiago",
+              "chile"
             ],
             "eventYear": 1975,
-            "imageYear": 2011,
-            "temporalDeltaYears": 36,
+            "imageYear": 2005,
+            "temporalDeltaYears": 30,
             "exactYear": false,
             "contemporaneous": false,
-            "score": 10,
+            "score": 15,
             "rejectionWarnings": [
               "high_temporal_delta",
               "attribution_required"
