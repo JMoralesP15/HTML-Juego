@@ -5,7 +5,6 @@ import {fileURLToPath} from 'node:url';
 import {matchIdentity,photoMime,captureYear} from './media-identity.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const feedback=JSON.parse(fs.readFileSync(path.join(root,'reports/editorial-feedback-v187c.json'),'utf8'));
 const content=fs.readFileSync(path.join(root,'js/content.js'),'utf8');
 const sandbox={};vm.createContext(sandbox);vm.runInContext(`${content}\n;globalThis.__QUESTIONS__=QUESTIONS;`,sandbox);
 const questions=sandbox.__QUESTIONS__||[];
@@ -41,7 +40,7 @@ async function api(base,params,attempt=1){
 const originalYear=captureYear;
 function vocabulary(q){return uniq([q.title,q.entity?.replace(/-/g,' '),q.fact,q.region].flatMap(tokens))}
 function semanticScore(q,blob,oy){const n=norm(blob),identity=matchIdentity(q,blob),matched=identity.matched;const exactYear=new RegExp(`(^|\\D)${q.year}(\\D|$)`).test(blob);const delta=Number.isFinite(oy)?oy-q.year:null;const contemporaneous=Number.isFinite(delta)&&Math.abs(delta)<=5;let score=matched.length*5+(exactYear?4:0)+(photoHint.test(blob)?2:0)+(contemporaneous?5:0);if(Number.isFinite(delta)&&Math.abs(delta)>20)score-=Math.min(6,Math.floor(Math.abs(delta)/10));if(lowValue.test(blob))score-=7;return {score,matched,exactYear,delta,contemporaneous,identityMatch:identity.accepted}}
-function visualType(q,blob,oy,exactYear){const delta=Number.isFinite(oy)?oy-q.year:null;if(referenceVisual.test(blob))return'review_only_reference';if(Number.isFinite(delta)&&Math.abs(delta)<=5)return'contemporaneous_documentary_photo';if(Number.isFinite(delta)&&delta>5&&['Tecnología','Videojuegos','Música','Cultura','Cine'].includes(q.category)&&exactYear)return'later_photo_of_original_artifact';if(Number.isFinite(delta)&&Math.abs(delta)>12)return'contextual_photo';return'documentary_photo'}
+function visualType(q,blob,oy,exactYear){const delta=Number.isFinite(oy)?oy-q.year:null;if(referenceVisual.test(blob))return'review_only_reference';if(Number.isFinite(delta)&&Math.abs(delta)<=5)return'contemporaneous_documentary_photo';if(Number.isFinite(delta)&&delta>5&&['Tecnología','Videojuegos','Música','Cultura','Cine'].includes(q.category)&&exactYear)return'later_photo_of_original_artifact';if(Number.isFinite(delta)&&Math.abs(delta)>12)return'contextual_photo';return'contextual_photo'}
 async function commonsSearch(q){
   const plans=uniq([`"${q.title}" ${q.year}`,`"${q.title}" photograph`,`"${q.title}" ${q.region||''} photo`,q.entity?`"${q.entity.replace(/-/g,' ')}"`:null]);
   const titles=[],attempts=[];
@@ -49,7 +48,7 @@ async function commonsSearch(q){
     try{const d=await api(COMMONS,{action:'query',list:'search',srnamespace:'6',srlimit:'18',srsearch:query});const found=(d?.query?.search||[]).map(x=>x.title);titles.push(...found);attempts.push({source:'commons',query,status:'ok',resultCount:found.length})}catch(e){attempts.push({source:'commons',query,status:'error',error:String(e.message),httpStatus:e.status||null})}
     await sleep(25);
   }
-  const selected=uniq(titles).slice(0,55);if(!selected.length)return{attempts,candidates:[]};
+  const selected=uniq(titles).slice(0,50);if(!selected.length)return{attempts,candidates:[]};
   let data;try{data=await api(COMMONS,{action:'query',prop:'imageinfo',titles:selected.join('|'),iiprop:'url|mime|extmetadata',iiurlwidth:'1000',iiextmetadatalanguage:'en',iiextmetadatafilter:'LicenseShortName|UsageTerms|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|DateTime|Categories'})}catch(e){attempts.push({source:'commons',query:'imageinfo',status:'error',error:String(e.message),httpStatus:e.status||null});return{attempts,candidates:[]}}
   const out=[];
   for(const page of data?.query?.pages||[]){
@@ -65,11 +64,11 @@ async function commonsSearch(q){
   return{attempts,candidates:out};
 }
 async function wikipediaSearch(q,lang){
-  const attempts=[],out=[];const query=q.title;
+  const attempts=[],out=[];const query=[q.title,q.region].filter(Boolean).join(' ');
   try{
     const d=await api(WIKI[lang],{action:'query',generator:'search',gsrnamespace:'0',gsrlimit:'6',gsrsearch:query,prop:'pageimages|info',inprop:'url',piprop:'thumbnail|original|name',pithumbsize:'1000'});
     const pages=d?.query?.pages||[];attempts.push({source:`wikipedia_${lang}`,query,status:'ok',resultCount:pages.length});
-    for(const p of pages){const src=p.thumbnail?.source||p.original?.source;if(!src||!p.fullurl)continue;const blob=`${p.title} ${p.pageimage||''}`,s=semanticScore(q,blob,null);if(!s.identityMatch)continue;out.push({provider:`wikipedia_${lang}`,fileTitle:p.pageimage||p.title,src,original:p.original?.source||src,sourcePage:p.fullurl,artist:null,credit:`Wikipedia ${lang.toUpperCase()} · página ${p.title}`,license:'Derechos no resueltos en descubrimiento automático',licenseUrl:null,description:`Imagen principal asociada a la página ${p.title}.`,visualType:'review_only_reference',rightsTier:'review_only',eventYear:q.year,imageYear:null,temporalDeltaYears:null,matchedAliases:s.matched,score:s.score+2,rejectionWarnings:['rights_unresolved','review_only_reference','image_year_unknown'],reviewRequired:true});}
+    for(const p of pages){const src=p.thumbnail?.source||p.original?.source;if(!src||!p.fullurl||! /\.(?:jpe?g|png|webp|tiff?)(?:$|[?#])/i.test(p.original?.source||src))continue;const blob=`${p.title} ${p.pageimage||''}`,s=semanticScore(q,blob,null);if(!s.identityMatch)continue;out.push({provider:`wikipedia_${lang}`,fileTitle:p.pageimage||p.title,src,original:p.original?.source||src,sourcePage:p.fullurl,artist:null,credit:`Wikipedia ${lang.toUpperCase()} · página ${p.title}`,license:'Derechos no resueltos en descubrimiento automático',licenseUrl:null,description:`Imagen principal asociada a la página ${p.title}.`,visualType:'review_only_reference',rightsTier:'review_only',eventYear:q.year,imageYear:null,temporalDeltaYears:null,matchedAliases:s.matched,score:s.score+2,rejectionWarnings:['rights_unresolved','review_only_reference','image_year_unknown'],reviewRequired:true});}
   }catch(e){attempts.push({source:`wikipedia_${lang}`,query,status:'error',error:String(e.message),httpStatus:e.status||null})}
   return{attempts,candidates:out};
 }
@@ -81,7 +80,7 @@ for(const id of ids){const q=byId.get(id);if(!q){items[id]={status:'missing_ques
   const top=dedupeAndRank(candidates);const hasError=attempts.some(x=>x.status==='error');const status=top.length?'found':hasError?'error':'no_candidate';items[id]={id,title:q.title,year:q.year,category:q.category,status,queryAttempts:attempts,candidates:top};if(top.length)found++;else if(status==='no_candidate')noCandidate++;else errors++;totalCandidates+=top.length;publishable+=top.filter(x=>x.rightsTier==='publishable').length;reviewOnly+=top.filter(x=>x.rightsTier==='review_only').length;if(searched%10===0)console.log(`[${searched}/${ids.length}] found=${found} candidates=${totalCandidates} errors=${errors}`);await sleep(35)}
 // Summary counts the complete resulting manifest, including retained records in targeted runs.
 const allItems=Object.values(items);found=allItems.filter(x=>x.candidates?.length).length;noCandidate=allItems.filter(x=>x.status==='no_candidate').length;errors=allItems.filter(x=>['error','missing_question'].includes(x.status)).length;totalCandidates=allItems.reduce((n,x)=>n+(x.candidates?.length||0),0);publishable=allItems.reduce((n,x)=>n+(x.candidates||[]).filter(c=>c.rightsTier==='publishable').length,0);reviewOnly=totalCandidates-publishable;
-const output={schema:'que-ano-editorial-review-media-v1.8.7-c',version:'1.8.7-c',generatedAt:new Date().toISOString(),policy:'Expanded candidate discovery for human comparison. rightsTier=review_only candidates may be shown in the review console but are blocked from automatic publication.',summary:{targetIds:allItems.length,searched:allItems.length,searchedThisRun:searched,found,noCandidate,errors,totalCandidates,publishable,reviewOnly,maxPerEvent:6},items};
+const output={schema:'que-ano-editorial-review-media-v1.8.7-c',version:'1.8.7-c',generatedAt:new Date().toISOString(),policy:'Expanded candidate discovery for human comparison. rightsTier=review_only candidates may be shown in the review console but are blocked from automatic publication.',summary:{targetIds:allItems.length,searched:allItems.length,searchedThisRun:searched,eventsWithSearchErrors:allItems.filter(x=>x.queryAttempts?.some(a=>a.status==='error')).length,found,noCandidate,errors,totalCandidates,publishable,reviewOnly,maxPerEvent:6},items};
 fs.writeFileSync(path.join(root,'reports/editorial-review-media-v187c.json'),JSON.stringify(output,null,2)+'\n');
 fs.writeFileSync(path.join(root,'js/editorial-review-media-v187c.js'),`/* generated by tools/editorial-review-media-v187c.mjs */\nwindow.__QA_EDITORIAL_REVIEW_MEDIA_V187C__=${JSON.stringify(output)};\n`);
 console.log(JSON.stringify(output.summary,null,2));
