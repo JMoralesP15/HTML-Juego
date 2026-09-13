@@ -5,6 +5,7 @@
   'use strict';
   const proposals=window.__QA_EDITORIAL_PROPOSALS_V181__?.items||{};
   const ids=Object.keys(proposals);
+  const questions=typeof QUESTIONS!=='undefined'?QUESTIONS:(window.QUESTIONS||[]);
   const STORE_KEY='que-ano-editorial-proposals-v181-batch01';
   const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const load=()=>{try{return JSON.parse(localStorage.getItem(STORE_KEY)||'{}')}catch{return {}}};
@@ -47,29 +48,32 @@
     actions.prepend(metric,start,all,exp);renderBatchMetric();
   }
 
-  function setStatus(id,status){const r=rec(id);r.status=status;r.updatedAt=new Date().toISOString();save();renderProposal()}
+  function setStatus(id,status){const r=rec(id);r.status=status;r.updatedAt=new Date().toISOString();save();renderProposal(true)}
   function saveFields(id){
-    const r=rec(id),root=document.querySelector('.v181-proposal-section');if(!root)return;
+    const r=rec(id),root=document.querySelector('.v181-proposal-section');if(!root||root.dataset.v181Id!==id)return;
     root.querySelectorAll('[data-v181-edit]').forEach(el=>r.edits[el.dataset.v181Edit]=el.value);
     const note=root.querySelector('[data-v181-note]');if(note)r.note=note.value;
     r.updatedAt=new Date().toISOString();save();
   }
   function exportBatch(){
+    const id=currentId();if(id)saveFields(id);
     const payload={schema:'que-ano-editorial-proposals-review',version:'1.8.1-draft.1',batch:'batch-01-50',exportedAt:new Date().toISOString(),proposalCount:ids.length,records:store};
     const blob=new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`editorial-proposals-v181-batch01-${new Date().toISOString().slice(0,10)}.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
-  function renderProposal(){
-    if(busy)return;busy=true;
+  function renderProposal(force=false){
+    if(busy)return;
+    const id=currentId(),p=proposals[id],existing=document.querySelector('.v181-proposal-section');
+    if(existing?.dataset.v181Id===id&&!force)return;
+    busy=true;
     try{
-      document.querySelector('.v181-proposal-section')?.remove();
-      const id=currentId(),p=proposals[id];
+      existing?.remove();
       const textSection=[...document.querySelectorAll('.pane .section')].find(s=>s.querySelector('h3')?.textContent.includes('2 · Texto de aprendizaje'));
       if(textSection)textSection.hidden=Boolean(p);
       if(!p)return;
-      const q=(window.QUESTIONS||[]).find(x=>x.id===id);if(!q)return;
+      const q=questions.find(x=>x.id===id);if(!q)return;
       const r=rec(id),summary=r.edits.summary??p.summary,expanded=r.edits.expanded??p.expanded,dateNote=r.edits.dateNote??p.dateNote;
-      const sec=document.createElement('section');sec.className='section v181-proposal-section';
+      const sec=document.createElement('section');sec.className='section v181-proposal-section';sec.dataset.v181Id=id;
       sec.innerHTML=`
         <div class="section-head"><div><span class="v181-kicker">LOTE 01 · PROPUESTA ${String(ids.indexOf(id)+1).padStart(2,'0')}/50</span><h3>Texto narrativo que vería el jugador</h3></div><span class="chip ${p.confidence==='high'?'good':p.confidence==='medium'?'warn':'bad'}">confianza ${esc(p.confidence)}</span></div>
         <div class="section-body">
@@ -95,7 +99,7 @@
   document.addEventListener('input',e=>{if(e.target.matches?.('[data-v181-edit],[data-v181-note]')){const id=currentId();if(id)saveFields(id)}});
 
   const card=document.getElementById('reviewCard');
-  if(card)new MutationObserver(()=>queueMicrotask(renderProposal)).observe(card,{childList:true,subtree:true});
+  if(card)new MutationObserver(()=>queueMicrotask(()=>renderProposal(false))).observe(card,{childList:true,subtree:true});
   topControls();renderProposal();renderBatchMetric();
   window.__QA_EDITORIAL_ASSIST_V181__={ids,getStore:()=>JSON.parse(JSON.stringify(store)),openProposal,exportBatch};
 })();
