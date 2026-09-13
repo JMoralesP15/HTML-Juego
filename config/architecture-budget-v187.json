@@ -1,0 +1,25 @@
+{
+  "schema": "que-ano-architecture-budget-v1.8.7",
+  "baseline": "v1.8.7-unified-editorial-review",
+  "policy": "Ratchet budget. Improvements become the new ceiling/floor; worsening requires an explicit architecture decision in the same PR.",
+  "max": {
+    "activeScripts": 24,
+    "activeStylesheets": 5,
+    "staticCollisions": 23,
+    "behaviorPatches": 13,
+    "mutationObservers": 0,
+    "renderSubscriptions": 7,
+    "cssImportant": 811,
+    "repeatedCssSelectors": 99
+  },
+  "min": {
+    "classificationCoverage": 1,
+    "ownershipRatio": 0.5,
+    "testProtectionRatio": 0.7777777777777778
+  },
+  "informational": {
+    "eventListeners": 33,
+    "contracts": 18,
+    "auditCompletenessScore": 100
+  }
+}
