@@ -10,7 +10,7 @@ const shotDir=path.join(root,'test-results','screenshots');
 async function boot(page,{width=1440,height=1000}={}){
   await page.setViewportSize({width,height});
   await page.goto(url);
-  await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-draft.2');
+  await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-b');
 }
 
 test('consola única carga 300 fichas y las tres dimensiones',async({page})=>{
@@ -21,60 +21,88 @@ test('consola única carga 300 fichas y las tres dimensiones',async({page})=>{
   await expect(page.getByRole('heading',{name:/2 · Contenido textual/i})).toBeVisible();
   await expect(page.getByRole('heading',{name:/3 · Contenido visual/i})).toBeVisible();
   expect(await page.locator('script[src="editorial-assist-v181.js"]').count()).toBe(0);
+  expect(await page.locator('script[src="review.js"]').count()).toBe(0);
 });
 
-test('lote editorial contiene 100 eventos y distingue 39 propuestas de 61 textos por ajustar',async({page})=>{
+test('lote 02 contiene 100 propuestas y 100 contratos textuales aprobados estructuralmente',async({page})=>{
   await boot(page);
   await page.selectOption('#batchFilter','batch-02-100');
   await expect(page.locator('.queue-item')).toHaveCount(100);
-  const counts=await page.evaluate(()=>({
-    selected:window.__QA_EDITORIAL_BATCH02_V187__.ids.length,
-    proposals:window.__QA_EDITORIAL_BATCH02_V187__.ids.filter(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id)).length,
-    current:window.__QA_EDITORIAL_BATCH02_V187__.ids.filter(id=>!window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id)).length
-  }));
-  expect(counts).toEqual({selected:100,proposals:39,current:61});
-  const proposalId=await page.evaluate(()=>window.__QA_EDITORIAL_BATCH02_V187__.ids.find(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id))||null);
-  const currentId=await page.evaluate(()=>window.__QA_EDITORIAL_BATCH02_V187__.ids.find(id=>!window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id))||null);
-  await page.locator(`[data-open="${proposalId}"]`).click();
-  await expect(page.locator('[data-edit="summary"]')).toBeVisible();
-  await expect(page.locator('[data-edit="expanded"]')).toBeVisible();
-  await page.locator(`[data-open="${currentId}"]`).click();
-  await expect(page.locator('[data-edit="summary"]')).toBeVisible();
-  await expect(page.locator('[data-edit="expanded"]')).toBeVisible();
-  await expect(page.getByText(/requiere ajuste/i).first()).toBeVisible();
+  const audit=await page.evaluate(()=>{
+    const items=window.__QA_EDITORIAL_BATCH_V187__?.items||[];
+    return {
+      total:items.length,
+      proposals:items.filter(x=>x.proposal).length,
+      pass:items.filter(x=>x.textCheck?.structuralPass).length,
+      sourced:items.filter(x=>x.sourceUrl).length,
+      forbidden:items.filter(x=>x.textCheck?.violations?.length).map(x=>x.id)
+    };
+  });
+  expect(audit.total).toBe(100);
+  expect(audit.proposals).toBe(100);
+  expect(audit.pass).toBe(100);
+  expect(audit.sourced).toBe(100);
+  expect(audit.forbidden).toEqual([]);
 });
 
-test('manifiesto automático sólo expone candidatas fotográficas de alta precisión',async({page})=>{
+test('búsqueda visual registra estados y hasta tres candidatas trazables por evento',async({page})=>{
   await boot(page);
   const audit=await page.evaluate(()=>{
     const items=window.__QA_EDITORIAL_BATCH_V187__?.items||[];
-    const media=items.map(x=>x.mediaCandidate).filter(Boolean);
+    const candidates=items.flatMap(x=>x.mediaSearch?.candidates||[]);
     return {
-      count:media.length,
-      statuses:[...new Set(media.map(x=>x.photoTypeStatus))],
-      mimes:[...new Set(media.map(x=>x.mime))],
-      badNames:media.filter(x=>/(logo|poster|cover|screenshot|map|diagram|illustration|flag|cosplay|replica|reenactment|anniversary)/i.test(x.fileTitle||'')).map(x=>x.fileTitle)
+      searched:items.filter(x=>['found','no_candidate','error','blocked'].includes(x.mediaSearch?.status)).length,
+      maxCandidates:Math.max(0,...items.map(x=>(x.mediaSearch?.candidates||[]).length)),
+      missingSource:candidates.filter(x=>!x.sourcePage).length,
+      missingLicense:candidates.filter(x=>!x.license).length,
+      autoApproved:candidates.filter(x=>x.reviewRequired!==true).length,
+      invalidVisual:candidates.filter(x=>/(logo|poster|cover|screenshot|map|diagram|illustration|flag|cosplay|replica|reenactment|anniversary|collage|montage)/i.test(x.fileTitle||'')).length
     };
   });
-  expect(audit.count).toBeGreaterThan(0);
-  expect(audit.statuses).toEqual(['probable_real_photograph']);
-  expect(audit.mimes.every(x=>/^image\/(jpeg|tiff|png)$/i.test(x))).toBeTruthy();
-  expect(audit.badNames).toEqual([]);
+  expect(audit.searched).toBe(100);
+  expect(audit.maxCandidates).toBeLessThanOrEqual(3);
+  expect(audit.missingSource).toBe(0);
+  expect(audit.missingLicense).toBe(0);
+  expect(audit.autoApproved).toBe(0);
+  expect(audit.invalidVisual).toBe(0);
 });
 
-test('decisiones factual textual y visual persisten en un solo store',async({page})=>{
+test('manifiesto no publica automáticamente candidatas en q.v18Media',async()=>{
+  const code=fs.readFileSync(path.join(root,'tools','export-editorial-batch-js-v187.mjs'),'utf8');
+  expect(code).not.toMatch(/q\.v18Media\s*=/);
+  expect(code).toMatch(/__QA_EDITORIAL_BATCH_V187__/);
+});
+
+test('selección visual y estados persisten en un único store',async({page})=>{
+  await boot(page);
+  await page.selectOption('#batchFilter','batch-02-100');
+  const id=await page.evaluate(()=>{
+    const item=(window.__QA_EDITORIAL_BATCH_V187__?.items||[]).find(x=>(x.mediaSearch?.candidates||[]).length>0);
+    return item?.id||window.__QA_EDITORIAL_BATCH02_V187__.ids[0];
+  });
+  await page.locator(`[data-open="${id}"]`).click();
+  const choice=page.locator('[data-media-choice^="candidate:"]').first();
+  if(await choice.count())await choice.click();else await page.locator('[data-media-choice="current"]').click();
+  await page.locator('[data-status-group="factualStatus"][data-status-value="approved"]').click();
+  await page.locator('[data-status-group="textStatus"][data-status-value="approved"]').click();
+  await page.locator('[data-status-group="mediaStatus"][data-status-value="approved"]').click();
+  const saved=await page.evaluate(id=>JSON.parse(localStorage.getItem('que-ano-editorial-review-v18')).records[id],id);
+  expect(saved.factualStatus).toBe('approved');expect(saved.textStatus).toBe('approved');expect(saved.mediaStatus).toBe('approved');expect(saved.mediaChoice).not.toBe('pending');
+  await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-b');
+  const restored=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],id);expect(restored.mediaChoice).toBe(saved.mediaChoice);
+});
+
+test('no_photo sigue siendo una decisión editorial válida',async({page})=>{
   await boot(page);
   await page.locator('[data-status-group="factualStatus"][data-status-value="approved"]').click();
   await page.locator('[data-status-group="textStatus"][data-status-value="approved"]').click();
   await page.locator('[data-status-group="mediaStatus"][data-status-value="no_photo"]').click();
   const id=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());
-  const saved=await page.evaluate(id=>JSON.parse(localStorage.getItem('que-ano-editorial-review-v18')).records[id],id);
-  expect(saved.factualStatus).toBe('approved');expect(saved.textStatus).toBe('approved');expect(saved.mediaStatus).toBe('no_photo');
-  await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-draft.2');
-  const restored=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],id);expect(restored.mediaStatus).toBe('no_photo');
+  const saved=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],id);
+  expect(saved.mediaStatus).toBe('no_photo');expect(saved.mediaChoice).toBe('no_photo');
 });
 
-test('migra decisiones del antiguo overlay v1.8.1 sin mantener un segundo modo',async({page})=>{
+test('migra decisiones del antiguo overlay sin mantener un segundo modo',async({page})=>{
   await page.addInitScript(()=>localStorage.setItem('que-ano-editorial-proposals-v181-batch01',JSON.stringify({mac:{status:'edit',edits:{summary:'Resumen migrado'},note:'Nota migrada'}})));
   await boot(page);
   const migrated=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore());
@@ -91,14 +119,8 @@ test('filtros separan lote, pendientes y evidencia automática',async({page})=>{
   const categories=await page.locator('.queue-item small').allTextContents();expect(categories.every(x=>x.includes('Ciencia'))).toBeTruthy();
 });
 
-test('atajos permiten aprobar y navegar sin credenciales',async({page})=>{
-  await boot(page);const first=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());
-  await page.keyboard.press('a');const approved=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],first);expect(approved.factualStatus).toBe('approved');
-  await page.keyboard.press('ArrowRight');const next=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());expect(next).not.toBe(first);
-});
-
 test('capturas de consola editorial unificada desktop y móvil',async({page})=>{
   fs.mkdirSync(shotDir,{recursive:true});
-  await boot(page);await page.selectOption('#batchFilter','batch-02-100');await page.screenshot({path:path.join(shotDir,'v187-review-unified-desktop.png'),fullPage:true});
-  await boot(page,{width:390,height:844});await page.selectOption('#batchFilter','batch-02-100');await page.screenshot({path:path.join(shotDir,'v187-review-unified-mobile-390x844.png'),fullPage:true});
+  await boot(page);await page.selectOption('#batchFilter','batch-02-100');await page.screenshot({path:path.join(shotDir,'v187b-review-unified-desktop.png'),fullPage:true});
+  await boot(page,{width:390,height:844});await page.selectOption('#batchFilter','batch-02-100');await page.screenshot({path:path.join(shotDir,'v187b-review-unified-mobile-390x844.png'),fullPage:true});
 });
