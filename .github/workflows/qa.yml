@@ -58,7 +58,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Accessibility QA
         run: npm run qa:accessibility
-      - name: Regression QA against frozen snapshots
+      - name: Deterministic visual contract regression QA
         run: npm run qa:regression
       - name: Visual browser QA
         if: ${{ always() && !cancelled() }}
