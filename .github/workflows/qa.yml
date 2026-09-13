@@ -14,6 +14,7 @@ on:
       - feature/factual-editorial-verification-v1.8
       - feature/editorial-assist-v1.8.1
       - feature/project-traceability-audit-v1.8.3
+      - feature/architecture-stabilization-v1.8.4
 
 permissions:
   contents: read
@@ -51,6 +52,8 @@ jobs:
         run: npm run report:factual
       - name: Project traceability and runtime audit v1.8.3
         run: npm run audit:v183
+      - name: Architecture non-regression guard v1.8.4
+        run: npm run guard:architecture:v184
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Accessibility QA
@@ -70,6 +73,7 @@ jobs:
             reports/content-metrics.json
             reports/culture-curation-v14.json
             reports/architecture-v17.json
+            reports/architecture-budget-v184.json
             reports/editorial-quality-v17.json
             reports/editorial-review-backlog-v17.json
             reports/factual-quality-v18.json
