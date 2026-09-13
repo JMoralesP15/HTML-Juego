@@ -1,0 +1,12 @@
+import vm from 'node:vm';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const context={window:{},document:{querySelector:()=>null,addEventListener:()=>{}},openDetail:()=>{}};
+vm.createContext(context);vm.runInContext(fs.readFileSync(new URL('../js/learning-v16.js',import.meta.url),'utf8'),context);
+const api=context.window.__QA_V16__;
+const q={fact:'El régimen autoritario portugués cayó en abril de 1974.',context:'La fecha concreta registrada para el hito es el 25 de abril de 1974. La misma ficha sitúa el hito en Portugal.',significance:'La misma ficha sitúa el hito en Portugal.'};
+const narrative=api.learningNarrative(q).join(' ');
+assert.equal(narrative,q.fact);
+assert.equal(api.learningFor(q).context,'');
+assert.equal(api.learningNarrative({fact:'Un avance real.',context:'Un avance real.',significance:'Un avance real.'}).length,1);
+console.log('3 learning cleanup assertions passed');
