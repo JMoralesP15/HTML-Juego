@@ -1,0 +1,80 @@
+name: Editorial review media v1.8.7-c
+
+on:
+  push:
+    branches:
+      - feature/editorial-media-batch-v1.8.7
+    paths:
+      - reports/editorial-feedback-v187c.json
+      - js/content.js
+      - js/editorial-replacements-v187c.js
+      - js/editorial-text-refinements-v187c.js
+      - tools/editorial-review-media-v187c.mjs
+      - .github/workflows/editorial-review-media-v187c.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-review-media-v187c-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  review-media:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[review-media-v187c-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/editorial-media-batch-v1.8.7
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Discover expanded review candidates
+        run: node tools/editorial-review-media-v187c.mjs
+      - name: Validate review media contract
+        run: |
+          node --input-type=module - <<'NODE'
+          import fs from 'node:fs';
+          const data=JSON.parse(fs.readFileSync('reports/editorial-review-media-v187c.json','utf8'));
+          const feedback=JSON.parse(fs.readFileSync('reports/editorial-feedback-v187c.json','utf8'));
+          const ids=feedback.ids?.badMedia||[];
+          if(data.summary?.targetIds!==ids.length) throw new Error(`target mismatch: ${data.summary?.targetIds} != ${ids.length}`);
+          if(data.summary?.searched!==ids.length) throw new Error(`searched mismatch: ${data.summary?.searched} != ${ids.length}`);
+          for(const id of ids){
+            const row=data.items?.[id];
+            if(!row) throw new Error(`${id}: missing media row`);
+            if(!['found','no_candidate','error'].includes(row.status)) throw new Error(`${id}: unresolved status ${row.status}`);
+            if((row.candidates||[]).length>6) throw new Error(`${id}: more than 6 candidates`);
+            for(const c of row.candidates||[]){
+              if(!c.src||!c.sourcePage||!c.rightsTier) throw new Error(`${id}: incomplete candidate provenance`);
+              if(!['publishable','review_only'].includes(c.rightsTier)) throw new Error(`${id}: invalid rightsTier ${c.rightsTier}`);
+              if(c.reviewRequired!==true) throw new Error(`${id}: candidate is not reviewRequired`);
+            }
+          }
+          console.log(JSON.stringify(data.summary,null,2));
+          NODE
+      - name: Commit generated review media
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/editorial-review-media-v187c.json js/editorial-review-media-v187c.js
+          if git diff --cached --quiet; then
+            echo "No v1.8.7-c review media changes"
+          else
+            git commit -m "chore: generate v1.8.7-c review media [review-media-v187c-generated]"
+            git pull --rebase origin feature/editorial-media-batch-v1.8.7
+            git push origin HEAD:feature/editorial-media-batch-v1.8.7
+          fi
+      - name: Upload review media artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-review-media-v187c
+          path: |
+            reports/editorial-review-media-v187c.json
+            js/editorial-review-media-v187c.js
+          retention-days: 14
