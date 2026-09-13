@@ -41,3 +41,10 @@ La propuesta es consistente con la arquitectura editorial v1.8.7: mantiene el ba
 **Aprobado para ejecutar.**
 
 La única restricción no negociable es que una imagen `review_only` no debe terminar en el juego por una acción automática. La búsqueda puede ser más permisiva; la publicación no.
+
+## Evidencia de ejecución
+La búsqueda v1.8.8 recorrió los **141** eventos con visual rechazada y las **60** variantes propuestas para los **30** eventos `doubtful`. Encontró al menos una alternativa en **111/141** eventos originales (78,7%) y en **59/60** variantes de reemplazo (98,3%). El conjunto final retuvo **1.026 candidatas**, de las cuales **455** quedaron en `publishable` y **571** en `review_only`; el límite es de 8 por conjunto.
+
+El workflow validó que todas las candidatas retenidas poseen procedencia, `rightsTier` válido y `reviewRequired:true`; ninguna se autoaprueba. Hubo **27** búsquedas que terminaron con error de proveedor y **4** conjuntos `no_candidate`. Estos estados se conservan como evidencia en lugar de rellenarse con imágenes irrelevantes.
+
+La primera corrida de QA de la consola se ejecutó antes de que el workflow visual escribiera el manifiesto definitivo. Pasó 85 pruebas y falló únicamente en los dos contratos que exigían el manifiesto ya generado. Tras el commit del manifiesto se fuerza una nueva corrida QA sobre el estado final.
