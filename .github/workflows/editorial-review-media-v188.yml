@@ -1,0 +1,91 @@
+name: Editorial review media v1.8.8
+
+on:
+  push:
+    branches:
+      - feature/editorial-remediation-v1.8.8
+    paths:
+      - reports/editorial-feedback-v187c.json
+      - js/content.js
+      - js/editorial-replacements-v187c.js
+      - tools/editorial-review-media-v188.mjs
+      - .github/workflows/editorial-review-media-v188.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-review-media-v188-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  review-media:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[review-media-v188-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/editorial-remediation-v1.8.8
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Discover original and replacement visual candidates
+        run: node tools/editorial-review-media-v188.mjs
+      - name: Validate v1.8.8 media contract
+        run: |
+          node --input-type=module - <<'NODE'
+          import fs from 'node:fs';
+          const data=JSON.parse(fs.readFileSync('reports/editorial-review-media-v188.json','utf8'));
+          const feedback=JSON.parse(fs.readFileSync('reports/editorial-feedback-v187c.json','utf8'));
+          const bad=feedback.ids?.badMedia||[];
+          const doubtful=feedback.ids?.doubtful||[];
+          if(data.summary?.targetIds!==bad.length) throw new Error(`target mismatch: ${data.summary?.targetIds} != ${bad.length}`);
+          if(data.summary?.searchedOriginals!==bad.length) throw new Error(`original search mismatch: ${data.summary?.searchedOriginals} != ${bad.length}`);
+          if(data.summary?.replacementEvents!==doubtful.length) throw new Error(`replacement event mismatch: ${data.summary?.replacementEvents} != ${doubtful.length}`);
+          if(data.summary?.searchedReplacements!==data.summary?.replacementVariants) throw new Error('not all replacement variants were searched');
+          for(const id of bad){
+            const row=data.items?.[id];
+            if(!row) throw new Error(`${id}: missing original media row`);
+            if(!['found','no_candidate','error'].includes(row.status)) throw new Error(`${id}: unresolved status ${row.status}`);
+            if((row.candidates||[]).length>8) throw new Error(`${id}: more than 8 candidates`);
+          }
+          for(const id of doubtful){
+            const rows=data.replacementItems?.[id]||[];
+            if(!rows.length) throw new Error(`${id}: replacement visual rows missing`);
+            for(const row of rows){
+              if(!['found','no_candidate','error'].includes(row.status)) throw new Error(`${id}/${row.replacementIndex}: unresolved replacement status`);
+              if((row.candidates||[]).length>8) throw new Error(`${id}/${row.replacementIndex}: more than 8 candidates`);
+            }
+          }
+          const candidates=[...Object.values(data.items||{}).flatMap(x=>x.candidates||[]),...Object.values(data.replacementItems||{}).flatMap(rows=>rows.flatMap(x=>x.candidates||[]))];
+          for(const c of candidates){
+            if(!c.src||!c.sourcePage||!c.rightsTier) throw new Error('candidate without provenance');
+            if(!['publishable','review_only'].includes(c.rightsTier)) throw new Error(`invalid rights tier ${c.rightsTier}`);
+            if(c.reviewRequired!==true) throw new Error('candidate auto-approved');
+          }
+          console.log(JSON.stringify(data.summary,null,2));
+          NODE
+      - name: Commit generated v1.8.8 media
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/editorial-review-media-v188.json js/editorial-review-media-v188.js
+          if git diff --cached --quiet; then
+            echo "No v1.8.8 review media changes"
+          else
+            git commit -m "chore: generate v1.8.8 review media [review-media-v188-generated]"
+            git pull --rebase origin feature/editorial-remediation-v1.8.8
+            git push origin HEAD:feature/editorial-remediation-v1.8.8
+          fi
+      - name: Upload review media artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-review-media-v188
+          path: |
+            reports/editorial-review-media-v188.json
+            js/editorial-review-media-v188.js
+          retention-days: 14
