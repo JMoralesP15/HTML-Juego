@@ -23,13 +23,18 @@ test('consola única carga 300 fichas y las tres dimensiones',async({page})=>{
   expect(await page.locator('script[src="editorial-assist-v181.js"]').count()).toBe(0);
 });
 
-test('lote editorial v1.8.2 contiene exactamente 100 eventos',async({page})=>{
+test('lote editorial contiene 100 eventos y expone propuestas sólo donde existen',async({page})=>{
   await boot(page);
   await page.selectOption('#batchFilter','batch-02-100');
   await expect(page.locator('.queue-item')).toHaveCount(100);
+  const proposalId=await page.evaluate(()=>window.__QA_EDITORIAL_BATCH02_V187__.ids.find(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id))||null);
+  expect(proposalId).toBeTruthy();
+  await page.locator(`[data-open="${proposalId}"]`).click();
   await expect(page.locator('[data-edit="summary"]')).toBeVisible();
   await expect(page.locator('[data-edit="expanded"]')).toBeVisible();
   await expect(page.locator('[data-edit="dateNote"]')).toBeVisible();
+  const counts=await page.evaluate(()=>({selected:window.__QA_EDITORIAL_BATCH02_V187__.ids.length,proposals:window.__QA_EDITORIAL_BATCH02_V187__.ids.filter(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id)).length}));
+  expect(counts.selected).toBe(100);expect(counts.proposals).toBe(39);
 });
 
 test('decisiones factual textual y visual persisten en un solo store',async({page})=>{
