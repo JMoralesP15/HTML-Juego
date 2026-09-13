@@ -1,8 +1,8 @@
 {
   "schema": "que-ano-editorial-batch-v1.8.7",
-  "version": "1.8.7-draft.2",
+  "version": "1.8.7-draft.3",
   "batch": "batch-02-100",
-  "generatedAt": "2026-09-13T04:18:32.668Z",
+  "generatedAt": "2026-09-13T04:21:31.999Z",
   "selectionRule": "100 IDs outside batch01; avoid records already materially touched in the human review when a same-category substitute exists; 12–13 per category.",
   "summary": {
     "total": 100,
@@ -10,11 +10,13 @@
     "currentBankOnly": 61,
     "textContractPass": 39,
     "textNeedsEdit": 61,
-    "withMediaCandidate": 61,
-    "withoutMediaCandidate": 39,
-    "commonsSearched": 93,
-    "commonsFound": 54,
-    "mediaPolicy": "Candidate only: human review required for relevance, contemporaneity, photographic nature and rights."
+    "legacyVisualCandidates": 7,
+    "realPhotoCandidates": 56,
+    "withoutRealPhotoCandidate": 44,
+    "commonsSearched": 100,
+    "commonsFound": 56,
+    "commonsErrors": 8,
+    "mediaPolicy": "High-precision discovery only. Candidate must have an open reusable license, photographic MIME/evidence and semantic entity overlap. Human approval remains mandatory for relevance, contemporaneity and rights."
   },
   "items": [
     {
@@ -54,7 +56,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:1995 Events montage 16-grid version.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1995_Events_montage_16-grid_version.jpg/1280px-1995_Events_montage_16-grid_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/89/1995_Events_montage_16-grid_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:1995_Events_montage_16-grid_version.jpg",
+        "artist": "From a variety of images credited above.",
+        "credit": "This image includes elements from this file:",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "description": "16 major events of 1985. From top to bottom, left to right: Oklahoma City bombing Sampoong Department Store collapse STS-71 American Airlines Flight 965 1995 Neftegorsk earthquake Great Hanshin earthquake First Chechen War Assassination of Yitzhak Rabin Typhoon Angela Srebrenica massacre / Bosnian War Murder trial of O. J. Simpson Cenepa War Million Man March 51 Pegasi b Windows 95 World Trade Organization",
+        "dateOriginal": "2024-02-07",
+        "score": 8,
+        "matchedEntityTokens": [
+          "windows"
+        ],
+        "exactYear": true,
+        "originalYear": 2024,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -94,17 +118,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Google Main Page in 1998.png",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Google_Main_Page_in_1998.png/1280px-Google_Main_Page_in_1998.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Google_Main_Page_in_1998.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Google_Main_Page_in_1998.png",
-        "artist": "Google Inc.",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "The main page of Google on 1998.",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:1998 Events montage 16-grid version.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/1998_Events_montage_16-grid_version.jpg/1280px-1998_Events_montage_16-grid_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/5/51/1998_Events_montage_16-grid_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:1998_Events_montage_16-grid_version.jpg",
+        "artist": "From a variety of images credited above.",
+        "credit": "This image includes elements from this file:",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "description": "16 major events of 1998. From top to bottom, left to right: Second Congo War 1998 China floods Lunar Prospector Akashi Kaikyo Bridge 1998 Gujarat cyclone Hurricane Mitch Google Eschede train disaster 1998 United States embassy bombings 1998 FIFA World Cup 1998 Winter Olympics Impeachment of Bill Clinton / Clinton–Lewinsky scandal China Airlines Flight 676 Swissair Flight 111 Good Friday Agreement Fall of Suharto",
+        "dateOriginal": "2024-02-01",
+        "score": 8,
+        "matchedEntityTokens": [
+          "google"
+        ],
+        "exactYear": true,
+        "originalYear": 2024,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -145,18 +180,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:STS-125 and STS-400 on Launch Pads.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/STS-125_and_STS-400_on_Launch_Pads.jpg/1280px-STS-125_and_STS-400_on_Launch_Pads.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/06/STS-125_and_STS-400_on_Launch_Pads.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:STS-125_and_STS-400_on_Launch_Pads.jpg",
-        "artist": "NASA/Jack Pfaller",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "With a rainbow serving as a backdrop in the sky, space shuttle Atlantis (foreground) sits on Launch Pad A and Endeavour on Launch Pad B in this September 2008 photograph. This was the first time since July 2001 that two shuttles were on the launch pads at the same time at the Kennedy Space Center .",
-        "score": 6,
-        "photoTypeStatus": "probable_photograph"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "manual_verified"
     },
     {
@@ -196,18 +221,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Qué es una cuenta de correo electrónico.pdf",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Qu%C3%A9_es_una_cuenta_de_correo_electr%C3%B3nico.pdf/page1-960px-Qu%C3%A9_es_una_cuenta_de_correo_electr%C3%B3nico.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/01/Qu%C3%A9_es_una_cuenta_de_correo_electr%C3%B3nico.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Qu%C3%A9_es_una_cuenta_de_correo_electr%C3%B3nico.pdf",
-        "artist": "No machine-readable author provided. Anti 2090 assumed (based on copyright claims).",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "El correo electrónico, en todos sus ámbitos con todas sus características globales. Trabajo Propio Autor:",
-        "score": 9,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -247,7 +262,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Miriam Argüello 2005.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Miriam_Arg%C3%BCello_2005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Miriam_Arg%C3%BCello_2005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Miriam_Arg%C3%BCello_2005.jpg",
+        "artist": "Confidencial",
+        "credit": "YouTube : https://www.youtube.com/watch?v=uNqMV8J-ZuY – View/save archived versions on archive.org",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "description": "Former President of the National Assembly Miriam Argüello in a 2005 interview for a documentary, “La transición: Los años de Doña Violeta”, by Esta Semena. Screencap at 11:50.",
+        "dateOriginal": "2005-05-06",
+        "score": 15,
+        "matchedEntityTokens": [
+          "youtube",
+          "youtu"
+        ],
+        "exactYear": true,
+        "originalYear": 2005,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -287,17 +325,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Haare und Frisuren 001 2010 05 23.jpg",
+        "mime": "image/jpeg",
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Haare_und_Frisuren_001_2010_05_23.jpg/1280px-Haare_und_Frisuren_001_2010_05_23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "original": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Haare_und_Frisuren_001_2010_05_23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Haare_und_Frisuren_001_2010_05_23.jpg",
         "artist": "Friedrich Haag",
+        "credit": "Self-photographed",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "description": "Hairs on a horse snout in backlight Wikimedia category : Category:Animal hair Title Category:Animal hair Instance of Wikimedia category taxon : Horse Title Horse Instance of taxon Animal organ: Snout Title Snout Instance of animal organ Part of head and face lighting : Contre-jour Title Contre-jour Instance of lighting , photographic technique and photography genre",
-        "score": 6,
-        "photoTypeStatus": "probable_photograph"
+        "dateOriginal": "Taken on 23 May 2010, 17:40:28",
+        "score": 12,
+        "matchedEntityTokens": [
+          "insta"
+        ],
+        "exactYear": true,
+        "originalYear": 2010,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -338,7 +387,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:January 2008 Copenhagen.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/January_2008_Copenhagen.jpg/1280px-January_2008_Copenhagen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e5/January_2008_Copenhagen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen.jpg",
+        "artist": "Syced",
+        "credit": "Own work",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "description": "January 2008 Copenhagen",
+        "dateOriginal": "18 January 2008 (according to Exif data)",
+        "score": 10,
+        "matchedEntityTokens": [
+          "android"
+        ],
+        "exactYear": true,
+        "originalYear": 2008,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -378,17 +449,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Anna Nalick at Saint Rocke, 25 January 2011 (5391526293).jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/0/08/Anna_Nalick_at_Saint_Rocke%2C_25_January_2011_%285391526293%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/08/Anna_Nalick_at_Saint_Rocke%2C_25_January_2011_%285391526293%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Anna_Nalick_at_Saint_Rocke%2C_25_January_2011_(5391526293).jpg",
-        "artist": "InSapphoWeTrust from Los Angeles, California, USA",
-        "license": "CC BY-SA 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-        "description": "Anna Nalick at Saint Rocke, 25 January 2011 Closing out as usual with \"Breathe,\" but with no piano available here (and by extension, no Will Gramling), the arrangement goes back to what was used in the 2010 live shows. Lovely nevertheless, and a chance for yours truly to sing loud and proud toward the end. Anna did spend a lot of time meeting with fans this time - both the \"management\" (the core fan group that attends every show, including yours truly) and the new fans. While Anna took time to patiently answer questions from new fans, the \"management\" chatted away with percussionist Jeffrey Brown. Anna also had a special message for a lesbian couple visiting from Sacramento: \"I love my gays!\" She also recalled being at a George Michael concert in Dublin with a fabulous (mostly gay male) audience. (She further added that some of the dudes in attendance there had thought Anna herself was a guy (in drag) too.)",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:WechatIMG69.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/WechatIMG69.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/03/WechatIMG69.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:WechatIMG69.jpg",
+        "artist": "Shixiong cao",
+        "credit": "https://www.researchgate.net/publication/251557035_Excessive_reliance_on_afforestation_in_China%27s_arid_and_semi-arid_regions_Lessons_in_ecological_restoration",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "China's afforestation's impact on the world climate crisis",
+        "dateOriginal": "2011-02",
+        "score": 7,
+        "matchedEntityTokens": [
+          "wechat"
+        ],
+        "exactYear": false,
+        "originalYear": 2011,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -429,6 +511,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -470,6 +553,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -510,17 +594,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Mac Mini M1 chip.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Mac_Mini_M1_chip.jpg/1280px-Mac_Mini_M1_chip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/d/df/Mac_Mini_M1_chip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Mac_Mini_M1_chip.jpg",
-        "artist": "Sonic8400",
+        "fileTitle": "File:Macbook Pro 2020 color photography.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Macbook_Pro_2020_color_photography.jpg/1280px-Macbook_Pro_2020_color_photography.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/78/Macbook_Pro_2020_color_photography.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Macbook_Pro_2020_color_photography.jpg",
+        "artist": "Levi Loot",
+        "credit": "Own work More photos from Levi Loot",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Apple M1 chip on a MacMini9,1 (M1, 2020) logic board.",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
+        "description": "Photograph of the keyboard of a MacBook Pro 2020 M1",
+        "dateOriginal": "2021-01-10",
+        "score": 17,
+        "matchedEntityTokens": [
+          "apple",
+          "silicon"
+        ],
+        "exactYear": true,
+        "originalYear": 2021,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -561,6 +657,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -601,18 +698,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:EsLibre2020 18V.SDD.08 - Luis Fajardo - ¿Hacia un feudalismo de los datos?¿Derecho o tecnología?¿Cómo defendernos?.webm",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/EsLibre2020_18V.SDD.08_-_Luis_Fajardo_-_%C2%BFHacia_un_feudalismo_de_los_datos%3F%C2%BFDerecho_o_tecnolog%C3%ADa%3F%C2%BFC%C3%B3mo_defendernos%3F.webm/1280px--EsLibre2020_18V.SDD.08_-_Luis_Fajardo_-_%C2%BFHacia_un_feudalismo_de_los_datos%3F%C2%BFDerecho_o_tecnolog%C3%ADa%3F%C2%BFC%C3%B3mo_defendernos%3F.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f7/EsLibre2020_18V.SDD.08_-_Luis_Fajardo_-_%C2%BFHacia_un_feudalismo_de_los_datos%3F%C2%BFDerecho_o_tecnolog%C3%ADa%3F%C2%BFC%C3%B3mo_defendernos%3F.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:EsLibre2020_18V.SDD.08_-_Luis_Fajardo_-_%C2%BFHacia_un_feudalismo_de_los_datos%3F%C2%BFDerecho_o_tecnolog%C3%ADa%3F%C2%BFC%C3%B3mo_defendernos%3F.webm",
-        "artist": "Congreso esLibre",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "[esLibre 2020] Viernes 18 - Sala 'Derechos Digitales, Privacidad en Internet y Seguridad Informática' Título: \"¿Hacia un feudalismo de los datos?¿Derecho o tecnología?¿Cómo defendernos?\" Ponente: Luis Fajardo De perfil claramente universitario, ha sido juez y abogado. Fue responsable de las redes de la Facultad de Derecho de la UAM en los años 90, siendo becario de Formación de Profesorado Universitaario (FPI/FPU). Ha impartido docencia en las Universidades Autónoma de Madrid, Almería, Gerona, UNED y La Laguna, donde lo sigue haciendo en la actualidad, adscrito al Área de Derecho civil. Ha sido fundador de varias aociaciones, entre ellas el Centro de Alternativas Legales , y miembro de Madrid Wireless , el Grupo de Usuario Linux de Canarias (GULiC) , Secretario de ESLIC (Empresas de Software Libre de Canarias), y la Oficina del Software Libre de la ULL , con la que viene colaborando desde hace muchos años. Desde 1999 usa exclusivamente GNU/Linux en sus sistemas. Mantiene y administra diversos nodos del Fediverso, como https://encanarias.info ( Diaspora ) y Silba.Me ( Mastodon ). Diaspora: encanarias.info Mastodon: @lfajardo@silba.me Twitter: @lfajardo Resumen: La Administración está llena de malas prácticas, el mercado está dirigido a primar la corporocracia, que está sustituyendo a la democracia. El Fediverso, las redes federadas, y los servicios libres (que pueden ser instalados “on premise”), pero no parecen suficientes. Realmente tenemos normas que intentan limitar el avance de la corporocracia, fundamentalmente el RGPD. Lamentablemente no se está usando, y debe lanzarse un aviso a navegantes. Cómo nos enganchan: dispositivos que no obedecen a sus dueños, redes sociales que polarizan, manipulación informativa e información individualizada… Cómo defenderse: elección de los servicios con unos parámetros técnicos (arranque libre, open source, interoperable, estándar y federado…) y jurídicos (que permite exigir aquellos criterios técnicos, básicamente, RGPD). Más información: https://interferencias.tech/eslibre2020/#octava Programa completo del congreso: https://eslib.re/2020/programa/",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
     {
@@ -652,7 +739,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Air_Force_Ensign_of_India_%281950%E2%80%932023%29.svg/1280px-Air_Force_Ensign_of_India_%281950%E2%80%932023%29.svg.png?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Air_Force_Ensign_of_India_(1950%E2%80%932023).svg",
         "artist": "Autor indicado en la ficha del archivo",
@@ -670,6 +757,30 @@
         "width": 900,
         "height": 450,
         "mime": "image/svg+xml"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:Supermarine Spitfire XVIIIe ‘SM845 - R’ (G-BUOS) (22713987052).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Supermarine_Spitfire_XVIIIe_%E2%80%98SM845_-_R%E2%80%99_%28G-BUOS%29_%2822713987052%29.jpg/1280px-Supermarine_Spitfire_XVIIIe_%E2%80%98SM845_-_R%E2%80%99_%28G-BUOS%29_%2822713987052%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Supermarine_Spitfire_XVIIIe_%E2%80%98SM845_-_R%E2%80%99_%28G-BUOS%29_%2822713987052%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Supermarine_Spitfire_XVIIIe_%E2%80%98SM845_-_R%E2%80%99_(G-BUOS)_(22713987052).jpg",
+        "artist": "Alan Wilson from Stilton, Peterborough, Cambs, UK",
+        "credit": "Supermarine Spitfire XVIIIe ‘SM845 / R’ (G-BUOS)",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "description": "c/n 6S/672224. RAF serial ‘SM845’. Indian Air Force serial ‘HS687’. In the markings of 28sqn, RAF, based at Hong Kong in 1950. 2015 Flying Legends Airshow. Duxford, Cambridgeshire, UK. 12-7-2015",
+        "dateOriginal": "2015-07-12 16:59",
+        "score": 18,
+        "matchedEntityTokens": [
+          "india",
+          "indian",
+          "force"
+        ],
+        "exactYear": true,
+        "originalYear": 2015,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "needs_review"
     },
@@ -710,17 +821,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Korean War armistice agreement 1953.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Korean_War_armistice_agreement_1953.jpg/1280px-Korean_War_armistice_agreement_1953.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Korean_War_armistice_agreement_1953.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Korean_War_armistice_agreement_1953.jpg",
-        "artist": "U.S. Department of Defense (F. Kazukaitis. U.S. Navy)",
+        "fileTitle": "File:The Korean War,1953 Photograph taken by Jun Miki.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/f/fd/The_Korean_War%2C1953_Photograph_taken_by_Jun_Miki.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/fd/The_Korean_War%2C1953_Photograph_taken_by_Jun_Miki.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Korean_War%2C1953_Photograph_taken_by_Jun_Miki.jpg",
+        "artist": "三木淳",
+        "credit": "三木淳 『三木淳写真集 LIFEのカメラ・アイ』 小学館、1989年。 ISBN 4096804711 。",
         "license": "Public domain",
         "licenseUrl": null,
-        "description": "UN delegate Lieut. Gen. William K. Harrison, Jr. (seated left), and Korean People’s Army and Chinese People’s Volunteers delegate Gen. Nam Il (seated right) signing the Korean War armistice agreement at P’anmunjŏm, Korea, July 27, 1953.",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "description": "The morning after the truce, I went to Pork Chop Hill in the central mountainous region. On the opposite hill, there are enemies up to yesterday. What was killing each other at such a close distance? \"Hey. Come here. I'll give Chinese banknotes to Souvenirs (souvenirs, souvenirs).\" I went down from the hill. Suddenly there was a shoe noise from behind and I was bullied. \"There are land mines buried there. Now that the war is over, we will not die.\" He was an Ethiopian captain of the United Nations Army. This was taken with a test color Kodachrome.",
+        "dateOriginal": "1953-07-28",
+        "score": 12,
+        "matchedEntityTokens": [
+          "korean"
+        ],
+        "exactYear": true,
+        "originalYear": 1953,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -761,17 +883,31 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Asian–African Conference at Bandung April 1955.jpg",
+        "mime": "image/jpeg",
         "src": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Asian%E2%80%93African_Conference_at_Bandung_April_1955.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "original": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Asian%E2%80%93African_Conference_at_Bandung_April_1955.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Asian%E2%80%93African_Conference_at_Bandung_April_1955.jpg",
         "artist": "Unknown author Unknown author",
+        "credit": "http://www.nehrumemorial.nic.in/en/galleries/photo-gallery/category/41-jawaharlal-nehru-with-foreign-dignitaries.html",
         "license": "Public domain",
         "licenseUrl": null,
         "description": "Asian–African Conference at Bandung April 1955",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "dateOriginal": "1955-04",
+        "score": 25,
+        "matchedEntityTokens": [
+          "bandung",
+          "asian",
+          "african",
+          "conference"
+        ],
+        "exactYear": true,
+        "originalYear": 1955,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -812,17 +948,31 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:HMS Albion (R07) flight deck during Suez Crisis 1956.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/6/64/HMS_Albion_%28R07%29_flight_deck_during_Suez_Crisis_1956.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/6/64/HMS_Albion_%28R07%29_flight_deck_during_Suez_Crisis_1956.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:HMS_Albion_(R07)_flight_deck_during_Suez_Crisis_1956.jpg",
-        "artist": "Royal Navy official photographer",
+        "fileTitle": "File:Bon-ess-1956.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Bon-ess-1956.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Bon-ess-1956.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Bon-ess-1956.jpg",
+        "artist": "Unknown author Unknown author",
+        "credit": "Scanné par Jarillon .",
         "license": "Public domain",
         "licenseUrl": null,
-        "description": "A Westland Whirlwind helicopter taking off from the Royal Navy aircraft carrier HMS Albion (R07) to stand by for emergency rescue operations as the ship turns into the wind to fly off her aircraft on a strike. Visible on deck are De Havilland Sea Venom s of 809 Naval Air Squadron, and Hawker Sea Hawk s from 800 and 802 NAS.",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
+        "description": "Gasoline rationing ticket used in France during crisis of Suez canal - 1956. Rationing ends in 1957.",
+        "dateOriginal": "1956",
+        "score": 25,
+        "matchedEntityTokens": [
+          "crisis",
+          "suez",
+          "1956",
+          "canal"
+        ],
+        "exactYear": true,
+        "originalYear": 1956,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -863,6 +1013,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -903,7 +1054,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Abbas, Boudiaf, Bitat, Ben Bella et Ait Ahmed en 1962.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Abbas%2C_Boudiaf%2C_Bitat%2C_Ben_Bella_et_Ait_Ahmed_en_1962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Abbas%2C_Boudiaf%2C_Bitat%2C_Ben_Bella_et_Ait_Ahmed_en_1962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Abbas%2C_Boudiaf%2C_Bitat%2C_Ben_Bella_et_Ait_Ahmed_en_1962.jpg",
+        "artist": "Khaled SAFER",
+        "credit": "http://algerie.eklablog.fr/abbas-boudiaf-bitat-ben-bella-et-ait-ahmed-en-1962-a47082641",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "Une photo rare des chefs F.L.N./A.L.N. en 1962 (Ferhat Abbas, Mohamed Boudiaf, Rabah Bitat, Ahmed Ben Bella et Houcine Aït Ahmed) aux frontières Algero-Marocaine, une photo prise par Khaled SAFER.",
+        "dateOriginal": "1962",
+        "score": 17,
+        "matchedEntityTokens": [
+          "algerian",
+          "algeria"
+        ],
+        "exactYear": true,
+        "originalYear": 1962,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -943,7 +1117,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://upload.wikimedia.org/wikipedia/commons/c/c1/March_on_Washington_for_Jobs_and_Freedom%2C_Martin_Luther_King%2C_Jr._and_Joachim_Prinz_1963.jpg?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:March_on_Washington_for_Jobs_and_Freedom,_Martin_Luther_King,_Jr._and_Joachim_Prinz_1963.jpg",
         "artist": "Center for Jewish History, NYC",
@@ -961,6 +1135,31 @@
         "width": 763,
         "height": 532,
         "mime": "image/jpeg"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:Photograph of Meeting with Leaders of the March on Washington August 28, 1963 - NARA - 194276.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Photograph_of_Meeting_with_Leaders_of_the_March_on_Washington_August_28%2C_1963_-_NARA_-_194276.jpg/1280px-Photograph_of_Meeting_with_Leaders_of_the_March_on_Washington_August_28%2C_1963_-_NARA_-_194276.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Photograph_of_Meeting_with_Leaders_of_the_March_on_Washington_August_28%2C_1963_-_NARA_-_194276.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Photograph_of_Meeting_with_Leaders_of_the_March_on_Washington_August_28%2C_1963_-_NARA_-_194276.jpg",
+        "artist": "White House (Washington, D.C.), Photographer ( NARA record: 1126641 )",
+        "credit": "U.S. National Archives and Records Administration",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "Scope and content: Photograph of the President's meeting with the leaders of the March on Washington. Left to Right — Willard Wirtz, Martin Luther King, Jr , Eugene Carson Blake, John F. Kennedy, Lyndon Baines Johnson, Walter P. Reuther . Others not in order A. Philip Randolph, John Lewis, Whitney Young, Mathew Ahmann, Joachin Prinz, Roy Wilkins , Floyd McKissick General notes: President John F. Kennedy in the Oval Office .",
+        "dateOriginal": "28 August 1963 date QS:P571,+1963-08-28T00:00:00Z/11",
+        "score": 27,
+        "matchedEntityTokens": [
+          "washington",
+          "march",
+          "jobs",
+          "freedom"
+        ],
+        "exactYear": true,
+        "originalYear": 1963,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1001,17 +1200,31 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Soviet tanks - Hradcany Square Prague - via Swiss embassy 1968-08-21.png",
+        "mime": "image/png",
         "src": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Soviet_tanks_-_Hradcany_Square_Prague_-_via_Swiss_embassy_1968-08-21.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "original": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Soviet_tanks_-_Hradcany_Square_Prague_-_via_Swiss_embassy_1968-08-21.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Soviet_tanks_-_Hradcany_Square_Prague_-_via_Swiss_embassy_1968-08-21.png",
         "artist": "Published via Swiss embassy in Prague. No artist listed on archive website.",
+        "credit": "From Dodis (Diplomatic Documents of Switzerland) \" The Suppression of the Prague Spring \" and 1968-10-08 . See also Dodis Open Science licensing policy.",
         "license": "CC BY 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
         "description": "The suppression of the Prague Spring. Black-and-white photograph from 1968-08-21, passed to the Swiss ambassador, from an embassy report 1968-10-08. View from Schwarzenberg palace (Palacio Schwarzenberský) in w:Hradčany Square facing toward New Royal Palace (Nový královský palác) . Quoted from Dodis E-dossier : \"Have been taken under Soviet fire. Shots were directed at embassy building\", the Swiss representation in Prague wired to Bern on 21 August 1968 at 11.30 a.m.. [1] The embassy was then located in the Schwarzenberg palace, right outside the gates of Prague Castle. When troupes of the Warsaw Pact occupied Czechoslovakia in a sudden attack, the Swiss diplomats found themselves at the very center of the dramatic events. It remains unclear why the Red Army opened fire on the embassy. In response to repeated protest, Moscow finally claimed that not its own soldiers but \"provocateurs and 'saboteurs'\" were responsible for the shooting. [2] The \"Prague Spring\" of 1968 inspired hopes for a \"socialism with a human face\". It also inspired fear. \"The fundamental question everybody in Prague is more or less openly asking themselves today is that of knowing whether the USSR, if necessary, will use force\", ambassador w:Samuel Campiche reported to Bern in July 1968. [3]",
-        "score": 6,
-        "photoTypeStatus": "probable_photograph"
+        "dateOriginal": "1968-08-21",
+        "score": 27,
+        "matchedEntityTokens": [
+          "prague",
+          "spring",
+          "1968",
+          "invasion"
+        ],
+        "exactYear": true,
+        "originalYear": 1968,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1052,7 +1265,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Stonewall_Inn_raid_sign_pride_weekend_2016.jpg/1280px-Stonewall_Inn_raid_sign_pride_weekend_2016.jpg?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Stonewall_Inn_raid_sign_pride_weekend_2016.jpg",
         "artist": "Rhododendrites",
@@ -1070,6 +1283,32 @@
         "width": 3454,
         "height": 3432,
         "mime": "image/jpeg"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:Stonewall Inn raid sign pride weekend 2016.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Stonewall_Inn_raid_sign_pride_weekend_2016.jpg/1280px-Stonewall_Inn_raid_sign_pride_weekend_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/21/Stonewall_Inn_raid_sign_pride_weekend_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Stonewall_Inn_raid_sign_pride_weekend_2016.jpg",
+        "artist": "Rhododendrites",
+        "credit": "Own work",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "The \"raided premises\" sign just inside the door at the Stonewall Inn, a gay bar on Christopher Street in Manhattan's Greenwich Village. A 1969 police raid here led to the Stonewall riots , one of the most important events in the history of LGBT rights (and the history of the United States). This picture was taken on pride weekend in 2016, the day after President Obama announced the Stonewall National Monument, and less than two weeks after the Pulse nightclub shootings in Orlando (the exterior of the Stonewall Inn is covered with tributes/decorations memorializing the shooting.",
+        "dateOriginal": "2016-06-25 16:58:01",
+        "score": 28,
+        "matchedEntityTokens": [
+          "stonewall",
+          "riots",
+          "york",
+          "1969",
+          "riot"
+        ],
+        "exactYear": true,
+        "originalYear": 2016,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1110,17 +1349,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Maulana Bhashani and Bangladesh High Commission's M Hosen Ali attended the Eid prayer during the 1971 Liberation War.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Maulana_Bhashani_and_Bangladesh_High_Commission%27s_M_Hosen_Ali_attended_the_Eid_prayer_during_the_1971_Liberation_War.jpg/1280px-Maulana_Bhashani_and_Bangladesh_High_Commission%27s_M_Hosen_Ali_attended_the_Eid_prayer_during_the_1971_Liberation_War.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Maulana_Bhashani_and_Bangladesh_High_Commission%27s_M_Hosen_Ali_attended_the_Eid_prayer_during_the_1971_Liberation_War.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Maulana_Bhashani_and_Bangladesh_High_Commission's_M_Hosen_Ali_attended_the_Eid_prayer_during_the_1971_Liberation_War.jpg",
-        "artist": "NiruNahar",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "description": "Maulana Bhashani and Bangladesh High Commission's M Hosen Ali attended the Eid prayer during the 1971 Liberation War",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Tajuddin and Mosharraf in Jessore (1971).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Tajuddin_and_Mosharraf_in_Jessore_%281971%29.jpg/1280px-Tajuddin_and_Mosharraf_in_Jessore_%281971%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Tajuddin_and_Mosharraf_in_Jessore_%281971%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Tajuddin_and_Mosharraf_in_Jessore_(1971).jpg",
+        "artist": "SM Safi",
+        "credit": "Rananggane Jessore by Sajed Rahman. Ajker Boi Publications",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "On 11 December, 1971 first public meeting was held in the liberated area of Jessore. Prime Minister of Bangladesh Tajuddin Ahmad addressed the audience. He was seen along with MCA Mosharraf Hosssain at the event.",
+        "dateOriginal": "1971-12-11",
+        "score": 10,
+        "matchedEntityTokens": [
+          "bangladesh"
+        ],
+        "exactYear": true,
+        "originalYear": 1971,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "needs_review"
     },
@@ -1161,17 +1411,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:1973 Yom Kippur War - Golan heights theater-ar.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/b/bb/1973_Yom_Kippur_War_-_Golan_heights_theater-ar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/bb/1973_Yom_Kippur_War_-_Golan_heights_theater-ar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:1973_Yom_Kippur_War_-_Golan_heights_theater-ar.jpg",
-        "artist": "Michel Bakni",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Yom Kippur War 1973 on the Golan heights",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:טנקים ישראלים במלחמת יום כיפור.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/%D7%98%D7%A0%D7%A7%D7%99%D7%9D_%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%9D_%D7%91%D7%9E%D7%9C%D7%97%D7%9E%D7%AA_%D7%99%D7%95%D7%9D_%D7%9B%D7%99%D7%A4%D7%95%D7%A8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/77/%D7%98%D7%A0%D7%A7%D7%99%D7%9D_%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%9D_%D7%91%D7%9E%D7%9C%D7%97%D7%9E%D7%AA_%D7%99%D7%95%D7%9D_%D7%9B%D7%99%D7%A4%D7%95%D7%A8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:%D7%98%D7%A0%D7%A7%D7%99%D7%9D_%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%9D_%D7%91%D7%9E%D7%9C%D7%97%D7%9E%D7%AA_%D7%99%D7%95%D7%9D_%D7%9B%D7%99%D7%A4%D7%95%D7%A8.jpg",
+        "artist": "ארכיון עיתון במחנה IDF Spokesperson's Unit photographer",
+        "credit": "This file contains IDF content and released by the Israeli Defence Forces Spokesperson's Unit . To view all images uploaded courtesy of IDF Spokesperson's Unit This tag does not indicate the copyright status of the attached work. A normal copyright tag is still required. See Commons:Licensing .",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "description": "טנקים ישראלים במלחמת יום כיפור",
+        "dateOriginal": "1973",
+        "score": 20,
+        "matchedEntityTokens": [
+          "kippur",
+          "1973",
+          "israeli"
+        ],
+        "exactYear": true,
+        "originalYear": 1973,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1212,17 +1475,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Inocência Mata.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Inoc%C3%AAncia_Mata.jpg/1280px-Inoc%C3%AAncia_Mata.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Inoc%C3%AAncia_Mata.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Inoc%C3%AAncia_Mata.jpg",
-        "artist": "RitaFMatos",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Inocência Mata no desfile comemorativo dos 50 anos do 25 de Abril de 1974 (Avenida da Liberdade, Lisboa, Portugal, a 25 de Abril de 2024)",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:25 April 2018 - Celebrating the 1974 Carnation Revolution (40127311560).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/25_April_2018_-_Celebrating_the_1974_Carnation_Revolution_%2840127311560%29.jpg/1280px-25_April_2018_-_Celebrating_the_1974_Carnation_Revolution_%2840127311560%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/15/25_April_2018_-_Celebrating_the_1974_Carnation_Revolution_%2840127311560%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:25_April_2018_-_Celebrating_the_1974_Carnation_Revolution_(40127311560).jpg",
+        "artist": "Pedro Ribeiro Simões from Lisboa, Portugal",
+        "credit": "25 April 2018 - Celebrating the 1974 Carnation Revolution",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "description": "Av.da Liberdade, Lisbon, Portugal",
+        "dateOriginal": "2018-04-25 16:18",
+        "score": 13,
+        "matchedEntityTokens": [
+          "carnation",
+          "revolution"
+        ],
+        "exactYear": true,
+        "originalYear": 2018,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1263,7 +1538,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Vietnamese_refugees_on_US_carrier%2C_Operation_Frequent_Wind.jpg?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Vietnamese_refugees_on_US_carrier,_Operation_Frequent_Wind.jpg",
         "artist": "U.S. Marines in Japan Homepage",
@@ -1281,6 +1556,29 @@
         "width": 696,
         "height": 564,
         "mime": "image/jpeg"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:General Nguyễn Xuân Thịnh in 1975 Evacuation.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/General_Nguy%E1%BB%85n_Xu%C3%A2n_Th%E1%BB%8Bnh_in_1975_Evacuation.jpg/1280px-General_Nguy%E1%BB%85n_Xu%C3%A2n_Th%E1%BB%8Bnh_in_1975_Evacuation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/a/a3/General_Nguy%E1%BB%85n_Xu%C3%A2n_Th%E1%BB%8Bnh_in_1975_Evacuation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:General_Nguy%E1%BB%85n_Xu%C3%A2n_Th%E1%BB%8Bnh_in_1975_Evacuation.jpg",
+        "artist": "U.S. Navy",
+        "credit": "https://www.fold3.com/image/1/304723123 https://www.fold3.com/image/1/304723131",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "General Nguyễn Xuân Thịnh in 1975 Evacuation",
+        "dateOriginal": "1975-05-01",
+        "score": 15,
+        "matchedEntityTokens": [
+          "saigon",
+          "fall"
+        ],
+        "exactYear": true,
+        "originalYear": 1975,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1321,6 +1619,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "item_specific_reference"
     },
@@ -1361,6 +1660,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -1401,7 +1701,31 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Maximum Ozone Hole Area for 1985.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Maximum_Ozone_Hole_Area_for_1985.jpg/1280px-Maximum_Ozone_Hole_Area_for_1985.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Maximum_Ozone_Hole_Area_for_1985.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Maximum_Ozone_Hole_Area_for_1985.jpg",
+        "artist": "NASA/Goddard Space Flight Center Scientific Visualization Studio",
+        "credit": "https://svs.gsfc.nasa.gov/2580/",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "Stratospheric Ozone for October 3, 1985.",
+        "dateOriginal": "2002-09-30",
+        "score": 18,
+        "matchedEntityTokens": [
+          "ozone",
+          "layer",
+          "hole"
+        ],
+        "exactYear": true,
+        "originalYear": 2002,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -1441,6 +1765,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -1481,17 +1806,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Zarya from STS-88.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Zarya_from_STS-88.jpg/1280px-Zarya_from_STS-88.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/d/db/Zarya_from_STS-88.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Zarya_from_STS-88.jpg",
-        "artist": null,
+        "fileTitle": "File:Assembly of the International Space Station (1998-2001).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Assembly_of_the_International_Space_Station_%281998-2001%29.jpg/1280px-Assembly_of_the_International_Space_Station_%281998-2001%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Assembly_of_the_International_Space_Station_%281998-2001%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Assembly_of_the_International_Space_Station_(1998-2001).jpg",
+        "artist": "NASA / montage by Emily Lakdawalla",
+        "credit": "https://www.planetary.org/space-images/assembly-of-the-international",
         "license": "Public domain",
         "licenseUrl": null,
-        "description": "STS088-719-059 (6 Dec. 1998) --- Backdropped against the darkness of space, the Russian-built FGB, also called Zarya, approaches the out-of-frame Space Shuttle Endeavour and the U.S.-built Node 1, also called Unity. Inside Endeavour's cabin, the STS-88 crew readied the remote manipulator system (RMS) for Zarya capture as they awaited the rendezvous.",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "description": "These six images document the early assembly of the International Space Station, from 1998 to 2001. Click through for more information on the different stages of assembly. June 12, 1998: the Zarya (\"Sunrise\") control module and solar panels. December 15, 1998: Now Unity (Node 1) has been added. September 18, 2000: the Zvezda (Star) service module has been added; a Progress supply ship is also docked. December 9, 2000: the P6 truss and solar arrays vastly increase the station's apparent size. February 16, 2001: the Destiny laboratory has been added. July 21, 2001: The Quest airlock is attached to Unity, and Canadarm 2 to Destiny. When enlarged to full size, the scale is approximately 10 centimeters per pixel.",
+        "dateOriginal": "21 July 2001",
+        "score": 20,
+        "matchedEntityTokens": [
+          "international",
+          "space",
+          "station"
+        ],
+        "exactYear": true,
+        "originalYear": 2001,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1532,7 +1870,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Photo of Hermann Oberth - GPN-2003-00099.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Photo_of_Hermann_Oberth_-_GPN-2003-00099.jpg/1280px-Photo_of_Hermann_Oberth_-_GPN-2003-00099.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Photo_of_Hermann_Oberth_-_GPN-2003-00099.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Photo_of_Hermann_Oberth_-_GPN-2003-00099.jpg",
+        "artist": "NASA",
+        "credit": "http://dayton.hq.nasa.gov/IMAGES/LARGE/GPN-2003-00099.jpg on the Wayback Machine at the Wayback Machine http://grin.hq.nasa.gov/ABSTRACTS/GPN-2003-00099.html on the Wayback Machine at the Wayback Machine",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "Hermann Oberth (1894-1989) is considered to be one of the top three pioneers in modern rocketry and is credited with suggesting that space stations would be essential if humans wished to travel to other planets. Oberth was the only one out of the three (Konstantin Tsiolkovsky and Robert Goddard are the other two) to see human spaceflight come to fruition. He was inspired by the tales of Jules Verne in From the Earth to the Moon and Travel to the Moon. He is also the author of Die Rakete zu den Planetenraumen, published in 1923. The book inspired many to pursue spaceflight, despite its challenges. Oberth was a guest at the Apollo 11 launch in July 1969 as well as at the launch of the STS-51J, Atlantis mission.",
+        "dateOriginal": "Unknown date",
+        "score": 15,
+        "matchedEntityTokens": [
+          "human",
+          "spaceflight"
+        ],
+        "exactYear": true,
+        "originalYear": null,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -1572,7 +1933,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Hayabusa IAC 2010.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Hayabusa_IAC_2010.jpg/1280px-Hayabusa_IAC_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Hayabusa_IAC_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Hayabusa_IAC_2010.jpg",
+        "artist": "Pavel Hrdlička (Czech Wikipedia user Packa )",
+        "credit": "Own work",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "description": "Japan asteroid explorer Hayabusa at the 61st International Astronautical Congress in Prague, Czech Republic",
+        "dateOriginal": "2010-10-01",
+        "score": 10,
+        "matchedEntityTokens": [
+          "hayabusa"
+        ],
+        "exactYear": true,
+        "originalYear": 2010,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -1612,19 +1995,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Wikipedia para armar 05.pdf",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Wikipedia_para_armar_05.pdf/page1-960px-Wikipedia_para_armar_05.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/3/36/Wikipedia_para_armar_05.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Wikipedia_para_armar_05.pdf",
-        "artist": "Florencia Guastavino (WMAR)",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Quinto cuadernillo de la serie \"Enseñar con Wikipedia\" Temas que aborda: ¿Es posible usar Wikipedia para enseñar Ciencias? ¿Cómo se trabaja el lenguaje científico en Wikipedia? ¿En qué idioma se escribe la ciencia? ¿Los artículos son iguales en todos los idiomas? ¿Qué es la herramienta de traducción y cómo funciona? Producido por el Programa de Educación y Derechos Humanos de Wikimedia Argentina, con la colaboración especial de Valeria Edelsztein Diseño: Namora estudio// Edición: Miriam Latorre",
-        "score": 6,
-        "photoTypeStatus": "human_check_required"
-      },
-      "evidenceStatus": "item_specific_reference"
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
+      "evidenceStatus": "item_specific_reference",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 35,
@@ -1663,8 +2037,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
-      "evidenceStatus": "needs_review"
+      "evidenceStatus": "needs_review",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 36,
@@ -1703,7 +2079,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Tu_Youyou_5012-2015.jpg/1280px-Tu_Youyou_5012-2015.jpg?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Tu_Youyou_5012-2015.jpg",
         "artist": "Bengt Nyman",
@@ -1721,6 +2097,29 @@
         "width": 3517,
         "height": 3517,
         "mime": "image/jpeg"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:Satoshi Ōmura 5997-2015.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Satoshi_%C5%8Cmura_5997-2015.jpg/1280px-Satoshi_%C5%8Cmura_5997-2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/db/Satoshi_%C5%8Cmura_5997-2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Satoshi_%C5%8Cmura_5997-2015.jpg",
+        "artist": "Bengt Nyman",
+        "credit": "Own work",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "Satoshi Ōmura Nobel Laureate in medicine in Stockholm December 2015",
+        "dateOriginal": "2015-12-06 15:20:14",
+        "score": 15,
+        "matchedEntityTokens": [
+          "nobel",
+          "youyou"
+        ],
+        "exactYear": true,
+        "originalYear": 2015,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -1761,18 +2160,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Ateneo EINA 267 - El día en el que la humanidad logró detectar ondas gravitacionales.webm",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Ateneo_EINA_267_-_El_d%C3%ADa_en_el_que_la_humanidad_logr%C3%B3_detectar_ondas_gravitacionales.webm/1280px--Ateneo_EINA_267_-_El_d%C3%ADa_en_el_que_la_humanidad_logr%C3%B3_detectar_ondas_gravitacionales.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Ateneo_EINA_267_-_El_d%C3%ADa_en_el_que_la_humanidad_logr%C3%B3_detectar_ondas_gravitacionales.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Ateneo_EINA_267_-_El_d%C3%ADa_en_el_que_la_humanidad_logr%C3%B3_detectar_ondas_gravitacionales.webm",
-        "artist": "Escuela de Ingeniería y Arquitectura (EINA) of the University of Zaragoza",
-        "license": "CC BY 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-        "description": "Ponente: José Manuel Carmona Martínez, Profesor Titular del Departamento de Física Teórica de la Universidad de Zaragoza. Presenta y modera: Luis Joaquín Boya, Profesor emérito de la Universidad de Zaragoza y miembro del Senatus Científico de la Facultad de Ciencias. La detección de ondas gravitacionales, anunciada por la colaboración LIGO, supone un hito tecnológico y científico comparable quizás al momento en el que Galileo usó un telescopio por vez primera para contemplar el cosmos. En esta charla se explica qué se ha conseguido, cómo se ha logrado, y por qué supone el inicio de una nueva era en la exploración y en la comprensión del universo.",
-        "score": 12,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
     {
@@ -1822,7 +2211,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/1280px-Black_hole_-_Messier_87_crop_max_res.jpg?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Black_hole_-_Messier_87_crop_max_res.jpg",
         "artist": "Event Horizon Telescope , uploader cropped and converted TIF to JPG",
@@ -1840,6 +2229,29 @@
         "width": 4320,
         "height": 4320,
         "mime": "image/jpeg"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:Baffled LIGO Scientists.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Baffled_LIGO_Scientists.jpg/1280px-Baffled_LIGO_Scientists.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Baffled_LIGO_Scientists.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Baffled_LIGO_Scientists.jpg",
+        "artist": "Nkij",
+        "credit": "Own work",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "description": "My name is Nutsinee Kijbunchoo and I'm a physics PhD student based at the National Australian University, Canberra, Australia. My advisor sent me to LIGO Hanford, one of the two U.S. based gravitational-wave detectors located in the middle of Washington desert to help out with the squeezed light commission and upgrade during the third observing run break (it means we stopped listening to black hole and neutron star collisions). On a rare day that I didn't have to work at my own corner, I followed Georgia Mansell (MIT postdoc) and Jason Oberling (site detector engineer) into the Pre-Stabilized Laser (PSL) enclosure. Inside the PSL is where the laser that uses to detect gravitational waves generates. It is literally where it all begins. The system is capable of outputting 70-80 W of laser power so the room needs to be clean as dust and bugs can cause damage to the coatings. While I was watching Georgia and Jason work I snapped this photo as the two were baffled by the low amount of light coupling into the new fiber coupler they just installed. Just like all equipment, LIGO too needs to be maintained constantly.",
+        "dateOriginal": "2019-10-05 05:34:23",
+        "score": 17,
+        "matchedEntityTokens": [
+          "black",
+          "hole"
+        ],
+        "exactYear": true,
+        "originalYear": 2019,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -1880,7 +2292,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:2023 Events Collage early version 1.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/2023_Events_Collage_early_version_1.jpg/1280px-2023_Events_Collage_early_version_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/16/2023_Events_Collage_early_version_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:2023_Events_Collage_early_version_1.jpg",
+        "artist": "various",
+        "credit": "This file was derived from: Screengrab of refugee camp from Number of Refugees Who Fled Sudan for Chad Double in Week.jpg Earthquake impact in Imi N'Tala 08.jpg 2023 Coronation Balcony.jpg Signature bank storefront (39th & Madison) reporters swarming.png Aerial View of the Hatay Province in Turkey (52699004990).jpg Aerial View of the Hatay Province in Turkey (52699004990).jpg DALL-E 2 \"A photo of a robot hand drawing, digital art\".jpg Chandrayaan-3 Integrated Module in clean-room 01.webp",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "mid 2023 collage (uploader note: please fix this collage and make sure it's like the others where the image quality does not look stretched, also feel free to switch the images.)",
+        "dateOriginal": "2023-09-18",
+        "score": 10,
+        "matchedEntityTokens": [
+          "chandrayaan"
+        ],
+        "exactYear": true,
+        "originalYear": 2023,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -1910,17 +2344,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Back to the Future - brain-wave analyzer (22754625275).jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Back_to_the_Future_-_brain-wave_analyzer_%2822754625275%29.jpg/1280px-Back_to_the_Future_-_brain-wave_analyzer_%2822754625275%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Back_to_the_Future_-_brain-wave_analyzer_%2822754625275%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Back_to_the_Future_-_brain-wave_analyzer_(22754625275).jpg",
-        "artist": "Miguel Vaca from Bogotá, Colombia",
+        "fileTitle": "File:1985 Toyota SR5 Pickup (25952052560).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/1985_Toyota_SR5_Pickup_%2825952052560%29.jpg/1280px-1985_Toyota_SR5_Pickup_%2825952052560%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/70/1985_Toyota_SR5_Pickup_%2825952052560%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:1985_Toyota_SR5_Pickup_(25952052560).jpg",
+        "artist": "Bob P. B.",
+        "credit": "1985 Toyota SR5 Pickup",
         "license": "CC BY 2.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "description": "Cosplay of Doctor Emmett \"Doc\" Brown with the brain-wave analyzer, an invention that appears in a scene of the 1985 film Back to the Future . “ Doc : Don't say a word. No names. I want to know nothing about you. Marty : Listen, Doc... Doc : Quiet! Don't tell me anything. Marty : You got to help... Doc : Quiet. I'm going to read your thoughts. Let's see now. You come here from a great distance? Marty : Yeah. Exactly. Doc : Don't tell me! You want me to subscribe to the \"Saturday Evening Post\". Marty : No. Doc : Not a word now! Quiet. Donations. You want me to make a donation... to the Coast Guard Youth Auxiliary. Marty : I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985. Doc : My God! Do you know what this means ? It means that this damn thing doesn't work at all! ”",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "description": "1985 Toyota SR5 Pickup from the Back to the Future series displayed at World of Wheels Boston 2016. Owner: Gregory Ward, Rutland, MA",
+        "dateOriginal": "2016-04-02 17:54",
+        "score": 15,
+        "matchedEntityTokens": [
+          "back",
+          "future"
+        ],
+        "exactYear": true,
+        "originalYear": 2016,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -1951,18 +2397,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:PulpFictionPosterSpoof.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/PulpFictionPosterSpoof.jpg/1280px-PulpFictionPosterSpoof.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0d/PulpFictionPosterSpoof.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:PulpFictionPosterSpoof.jpg",
-        "artist": "Frank Black Noir",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "description": "Parodie de l'affiche du film Pulp Fiction.",
-        "score": 6,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -1992,7 +2428,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:The 'SS Nomadic' in Belfast - geograph.org.uk - 599161.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/6/6f/The_%27SS_Nomadic%27_in_Belfast_-_geograph.org.uk_-_599161.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/6f/The_%27SS_Nomadic%27_in_Belfast_-_geograph.org.uk_-_599161.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:The_'SS_Nomadic'_in_Belfast_-_geograph.org.uk_-_599161.jpg",
+        "artist": "Ross",
+        "credit": "From geograph.org.uk",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "description": "The 'SS Nomadic' in Belfast SS Nomadic is a steamship of the White Star Line, launched on 25 April 1911 in Belfast. She was built as a tender to the liners RMS Olympic and RMS Titanic, and is the last remaining vessel built for the White Star Line still afloat. Now returned to Belfast she is open to the public - see the Nomadic Preservation Society website at http://www.nomadicpreservationsociety.co.uk/ In the background is the now docked 'SuperSeaCat Two', having arrived from Douglas, Isle of Man - see 599158",
+        "dateOriginal": "2007-05-03",
+        "score": 13,
+        "matchedEntityTokens": [
+          "titanic",
+          "steamship"
+        ],
+        "exactYear": true,
+        "originalYear": 2007,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "needs_review"
     },
     {
@@ -2022,17 +2481,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Matrix car.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Matrix_car.jpg/1280px-Matrix_car.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Matrix_car.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Matrix_car.jpg",
-        "artist": "https://www.flickr.com/people/shannonhobbs/",
-        "license": "CC BY-SA 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-        "description": "1965 Lincoln Continental driven by Cypher (played by Joe Pantoliano ) in the 1999 film The Matrix , Warner Bros. Studios, Hollywood.",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Chlorargyrite, variety Buttermilcherz (IMG 1999).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Chlorargyrite%2C_variety_Buttermilcherz_%28IMG_1999%29.jpg/1280px-Chlorargyrite%2C_variety_Buttermilcherz_%28IMG_1999%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/80/Chlorargyrite%2C_variety_Buttermilcherz_%28IMG_1999%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Chlorargyrite%2C_variety_Buttermilcherz_(IMG_1999).jpg",
+        "artist": "Manfred Groß",
+        "credit": "original picture from Manfred Groß is deposited in the Mail (look down at the permission)",
+        "license": "CC BY-SA 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+        "description": "Chlorargyrite Locality: Theuerdank Mine, St Andreasberg, St Andreasberg District, Harz, Lower Saxony, Germany Original description: Chlorargyrite step, variety \"buttermilk ore\", dried-in condition. Size overall: 17cm, height 14cm. I found the step by myself in 1995 on the old pit Theuerdank in St. Andrew on the berry mountain. When it came into daylight, it was white like snow, but after about 45 minutes, it became so gray-blue, as it is to see now. The blue-gray areas are in the form of buttermilk ore, the light to dark brown areas are \"earthy brown silver\". The matrix of the step consists of a quartz band and calcite. The buttermilk ore has two special features: On the one hand, once upon a time it was liquid and on the other hand, it has a photochromic character.",
+        "dateOriginal": "2006-04-19",
+        "score": 8,
+        "matchedEntityTokens": [
+          "matrix"
+        ],
+        "exactYear": true,
+        "originalYear": 2006,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2063,17 +2533,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Rashomon (1950) Press Photo of Toshiro Mifune and Machiko Kyō.jpg",
+        "mime": "image/jpeg",
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg/1280px-Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "original": "https://upload.wikimedia.org/wikipedia/commons/6/65/Rashomon_%281950%29_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Rashomon_(1950)_Press_Photo_of_Toshiro_Mifune_and_Machiko_Ky%C5%8D.jpg",
         "artist": "Daiei Studios",
+        "credit": "Proof of publication with copyright notice: Worthpoint Image source (v1): Worthpoint Image source (v2): MoMA ( direct link (1) ) ( direct link (2) ) (direct link (1) is used) Image source (v2): IMdB",
         "license": "Public domain",
         "licenseUrl": null,
         "description": "Press photo of Toshiro Mifune and Machiko Kyō for the 1950 film Rashomon",
-        "score": 9,
-        "photoTypeStatus": "probable_photograph"
+        "dateOriginal": "published 1952",
+        "score": 12,
+        "matchedEntityTokens": [
+          "rashomon"
+        ],
+        "exactYear": true,
+        "originalYear": 1952,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -2104,17 +2585,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Sekai-Geino-Gaho-1954-May-5.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Sekai-Geino-Gaho-1954-May-5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Sekai-Geino-Gaho-1954-May-5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Sekai-Geino-Gaho-1954-May-5.jpg",
+        "fileTitle": "File:Sekai-Geino-Gaho-1954-May-2.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/7/72/Sekai-Geino-Gaho-1954-May-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/72/Sekai-Geino-Gaho-1954-May-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Sekai-Geino-Gaho-1954-May-2.jpg",
         "artist": "Unknown author Unknown author",
+        "credit": "『世界芸能画報』1954年5月号、世界文化画報社。",
         "license": "Public domain",
         "licenseUrl": null,
-        "description": "​『 七人の侍 』。 左卜全 。",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "description": "『 七人の侍 』。三船敏郎。",
+        "dateOriginal": "1954",
+        "score": 15,
+        "matchedEntityTokens": [
+          "seven",
+          "samurai"
+        ],
+        "exactYear": true,
+        "originalYear": 1954,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2145,18 +2638,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Janet Leigh Psycho Publicity.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Janet_Leigh_Psycho_Publicity.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Janet_Leigh_Psycho_Publicity.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Janet_Leigh_Psycho_Publicity.jpg",
-        "artist": "Paramount Pictures",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "Publicity Photo of Janet Leigh from 1960 film Psycho",
-        "score": 6,
-        "photoTypeStatus": "probable_photograph"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -2186,17 +2669,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Photo A scene from 2001. A Space Odyssey, a 1968 film directed by Stanley Kubrick 1968 - Touring Club Italiano 04 0826.jpg",
+        "mime": "image/jpeg",
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Photo_A_scene_from_2001._A_Space_Odyssey%2C_a_1968_film_directed_by_Stanley_Kubrick_1968_-_Touring_Club_Italiano_04_0826.jpg/1280px-Photo_A_scene_from_2001._A_Space_Odyssey%2C_a_1968_film_directed_by_Stanley_Kubrick_1968_-_Touring_Club_Italiano_04_0826.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "original": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Photo_A_scene_from_2001._A_Space_Odyssey%2C_a_1968_film_directed_by_Stanley_Kubrick_1968_-_Touring_Club_Italiano_04_0826.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Photo_A_scene_from_2001._A_Space_Odyssey%2C_a_1968_film_directed_by_Stanley_Kubrick_1968_-_Touring_Club_Italiano_04_0826.jpg",
         "artist": "Unknown author Unknown author",
+        "credit": "Touring Club Italiano",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "description": "A scene from 2001: A Space Odyssey, a 1968 film directed by Stanley Kubrick.",
-        "score": 9,
-        "photoTypeStatus": "probable_photograph"
+        "dateOriginal": "1968 date QS:P571,+1968-00-00T00:00:00Z/9",
+        "score": 22,
+        "matchedEntityTokens": [
+          "2001",
+          "space",
+          "odyssey"
+        ],
+        "exactYear": true,
+        "originalYear": 1968,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2227,7 +2723,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Itodani and Inaba in Himeji.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Itodani_and_Inaba_in_Himeji.jpg/1280px-Itodani_and_Inaba_in_Himeji.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Itodani_and_Inaba_in_Himeji.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Itodani_and_Inaba_in_Himeji.jpg",
+        "artist": "Ohtani tanya",
+        "credit": "Own work",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "Japanese shogi player Tetsurō Itodani (left) and Akira Inaba (right) commenting about the exhibition match of human shogi in Himeji , Japan .",
+        "dateOriginal": "2018-11-10",
+        "score": 8,
+        "matchedEntityTokens": [
+          "akira"
+        ],
+        "exactYear": true,
+        "originalYear": 2018,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -2257,6 +2775,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -2287,17 +2806,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Würzburg, Gedenkstätte \"Sinti und Roma\" -- 2018 -- 0196.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/W%C3%BCrzburg%2C_Gedenkst%C3%A4tte_%22Sinti_und_Roma%22_--_2018_--_0196.jpg/1280px-W%C3%BCrzburg%2C_Gedenkst%C3%A4tte_%22Sinti_und_Roma%22_--_2018_--_0196.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f6/W%C3%BCrzburg%2C_Gedenkst%C3%A4tte_%22Sinti_und_Roma%22_--_2018_--_0196.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:W%C3%BCrzburg%2C_Gedenkst%C3%A4tte_%22Sinti_und_Roma%22_--_2018_--_0196.jpg",
-        "artist": "Dietmar Rabich",
+        "fileTitle": "File:San Carlo al Corso in Rome (4).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/San_Carlo_al_Corso_in_Rome_%284%29.jpg/1280px-San_Carlo_al_Corso_in_Rome_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e6/San_Carlo_al_Corso_in_Rome_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:San_Carlo_al_Corso_in_Rome_(4).jpg",
+        "artist": "Giacinto Brandi",
+        "credit": "Photographed by Krzysztof Golik in the Santi Ambrogio e Carlo al Corso basilica (the central vault) in Rome , Lazio, Italy",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Memorial “Sinti and Roma” (Würzburger Berufsschüler, 2005), Würzburg , Bavaria , Germany",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "description": "War in Heaven",
+        "dateOriginal": "between 1677 and 1679 date QS:P571,+1677-00-00T00:00:00Z/8,P1319,+1677-00-00T00:00:00Z/9,P1326,+1679-00-00T00:00:00Z/9",
+        "score": 13,
+        "matchedEntityTokens": [
+          "rome",
+          "italy"
+        ],
+        "exactYear": true,
+        "originalYear": null,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "needs_review"
     },
@@ -2328,17 +2859,32 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Valeria Golino Cannes 2019.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Valeria_Golino_Cannes_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Valeria_Golino_Cannes_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Valeria_Golino_Cannes_2019.jpg",
-        "artist": "Georges Biard",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "description": "Valeria Golino au Festival de Cannes 2019.",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Adèle Haenel and Celine Sciamma.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg/1280px-Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/23/Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg",
+        "artist": "Love, to live *",
+        "credit": "https://www.flickr.com/photos/187643711@N07/49979813182",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "description": "Actress, Adèle Haenel, and film director, Céline Sciamma, at a screening of their 2019 film, Portrait of a Lady on Fire (Portrait de la jeune fille en feu).",
+        "dateOriginal": "2020-06-07",
+        "score": 30,
+        "matchedEntityTokens": [
+          "portrait",
+          "lady",
+          "fire",
+          "jeune",
+          "fille"
+        ],
+        "exactYear": true,
+        "originalYear": 2020,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2369,7 +2915,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:2022. Музей истории города Симферополя DSC 1734.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg/1280px-2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/24/2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg",
+        "artist": "Andrey Butko",
+        "credit": "Own work",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "The1961 Gauja (after a river in Latvia) was one of the first models of portable transistor radios in the Soviet Union [2] .",
+        "dateOriginal": "2022-08-30",
+        "score": 10,
+        "matchedEntityTokens": [
+          "rise"
+        ],
+        "exactYear": true,
+        "originalYear": 2022,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2399,17 +2967,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Michael Jackson 1982 press photo.png",
+        "mime": "image/png",
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Michael_Jackson_1982_press_photo.png/1280px-Michael_Jackson_1982_press_photo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "original": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Michael_Jackson_1982_press_photo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Michael_Jackson_1982_press_photo.png",
         "artist": "Unknown author; distributed by Epic Records",
+        "credit": "[1] [2]",
         "license": "Public domain",
         "licenseUrl": null,
         "description": "Michael Jackson in a press photo for \"THRILLER\", c. 1982",
-        "score": 9,
-        "photoTypeStatus": "probable_photograph"
+        "dateOriginal": "1982",
+        "score": 12,
+        "matchedEntityTokens": [
+          "thriller"
+        ],
+        "exactYear": true,
+        "originalYear": 1982,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -2440,17 +3019,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Like a Virgin White Vinyl Record.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Like_a_Virgin_White_Vinyl_Record.jpg/1280px-Like_a_Virgin_White_Vinyl_Record.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Like_a_Virgin_White_Vinyl_Record.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Like_a_Virgin_White_Vinyl_Record.jpg",
-        "artist": "James_Seattle",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "description": "A white vinyl record of Like a Virgin by Madonna.",
-        "score": 6,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Madonna-like-a-virgin-sire-back-to-back-hits.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Madonna-like-a-virgin-sire-back-to-back-hits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Madonna-like-a-virgin-sire-back-to-back-hits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Madonna-like-a-virgin-sire-back-to-back-hits.jpg",
+        "artist": "Sire / Warner Bros. Records",
+        "credit": "https://www.45cat.com/record/gsre0506",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "A label of U.S. vinyl release of \"Like a Virgin\" by Madonna",
+        "dateOriginal": "1984",
+        "score": 15,
+        "matchedEntityTokens": [
+          "like",
+          "virgin"
+        ],
+        "exactYear": true,
+        "originalYear": 1984,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2481,17 +3072,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:1969 Abbey Road.JPG",
+        "mime": "image/jpeg",
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/1969_Abbey_Road.JPG/1280px-1969_Abbey_Road.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "original": "https://upload.wikimedia.org/wikipedia/commons/7/7b/1969_Abbey_Road.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:1969_Abbey_Road.JPG",
         "artist": "Dr. Ronald Kunze",
+        "credit": "Own work",
         "license": "CC BY-SA 3.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "description": "Abbey Road, London, with white Volkswagen",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
+        "dateOriginal": "1969-09-25",
+        "score": 15,
+        "matchedEntityTokens": [
+          "abbey",
+          "road"
+        ],
+        "exactYear": true,
+        "originalYear": 1969,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -2522,18 +3125,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Berlin Wall 1979 01.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Berlin_Wall_1979_01.jpg/1280px-Berlin_Wall_1979_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Berlin_Wall_1979_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Berlin_Wall_1979_01.jpg",
-        "artist": "Ad Meskens",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "The Berlin Wall at the Brandenburg Gate in february 1979. Digitized photo.",
-        "score": 9,
-        "photoTypeStatus": "probable_photograph"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2563,17 +3156,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Fleetwood Mac Billboard 1977.jpg",
+        "mime": "image/jpeg",
         "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Fleetwood_Mac_Billboard_1977.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "original": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Fleetwood_Mac_Billboard_1977.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Fleetwood_Mac_Billboard_1977.jpg",
         "artist": "Warner Bros. Records",
+        "credit": "Billboard , 25 June 1977, p. 86",
         "license": "Public domain",
         "licenseUrl": null,
         "description": "Group advertising photograph of Fleetwood Mac for their album Rumours . From left to right: Mick Fleetwood, Christine McVie, John McVie, Stevie Nicks and Lindsey Buckingham. The photograph was published on the 25 June 1977 issue of Billboard magazine, thus being an advertising pre-1978 photograph with no explicit copyright notice it is in public domain",
-        "score": 9,
-        "photoTypeStatus": "probable_photograph"
+        "dateOriginal": "1977-06-25",
+        "score": 12,
+        "matchedEntityTokens": [
+          "rumours"
+        ],
+        "exactYear": true,
+        "originalYear": 1977,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2604,18 +3208,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Eilean Donan Castle, Scotland - Jan 2011.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg/1280px-Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/6/67/Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg",
-        "artist": "Diliff",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "description": "Eilean Donan Castle, as viewed from the south-east at sunrise. Taken by myself as a 2×6 segment panorama with a Canon 5D and 85mm f/1.8 lens.",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
     {
@@ -2645,18 +3239,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:OJ C 179 of 2022 - ES Spanish.pdf",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/OJ_C_179_of_2022_-_ES_Spanish.pdf/page1-960px-OJ_C_179_of_2022_-_ES_Spanish.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/be/OJ_C_179_of_2022_-_ES_Spanish.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:OJ_C_179_of_2022_-_ES_Spanish.pdf",
-        "artist": "Publications Office of the European Union",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "Official Journal of the European Union - C 179 of 2 May 2022 - Spanish edition",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2686,18 +3270,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:19980130USGovCopyrightRenUruguay.pdf",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/19980130USGovCopyrightRenUruguay.pdf/page1-960px-19980130USGovCopyrightRenUruguay.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0f/19980130USGovCopyrightRenUruguay.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:19980130USGovCopyrightRenUruguay.pdf",
-        "artist": "Office of the Federal Register",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "U.S. Federal Register Part V Library of Congress Copyright Office Copyright Restoration of Works in Accordance With the Uruguay Round Agreements Act; Notice",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2727,7 +3301,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:\"Lost in the 50's\" (2661236782).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/%22Lost_in_the_50%27s%22_%282661236782%29.jpg/1280px-%22Lost_in_the_50%27s%22_%282661236782%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/01/%22Lost_in_the_50%27s%22_%282661236782%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:%22Lost_in_the_50's%22_(2661236782).jpg",
+        "artist": "Don O'Brien from Piketon, Ohio, United States",
+        "credit": "\"Lost in the 50's\"",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "description": "Some hit songs the radio might have been playing when the car was new: Bobby Darin\"Mack the Knife\"Atco1959 Miles Davis \"Kind of Blue\" Columbia1959 Mark Dinning\"Teen Angel\" MGM1960 The Flamingos\"I Only Have Eyes for You\"End1959 Wilbert Harrison\"Kansas City\"Fury 1959 Johnny Horton \"The Battle of New Orleans\"Columbia1959 The Isley Brothers\"Shout\"RCA1959",
+        "dateOriginal": "2007-07-28 18:23",
+        "score": 13,
+        "matchedEntityTokens": [
+          "kind",
+          "blue"
+        ],
+        "exactYear": true,
+        "originalYear": 2007,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2757,18 +3354,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Swing-Journal-1964-November-3.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Swing-Journal-1964-November-3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Swing-Journal-1964-November-3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Swing-Journal-1964-November-3.jpg",
-        "artist": "Unknown photographer",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "Stan Getz and Astrud Gilberto",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2798,6 +3385,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -2828,17 +3416,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Rosalía Chile2022 02.png",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Rosal%C3%ADa_Chile2022_02.png/1280px-Rosal%C3%ADa_Chile2022_02.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/5/51/Rosal%C3%ADa_Chile2022_02.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Rosal%C3%ADa_Chile2022_02.png",
-        "artist": "Andrés Ibarra",
+        "fileTitle": "File:Compañerx trans en su vehículo.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Compa%C3%B1erx_trans_en_su_veh%C3%ADculo.jpg/1280px-Compa%C3%B1erx_trans_en_su_veh%C3%ADculo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Compa%C3%B1erx_trans_en_su_veh%C3%ADculo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Compa%C3%B1erx_trans_en_su_veh%C3%ADculo.jpg",
+        "artist": "AlejandraGamarraEspinoza",
+        "credit": "Own work",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Rosalía at Chile, Motomami tour. 28/08/2022-Movistar Arena",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "description": "We found a striking and beautiful vehicle and I took a photo of it and the person who was driving it, according to his own words: now it was \"motomami\"* reference to Rosalía's album that has a song with the same name",
+        "dateOriginal": "2022-06-25 15:25:52",
+        "score": 12,
+        "matchedEntityTokens": [
+          "motomami"
+        ],
+        "exactYear": true,
+        "originalYear": 2022,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2869,18 +3468,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:1980 Events Collage.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/1980_Events_Collage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2c/1980_Events_Collage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:1980_Events_Collage.jpg",
-        "artist": "United States State Department Allagutsel (uploader) BugWarp U.S. Geological Survey خبرگذاری تسنیم Beppe Briguglio, Patrizia Pulga, Medardo Pedrini, Marco Vaccari Lennyjjk 리듬",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "1980 collage inspired by The ganymedian Clockwise: Canadian Caper 1980 Summer Olympics Pac-Man Iraqi invasion of Iran/Iran-Iraq War Gwangju Uprising Murder of John Lennon Bologna massacre 1980 eruption of Mount St. Helens",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2910,17 +3499,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:1984 Events montage 16-grid version.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/1984_Events_montage_16-grid_version.jpg/1280px-1984_Events_montage_16-grid_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/7/78/1984_Events_montage_16-grid_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:1984_Events_montage_16-grid_version.jpg",
-        "artist": "From a variety of images credited above.",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "description": "16 major events of 1984. From top to bottom, left to right: 1984 US embassy bombing in Beirut Severomorsk Disaster 1984–1985 United Kingdom miners' strike Sino-British Joint Declaration Assassination of Indira Gandhi / 1984 anti-Sikh riots / Operation Blue Star Bhopal disaster 1984 Summer Olympics San Ysidro McDonald's massacre Diretas Já Tetris Macintosh 128K Typhoon Agnes (1984) Itaipu Dam Controlled Impact Demonstration Brighton hotel bombing Typhoon Ike",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Tetris (42312784974).jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/4/42/Tetris_%2842312784974%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/4/42/Tetris_%2842312784974%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Tetris_(42312784974).jpg",
+        "artist": "Exey Panteleev from Moscow, Russia",
+        "credit": "Tetris",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "description": "Tetris is a tile-matching puzzle video game, originally designed and programmed by Russian game designer Alexey Pajitnov and released on June 6, 1984",
+        "dateOriginal": "2016-07-09 18:24",
+        "score": 13,
+        "matchedEntityTokens": [
+          "tetris",
+          "1984"
+        ],
+        "exactYear": true,
+        "originalYear": 2016,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -2951,18 +3552,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Super Mario Bros. – Fort Lava.png",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/6/61/Super_Mario_Bros._%E2%80%93_Fort_Lava.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/6/61/Super_Mario_Bros._%E2%80%93_Fort_Lava.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Super_Mario_Bros._%E2%80%93_Fort_Lava.png",
-        "artist": "Nintendo K.K.",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "Invisible item box in Bowser's castle.",
-        "score": 9,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -2992,17 +3583,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
         "fileTitle": "File:Street Fighter II arcade machine.jpg",
+        "mime": "image/jpeg",
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Street_Fighter_II_arcade_machine.jpg/1280px-Street_Fighter_II_arcade_machine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "original": "https://upload.wikimedia.org/wikipedia/commons/3/33/Street_Fighter_II_arcade_machine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:Street_Fighter_II_arcade_machine.jpg",
         "artist": "John Turner",
+        "credit": "https://www.flickr.com/photos/raapofficial/16190634959/",
         "license": "CC BY 2.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
         "description": "Street Fighter II Arcade Machinee, Released 1991. Taken at Bradford Media Museum, England www.nationalmediamuseum.org.uk/",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
+        "dateOriginal": "2014-09-17 16:44:32",
+        "score": 13,
+        "matchedEntityTokens": [
+          "street",
+          "fighter"
+        ],
+        "exactYear": true,
+        "originalYear": 2014,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -3033,6 +3636,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -3063,17 +3667,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Sony-PlayStation-2-30001-wController-L.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Sony-PlayStation-2-30001-wController-L.jpg/1280px-Sony-PlayStation-2-30001-wController-L.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Sony-PlayStation-2-30001-wController-L.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Sony-PlayStation-2-30001-wController-L.jpg",
-        "artist": "Evan-Amos",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "The Sony PlayStation 2 (PS2) video game console, shown with Dualshock 2 controller and 8MB memory card plugged in. First released in 2000, it is a sixth generation console and the follow up to the hugely successful PlayStation console. The system would continue the success, going on to become the highest selling video game console of all time.",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Sony Playstation 2 SCPH-5001 V9 - Botões Eject e Reset Eject and Reset buttons (19290929960).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Sony_Playstation_2_SCPH-5001_V9_-_Bot%C3%B5es_Eject_e_Reset_Eject_and_Reset_buttons_%2819290929960%29.jpg/1280px-Sony_Playstation_2_SCPH-5001_V9_-_Bot%C3%B5es_Eject_e_Reset_Eject_and_Reset_buttons_%2819290929960%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Sony_Playstation_2_SCPH-5001_V9_-_Bot%C3%B5es_Eject_e_Reset_Eject_and_Reset_buttons_%2819290929960%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Sony_Playstation_2_SCPH-5001_V9_-_Bot%C3%B5es_Eject_e_Reset_Eject_and_Reset_buttons_(19290929960).jpg",
+        "artist": "Deni Williams from São Paulo, Brasil / Brazil",
+        "credit": "Sony Playstation 2 SCPH-5001 V9 - Botões Eject e Reset / Eject and Reset buttons",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "description": "Português O PlayStation 2 (oficialmente abreviado como PS2) foi o segundo console produzido pela empresa Sony, após o PlayStation original. Foi lançado no dia 4 de março de 2000 no Japão, no dia 26 de outubro na América do Norte, e posteriormente, no dia 24 de novembro na Europa. Após um lento primeiro ano, o PlayStation 2 cresceu a ponto de tornar-se o console mais vendido da história dos videogames. Devido à imensa popularidade em todo o mundo, o console, assim como seus jogos, continuaram a ser fabricados mesmo após o lançamento do seu sucessor, o PlayStation 3. Somente depois de 13 anos do seu lançamento, às vias do anúncio do PlayStation 4, que o jornal japonês Asahi Shinbum anunciou o encerramento da fabricação do console no Japão no dia 30 de dezembro de 2012. E no dia 4 de janeiro de 2013, o jornal britânico The Guardian anunciou que a Sony cessou a produção dos consoles PlayStation 2 no mundo inteiro. O sucessor do PlayStation é anunciado pela Sony em março de 1999 e lançado um ano depois no Japão, em 4 de março de 2000. Na América do Norte, o evento ocorre no 26 de outubro do mesmo ano. A notícia causa estrondosa repercussão em todo mundo, a ponto de esvaziar lojas ainda no dia de seu lançamento e, devido a atrasos na fabricação, apenas alguns milhões de pessoas obtêm o console até o final de 2000. Outra opção era comprar o console na internet através de sites de leilões, como o eBay, onde ele era vendido por até mil dólares. Inicialmente, o PS2 tem muitas unidades vendidas com base na força da marca PlayStation e da compatibilidade com a versão anterior, com mais de 980.000 unidades comercializadas no Japão em 5 de março de 2000, um dia após o lançamento. Mais tarde, a Sony adiciona novos kits de desenvolvimento para desenvolvedores de jogos e mais unidades de PS2 para os consumidores. Os primeiros modelos (SCPH-10000, SCPH-15000 e SCPH-18000) foram vendidos apenas no Japão. Estes modelos incluíam um PCMCIA em vez da porta Dev9 dos modelos posteriores. A PCMCIA-to-adaptador Dev9 foi posteriormente disponibilizada para estes modelos. Os modelos SCPH-10000 e SCPH-15000 não possuíam um reprodutor de filmes DVD incorporada e, em vez disso, tinham um software de reprodução de criptografado que foi copiado para o cartão de memória de um CD-ROM incluído (normalmente, o PS2 só executa softwares de encriptação de seu cartão de memória, mas isso pode ser mudado com o PS2 Independence Exploit). O console V3 (versão 3) tinha uma estrutura substancialmente diferente das reedições posteriores, apresentando várias placas interligadas de circuito impresso. A partir do V4, tudo foi unificado em uma placa, exceto o fornecimento de energia. Na versão 5, foram introduzidas pequenas alterações internas, e a única diferença entre esta e a V6 (também denominada V5.1) é a orientação do botão Power/Reset como conector da placa do interruptor, que foi revertida na V6 para impedir o uso de Modchips piratas. As versões 7 e 8 incluíam apenas pequenas alterações em relação à V6. Todas as versões a partir da SCPH-50000 possuem uma alteração na BIOS, da qual desabilita um exploit que permitia rodar aplicativos homebrew através do Memory Card, além de acrescentar receptores infravermelhos para controles remotos de DVD, que antes eram opcionais. Essa edição removeu a norma IEEE 1394, adicionou a capacidade de ler DVD-RW e DVD+RW e acrescentou uma varredura progressiva (Progressive Scan) para produção de filmes em DVD. As versões V10 e V11 contaram com poucas modificações. A cor padrão do PS2 é preto fosco. Consoles com diversas variações de cor, incluindo cinza, amarelo, azul, prata metálico, azul-marinho, preto opaco, roxo, ouro acetinado, prata acetinado, branco, vermelho, azul transparente (Blue Ocean), Pink Limited Edition e Black Piano, foram produzidos em diversas regiões. Em setembro de 2004, foi lançado o console versão 12, SCPH-70000. Lançada em novembro de 2004, é menor do que a versão antiga e inclui uma porta Ethernet. Em alguns lugares também inclui um modem. O tamanho e peso nesta edição foram reduzidos a 230 mm de altura, 152 mm de largura e 28 mm de profundidade (ou seja, menos 32%). Devido ao seu perfil estreito, que contém a baia de expansão de 3.5 polegadas, não dá suporte a disco rígido interno, mas devido à presença de portas USB 1.1, pode ser usado um disco rígido externo (apesar de nenhum jogo requerir um disco rígido interno) e utiliza uma fonte externa de energia, de maneira semelhante ao GameCube. Apesar das portas USB estarem disponíveis, a falta de unidade de disco rígido causou um problema, porque as portas USB 1.1 são mais lentas e o poucos jogos foram feitos para usá-la. Para algumas pessoas, esta tem sido uma limitação, especialmente para aqueles que preferem jogos como Final Fantasy XI, que exige o uso de periféricos, e evita o uso do pacote oficial do PlayStation 2 Linux. Houve discussões em relação à numeração deste modelo, uma vez que existem duas subversões do SCPH-70000. Uma delas inclui o antigo EE e GS e a outra contém a nova placa unificada EE + GS. Duas propostas de nomeação foram o nome do modelo antigo (EE e GS separados) V11.5 e o modelo V12 novo. Em 29 de novembro de 2005, o PlayStation 2 tornou-se o console de videogame mais rapidamente comercializado, por chegar a 100 milhões de unidades vendidas, realizando o feito no prazo de 5 anos e 9 meses de seu lançamento. O PlayStation 2 alcançou esta conquista de maneira mais rápida que seu antecessor, o PlayStation, que levou 9 anos e 6 meses para atingir o feito. O PS2 já havia vendido 138 milhões em unidades no mundo inteiro a partir de 18 de agosto de 2009, de acordo com a Sony. Na Europa, o PS2 vendeu 48 milhões de unidades a partir de 6 de maio de 2008, segundo dados da Sony Computer Entertainment Europe. Na América do Norte, o PS2 já vendeu 50 milhões de unidades em dezembro de 2008. No Japão, o PS2 vendeu 21.454.325 unidades a partir de 1 de outubro de 2008, de acordo com Famitsu/Enterbrain. Na Europa, o PS2 vendeu 6 milhões de unidades em 2006 e 3.8 milhões em 2007, De acordo com estimativas da Electronic Arts.30 31 Em 2007, o PS2 vendeu 3,97 milhões de unidades nos Estados Unidos de acordo com a NPD Group.32 33 e 816.419 unidades no Japão, segundo a Enterbrain. Em 2008, o PS2 vendeu 480.664 unidades no Japão, segundo a Enterbrain. Fonte: Wikipedia English The PlayStation 2 (PS2), is a home video game console that was manufactured by Sony Computer Entertainment. It is Sony's second installment in the PlayStation Series. It was released on March 4, 2000, in Japan followed by North America and Europe later the same year. The sixth-generation console competed with the Sega Dreamcast, Microsoft Xbox, and Nintendo GameCube. The PlayStation 2 went on to become the best-selling video game console in history, selling over 155 million units. More than 3,874 game titles have been released for the PS2 since launch, and more than 1.5 billion copies have been sold. Sony later manufactured several smaller, lighter revisions of the console known as \"slimline\" models, and in 2006 introduced the successor, the PlayStation 3. Even with the PlayStation 3 release, the PlayStation 2 remained popular well into the seventh generation and continued to be produced until January 4, 2013, when Sony finally announced that the PlayStation 2 had been discontinued after almost 13 years of production – one of the longest runs for a video game console. Despite the announcement, new games for the console continued to be produced until the end of 2013, including Final Fantasy XI: Seekers of Adoulin for Japan, Pro Evolution Soccer 2014 for North America and Europe, and FIFA 14 for Brazil. Sony unveiled the PlayStation 4 console the following month on February 20, 2013. Sony announced the PlayStation 2 (PS2) on March 1, 1999. The video game console was positioned as a competitor to Sega's Dreamcast, the first sixth-generation console to be released. Despite Sony's announcement, the Dreamcast went on to a very successful North American launch later that year selling over 500,000 units within two weeks.[12] Soon after the Dreamcast's North American launch, Sony unveiled the PlayStation 2 at the Tokyo Game Show in September 1999. Sony showed fully playable demos of upcoming PlayStation 2 games including Gran Turismo 2000 (later released as Gran Turismo 3: A-Spec) and Tekken Tag Tournament — which showed the console's graphic abilities and power. The PS2 was launched in March 2000 in Japan, October in North America and November in Europe. Sales of the console, games and accessories pulled in $250 million on the first day, beating the $97 million made on the first day of the Dreamcast. Directly after its release, it was difficult to find PS2 units on retailer shelves due to manufacturing delays. Another option was purchasing the console online through auction websites such as eBay, where people paid over a thousand dollars for the console. The PS2 initially sold well partly on the basis of the strength of the PlayStation brand and the console's backward compatibility, selling over 980,000 units in Japan by March 5, 2000, one day after launch. This allowed the PS2 to tap the large install base established by the PlayStation — another major selling point over the competition. Later, Sony added new development kits for game developers and more PS2 units for consumers. The PS2's built-in functionality also expanded its audience beyond the gamer, as its debut pricing was the same or less than a standalone DVD player. This made the console a low cost entry into the home theater market. The success of the PS2 at the end of 2000 caused Sega problems both financially and competitively, and Sega announced the discontinuation of the Dreamcast in March 2001, just 18 months after its successful launch. The PS2 remained as the only active sixth generation console for over 6 months, before it would face competition from newer rivals; the Nintendo GameCube and Microsoft's Xbox, which were then released. Many analysts predicted a close three-way matchup among the three consoles; the Xbox having the most powerful hardware, while the GameCube was least expensive console and Nintendo changed its policy to encourage third-party developers, and while the PlayStation 2 theoretically had the weakest specs of the three, it had a head start due to its installed base plus strong developer commitment, as well as a built-in DVD player (the Xbox required an adapter, while the GameCube lacked support entirely). While the PlayStation 2's initial games lineup was considered mediocre, this changed during the 2001 holiday season with the release of several blockbuster games that maintained the PS2's sales momentum and held off its newer rivals. Sony also countered the Xbox by temporarily securing PlayStation 2 exclusives for highly anticipated games such as the Grand Theft Auto series and Metal Gear Solid 2: Sons of Liberty. Sony cut the price of the console in May 2002 from US$299 to $199 in North America, making it the same price as the GameCube and $100 less than the Xbox. It also planned to cut the price in Japan around that time. It cut the price twice in Japan in 2003. In 2006, Sony cut the cost of the console in anticipation of the release of the PlayStation 3. Sony, unlike Sega with its Dreamcast, originally placed little emphasis on online gaming during its first few years, although that changed upon the launch of the online-capable Xbox. Coinciding with the release of Xbox Live, Sony released the PlayStation Network Adapter in late 2002, with several online first–party titles released alongside it, such as SOCOM: U.S. Navy SEALs to demonstrate its active support for Internet play. Sony also advertised heavily, and its online model had the support of Electronic Arts (EA); EA did not offer online Xbox titles until 2004. Although Sony and Nintendo both started out late, and although both followed a decentralized model of online gaming where the responsibility is up to the developer to provide the servers, Sony's moves made online gaming a major selling point of the PS2. In September 2004, in time for the launch of Grand Theft Auto: San Andreas, Sony revealed a newer, slimmer PS2 (see Hardware revisions). In preparation for the launch of the new models (SCPH-700xx-9000x), Sony stopped making the older models (SCPH-3000x-500xx) to let the distribution channel empty its stock of the units. After an apparent manufacturing issue—Sony reportedly underestimated demand—caused some initial slowdown in producing the new unit caused in part by shortages between the time the old units were cleared out and the new units were ready. The issue was compounded in Britain when a Russian oil tanker became stuck in the Suez Canal, blocking a ship from China carrying PS2s bound for the UK. During one week in November, British sales totalled 6,000 units — compared to 70,000 units a few weeks prior. There were shortages in more than 1,700 stores in North America on the day before Christmas. PlayStation 2 software is distributed on CD-ROM and DVD-ROM. In addition the console can play audio CDs and DVD movies, and is backwards compatible with PlayStation games. The PS2 also supports PlayStation memory cards and controllers, although PS1 memory cards only work with PS1 games and the controllers may not support all functions (such as analog buttons) for PS2 games. The standard PlayStation 2 memory card has an 8 MB capacity. There are a variety of non-Sony manufactured memory cards available for the PlayStation 2, allowing for a memory capacity larger than the standard 8 MB. The console also features USB and IEEE 1394 (Firewire) expansion ports. A hard disk drive can be installed in an expansion bay on the back of the console, and is required to play certain games, notably the popular Final Fantasy XI. This is only available on certain models. The PlayStation 2 may natively output video resolutions on SDTV and HDTV from 480i to 480p while other games, such as Gran Turismo 4 and Tourist Trophy are known to support upscaled 1080i resolution using any of the following standards: composite video (480i), S-Video (480i), RGB (480i/p), VGA (for progressive scan games and PS2 Linux only), YPBPR component video (which display most PS1 games in their native 240p mode which most HDTV sets don't support), and D-Terminal. Cables are available for all of these signal types; these cables also output analog stereo audio. Additionally, an RF modulator is available for the system to connect to older TVs. Digital (S/PDIF) audio may also be output by the console via its TOSLINK connector which outputs 5.1 channel sound. The PS2 has undergone many revisions, some only of internal construction and others involving substantial external changes. The PS2 is primarily differentiated between models featuring the original \"fat\" case design and \"slimline\" models, which were introduced at the end of 2004. In 2010, a television incorporating a PS2 was made available to consumers. The PS2 standard color is matte black. Several variations in color were produced in different quantities and regions, including ceramic white, light yellow, metallic blue (aqua), metallic silver, navy (star blue), opaque blue (astral blue), opaque black (midnight black), pearl white, sakura purple, satin gold, satin silver, snow white, super red, transparent blue (ocean blue), and also Limited Edition color Pink, which was distributed in some regions such as Oceania, and parts of Asia. In September 2004, Sony unveiled its third major hardware revision. Available in late October 2004, it was smaller, thinner, and quieter than the original versions and included a built-in Ethernet port (in some markets it also had an integrated modem). Due to its thinner profile, it did not contain the 3.5\" expansion bay and therefore did not support the internal hard disk drive. It also lacked an internal power supply until a later revision (excluding the Japan version), similar to the GameCube, and had a modified Multitap expansion. The removal of the expansion bay was criticized as a limitation due to the existence of titles such as Final Fantasy XI, which required the use of the HDD. Sony also manufactured a consumer device called the PSX that can be used as a digital video recorder and DVD burner in addition to playing PS2 games. The device was released in Japan on December 13, 2003, and was the first Sony product to include the XrossMediaBar interface. It did not sell well in the Japanese market and was not released anywhere else. Source: Wikipedia",
+        "dateOriginal": "2015-04-25 17:23",
+        "score": 8,
+        "matchedEntityTokens": [
+          "playstation"
+        ],
+        "exactYear": true,
+        "originalYear": 2015,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -3104,6 +3719,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -3134,17 +3750,28 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Vote among National Members at 2018 GA (IMG 1340-180830-CC).jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Vote_among_National_Members_at_2018_GA_%28IMG_1340-180830-CC%29.jpg/1280px-Vote_among_National_Members_at_2018_GA_%28IMG_1340-180830-CC%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Vote_among_National_Members_at_2018_GA_%28IMG_1340-180830-CC%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Vote_among_National_Members_at_2018_GA_(IMG_1340-180830-CC).jpg",
-        "artist": "IAU/M. Zamani",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "description": "Vote among National Members at 2018 GA (not related to the Hubble–Lemaître law).",
-        "score": 7,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Gate to Paradise of Nature.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Gate_to_Paradise_of_Nature.jpg/1280px-Gate_to_Paradise_of_Nature.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Gate_to_Paradise_of_Nature.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Gate_to_Paradise_of_Nature.jpg",
+        "artist": "Johan Hofvendahl",
+        "credit": "Own work",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "There are thousands of views and sceneries around Earth that remind us that Paradise is a place among us, not a place only a few lucky people deserve to experience after they die. To me, this image illustrates one of the portals to the Paradise of Nature. This particular portal is located in Skåne, southern Sweden, in a nature reserve called The Robber Lair (Swe. Rövarekulans naturreservat).",
+        "dateOriginal": "2018-05-13 14:54:40",
+        "score": 10,
+        "matchedEntityTokens": [
+          "among"
+        ],
+        "exactYear": true,
+        "originalYear": 2018,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -3175,6 +3802,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -3205,18 +3833,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Ganondorf.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Ganondorf.jpg/1280px-Ganondorf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Ganondorf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Ganondorf.jpg",
-        "artist": "Álvaro Fernández González",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "description": "Ganondorf depiction from The Legend of Zelda: Tears of the Kingdom, by Álvaro Fernández González.",
-        "score": 6,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -3246,18 +3864,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:DARK SOULS II - CURSED.webm",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/DARK_SOULS_II_-_CURSED.webm/1280px--DARK_SOULS_II_-_CURSED.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/8/80/DARK_SOULS_II_-_CURSED.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:DARK_SOULS_II_-_CURSED.webm",
-        "artist": "Bandai Namco Entertainment America",
-        "license": "CC BY 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-        "description": "Dark Souls II - Release Dates: Xbox 360, PS3: March 11th, 2014 (NA) PC: Shortly after console release. Don't miss the hardest game you'll ever love. Explore a vast breathtaking world filled with mythical monsters & murderous bosses. It's about the journey, not the destination. Pre-orders at participating retailers will be upgraded to the Black Armor Edition for FREE while supplies last! * Black Armor Edition * * The Dark Souls II Pre-Order Bonus comes with a FREE Collectible Metal Case, Game & Original Game Soundtrack - while supplies last. The collectible case has the unique Warrior Knight box art that will only be found on the Black Armor Edition. The Original Game Soundtrack is composed by Motoi Sakuraba, who composed the full score for the 2011 hit Dark Souls as well. GameStop: http://bit.ly/15Jryj6 Amazon: http://amzn.to/GzR3Ig EB Games CA: http://bit.ly/1cEJEU1 * Collector's Edition * * Amazon: http://amzn.to/1gtGC8I GameStop: http://bit.ly/JklyDJ EB Games CA: http://bit.ly/1cEJEU1 Club Namco: http://bit.ly/1cr6oTX Learn More: http://www.darksoulsii.com/ Join the Conversation: https://www.facebook.com/darksouls",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -3287,18 +3895,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:The Game Awards 2023 - Game of the Year acceptance speech.png",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/The_Game_Awards_2023_-_Game_of_the_Year_acceptance_speech.png/1280px-The_Game_Awards_2023_-_Game_of_the_Year_acceptance_speech.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/1/11/The_Game_Awards_2023_-_Game_of_the_Year_acceptance_speech.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Game_Awards_2023_-_Game_of_the_Year_acceptance_speech.png",
-        "artist": "Andy Robinson",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Larian Studios accepting Game of the Year at The Game Awards 2023.",
-        "score": 4,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -3328,19 +3926,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Gráfica Conmemoración 50 años Terremoto de Valdivia de Mayo de 1960.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/1/12/Gr%C3%A1fica_Conmemoraci%C3%B3n_50_a%C3%B1os_Terremoto_de_Valdivia_de_Mayo_de_1960.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/1/12/Gr%C3%A1fica_Conmemoraci%C3%B3n_50_a%C3%B1os_Terremoto_de_Valdivia_de_Mayo_de_1960.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Gr%C3%A1fica_Conmemoraci%C3%B3n_50_a%C3%B1os_Terremoto_de_Valdivia_de_Mayo_de_1960.jpg",
-        "artist": "Felipe Araya Muñoz",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "description": "Gráfica en base a textos de prensa chilena de la época del terremoto.",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
-      },
-      "evidenceStatus": "structured_corroborated"
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
+      "evidenceStatus": "structured_corroborated",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 78,
@@ -3369,19 +3958,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Desaparecidos Chile 1973.JPG",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Desaparecidos_Chile_1973.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Desaparecidos_Chile_1973.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Desaparecidos_Chile_1973.JPG",
-        "artist": "Marjorie Apel",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "description": "Fotografías de personas desaparecidas tras el golpe de estado del 11 de septiembre de 1973 en Chile. Exposición de la Fundación Salvador Allende con motivo del 30. aniversario de su muerte.",
-        "score": 15,
-        "photoTypeStatus": "probable_photograph"
-      },
-      "evidenceStatus": "manual_verified"
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
+      "evidenceStatus": "manual_verified",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 79,
@@ -3410,19 +3990,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Pablo Neruda - BCN.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Pablo_Neruda_-_BCN.jpg/1280px-Pablo_Neruda_-_BCN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/1/14/Pablo_Neruda_-_BCN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Pablo_Neruda_-_BCN.jpg",
-        "artist": "Biblioteca del Congreso Nacional de Chile",
-        "license": "CC BY 3.0 cl",
-        "licenseUrl": "https://creativecommons.org/licenses/by/3.0/cl/deed.en",
-        "description": "Pablo Neruda (Parral, 12 de julio de 1904 – Santiago, 23 de septiembre de 1973). Poeta, escritor, diplomático y político del Partido Comunista de Chile. Senador por la Primera Agrupación Provincial \"Tarapacá y Antofagasta\", para el período 1945-1953. Pre-candidato presidencial por el Partido Comunista para las elecciones de 1970. Fue cónsul particular de elección en Rangún y cónsul de elección en Colombo y en Batavia. Además, cónsul de elección en Buenos Aires, cónsul honorario adscrito al Consulado General de Chile en Barcelona, cónsul agregado de la embajada de Chile en Madrid, cónsul en París y cónsul general en México. Fue embajador de Chile en Francia en el gobierno de Salvador Allende. El 10 de diciembre de 1971 recibió el Premio Nobel de Literatura.",
-        "score": 16,
-        "photoTypeStatus": "human_check_required"
-      },
-      "evidenceStatus": "item_specific_reference"
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
+      "evidenceStatus": "item_specific_reference",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 80,
@@ -3451,8 +4022,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
-      "evidenceStatus": "item_specific_reference"
+      "evidenceStatus": "item_specific_reference",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 81,
@@ -3481,19 +4054,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:27-02-2013 Tras el 27F Reconstrucción.jpg",
-        "src": "https://upload.wikimedia.org/wikipedia/commons/f/f9/27-02-2013_Tras_el_27F_Reconstrucci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f9/27-02-2013_Tras_el_27F_Reconstrucci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:27-02-2013_Tras_el_27F_Reconstrucci%C3%B3n.jpg",
-        "artist": "Gobierno de Chile",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "description": "Dichato, Chile, tras el terremoto y Tsunami del 27 de Febrero de 2010.",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
-      },
-      "evidenceStatus": "structured_corroborated"
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
+      "evidenceStatus": "structured_corroborated",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 82,
@@ -3522,8 +4086,10 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
-      "evidenceStatus": "structured_corroborated"
+      "evidenceStatus": "structured_corroborated",
+      "mediaSearchError": "HTTP 429"
     },
     {
       "index": 83,
@@ -3552,7 +4118,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Eva Perón votando 1951-Borroni-1970-72.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Eva_Per%C3%B3n_votando_1951-Borroni-1970-72.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Eva_Per%C3%B3n_votando_1951-Borroni-1970-72.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Eva_Per%C3%B3n_votando_1951-Borroni-1970-72.jpg",
+        "artist": "Pinélides Fusco",
+        "credit": "Eva Perón, Otelo Borroni y Roberto Vaca. CEAL, Buenos Aires, pag. 72, 1970",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "Eva Duarte de Perón (Evita). Votando en el Hospital de Avellaneda 1951",
+        "dateOriginal": "1951-11-11",
+        "score": 14,
+        "matchedEntityTokens": [
+          "women",
+          "suffrage"
+        ],
+        "exactYear": false,
+        "originalYear": 1951,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -3582,6 +4171,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -3612,6 +4202,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -3642,17 +4233,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:LAS RELACIONES CHILENO-SOVIÉTICAS DURANTE EL PERIODO DE GOBIERNO DE LA UNIDAD POPULAR (1970 - 1973).pdf",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/LAS_RELACIONES_CHILENO-SOVI%C3%89TICAS_DURANTE_EL_PERIODO_DE_GOBIERNO_DE_LA_UNIDAD_POPULAR_%281970_-_1973%29.pdf/page1-960px-LAS_RELACIONES_CHILENO-SOVI%C3%89TICAS_DURANTE_EL_PERIODO_DE_GOBIERNO_DE_LA_UNIDAD_POPULAR_%281970_-_1973%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/6/67/LAS_RELACIONES_CHILENO-SOVI%C3%89TICAS_DURANTE_EL_PERIODO_DE_GOBIERNO_DE_LA_UNIDAD_POPULAR_%281970_-_1973%29.pdf?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:LAS_RELACIONES_CHILENO-SOVI%C3%89TICAS_DURANTE_EL_PERIODO_DE_GOBIERNO_DE_LA_UNIDAD_POPULAR_(1970_-_1973).pdf",
-        "artist": "Santiago Moral Martín",
-        "license": "CC0",
-        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "description": "Este trabajo analiza las relaciones que mantuvieron la URSS y Chile durante la experiencia gubernativa del presidente socialista Salvador Allende Gossens, y trata de entender que puesto ocupaba cada uno en los planes del otro.",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Salvador Allende (1970).jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Salvador_Allende_%281970%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Salvador_Allende_%281970%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Salvador_Allende_(1970).jpg",
+        "artist": "Revista argentina Primera Plana, Nº 404, 27 de octubre de 1970",
+        "credit": "https://www.magicasruinas.com.ar/tapas/piehist753.htm",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "Salvador Allende Gossens (Valparaíso, 26 de junio de 1908 - Santiago, 11 de septiembre de 1973) 1970 revista",
+        "dateOriginal": "1970",
+        "score": 22,
+        "matchedEntityTokens": [
+          "salvador",
+          "allende",
+          "gossens"
+        ],
+        "exactYear": true,
+        "originalYear": 1970,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -3683,7 +4287,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
+      "legacyMediaCandidate": {
         "src": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=es.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "sourcePage": "https://commons.wikimedia.org/wiki/File:AllendeNacionalizacion.jpg",
         "artist": "Biblioteca del Congreso Nacional - Chile",
@@ -3701,6 +4305,29 @@
         "width": 697,
         "height": 566,
         "mime": "image/jpeg"
+      },
+      "mediaCandidate": {
+        "fileTitle": "File:AllendeNacionalizacion.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:AllendeNacionalizacion.jpg",
+        "artist": "Biblioteca del Congreso Nacional - Chile",
+        "credit": "Imagen de Salvador Allende, vida politica y parlamentaria",
+        "license": "CC BY-SA 3.0 cl",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/cl/deed.en",
+        "description": "Salvador Allende firma el decreto promulgatorio de la reforma constitucional que da inicio a la nacionalizacion del cobre",
+        "dateOriginal": "1971",
+        "score": 15,
+        "matchedEntityTokens": [
+          "nacionalizacion",
+          "cobre"
+        ],
+        "exactYear": true,
+        "originalYear": 1971,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -3731,18 +4358,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Metro de Santiago 1975.png",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Metro_de_Santiago_1975.png/1280px-Metro_de_Santiago_1975.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Metro_de_Santiago_1975.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Metro_de_Santiago_1975.png",
-        "artist": "Metro",
-        "license": "Public domain",
-        "licenseUrl": null,
-        "description": "Símbolo del Metro de Santiago desde su inauguración en 1975 hasta 1997.",
-        "score": 10,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -3772,7 +4389,30 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Garcia marquez y hector yanovar en bs as 1967.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Garcia_marquez_y_hector_yanovar_en_bs_as_1967.jpg/1280px-Garcia_marquez_y_hector_yanovar_en_bs_as_1967.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Garcia_marquez_y_hector_yanovar_en_bs_as_1967.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Garcia_marquez_y_hector_yanovar_en_bs_as_1967.jpg",
+        "artist": "Unknown author Unknown author",
+        "credit": "here",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "description": "En 1967, durante su único viaje a la Argentina, Gabriel García Márquez firma en la Librería Norte (cuyo dueño, Héctor Yanover, aparece a su lado) ejemplares de su flamante novela “Cien años de soledad”.",
+        "dateOriginal": "1967",
+        "score": 17,
+        "matchedEntityTokens": [
+          "cien",
+          "soledad"
+        ],
+        "exactYear": true,
+        "originalYear": 1967,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -3802,7 +4442,33 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Lettore CD - Museo scienza tecnologia Milano 08733 03.jpg",
+        "mime": "image/jpeg",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/6/69/Lettore_CD_-_Museo_scienza_tecnologia_Milano_08733_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/Lettore_CD_-_Museo_scienza_tecnologia_Milano_08733_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Lettore_CD_-_Museo_scienza_tecnologia_Milano_08733_03.jpg",
+        "artist": "Sony (costruttore)",
+        "credit": "Catalogo collezioni (Italian) . Museoscienza.org . Museo nazionale della scienza e della tecnologia Leonardo da Vinci, Milano.",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "description": "Il lettore di Compact Disc presenta uno chassis in lamiera metallica verniciata di nero, dalla forma a parallelepipedo; all'interno dell'apparecchio sono racchiusi i circuiti elettronici e il laser per la lettura del disco. Il vassoio estraibile per l'inserimento del compact disc si trova sul lato anteriore, insieme ai pulsanti di comando. Alla sinistra del comparto per il disco si trovano il tasto per l'accensione (on/off), l'interruttore per la riproduzione con il timer, la boccola per il collegamento della cuffia e il selettore per la regolazione del volume della cuffia. Alla destra del comparto invece sono collocati il display a cristalli liquidi per le informazioni sulla riproduzione e il sensore a raggi infrarossi del telecomando. Immediatamento al di sotto del display si trovano i quattro tasti per l'impostazione della ripetizione programmata delle tracce del disco, il tasto azzeratore ed infine il tasto per la segnalazione del tempo di riproduzione rimasto. Al di sotto di questi comandi secondari, si trovano i tasti per il comando della riproduzione del disco: il tasto di avvio della riproduzione, il tasto di pausa, quattro tasti di ricerca manuale in avanti e all'indietro a due velocità ed infine due tasti per la selezione delle tracce sul disco. Nel pannello posteriore si trova il supporto bipolare per la connessione del cavo di alimentazione; accanto ad esso esce il cavo per il collegamento del lettore all'amplificatore. Sempre sul lato posteriore si trovano inoltre l'interruttore di pausa automatica, l'interruttore anti-scossoni per l'utilizzo del lettore in luoghi soggetti a vibrazioni, due boccole in uscita e un connettore per altri apparecchi, tuttavia chiuso da una copertura in plastica sigillata da nastro adesivo. L'apparecchio è fornito di un telecomando per il controllo a distanza delle operazioni di riproduzione del disco. Funzione Riproduzione di suoni incisi su compact disc Modalità d'uso Collegare il lettore ad un amplificatore. Premere l'interruttore di alimentazione e successivamente aprire il comparto del disco. Inserire il compact disc sul supporto e premere il tasto di avvio della riproduzione (play) Il comparto si chiude automaticamente, iniziando la riproduzione del disco dall'inizio della prima traccia. Notizie storico-critiche Lanciato nell'ottobre 1982, il lettore CDP-101 della Sony inaugurò per primo la rivoluzione digitale nel campo della riproduzione acustica, introducendo un nuovo supporto per la registrazione dei suoni, il compact disc (CD). Il CD venne elaborato dalla collaborazione tra Sony e Philips nata nel 1979, a partire da un'idea iniziale della Philips, sviluppata sul progetto del video disco presentato dall'italiano Antonio Rubbiani al Salone Internazionale della Tecnica nel 1957. Il CD è costituito da un sottile disco in resina termoplastica di 12 centimetri di diametro, nel quale il suono, convertito in un codice binario, viene tradotto attraverso la realizzazione di microscopici fori lungo una spirale, con una distanza di 1,6 micrometri tra le spire; durante la riproduzione, un laser viene diretto sui fori che ne riflettono la luce. Le variazioni nei raggi della luce riflessa vengono ritrasformate in forma di onda audio continua. Attraverso la registrazione digitale, un CD garantisce una qualità di riproduzione irraggiungibile dai precedenti supporti analogici, offrendo inoltre una maggiore capacità di memorizzazione delle informazioni. A partire dalla sua comparsa nel 1982, il CD si è progressivamente diffuso durante gli anni '80 e '90 come supporto principale per la registrazione dei suoni, eclissando i dischi in vinile e le musicassette.",
+        "dateOriginal": "between 1982 and 1983 date QS:P571,+1982-00-00T00:00:00Z/8,P1319,+1982-00-00T00:00:00Z/9,P1326,+1983-00-00T00:00:00Z/9",
+        "score": 30,
+        "matchedEntityTokens": [
+          "disco",
+          "compact",
+          "disc",
+          "music",
+          "cede"
+        ],
+        "exactYear": true,
+        "originalYear": 1982,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "needs_review"
     },
     {
@@ -3832,7 +4498,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Tévétalálkozó. Makk Károly filmrendező, Deme Gábor dramaturg, Cseres Tibor író, Szinetár Miklós az MTV művészeti vezetője, Petrovics Emil zeneszerző, -, Sára Sándor filmrendező-operatőr, Tamássy Fortepan 56336.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/T%C3%A9v%C3%A9tal%C3%A1lkoz%C3%B3._Makk_K%C3%A1roly_filmrendez%C5%91%2C_Deme_G%C3%A1bor_dramaturg%2C_Cseres_Tibor_%C3%ADr%C3%B3%2C_Szinet%C3%A1r_Mikl%C3%B3s_az_MTV_m%C5%B1v%C3%A9szeti_vezet%C5%91je%2C_Petrovics_Emil_zeneszerz%C5%91%2C_-%2C_S%C3%A1ra_S%C3%A1ndor_filmrendez%C5%91-operat%C5%91r%2C_Tam%C3%A1ssy_Fortepan_56336.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/70/T%C3%A9v%C3%A9tal%C3%A1lkoz%C3%B3._Makk_K%C3%A1roly_filmrendez%C5%91%2C_Deme_G%C3%A1bor_dramaturg%2C_Cseres_Tibor_%C3%ADr%C3%B3%2C_Szinet%C3%A1r_Mikl%C3%B3s_az_MTV_m%C5%B1v%C3%A9szeti_vezet%C5%91je%2C_Petrovics_Emil_zeneszerz%C5%91%2C_-%2C_S%C3%A1ra_S%C3%A1ndor_filmrendez%C5%91-operat%C5%91r%2C_Tam%C3%A1ssy_Fortepan_56336.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:T%C3%A9v%C3%A9tal%C3%A1lkoz%C3%B3._Makk_K%C3%A1roly_filmrendez%C5%91%2C_Deme_G%C3%A1bor_dramaturg%2C_Cseres_Tibor_%C3%ADr%C3%B3%2C_Szinet%C3%A1r_Mikl%C3%B3s_az_MTV_m%C5%B1v%C3%A9szeti_vezet%C5%91je%2C_Petrovics_Emil_zeneszerz%C5%91%2C_-%2C_S%C3%A1ra_S%C3%A1ndor_filmrendez%C5%91-operat%C5%91r%2C_Tam%C3%A1ssy_Fortepan_56336.jpg",
+        "artist": "FOTO:Fortepan — ID 56336 : Adományozó/Donor: Rádió és Televízió Újság. archive copy at the Wayback Machine",
+        "credit": "http://www.fortepan.hu/_photo/download/fortepan_56336.jpg archive copy at the Wayback Machine",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "description": "Tévétalálkozó. Makk Károly filmrendező, Deme Gábor dramaturg, Cseres Tibor író, Szinetár Miklós az MTV művészeti vezetője, Petrovics Emil zeneszerző, ?, Sára Sándor filmrendező-operatőr, Tamássy Zdenkó zeneszerző.",
+        "dateOriginal": "1981",
+        "score": 10,
+        "matchedEntityTokens": [
+          "television"
+        ],
+        "exactYear": true,
+        "originalYear": 1981,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -3862,7 +4550,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Family portrait 1959, Nógrádmarcal Fortepan 14900.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Family_portrait_1959%2C_N%C3%B3gr%C3%A1dmarcal_Fortepan_14900.jpg/1280px-Family_portrait_1959%2C_N%C3%B3gr%C3%A1dmarcal_Fortepan_14900.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/5/51/Family_portrait_1959%2C_N%C3%B3gr%C3%A1dmarcal_Fortepan_14900.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Family_portrait_1959%2C_N%C3%B3gr%C3%A1dmarcal_Fortepan_14900.jpg",
+        "artist": "FOTO:Fortepan — ID 14900 : Adományozó/Donor: Kovács-Palkó Gábor. archive copy at the Wayback Machine",
+        "credit": "https://www.fortepan.hu/_photo/download/fortepan_23167.jpg archive copy at the Wayback Machine",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "description": "Location: Hungary, Nógrádmarcal Tags: men, boy, doll",
+        "dateOriginal": "1959",
+        "score": 10,
+        "matchedEntityTokens": [
+          "doll"
+        ],
+        "exactYear": true,
+        "originalYear": 1959,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "item_specific_reference"
     },
     {
@@ -3892,18 +4602,8 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": {
-        "fileTitle": "File:Mural de Dragon Ball Z en una calle de Aguascalientes 02.jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Mural_de_Dragon_Ball_Z_en_una_calle_de_Aguascalientes_02.jpg/1280px-Mural_de_Dragon_Ball_Z_en_una_calle_de_Aguascalientes_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/2/25/Mural_de_Dragon_Ball_Z_en_una_calle_de_Aguascalientes_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Mural_de_Dragon_Ball_Z_en_una_calle_de_Aguascalientes_02.jpg",
-        "artist": "Luisalvaz",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Mural de Dragon Ball Z entre las calles José F. Elizondo y Avenida Ayuntamiento, Aguascalientes.",
-        "score": 6,
-        "photoTypeStatus": "human_check_required"
-      },
+      "legacyMediaCandidate": null,
+      "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
     {
@@ -3933,6 +4633,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "needs_review"
     },
@@ -3963,17 +4664,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Dry brush portrait of Walter White from Breaking Bad by SD (2015).jpg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Dry_brush_portrait_of_Walter_White_from_Breaking_Bad_by_SD_%282015%29.jpg/1280px-Dry_brush_portrait_of_Walter_White_from_Breaking_Bad_by_SD_%282015%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Dry_brush_portrait_of_Walter_White_from_Breaking_Bad_by_SD_%282015%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Dry_brush_portrait_of_Walter_White_from_Breaking_Bad_by_SD_(2015).jpg",
-        "artist": "Slobadava Darya",
+        "fileTitle": "File:322 16th Street SW, Albuquerque, New Mexico - wide view - May 2026.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/322_16th_Street_SW%2C_Albuquerque%2C_New_Mexico_-_wide_view_-_May_2026.jpg/1280px-322_16th_Street_SW%2C_Albuquerque%2C_New_Mexico_-_wide_view_-_May_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/72/322_16th_Street_SW%2C_Albuquerque%2C_New_Mexico_-_wide_view_-_May_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:322_16th_Street_SW%2C_Albuquerque%2C_New_Mexico_-_wide_view_-_May_2026.jpg",
+        "artist": "Christian David",
+        "credit": "Own work",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Portrait of the character Walter White (played by Bryan Cranston) from the American television series \"Breaking Bad\". Fan art created using the dry brush technique (oil paint on paper)",
-        "score": 6,
-        "photoTypeStatus": "human_check_required"
+        "description": "House at 322 16th Street SW, Huning Castle, Albuquerque, New Mexico. This Spanish Colonial Revival residence served as the exterior of Jesse Pinkman's house (fictional address: 9809 Margo Street) in the AMC series Breaking Bad (2008–2013)",
+        "dateOriginal": "2026-05-01 18:19:21",
+        "score": 13,
+        "matchedEntityTokens": [
+          "breaking",
+          "serie"
+        ],
+        "exactYear": true,
+        "originalYear": 2026,
+        "contemporaneous": false,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -4004,17 +4717,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": {
-        "fileTitle": "File:Game of Thrones ratings histogram.svg",
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Game_of_Thrones_ratings_histogram.svg/1280px-Game_of_Thrones_ratings_histogram.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Game_of_Thrones_ratings_histogram.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-        "sourcePage": "https://commons.wikimedia.org/wiki/File:Game_of_Thrones_ratings_histogram.svg",
-        "artist": "AlexTheWhovian",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "description": "Histogram graph of the ratings for the television series Game of Thrones",
-        "score": 9,
-        "photoTypeStatus": "human_check_required"
+        "fileTitle": "File:Kit Harington 2011.jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Kit_Harington_2011.jpg/1280px-Kit_Harington_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/04/Kit_Harington_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Kit_Harington_2011.jpg",
+        "artist": "Kevin Dougherty from San Diego, United States",
+        "credit": "Flickr",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "description": "Game of Thrones Cast: Kit Harington",
+        "dateOriginal": "2011-07-21 17:25",
+        "score": 15,
+        "matchedEntityTokens": [
+          "game",
+          "thrones"
+        ],
+        "exactYear": true,
+        "originalYear": 2011,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -4045,6 +4770,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -4075,6 +4801,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "structured_corroborated"
     },
@@ -4105,6 +4832,7 @@
         "noMetadiscourse": true,
         "violations": []
       },
+      "legacyMediaCandidate": null,
       "mediaCandidate": null,
       "evidenceStatus": "item_specific_reference"
     },
@@ -4135,7 +4863,29 @@
         "noMetadiscourse": true,
         "violations": []
       },
-      "mediaCandidate": null,
+      "legacyMediaCandidate": null,
+      "mediaCandidate": {
+        "fileTitle": "File:Wordle (Exey Panteleev).jpg",
+        "mime": "image/jpeg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Wordle_%28Exey_Panteleev%29.jpg/1280px-Wordle_%28Exey_Panteleev%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/13/Wordle_%28Exey_Panteleev%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Wordle_(Exey_Panteleev).jpg",
+        "artist": "Exey Panteleev",
+        "credit": "https://www.flickr.com/photos/exey/52281914263/",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "description": "Wordle is a word guessing puzzle game created by Josh Wardle and released in October 2021. Wordle gives players six chances to guess a randomly selected five-letter word.",
+        "dateOriginal": "2022-03-08 18:43:05",
+        "score": 10,
+        "matchedEntityTokens": [
+          "wordle"
+        ],
+        "exactYear": true,
+        "originalYear": 2022,
+        "contemporaneous": true,
+        "photoTypeStatus": "probable_real_photograph",
+        "reviewRequired": true
+      },
       "evidenceStatus": "structured_corroborated"
     }
   ]
