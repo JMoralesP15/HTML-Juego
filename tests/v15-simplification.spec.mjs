@@ -2,6 +2,21 @@ import {test,expect} from '@playwright/test';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
+
+async function openAdditionalContent(page){
+  const toggle=page.locator('[data-v16-action="context-toggle"]');
+  if(await toggle.isVisible()){
+    await expect(page.locator('.atlas-document')).toBeHidden();
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded','true');
+  }else{
+    await expect(toggle).toBeHidden();
+    await expect(page.locator('.atlas-document-copy > section')).toHaveCount(0);
+  }
+  await expect(page.locator('.atlas-document')).toBeVisible();
+  await expect(page.locator('.atlas-document-copy')).not.toContainText(/La fecha concreta registrada|La misma ficha|Referencia heredada|pendiente de revisión editorial/i);
+}
+
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
 
@@ -59,7 +74,7 @@ test('No lo sé sigue funcionando',async({page})=>{
 });
 
 test('contexto rico queda bajo demanda',async({page})=>{
-  await boot(page);await page.locator('#primaryAction').click();
+  await boot(page);await page.evaluate(()=>{const original=qaExtendedContext;qaExtendedContext=q=>({...original(q),locate:'Este proceso histórico conecta transformaciones sociales de varias generaciones.'})});await page.locator('#primaryAction').click();
   const button=page.locator('[data-v16-action="context-toggle"]');await expect(button).toBeVisible();await expect(button).toHaveAttribute('aria-expanded','false');await expect(page.locator('.atlas-document')).toBeHidden();
   await button.click();await expect(button).toHaveAttribute('aria-expanded','true');await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).not.toContainText(/Referencia heredada|pendiente de revisión editorial/i);
 });
