@@ -9,6 +9,7 @@ on:
       - js/content.js
       - js/editorial-replacements-v187c.js
       - js/editorial-text-refinements-v187c.js
+      - js/editorial-text-refinements-v187c-fixes.js
       - tools/editorial-review-media-v187c.mjs
       - .github/workflows/editorial-review-media-v187c.yml
   workflow_dispatch:
