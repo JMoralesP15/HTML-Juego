@@ -1,59 +1,74 @@
-# QUÉ AÑO — Project Traceability Audit v1.8.3
+# QUÉ AÑO — Auditoría de trazabilidad y arquitectura v1.8.3
 
-Fecha de corte: 2026-09-13. Base auditada: `feature/audit-contracts-editorial-batch02-v1.8.2` (`aaf5bd146c572fee1c600c4c0764a0f82bf0548e`).
+Base: `feature/audit-contracts-editorial-batch02-v1.8.2` · corte 2026-09-13. Esta rama documenta y protege la auditoría; no refactoriza runtime ni modifica invariantes de juego.
 
-## Alcance
+## TRACEABILITY
 
-Esta iteración reconstruye la genealogía real del repositorio y deja una línea base auditable. No modifica runtime, gameplay, scoring, timer, scheduler, banco de 300 IDs/años, calendario, persistencia, Repaso, Sets, Learning Gain ni contenido editorial.
+La genealogía v1.0→v1.8.2 es lineal por ancestría Git y suma 218 commits sobre `main`. Se clasificaron 14/14 refs relevantes y 9/9 PR observados: `traceability_coverage = 100%`. PR #1 está cerrado sin merge aunque su head es ancestro; #4–#9 permanecen draft/open pese a estar superados; v1.2.1, v1.8.1 y v1.8.2 carecen de PR propio. Ver `reports/project-traceability.json`.
 
-## Genealogía observada
+## OBSERVED ARCHITECTURE
 
-La secuencia de producto es lineal por ancestría Git. Cada head listado contiene al anterior; no se detectó bifurcación entre las versiones auditadas.
+`index.html` carga 24 JS y 5 CSS. Los 29/29 archivos activos están clasificados por orden real de carga, no por su nombre. Conviven base, Archivo Nocturno, Atlas y capas de producto v1.3–v1.8.
 
-| Etapa | Ref principal | Head auditado | Relación |
-|---|---|---|---|
-| v1.0 baseline | `main` | `9bff1d909bf9b6a87175c2999e566d5e45231677` | raíz |
-| v1.1 | `feature/ui-game-loop-v1.1` | `a917a19c5d9d1920b3a56221fea0df00022739ab` | descendiente de v1.0 |
-| Archivo Nocturno RC.2 | `feature/archive-night-rc2` | `7c8b00f3b99d13806d8830d7dbd96c9fb209e87f` | descendiente de v1.1 |
-| v1.2 | `feature/visual-identity-timer-context-v1.2` | `89736c97a02b7329cec783500ee7315657629c22` | descendiente de RC.2 |
-| v1.2.1 | `feature/instrumentation-consolidation-v1.2.1` | `2fbb6117e35577448242953d069ec23406c83a06` | descendiente de v1.2 |
-| v1.3 | `feature/product-loop-v1.3` | `c1ae4e1a85a6276c4883d0082433551909d36de5` | descendiente de v1.2.1 |
-| v1.4 | `feature/curation-atmosphere-v1.4` | `c170eaf8762828842d74548f5694c2a26d4e80c8` | descendiente de v1.3 |
-| v1.5 | `feature/simplification-game-clarity-v1.5` | `7721f44dbb6f8593fe8fb4aebfdab9c48a694784` | descendiente de v1.4 |
-| v1.6 | `feature/learning-result-ux-v1.6` | `53676ba16cea7ff66576a74ded00b5a88cf850ca` | descendiente de v1.5 |
-| v1.7 | `feature/architecture-editorial-consolidation-v1.7` | `1033aeb7d318b9f8dcc15acf430df3297c22fbfd` | descendiente de v1.6 |
-| v1.8 | `feature/factual-editorial-verification-v1.8` | `782ed5f67e599810cac9cc33dafe8400072f048d` | descendiente de v1.7 |
-| v1.8.1 | `feature/editorial-assist-v1.8.1` | `232d1c457a1ca9fb26913768e6a50865a478f060` | descendiente de v1.8 |
-| v1.8.2 | `feature/audit-contracts-editorial-batch02-v1.8.2` | `aaf5bd146c572fee1c600c4c0764a0f82bf0548e` | descendiente de v1.8.1 |
+## OWNERSHIP
 
-`main..v1.8.2` contiene 218 commits. `infra/pages-setup` existe como carril de integración/publicación y, al corte, apunta a `232d1c457a1ca9fb26913768e6a50865a478f060`.
+Sólo 6 de 18 contratos tienen propietario único sin otro escritor cargado conocido: contenido, scheduler, calendario, storage, navegación y analytics. `ownership_ratio = 33.3%`. La deuda dominante es ownership múltiple, no cantidad bruta de archivos.
 
-## Pull requests observados
+## GLOBAL COLLISIONS
 
-| PR | Head | Estado al corte | Merge | Lectura de trazabilidad |
-|---:|---|---|---|---|
-| #1 | v1.1 | closed / draft | no | el commit sobrevivió y es ancestro de todo lo posterior; el estado del PR no representa la integración real |
-| #2 | Archivo Nocturno RC.2 | closed | sí | coherente con historia |
-| #3 | v1.2 | closed | sí | coherente con historia |
-| #4 | v1.3 | open / draft | no | superado por ramas posteriores |
-| #5 | v1.4 | open / draft | no | superado por ramas posteriores |
-| #6 | v1.5 | open / draft | no | superado por ramas posteriores |
-| #7 | v1.6 | open / draft | no | superado por ramas posteriores |
-| #8 | v1.7 | open / draft | no | superado por ramas posteriores |
-| #9 | v1.8 | open / draft | no | superado por ramas posteriores |
+Se confirman colisiones de alto impacto en `refreshHeader`, `renderCover`, `answerDeltaCopy`, `temporalScale`, `renderGame`, `renderSummary`, `summarySignature`, `commitAnswer`, `setYear`, `showView`, `setView` y funciones del timer. El scanner v1.8.3 genera el inventario completo de declaraciones/asignaciones y distingue owner efectivo por orden de carga.
 
-No se observó PR propio para v1.2.1, v1.8.1 ni v1.8.2. Esto no rompe la genealogía, pero sí reduce la capacidad de reconstruir decisiones usando sólo la pestaña de Pull Requests.
+## CSS CASCADE
 
-## Métrica de trazabilidad
+Cinco hojas activas participan en la salida final. `runtime-layer-audit-v183.mjs` cuantifica selectores repetidos e `!important`; esos indicadores señalan deuda, no reglas eliminables.
 
-Se clasificaron 14/14 refs relevantes y 9/9 PR existentes en la línea auditada: `traceability_coverage = 23 / 23 = 1.00`.
+## CONTRACTS
 
-La métrica expresa cobertura del inventario, no calidad del proceso de integración.
+`docs/contracts/CONTRACT_REGISTRY.md` contiene 18/18 contratos con owner observado, competidores/dependencias, estado de ownership, protección de test, evidencia y siguiente paso seguro.
 
-## Evidencia y límites
+## TECH DEBT
 
-- La ancestría y el conteo de commits son verificables con Git.
-- Los estados de PR son una fotografía de GitHub al 2026-09-13 y no pueden reconstruirse sólo desde un checkout sin API.
-- Los nombres de ramas no se usaron para inferir arquitectura runtime.
-- La arquitectura observada se audita por separado desde el orden real de carga de `index.html`.
-- `main` no se modifica ni se propone merge en esta iteración.
+P0: Learning Feedback contradice el contrato narrativo vigente. P1: render, timer/scoring, media, CSS, QA visual, reviewer y trazabilidad PR. P2: audio e identidad de navegación. Ver `TECH_DEBT_MAP.md`.
+
+## QA
+
+La auditoría prohíbe regenerar snapshots. El gate v1.8.3 debe ejecutar unit/contract, content audit, reports, auditoría runtime/traceability/completion, accessibility, regression sin `--update-snapshots` y visual QA. La rama no cambia snapshots productivos.
+
+## CLAUDE FINDINGS
+
+Los hallazgos externos están clasificados en `CLAUDE_FINDINGS_VERIFICATION.md` como CONFIRMADO, PARCIAL, REFUTADO o REQUIRES_BROWSER. No se adopta un hallazgo por autoridad nominal; se conserva sólo si existe evidencia del repo.
+
+## METRICS
+
+- `traceability_coverage = 23/23 = 100%`
+- `runtime_file_classification_coverage = 29/29 = 100%`
+- `contract_coverage = 18/18 = 100%`
+- `ownership_ratio = 6/18 = 33.3%`
+- `test_protection_ratio = 14/18 = 77.8%`
+- `audit_completeness_score`: calculado reproduciblemente por `tools/audit-completion-v183.mjs`; una categoría puede estar completa aunque contenga `UNKNOWN`/`REQUIRES_BROWSER`, siempre que el límite esté explícito.
+
+## AUDIT COMPLETENESS
+
+La completitud mide cobertura del trabajo de auditoría, no salud arquitectónica. Sus pesos son: Traceability 20%, File classification 20%, Runtime ownership 20%, Contracts 15%, Tech debt 10%, CSS/global analysis 10%, Test mapping 5%. El objetivo es que todos los objetos estén inventariados o explícitamente marcados como no resolubles por estática.
+
+## UNRESOLVED / REQUIRES_BROWSER
+
+- `MEDIA_ASYNC_PRECEDENCE`: v1.4 consulta Commons de forma asíncrona y v1.8 instala media curada. El orden de `<script>` no prueba por sí solo cuál queda finalmente en DOM bajo latencia real.
+- Cualquier colisión que dependa de interacción/estado y no pueda resolverse por estática debe permanecer aquí en vez de convertirse en una conclusión decorativa.
+
+## OBSOLETE CANDIDATES
+
+Los símbolos shadowed detectados son candidatos de retirada, no archivos eliminables. Se requiere owner sustituto + paridad + QA sin actualización de baseline.
+
+## NEXT MIGRATION CANDIDATES
+
+1. Alinear Learning Feedback con la narración natural vigente.
+2. Unificar timer/scoring bajo un owner contractual.
+3. Resolver precedencia de media con test browser.
+4. Consolidar renderer mediante migraciones pequeñas con paridad.
+5. Reducir cascade CSS después de congelar baselines.
+6. Unificar reviewer stores/decisiones.
+
+## Límites de evidencia
+
+Git demuestra ancestría; GitHub aporta estado de PR al corte; estática demuestra carga, declaraciones y patches, pero no toda precedencia asíncrona. La auditoría no usa nombres de ramas como sustituto de evidencia runtime y no modifica `main`.
