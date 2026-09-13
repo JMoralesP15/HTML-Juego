@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const feedback=JSON.parse(fs.readFileSync(path.join(root,'reports/editorial-feedback-v187c.json'),'utf8'));
 const sandbox={window:{}};vm.createContext(sandbox);
-for(const file of ['js/editorial-feedback-v187c.js','js/editorial-replacements-v187c.js','js/editorial-text-refinements-v187c.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),sandbox,{filename:file});
+for(const file of ['js/editorial-feedback-v187c.js','js/editorial-replacements-v187c.js','js/editorial-text-refinements-v187c.js','js/editorial-text-refinements-v187c-fixes.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),sandbox,{filename:file});
 const F=sandbox.window.__QA_EDITORIAL_FEEDBACK_V187C__,R=sandbox.window.__QA_EDITORIAL_REPLACEMENTS_V187C__,T=sandbox.window.__QA_EDITORIAL_TEXT_REFINEMENTS_V187C__;
 const words=s=>String(s||'').trim().split(/\s+/).filter(Boolean).length;
 const fail=[];
