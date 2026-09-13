@@ -1,10 +1,11 @@
 /* QUÉ AÑO v1.2 — ATLAS TEMPORAL.
    Identidad, temporizador, scoring temporal, feedback y accesibilidad.
-   Capa aditiva: no altera IDs, años, calendario, scheduler ni repetición espaciada. */
+   Capa aditiva: no altera IDs, años, calendario, scheduler ni repetición espaciada.
+   v1.8.5: Atlas es el owner canónico de SCORING_TIMER. */
 
 const QA_TIMER_DURATION_MS=15000;
 const QA_TIMER_SCORING_VERSION='timer-v1';
-let qaTimer={key:null,interval:null,remainingMs:QA_TIMER_DURATION_MS,lastTickAt:null,paused:false,expired:false,announced5:false,lastSoundSecond:null};
+let qaTimer={key:null,interval:null,remainingMs:QA_TIMER_DURATION_MS,deadline:null,lastTickAt:null,paused:false,expired:false,announced5:false,lastSoundSecond:null};
 
 /* Los SVG editoriales están embebidos en content-v12.js: siguen siendo offline. */
 const qaBaseSafeAsset=safeAsset;
@@ -43,8 +44,8 @@ function qaTimerKey(){return round&&round.phase==='question'?`${round.uid}:${rou
 function qaTimerClearInterval(){if(qaTimer.interval!==null){clearInterval(qaTimer.interval);qaTimer.interval=null}}
 function qaTimerComputeRemaining(){
   if(!qaTimer.key)return QA_TIMER_DURATION_MS;
-  if(qaTimer.paused||qaTimer.lastTickAt===null)return qaTimer.remainingMs;
-  return Math.max(0,qaTimer.remainingMs-(performance.now()-qaTimer.lastTickAt));
+  if(Number.isFinite(qaTimer.deadline))return Math.max(0,qaTimer.deadline-Date.now());
+  return Math.max(0,Math.min(QA_TIMER_DURATION_MS,Number(qaTimer.remainingMs)||0));
 }
 function qaTimerSnapshot(){const remainingMs=Math.max(0,Math.min(QA_TIMER_DURATION_MS,qaTimerComputeRemaining()));return {remainingMs,elapsedMs:QA_TIMER_DURATION_MS-remainingMs,seconds:Math.ceil(remainingMs/1000),key:qaTimer.key,paused:qaTimer.paused,expired:qaTimer.expired}}
 function qaTimerPaint(){
@@ -63,26 +64,45 @@ function qaTimerTickSound(){
 function qaTimerLoop(){
   if(!round||round.phase!=='question'||qaTimer.key!==qaTimerKey()){qaTimerStop(false);return}
   const left=qaTimerComputeRemaining();
-  if(left<=0){qaTimer.remainingMs=0;qaTimer.lastTickAt=null;qaTimer.expired=true;qaTimerClearInterval();qaTimerPaint();$('answerAnnouncement').textContent='Tiempo agotado.';commitAnswer(false,{timedOut:true});return}
+  if(left<=0){qaTimer.remainingMs=0;qaTimer.deadline=Date.now()-1;qaTimer.lastTickAt=null;qaTimer.expired=true;qaTimerClearInterval();qaTimerPaint();$('answerAnnouncement').textContent='Tiempo agotado.';commitAnswer(false,{timedOut:true});return}
   qaTimerPaint();
 }
 function qaTimerStart(){
   const key=qaTimerKey();if(!key)return;
-  if(qaTimer.key!==key){qaTimerClearInterval();qaTimer={key,interval:null,remainingMs:QA_TIMER_DURATION_MS,lastTickAt:performance.now(),paused:document.visibilityState!=='visible',expired:false,announced5:false,lastSoundSecond:null};if(qaTimer.paused)qaTimer.lastTickAt=null}
-  else if(!qaTimer.paused&&qaTimer.lastTickAt===null)qaTimer.lastTickAt=performance.now();
+  if(qaTimer.key!==key){
+    qaTimerClearInterval();
+    qaTimer={key,interval:null,remainingMs:QA_TIMER_DURATION_MS,deadline:Date.now()+QA_TIMER_DURATION_MS,lastTickAt:null,paused:document.visibilityState!=='visible',expired:false,announced5:false,lastSoundSecond:null};
+  }else if(!Number.isFinite(qaTimer.deadline)){
+    qaTimer.deadline=Date.now()+Math.max(0,Number(qaTimer.remainingMs)||QA_TIMER_DURATION_MS);
+  }
+  qaTimer.paused=document.visibilityState!=='visible';
   qaTimerClearInterval();qaTimerPaint();
   if(!qaTimer.paused)qaTimer.interval=setInterval(qaTimerLoop,100);
 }
-function qaTimerPause(){if(!qaTimer.key||qaTimer.paused)return;qaTimer.remainingMs=qaTimerComputeRemaining();qaTimer.lastTickAt=null;qaTimer.paused=true;qaTimerClearInterval();qaTimerPaint()}
-function qaTimerResume(){if(!qaTimer.key||!qaTimer.paused||qaTimer.expired||!round||round.phase!=='question')return;qaTimer.paused=false;qaTimer.lastTickAt=performance.now();qaTimer.interval=setInterval(qaTimerLoop,100);qaTimerPaint()}
+function qaTimerPause(){
+  if(!qaTimer?.key)return;
+  qaTimer.paused=true;qaTimerClearInterval();qaTimerPaint();
+}
+function qaTimerResume(){
+  if(!qaTimer?.key||qaTimer.expired||!round||round.phase!=='question')return;
+  qaTimer.paused=false;qaTimerClearInterval();
+  if(qaTimerComputeRemaining()<=0){qaTimerLoop();return}
+  qaTimerPaint();qaTimer.interval=setInterval(qaTimerLoop,100);
+}
 function qaTimerStop(reset=true){
   const snap=qaTimerSnapshot();qaTimerClearInterval();
-  if(reset)qaTimer={key:null,interval:null,remainingMs:QA_TIMER_DURATION_MS,lastTickAt:null,paused:false,expired:false,announced5:false,lastSoundSecond:null};
-  else{qaTimer.remainingMs=snap.remainingMs;qaTimer.lastTickAt=null;qaTimer.paused=true}
+  if(reset)qaTimer={key:null,interval:null,remainingMs:QA_TIMER_DURATION_MS,deadline:null,lastTickAt:null,paused:false,expired:false,announced5:false,lastSoundSecond:null};
+  else{qaTimer.remainingMs=snap.remainingMs;qaTimer.deadline=Date.now()+snap.remainingMs;qaTimer.lastTickAt=null;qaTimer.paused=true}
   return snap;
 }
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState!=='visible')qaTimerPause();else qaTimerResume()});
-window.__QA_TIMER__={snapshot:qaTimerSnapshot,pause:qaTimerPause,resume:qaTimerResume,expire(){if(!qaTimer.key)return;qaTimer.remainingMs=0;qaTimer.lastTickAt=null;qaTimerLoop()},setRemaining(ms){if(!qaTimer.key)return;qaTimer.remainingMs=Math.max(0,Math.min(QA_TIMER_DURATION_MS,Number(ms)||0));qaTimer.lastTickAt=qaTimer.paused?null:performance.now();qaTimerPaint()}};
+window.__QA_TIMER__={
+  snapshot:qaTimerSnapshot,
+  pause:qaTimerPause,
+  resume:qaTimerResume,
+  expire(){if(!qaTimer.key)return;qaTimer.remainingMs=0;qaTimer.deadline=Date.now()-1;qaTimer.expired=false;qaTimerLoop()},
+  setRemaining(ms){if(!qaTimer.key)return;const next=Math.max(0,Math.min(QA_TIMER_DURATION_MS,Number(ms)||0));qaTimer.remainingMs=next;qaTimer.deadline=Date.now()+next;qaTimer.expired=false;qaTimerPaint()}
+};
 
 const qaBaseShowView=showView;
 showView=function(name,opts={}){qaTimerStop();return qaBaseShowView(name,opts)};
