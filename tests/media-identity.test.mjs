@@ -8,4 +8,6 @@ assert.equal(photoMime('image/svg+xml'),false);
 assert.equal(captureYear({DateTime:{value:'2025'}}),null);
 assert.equal(captureYear({DateTimeOriginal:{value:'circa 1951 or 1952'}}),null);
 assert.equal(captureYear({DateTimeOriginal:{value:'1952-09-04'}}),1952);
-console.log('8 media identity assertions passed');
+assert.equal(matchIdentity({title:'Primer voto femenino presidencial',region:'Chile'},'Sufragio femenino en Argentina voto femenino Buenos Aires 1948').accepted,false);
+assert.equal(matchIdentity({title:'IBM PC'},'IBM headquarters office photograph').accepted,false);
+console.log('10 media identity assertions passed');
