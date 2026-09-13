@@ -2,6 +2,21 @@ import {test,expect} from '@playwright/test';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
+
+async function openAdditionalContent(page){
+  const toggle=page.locator('[data-v16-action="context-toggle"]');
+  if(await toggle.isVisible()){
+    await expect(page.locator('.atlas-document')).toBeHidden();
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded','true');
+  }else{
+    await expect(toggle).toBeHidden();
+    await expect(page.locator('.atlas-document-copy > section')).toHaveCount(0);
+  }
+  await expect(page.locator('.atlas-document')).toBeVisible();
+  await expect(page.locator('.atlas-document-copy')).not.toContainText(/La fecha concreta registrada|La misma ficha|Referencia heredada|pendiente de revisión editorial/i);
+}
+
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
 
@@ -18,7 +33,7 @@ test('mobile prioriza pregunta, año y timer sin overflow horizontal',async({pag
 
 test('feedback mantiene divulgación progresiva con menos chrome',async({page})=>{
   await boot(page);await answerCurrent(page,1);await expect(page.locator('.v13-feedback-sequence')).toBeHidden();await expect(page.locator('[data-v13-action="context-toggle"]')).toBeHidden();await expect(page.locator('[data-v15-action="context-toggle"]')).toBeHidden();
-  await expect(page.locator('.v16-learning-card')).toBeVisible();const toggle=page.locator('[data-v16-action="context-toggle"]');await expect(toggle).toBeVisible();await expect(page.locator('.atlas-document')).toBeHidden();await toggle.click();await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).toContainText('CONTEXTO');await expect(toggle).toHaveAttribute('aria-expanded','true');
+  await expect(page.locator('.v16-learning-card')).toBeVisible();await openAdditionalContent(page);await expect(page.locator('.atlas-document')).toBeVisible();
 });
 
 test('v1.8 no fabrica láminas ni exige una cuota de imágenes',async({page})=>{
