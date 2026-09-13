@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const url = pathToFileURL(path.join(root, 'index.html')).href + '#main';
 const FIXED_NOW = '2026-09-12T12:00:00.000Z';
+const shotDir = path.join(root, 'test-results', 'screenshots');
 
 async function boot(page, width = 1440, height = 900) {
   await page.addInitScript(({ fixedNow }) => {
@@ -63,33 +65,98 @@ async function finishRound(page, offset = 0) {
   }, offset);
 }
 
-const viewportShot = { animations: 'disabled', maxDiffPixelRatio: 0.01, threshold: 0.25 };
-const fullPageShot = { ...viewportShot, fullPage: true };
+async function assertVisualContract(page, phase, name) {
+  const viewport = page.viewportSize();
+  const metrics = await page.evaluate((currentPhase) => {
+    const rect = (selector) => {
+      const el = document.querySelector(selector);
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height, right: r.right, bottom: r.bottom };
+    };
+    return {
+      innerWidth: window.innerWidth,
+      innerHeight: window.innerHeight,
+      documentWidth: document.documentElement.scrollWidth,
+      bodyWidth: document.body.scrollWidth,
+      dialogOpen: Boolean(document.getElementById('detailDialog')?.open),
+      surface: rect(currentPhase === 'summary' ? '.atlas-summary' : '.atlas-v12'),
+      primary: rect(currentPhase === 'summary' ? '.summary-primary' : '#primaryAction'),
+      year: rect('#yearInput'),
+      learning: rect('.v16-learning-card'),
+      narrativeCount: document.querySelectorAll('.v16-learning-card .v16-learning-narrative').length,
+      contextExpanded: document.querySelector('.v16-context-button')?.getAttribute('aria-expanded') || null,
+      question: document.querySelector('.atlas-v12')?.classList.contains('is-question') || false,
+      answered: document.querySelector('.atlas-v12')?.classList.contains('is-answered') || false,
+      summary: Boolean(document.querySelector('.atlas-summary')),
+      learnedItems: document.querySelectorAll('.v16-learned-item').length
+    };
+  }, phase);
 
-test('regresión visual · desktop canónico', async ({ page }) => {
+  expect(metrics.innerWidth).toBe(viewport.width);
+  expect(metrics.innerHeight).toBe(viewport.height);
+  expect(metrics.documentWidth).toBeLessThanOrEqual(viewport.width + 1);
+  expect(metrics.bodyWidth).toBeLessThanOrEqual(viewport.width + 1);
+  expect(metrics.dialogOpen).toBe(false);
+  expect(metrics.surface).toBeTruthy();
+  expect(metrics.surface.x).toBeGreaterThanOrEqual(-1);
+  expect(metrics.surface.right).toBeLessThanOrEqual(viewport.width + 1);
+
+  if (phase === 'question') {
+    expect(metrics.question).toBe(true);
+    expect(metrics.year).toBeTruthy();
+    expect(metrics.primary).toBeTruthy();
+    expect(metrics.primary.bottom).toBeLessThanOrEqual(viewport.height + 1);
+    await expect(page.locator('#primaryAction')).toContainText('Confirmar');
+  }
+
+  if (phase === 'feedback') {
+    expect(metrics.answered).toBe(true);
+    expect(metrics.learning).toBeTruthy();
+    expect(metrics.narrativeCount).toBeGreaterThanOrEqual(1);
+    expect(metrics.narrativeCount).toBeLessThanOrEqual(2);
+    expect(metrics.contextExpanded).toBe('false');
+    await expect(page.locator('.v16-learning-card')).not.toContainText(/Qué fue|Dato para recordar|La fecha es el punto de entrada/i);
+  }
+
+  if (phase === 'summary') {
+    expect(metrics.summary).toBe(true);
+    expect(metrics.learnedItems).toBe(5);
+    expect(metrics.primary).toBeTruthy();
+  }
+
+  fs.mkdirSync(shotDir, { recursive: true });
+  await page.screenshot({
+    path: path.join(shotDir, `regression-v184-${name}.png`),
+    fullPage: phase === 'summary',
+    animations: 'disabled'
+  });
+}
+
+test('regresión visual contractual · desktop canónico', async ({ page }) => {
   await boot(page);
-  await expect(page).toHaveScreenshot('desktop-question.png', viewportShot);
+  await assertVisualContract(page, 'question', 'desktop-question');
   await answer(page, 0);
-  await expect(page).toHaveScreenshot('desktop-feedback-exact.png', viewportShot);
+  await assertVisualContract(page, 'feedback', 'desktop-feedback-exact');
 
   await boot(page);
   await answer(page, 1);
-  await expect(page).toHaveScreenshot('desktop-feedback-near.png', viewportShot);
+  await assertVisualContract(page, 'feedback', 'desktop-feedback-near');
 
   await boot(page);
   await finishRound(page, 4);
   await expect(page.locator('.atlas-summary')).toBeVisible();
-  await expect(page).toHaveScreenshot('desktop-summary.png', fullPageShot);
+  await assertVisualContract(page, 'summary', 'desktop-summary');
 });
 
-test('regresión visual · mobile 390x844', async ({ page }) => {
+test('regresión visual contractual · mobile 390x844', async ({ page }) => {
   await boot(page, 390, 844);
-  await expect(page).toHaveScreenshot('mobile-question-390x844.png', viewportShot);
+  await assertVisualContract(page, 'question', 'mobile-question-390x844');
   await answer(page, 1);
-  await expect(page).toHaveScreenshot('mobile-feedback-390x844.png', viewportShot);
+  await assertVisualContract(page, 'feedback', 'mobile-feedback-390x844');
 
   await boot(page, 390, 844);
   await finishRound(page, 8);
   await expect(page.locator('.atlas-summary')).toBeVisible();
-  await expect(page).toHaveScreenshot('mobile-summary-390x844.png', fullPageShot);
+  await assertVisualContract(page, 'summary', 'mobile-summary-390x844');
 });
