@@ -28,6 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: feature/editorial-media-batch-v1.8.7
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -48,9 +49,11 @@ jobs:
             echo "No v1.8.7 media manifest changes"
           else
             git commit -m "chore: generate v1.8.7 editorial media batch [media-v187-generated]"
+            git pull --rebase origin feature/editorial-media-batch-v1.8.7
             git push origin HEAD:feature/editorial-media-batch-v1.8.7
           fi
       - name: Upload editorial batch artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: editorial-media-batch-v187
