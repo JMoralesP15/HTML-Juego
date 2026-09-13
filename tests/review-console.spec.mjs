@@ -10,7 +10,7 @@ const shotDir=path.join(root,'test-results','screenshots');
 async function boot(page,{width=1440,height=1000}={}){
   await page.setViewportSize({width,height});
   await page.goto(url);
-  await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-draft.1');
+  await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-draft.2');
 }
 
 test('consola única carga 300 fichas y las tres dimensiones',async({page})=>{
@@ -23,18 +23,43 @@ test('consola única carga 300 fichas y las tres dimensiones',async({page})=>{
   expect(await page.locator('script[src="editorial-assist-v181.js"]').count()).toBe(0);
 });
 
-test('lote editorial contiene 100 eventos y expone propuestas sólo donde existen',async({page})=>{
+test('lote editorial contiene 100 eventos y distingue 39 propuestas de 61 textos por ajustar',async({page})=>{
   await boot(page);
   await page.selectOption('#batchFilter','batch-02-100');
   await expect(page.locator('.queue-item')).toHaveCount(100);
+  const counts=await page.evaluate(()=>({
+    selected:window.__QA_EDITORIAL_BATCH02_V187__.ids.length,
+    proposals:window.__QA_EDITORIAL_BATCH02_V187__.ids.filter(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id)).length,
+    current:window.__QA_EDITORIAL_BATCH02_V187__.ids.filter(id=>!window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id)).length
+  }));
+  expect(counts).toEqual({selected:100,proposals:39,current:61});
   const proposalId=await page.evaluate(()=>window.__QA_EDITORIAL_BATCH02_V187__.ids.find(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id))||null);
-  expect(proposalId).toBeTruthy();
+  const currentId=await page.evaluate(()=>window.__QA_EDITORIAL_BATCH02_V187__.ids.find(id=>!window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id))||null);
   await page.locator(`[data-open="${proposalId}"]`).click();
   await expect(page.locator('[data-edit="summary"]')).toBeVisible();
   await expect(page.locator('[data-edit="expanded"]')).toBeVisible();
-  await expect(page.locator('[data-edit="dateNote"]')).toBeVisible();
-  const counts=await page.evaluate(()=>({selected:window.__QA_EDITORIAL_BATCH02_V187__.ids.length,proposals:window.__QA_EDITORIAL_BATCH02_V187__.ids.filter(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.proposalFor(id)).length}));
-  expect(counts.selected).toBe(100);expect(counts.proposals).toBe(39);
+  await page.locator(`[data-open="${currentId}"]`).click();
+  await expect(page.locator('[data-edit="summary"]')).toBeVisible();
+  await expect(page.locator('[data-edit="expanded"]')).toBeVisible();
+  await expect(page.getByText(/requiere ajuste/i).first()).toBeVisible();
+});
+
+test('manifiesto automático sólo expone candidatas fotográficas de alta precisión',async({page})=>{
+  await boot(page);
+  const audit=await page.evaluate(()=>{
+    const items=window.__QA_EDITORIAL_BATCH_V187__?.items||[];
+    const media=items.map(x=>x.mediaCandidate).filter(Boolean);
+    return {
+      count:media.length,
+      statuses:[...new Set(media.map(x=>x.photoTypeStatus))],
+      mimes:[...new Set(media.map(x=>x.mime))],
+      badNames:media.filter(x=>/(logo|poster|cover|screenshot|map|diagram|illustration|flag|cosplay|replica|reenactment|anniversary)/i.test(x.fileTitle||'')).map(x=>x.fileTitle)
+    };
+  });
+  expect(audit.count).toBeGreaterThan(0);
+  expect(audit.statuses).toEqual(['probable_real_photograph']);
+  expect(audit.mimes.every(x=>/^image\/(jpeg|tiff|png)$/i.test(x))).toBeTruthy();
+  expect(audit.badNames).toEqual([]);
 });
 
 test('decisiones factual textual y visual persisten en un solo store',async({page})=>{
@@ -45,7 +70,7 @@ test('decisiones factual textual y visual persisten en un solo store',async({pag
   const id=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());
   const saved=await page.evaluate(id=>JSON.parse(localStorage.getItem('que-ano-editorial-review-v18')).records[id],id);
   expect(saved.factualStatus).toBe('approved');expect(saved.textStatus).toBe('approved');expect(saved.mediaStatus).toBe('no_photo');
-  await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-draft.1');
+  await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__?.version==='1.8.7-draft.2');
   const restored=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],id);expect(restored.mediaStatus).toBe('no_photo');
 });
 
