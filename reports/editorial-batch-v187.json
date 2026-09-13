@@ -2,7 +2,7 @@
   "schema": "que-ano-editorial-batch-v1.8.7",
   "version": "1.8.7-b",
   "batch": "batch-02-100",
-  "generatedAt": "2026-09-13T07:01:12.941Z",
+  "generatedAt": "2026-09-13T14:28:37.332Z",
   "selectionRule": "100 IDs outside batch01; avoid records already materially touched in the human review when a same-category substitute exists; 12–13 per category.",
   "summary": {
     "total": 100,
@@ -14,13 +14,13 @@
     "sourceBlocked": 0,
     "legacyVisualCandidates": 7,
     "visualSearched": 100,
-    "searchSuccess": 72,
-    "noCandidate": 19,
-    "searchErrors": 9,
-    "candidatesTotal": 200,
-    "candidatesTechnicallyEligible": 200,
-    "candidatesContemporaneous": 115,
-    "laterOriginalArtifact": 16,
+    "searchSuccess": 80,
+    "noCandidate": 20,
+    "searchErrors": 0,
+    "candidatesTotal": 220,
+    "candidatesTechnicallyEligible": 220,
+    "candidatesContemporaneous": 127,
+    "laterOriginalArtifact": 17,
     "mediaPolicy": "Candidate discovery only. Open-license photographic candidates are ranked for human review; no candidate is auto-approved or published."
   },
   "items": [
@@ -281,6 +281,34 @@
             "rejectionWarnings": [
               "later_photo_of_original_artifact",
               "attribution_required",
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Sanden Heinrich Rif-Krieg 1909 Marokko Verwundeter.jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Sanden_Heinrich_Rif-Krieg_1909_Marokko_Verwundeter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Sanden_Heinrich_Rif-Krieg_1909_Marokko_Verwundeter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sanden_Heinrich_Rif-Krieg_1909_Marokko_Verwundeter.jpg",
+            "artist": "Heinrich Sanden",
+            "credit": "Über Land und Meer, Nr. 48, 1909, S. 1106, https://www.google.de/books/edition/%C3%9Cber_Land_und_Meer/phclp7ruuCwC?hl=de&gbpv=1&dq=Heinrich+Sanden&pg=PA1106&printsec=frontcover",
+            "license": "Public domain",
+            "licenseUrl": null,
+            "description": "[Credit:] Phot. Heinrich Sanden [Bildunterschrift:] Von den Kämpfen der Spanier im marokkanischen Riffgebiet: Transport Verwundeter; Foto in dem Artikel: »Notizblätter. Generalstreik und Bürgerkrieg«, in: Über Land und Meer, Nr. 48, 1909, S. 1106, https://www.google.de/books/edition/%C3%9Cber_Land_und_Meer/phclp7ruuCwC?hl=de&gbpv=1&dq=Heinrich+Sanden&pg=PA1106&printsec=frontcover Marokko, Rifkrieg (1909)",
+            "visualType": "documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "google"
+            ],
+            "eventYear": 1998,
+            "imageYear": 1909,
+            "temporalDeltaYears": -89,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 7,
+            "rejectionWarnings": [
+              "high_temporal_delta",
               "single_alias_match"
             ],
             "reviewRequired": true
@@ -780,11 +808,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 11.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 15.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/January_2008_Copenhagen_11.jpg/1280px-January_2008_Copenhagen_11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/7/73/January_2008_Copenhagen_11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_11.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/January_2008_Copenhagen_15.jpg/1280px-January_2008_Copenhagen_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/e/ec/January_2008_Copenhagen_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_15.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
@@ -807,11 +835,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 16.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 47.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/January_2008_Copenhagen_16.jpg/1280px-January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/2/28/January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_16.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/January_2008_Copenhagen_47.jpg/1280px-January_2008_Copenhagen_47.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/3/32/January_2008_Copenhagen_47.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_47.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
@@ -5774,22 +5802,106 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"Akira\" 1988",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           },
           {
             "query": "\"Akira\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Itodani and Inaba in Himeji.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Itodani_and_Inaba_in_Himeji.jpg/1280px-Itodani_and_Inaba_in_Himeji.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Itodani_and_Inaba_in_Himeji.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Itodani_and_Inaba_in_Himeji.jpg",
+            "artist": "Ohtani tanya",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Japanese shogi player Tetsurō Itodani (left) and Akira Inaba (right) commenting about the exhibition match of human shogi in Himeji , Japan .",
+            "visualType": "later_photo_of_original_artifact",
+            "entityMatch": true,
+            "matchedAliases": [
+              "akira"
+            ],
+            "eventYear": 1988,
+            "imageYear": 2018,
+            "temporalDeltaYears": 30,
+            "exactYear": true,
+            "contemporaneous": false,
+            "score": 8,
+            "rejectionWarnings": [
+              "later_photo_of_original_artifact",
+              "attribution_required",
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Photo-akira-hoshino.png",
+            "mime": "image/png",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Photo-akira-hoshino.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Photo-akira-hoshino.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Photo-akira-hoshino.png",
+            "artist": "ひつじフィルムセンター",
+            "credit": "Own work",
+            "license": "CC0",
+            "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+            "description": "『瞬刊ハイロ 第7号』（1981年）に掲載。",
+            "visualType": "documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "akira"
+            ],
+            "eventYear": 1988,
+            "imageYear": 1981,
+            "temporalDeltaYears": -7,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 7,
+            "rejectionWarnings": [
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Conference on RACIP2 Group Photo (Parangtopo).jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Conference_on_RACIP2_Group_Photo_%28Parangtopo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Conference_on_RACIP2_Group_Photo_%28Parangtopo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Conference_on_RACIP2_Group_Photo_(Parangtopo).jpg",
+            "artist": "Credit Line: AIP Emilio Segrè Visual Archives",
+            "credit": "https://repository.aip.org/islandora/object/nbla%3A292479",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Conference on RACIP2 Group Photo Carlos Aguirre; Gediz Akdeniz; Minella Alarcon; N. Arsamastsev; R.K. Buah-Bassuah; Ivo Batistic; Janis Berzins; Benjamin Bederson; Marc Brodsky; Carlos deCarvalho; S. Chandrasekhar; Il-Tong Cheon; Swee Ping Chia; Hans Danielmeyer; Duc Dao Vong; Muneyuki Date; Shun Egusa; Lotfia El Nadi; J. Leopoldo Esquivel; Hiroshi Ezawa; Yoshio Fukao; Judy Franz; Nestor Gagglioli; Rodolfo Gambini; Vladimir Gribkov; Nassar Haidar; Yasuo Hara; A.M. Harum ar Rashid; Ernest Henley; Cyril Hilsum; Tachishige Hirose; Norbert Hounkonnou; Kodi Husimi; Yuzuru Husimi; Woei Y. Pauchy Hwang; Yoshihiko Ichikawa; Yasuhiro Ie; Takashi Inamura; Masao Ito; Alun Jones; Seiichi Kagoshima; Hiroshi Kamimura; Toshio Kawai; Tatsuyuki Kawakubo; Kiyoshi Kawamura; M. Kazaryan; P.K. Khabibullaev; Jaak Kikas; Akira Kindara; Dezso Kiss; Kazuo Kitahara; Shun-ichi Kobayashi; Tetsuro Kobayashi; Takao Koda; Michiji Konuma; Gennady Kozlov; Marina Kozodaeva; Ales Krejci; Norbert Kroo; D. Krupa; Hiroshi Kuwano; Roy Lang; Donald Langenberg; Irving Lerch; Joseph Malo; Fernando Martinez; Eiichi Marayuma; Vitaly Mikhailin; Shiegeo Minami; Hiroyuki Mizuno; Jose Moran-Lopez; Yoichiro Murakami; Yukihiko Namikawa; Mikio Namiki; Yuri Novozhilov; Kazuo Okamoto; C. Kumar Patel; Pedro Prieto; Siegbert Raither; Bill Reay; Chunghi Rhee; John Robins; Tae Ryu; Virulh Sa-Yakanit; Herwig Schopper; Johannes Sens; Gurung Shekhar; A. Sileika; Heitor Souza; Ireneusz Strzalkowski; Hiroyoshi Suematsu; Takuo Sugano;Parangtopo Sutokusumo; Kunio Tada; Shin Takeuchi; Hiroshi Takuma; Gunnar Tibell; Hiroshi Toki; Shen-Yi Tsai; Junpei Tsujiuchi; Miguel Virasoro; W.F. Vinen; F.L. Wilson; Yoshio Yamaguchi; Fumiko Yonezawa; Hiroyuki Yoshikawa; Sirazhidin Zainabidinov; Kai Hua Zhao; Zh. Zh. Zheenbayev. Participants to the Second International Conference on Research and Communications in Physics (RACIP2), 18-22 September 1995, Tokyo, Japan",
+            "visualType": "documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "akira"
+            ],
+            "eventYear": 1988,
+            "imageYear": 2008,
+            "temporalDeltaYears": 20,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 7,
+            "rejectionWarnings": [
+              "high_temporal_delta",
+              "attribution_required",
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "item_specific_reference"
     },
@@ -5833,25 +5945,17 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "no_candidate",
         "queryAttempts": [
           {
             "query": "\"Oldboy\" 2003",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 2
           },
           {
             "query": "\"Oldboy\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"올드보이\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
         "candidates": []
@@ -5898,28 +6002,107 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"Rome\" 2018",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           },
           {
             "query": "\"Rome\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"Roma\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Forum Romanum (14).jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Forum_Romanum_%2814%29.jpg/1280px-Forum_Romanum_%2814%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Forum_Romanum_%2814%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Forum_Romanum_(14).jpg",
+            "artist": "Krzysztof Golik",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Forum Romanum in Rome, Lazio, Italy",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "roma",
+              "rome",
+              "italy"
+            ],
+            "eventYear": 2018,
+            "imageYear": 2018,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 22,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Roma - museo d'arte moderna.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Roma_-_museo_d%27arte_moderna.jpg/1280px-Roma_-_museo_d%27arte_moderna.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Roma_-_museo_d%27arte_moderna.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Roma_-_museo_d'arte_moderna.jpg",
+            "artist": "Piroetta",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Galleria nazionale d'arte moderna",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "roma",
+              "rome",
+              "italy"
+            ],
+            "eventYear": 2018,
+            "imageYear": 2021,
+            "temporalDeltaYears": 3,
+            "exactYear": false,
+            "contemporaneous": true,
+            "score": 19,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Santa Maria of Loreto church and Holy Name of Mary church in Rome.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Santa_Maria_of_Loreto_church_and_Holy_Name_of_Mary_church_in_Rome.jpg/1280px-Santa_Maria_of_Loreto_church_and_Holy_Name_of_Mary_church_in_Rome.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/8/87/Santa_Maria_of_Loreto_church_and_Holy_Name_of_Mary_church_in_Rome.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Santa_Maria_of_Loreto_church_and_Holy_Name_of_Mary_church_in_Rome.jpg",
+            "artist": "Krzysztof Golik",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Santa Maria of Loreto church and Holy Name of Mary church in Rome, Lazio, Italy",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "rome",
+              "italy"
+            ],
+            "eventYear": 2018,
+            "imageYear": 2018,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 17,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "needs_review"
     },
@@ -5963,28 +6146,79 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"Portrait of a Lady on Fire\" 2019",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 4
           },
           {
             "query": "\"Portrait of a Lady on Fire\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"Retrato de una mujer en llamas\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 1
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Adèle Haenel and Celine Sciamma.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg/1280px-Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/23/Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Ad%C3%A8le_Haenel_and_Celine_Sciamma.jpg",
+            "artist": "Love, to live *",
+            "credit": "https://www.flickr.com/photos/187643711@N07/49979813182",
+            "license": "CC0",
+            "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+            "description": "Actress, Adèle Haenel, and film director, Céline Sciamma, at a screening of their 2019 film, Portrait of a Lady on Fire (Portrait de la jeune fille en feu).",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "portrait",
+              "lady",
+              "fire",
+              "jeune",
+              "fille"
+            ],
+            "eventYear": 2019,
+            "imageYear": 2020,
+            "temporalDeltaYears": 1,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 32,
+            "rejectionWarnings": [],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Valeria Golino Cannes 2019.jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Valeria_Golino_Cannes_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Valeria_Golino_Cannes_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Valeria_Golino_Cannes_2019.jpg",
+            "artist": "Georges Biard",
+            "credit": "Own work",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "description": "Valeria Golino au Festival de Cannes 2019.",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "portrait",
+              "jeune",
+              "fille"
+            ],
+            "eventYear": 2019,
+            "imageYear": 2019,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 22,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -6028,28 +6262,49 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"RRR\" 2022",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           },
           {
             "query": "\"RRR\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"Rise Roar Revolt\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:2022. Музей истории города Симферополя DSC 1734.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg/1280px-2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/24/2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:2022._%D0%9C%D1%83%D0%B7%D0%B5%D0%B9_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_DSC_1734.jpg",
+            "artist": "Andrey Butko",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "The1961 Gauja (after a river in Latvia) was one of the first models of portable transistor radios in the Soviet Union [2] .",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "rise"
+            ],
+            "eventYear": 2022,
+            "imageYear": 2022,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 12,
+            "rejectionWarnings": [
+              "attribution_required",
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -10387,28 +10642,50 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"Santiago Metro\" 1975",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 2
           },
           {
             "query": "\"Santiago Metro\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"Metro de Santiago\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Monte Tabor, Santiago Metro.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Monte_Tabor%2C_Santiago_Metro.jpg/1280px-Monte_Tabor%2C_Santiago_Metro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Monte_Tabor%2C_Santiago_Metro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Monte_Tabor%2C_Santiago_Metro.jpg",
+            "artist": "Ignacio Olmedo Godoy",
+            "credit": "Image at Flickr",
+            "license": "CC BY 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+            "description": "Estación Monte Tabor en la línea 5 del Metro de Santiago",
+            "visualType": "later_context_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "metro",
+              "santiago"
+            ],
+            "eventYear": 1975,
+            "imageYear": 2011,
+            "temporalDeltaYears": 36,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 10,
+            "rejectionWarnings": [
+              "high_temporal_delta",
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -10452,28 +10729,110 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"One Hundred Years of Solitude\" 1967",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 2
           },
           {
             "query": "\"One Hundred Years of Solitude\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"Cien años de soledad\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 9
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Stand de la serie \"Cien años de soledad\".jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Stand_de_la_serie_%22Cien_a%C3%B1os_de_soledad%22.jpg/1280px-Stand_de_la_serie_%22Cien_a%C3%B1os_de_soledad%22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/b/be/Stand_de_la_serie_%22Cien_a%C3%B1os_de_soledad%22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Stand_de_la_serie_%22Cien_a%C3%B1os_de_soledad%22.jpg",
+            "artist": "ProtoplasmaKid",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Stand de la serie de Netflix \"Cien años de soledad\" en la Feria Internacional del Libro de Guadalajara, Jalisco, México.",
+            "visualType": "documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "cien",
+              "soledad",
+              "hundred",
+              "solitude"
+            ],
+            "eventYear": 1967,
+            "imageYear": 2024,
+            "temporalDeltaYears": 57,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 20,
+            "rejectionWarnings": [
+              "high_temporal_delta",
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Une photo de l'un de mes livres.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Une_photo_de_l%27un_de_mes_livres.jpg/1280px-Une_photo_de_l%27un_de_mes_livres.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/21/Une_photo_de_l%27un_de_mes_livres.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Une_photo_de_l'un_de_mes_livres.jpg",
+            "artist": "Walid Benattia",
+            "credit": "Own work",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Un livre",
+            "visualType": "documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "hundred",
+              "solitude"
+            ],
+            "eventYear": 1967,
+            "imageYear": 2017,
+            "temporalDeltaYears": 50,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 12,
+            "rejectionWarnings": [
+              "high_temporal_delta",
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Ian Gibson firmando en la Feria del Libro.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Ian_Gibson_firmando_en_la_Feria_del_Libro.jpg/1280px-Ian_Gibson_firmando_en_la_Feria_del_Libro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Ian_Gibson_firmando_en_la_Feria_del_Libro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Ian_Gibson_firmando_en_la_Feria_del_Libro.jpg",
+            "artist": "Rafael Robles from España",
+            "credit": "Ian Gibson firmando en la Feria del Libro",
+            "license": "CC BY 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+            "description": "Ian Gibson firmando en la Feria del Libro",
+            "visualType": "documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "hundred",
+              "solitude"
+            ],
+            "eventYear": 1967,
+            "imageYear": 2007,
+            "temporalDeltaYears": 40,
+            "exactYear": false,
+            "contemporaneous": false,
+            "score": 10,
+            "rejectionWarnings": [
+              "high_temporal_delta",
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "structured_corroborated"
     },
@@ -10517,28 +10876,114 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"compact disc\" 1982",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           },
           {
             "query": "\"compact disc\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"disco compacto\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Sony-101 lettore-CD Museo scienza tecnologia Milano 08733.jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Sony-101_lettore-CD_Museo_scienza_tecnologia_Milano_08733.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Sony-101_lettore-CD_Museo_scienza_tecnologia_Milano_08733.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sony-101_lettore-CD_Museo_scienza_tecnologia_Milano_08733.jpg",
+            "artist": "Sony (costruttore)",
+            "credit": "Catalogo collezioni (Italian) . Museoscienza.org . Museo nazionale della scienza e della tecnologia Leonardo da Vinci, Milano.",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Il lettore di Compact Disc presenta uno chassis in lamiera metallica verniciata di nero, dalla forma a parallelepipedo; all'interno dell'apparecchio sono racchiusi i circuiti elettronici e il laser per la lettura del disco. Il vassoio estraibile per l'inserimento del compact disc si trova sul lato anteriore, insieme ai pulsanti di comando. Alla sinistra del comparto per il disco si trovano il tasto per l'accensione (on/off), l'interruttore per la riproduzione con il timer, la boccola per il collegamento della cuffia e il selettore per la regolazione del volume della cuffia. Alla destra del comparto invece sono collocati il display a cristalli liquidi per le informazioni sulla riproduzione e il sensore a raggi infrarossi del telecomando. Immediatamento al di sotto del display si trovano i quattro tasti per l'impostazione della ripetizione programmata delle tracce del disco, il tasto azzeratore ed infine il tasto per la segnalazione del tempo di riproduzione rimasto. Al di sotto di questi comandi secondari, si trovano i tasti per il comando della riproduzione del disco: il tasto di avvio della riproduzione, il tasto di pausa, quattro tasti di ricerca manuale in avanti e all'indietro a due velocità ed infine due tasti per la selezione delle tracce sul disco. Nel pannello posteriore si trova il supporto bipolare per la connessione del cavo di alimentazione; accanto ad esso esce il cavo per il collegamento del lettore all'amplificatore. Sempre sul lato posteriore si trovano inoltre l'interruttore di pausa automatica, l'interruttore anti-scossoni per l'utilizzo del lettore in luoghi soggetti a vibrazioni, due boccole in uscita e un connettore per altri apparecchi, tuttavia chiuso da una copertura in plastica sigillata da nastro adesivo. L'apparecchio è fornito di un telecomando per il controllo a distanza delle operazioni di riproduzione del disco. Funzione Riproduzione di suoni incisi su compact disc Modalità d'uso Collegare il lettore ad un amplificatore. Premere l'interruttore di alimentazione e successivamente aprire il comparto del disco. Inserire il compact disc sul supporto e premere il tasto di avvio della riproduzione (play) Il comparto si chiude automaticamente, iniziando la riproduzione del disco dall'inizio della prima traccia. Notizie storico-critiche Lanciato nell'ottobre 1982, il lettore CDP-101 della Sony inaugurò per primo la rivoluzione digitale nel campo della riproduzione acustica, introducendo un nuovo supporto per la registrazione dei suoni, il compact disc (CD). Il CD venne elaborato dalla collaborazione tra Sony e Philips nata nel 1979, a partire da un'idea iniziale della Philips, sviluppata sul progetto del video disco presentato dall'italiano Antonio Rubbiani al Salone Internazionale della Tecnica nel 1957. Il CD è costituito da un sottile disco in resina termoplastica di 12 centimetri di diametro, nel quale il suono, convertito in un codice binario, viene tradotto attraverso la realizzazione di microscopici fori lungo una spirale, con una distanza di 1,6 micrometri tra le spire; durante la riproduzione, un laser viene diretto sui fori che ne riflettono la luce. Le variazioni nei raggi della luce riflessa vengono ritrasformate in forma di onda audio continua. Attraverso la registrazione digitale, un CD garantisce una qualità di riproduzione irraggiungibile dai precedenti supporti analogici, offrendo inoltre una maggiore capacità di memorizzazione delle informazioni. A partire dalla sua comparsa nel 1982, il CD si è progressivamente diffuso durante gli anni '80 e '90 come supporto principale per la registrazione dei suoni, eclissando i dischi in vinile e le musicassette.",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "disco",
+              "compact",
+              "disc",
+              "music",
+              "cede"
+            ],
+            "eventYear": 1982,
+            "imageYear": 1982,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 32,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Lettore CD - Museo scienza tecnologia Milano 08733 03.jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/6/69/Lettore_CD_-_Museo_scienza_tecnologia_Milano_08733_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/Lettore_CD_-_Museo_scienza_tecnologia_Milano_08733_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Lettore_CD_-_Museo_scienza_tecnologia_Milano_08733_03.jpg",
+            "artist": "Sony (costruttore)",
+            "credit": "Catalogo collezioni (Italian) . Museoscienza.org . Museo nazionale della scienza e della tecnologia Leonardo da Vinci, Milano.",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Il lettore di Compact Disc presenta uno chassis in lamiera metallica verniciata di nero, dalla forma a parallelepipedo; all'interno dell'apparecchio sono racchiusi i circuiti elettronici e il laser per la lettura del disco. Il vassoio estraibile per l'inserimento del compact disc si trova sul lato anteriore, insieme ai pulsanti di comando. Alla sinistra del comparto per il disco si trovano il tasto per l'accensione (on/off), l'interruttore per la riproduzione con il timer, la boccola per il collegamento della cuffia e il selettore per la regolazione del volume della cuffia. Alla destra del comparto invece sono collocati il display a cristalli liquidi per le informazioni sulla riproduzione e il sensore a raggi infrarossi del telecomando. Immediatamento al di sotto del display si trovano i quattro tasti per l'impostazione della ripetizione programmata delle tracce del disco, il tasto azzeratore ed infine il tasto per la segnalazione del tempo di riproduzione rimasto. Al di sotto di questi comandi secondari, si trovano i tasti per il comando della riproduzione del disco: il tasto di avvio della riproduzione, il tasto di pausa, quattro tasti di ricerca manuale in avanti e all'indietro a due velocità ed infine due tasti per la selezione delle tracce sul disco. Nel pannello posteriore si trova il supporto bipolare per la connessione del cavo di alimentazione; accanto ad esso esce il cavo per il collegamento del lettore all'amplificatore. Sempre sul lato posteriore si trovano inoltre l'interruttore di pausa automatica, l'interruttore anti-scossoni per l'utilizzo del lettore in luoghi soggetti a vibrazioni, due boccole in uscita e un connettore per altri apparecchi, tuttavia chiuso da una copertura in plastica sigillata da nastro adesivo. L'apparecchio è fornito di un telecomando per il controllo a distanza delle operazioni di riproduzione del disco. Funzione Riproduzione di suoni incisi su compact disc Modalità d'uso Collegare il lettore ad un amplificatore. Premere l'interruttore di alimentazione e successivamente aprire il comparto del disco. Inserire il compact disc sul supporto e premere il tasto di avvio della riproduzione (play) Il comparto si chiude automaticamente, iniziando la riproduzione del disco dall'inizio della prima traccia. Notizie storico-critiche Lanciato nell'ottobre 1982, il lettore CDP-101 della Sony inaugurò per primo la rivoluzione digitale nel campo della riproduzione acustica, introducendo un nuovo supporto per la registrazione dei suoni, il compact disc (CD). Il CD venne elaborato dalla collaborazione tra Sony e Philips nata nel 1979, a partire da un'idea iniziale della Philips, sviluppata sul progetto del video disco presentato dall'italiano Antonio Rubbiani al Salone Internazionale della Tecnica nel 1957. Il CD è costituito da un sottile disco in resina termoplastica di 12 centimetri di diametro, nel quale il suono, convertito in un codice binario, viene tradotto attraverso la realizzazione di microscopici fori lungo una spirale, con una distanza di 1,6 micrometri tra le spire; durante la riproduzione, un laser viene diretto sui fori che ne riflettono la luce. Le variazioni nei raggi della luce riflessa vengono ritrasformate in forma di onda audio continua. Attraverso la registrazione digitale, un CD garantisce una qualità di riproduzione irraggiungibile dai precedenti supporti analogici, offrendo inoltre una maggiore capacità di memorizzazione delle informazioni. A partire dalla sua comparsa nel 1982, il CD si è progressivamente diffuso durante gli anni '80 e '90 come supporto principale per la registrazione dei suoni, eclissando i dischi in vinile e le musicassette.",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "disco",
+              "compact",
+              "disc",
+              "music",
+              "cede"
+            ],
+            "eventYear": 1982,
+            "imageYear": 1982,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 32,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Sony-101 lettore-CD Museo scienza tecnologia Milano 08733 02.jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sony-101_lettore-CD_Museo_scienza_tecnologia_Milano_08733_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sony-101_lettore-CD_Museo_scienza_tecnologia_Milano_08733_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sony-101_lettore-CD_Museo_scienza_tecnologia_Milano_08733_02.jpg",
+            "artist": "Sony (costruttore)",
+            "credit": "Catalogo collezioni (Italian) . Museoscienza.org . Museo nazionale della scienza e della tecnologia Leonardo da Vinci, Milano.",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "description": "Il lettore di Compact Disc presenta uno chassis in lamiera metallica verniciata di nero, dalla forma a parallelepipedo; all'interno dell'apparecchio sono racchiusi i circuiti elettronici e il laser per la lettura del disco. Il vassoio estraibile per l'inserimento del compact disc si trova sul lato anteriore, insieme ai pulsanti di comando. Alla sinistra del comparto per il disco si trovano il tasto per l'accensione (on/off), l'interruttore per la riproduzione con il timer, la boccola per il collegamento della cuffia e il selettore per la regolazione del volume della cuffia. Alla destra del comparto invece sono collocati il display a cristalli liquidi per le informazioni sulla riproduzione e il sensore a raggi infrarossi del telecomando. Immediatamento al di sotto del display si trovano i quattro tasti per l'impostazione della ripetizione programmata delle tracce del disco, il tasto azzeratore ed infine il tasto per la segnalazione del tempo di riproduzione rimasto. Al di sotto di questi comandi secondari, si trovano i tasti per il comando della riproduzione del disco: il tasto di avvio della riproduzione, il tasto di pausa, quattro tasti di ricerca manuale in avanti e all'indietro a due velocità ed infine due tasti per la selezione delle tracce sul disco. Nel pannello posteriore si trova il supporto bipolare per la connessione del cavo di alimentazione; accanto ad esso esce il cavo per il collegamento del lettore all'amplificatore. Sempre sul lato posteriore si trovano inoltre l'interruttore di pausa automatica, l'interruttore anti-scossoni per l'utilizzo del lettore in luoghi soggetti a vibrazioni, due boccole in uscita e un connettore per altri apparecchi, tuttavia chiuso da una copertura in plastica sigillata da nastro adesivo. L'apparecchio è fornito di un telecomando per il controllo a distanza delle operazioni di riproduzione del disco. Funzione Riproduzione di suoni incisi su compact disc Modalità d'uso Collegare il lettore ad un amplificatore. Premere l'interruttore di alimentazione e successivamente aprire il comparto del disco. Inserire il compact disc sul supporto e premere il tasto di avvio della riproduzione (play) Il comparto si chiude automaticamente, iniziando la riproduzione del disco dall'inizio della prima traccia. Notizie storico-critiche Lanciato nell'ottobre 1982, il lettore CDP-101 della Sony inaugurò per primo la rivoluzione digitale nel campo della riproduzione acustica, introducendo un nuovo supporto per la registrazione dei suoni, il compact disc (CD). Il CD venne elaborato dalla collaborazione tra Sony e Philips nata nel 1979, a partire da un'idea iniziale della Philips, sviluppata sul progetto del video disco presentato dall'italiano Antonio Rubbiani al Salone Internazionale della Tecnica nel 1957. Il CD è costituito da un sottile disco in resina termoplastica di 12 centimetri di diametro, nel quale il suono, convertito in un codice binario, viene tradotto attraverso la realizzazione di microscopici fori lungo una spirale, con una distanza di 1,6 micrometri tra le spire; durante la riproduzione, un laser viene diretto sui fori che ne riflettono la luce. Le variazioni nei raggi della luce riflessa vengono ritrasformate in forma di onda audio continua. Attraverso la registrazione digitale, un CD garantisce una qualità di riproduzione irraggiungibile dai precedenti supporti analogici, offrendo inoltre una maggiore capacità di memorizzazione delle informazioni. A partire dalla sua comparsa nel 1982, il CD si è progressivamente diffuso durante gli anni '80 e '90 come supporto principale per la registrazione dei suoni, eclissando i dischi in vinile e le musicassette.",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "disco",
+              "compact",
+              "disc",
+              "music",
+              "cede"
+            ],
+            "eventYear": 1982,
+            "imageYear": 1982,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 32,
+            "rejectionWarnings": [
+              "attribution_required"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "needs_review"
     },
@@ -10582,28 +11027,104 @@
       },
       "legacyMediaCandidate": null,
       "mediaSearch": {
-        "status": "error",
+        "status": "found",
         "queryAttempts": [
           {
             "query": "\"MTV\" 1981",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           },
           {
             "query": "\"MTV\" photograph",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
-          },
-          {
-            "query": "\"Music television\"",
-            "status": "error",
-            "error": "HTTP 429",
-            "httpStatus": 429
+            "status": "ok",
+            "resultCount": 15
           }
         ],
-        "candidates": []
+        "candidates": [
+          {
+            "fileTitle": "File:Az MTV Terefere című műsora, Bárdy György színművész. Fortepan 56284.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Az_MTV_Terefere_c%C3%ADm%C5%B1_m%C5%B1sora%2C_B%C3%A1rdy_Gy%C3%B6rgy_sz%C3%ADnm%C5%B1v%C3%A9sz._Fortepan_56284.jpg/1280px-Az_MTV_Terefere_c%C3%ADm%C5%B1_m%C5%B1sora%2C_B%C3%A1rdy_Gy%C3%B6rgy_sz%C3%ADnm%C5%B1v%C3%A9sz._Fortepan_56284.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Az_MTV_Terefere_c%C3%ADm%C5%B1_m%C5%B1sora%2C_B%C3%A1rdy_Gy%C3%B6rgy_sz%C3%ADnm%C5%B1v%C3%A9sz._Fortepan_56284.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Az_MTV_Terefere_c%C3%ADm%C5%B1_m%C5%B1sora%2C_B%C3%A1rdy_Gy%C3%B6rgy_sz%C3%ADnm%C5%B1v%C3%A9sz._Fortepan_56284.jpg",
+            "artist": "FOTO:Fortepan — ID 56284 : Adományozó/Donor: Rádió és Televízió Újság.",
+            "credit": "http://www.fortepan.hu/_photo/download/fortepan_56284.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "description": "az MTV Terefere című műsora, Bárdy György színművész.",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "television"
+            ],
+            "eventYear": 1981,
+            "imageYear": 1981,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 12,
+            "rejectionWarnings": [
+              "attribution_required",
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Tévétalálkozó. Makk Károly filmrendező, Deme Gábor dramaturg, Cseres Tibor író, Szinetár Miklós az MTV művészeti vezetője, Petrovics Emil zeneszerző, -, Sára Sándor filmrendező-operatőr, Tamássy Fortepan 56336.jpg",
+            "mime": "image/jpeg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/T%C3%A9v%C3%A9tal%C3%A1lkoz%C3%B3._Makk_K%C3%A1roly_filmrendez%C5%91%2C_Deme_G%C3%A1bor_dramaturg%2C_Cseres_Tibor_%C3%ADr%C3%B3%2C_Szinet%C3%A1r_Mikl%C3%B3s_az_MTV_m%C5%B1v%C3%A9szeti_vezet%C5%91je%2C_Petrovics_Emil_zeneszerz%C5%91%2C_-%2C_S%C3%A1ra_S%C3%A1ndor_filmrendez%C5%91-operat%C5%91r%2C_Tam%C3%A1ssy_Fortepan_56336.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/7/70/T%C3%A9v%C3%A9tal%C3%A1lkoz%C3%B3._Makk_K%C3%A1roly_filmrendez%C5%91%2C_Deme_G%C3%A1bor_dramaturg%2C_Cseres_Tibor_%C3%ADr%C3%B3%2C_Szinet%C3%A1r_Mikl%C3%B3s_az_MTV_m%C5%B1v%C3%A9szeti_vezet%C5%91je%2C_Petrovics_Emil_zeneszerz%C5%91%2C_-%2C_S%C3%A1ra_S%C3%A1ndor_filmrendez%C5%91-operat%C5%91r%2C_Tam%C3%A1ssy_Fortepan_56336.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:T%C3%A9v%C3%A9tal%C3%A1lkoz%C3%B3._Makk_K%C3%A1roly_filmrendez%C5%91%2C_Deme_G%C3%A1bor_dramaturg%2C_Cseres_Tibor_%C3%ADr%C3%B3%2C_Szinet%C3%A1r_Mikl%C3%B3s_az_MTV_m%C5%B1v%C3%A9szeti_vezet%C5%91je%2C_Petrovics_Emil_zeneszerz%C5%91%2C_-%2C_S%C3%A1ra_S%C3%A1ndor_filmrendez%C5%91-operat%C5%91r%2C_Tam%C3%A1ssy_Fortepan_56336.jpg",
+            "artist": "FOTO:Fortepan — ID 56336 : Adományozó/Donor: Rádió és Televízió Újság. archive copy at the Wayback Machine",
+            "credit": "http://www.fortepan.hu/_photo/download/fortepan_56336.jpg archive copy at the Wayback Machine",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "description": "Tévétalálkozó. Makk Károly filmrendező, Deme Gábor dramaturg, Cseres Tibor író, Szinetár Miklós az MTV művészeti vezetője, Petrovics Emil zeneszerző, ?, Sára Sándor filmrendező-operatőr, Tamássy Zdenkó zeneszerző.",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "television"
+            ],
+            "eventYear": 1981,
+            "imageYear": 1981,
+            "temporalDeltaYears": 0,
+            "exactYear": true,
+            "contemporaneous": true,
+            "score": 12,
+            "rejectionWarnings": [
+              "attribution_required",
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          },
+          {
+            "fileTitle": "File:Rick Springfield (1984 MTV press photo).jpg",
+            "mime": "image/jpeg",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/6/62/Rick_Springfield_%281984_MTV_press_photo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/6/62/Rick_Springfield_%281984_MTV_press_photo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:Rick_Springfield_(1984_MTV_press_photo).jpg",
+            "artist": "MTV Networks (currently Paramount Media Networks)",
+            "credit": "https://www.ebay.com/itm/186908283881 https://www.ebay.com/itm/317368331911",
+            "license": "Public domain",
+            "licenseUrl": null,
+            "description": "Australian musician Rick Springfield in a MTV press photo from 1984. Text reads: RCA recording artist RICK SPRINGFIELD will be MTV's Guest VJ Wednesday, March 28",
+            "visualType": "contemporaneous_documentary_photo",
+            "entityMatch": true,
+            "matchedAliases": [
+              "music"
+            ],
+            "eventYear": 1981,
+            "imageYear": 1984,
+            "temporalDeltaYears": 3,
+            "exactYear": false,
+            "contemporaneous": true,
+            "score": 11,
+            "rejectionWarnings": [
+              "single_alias_match"
+            ],
+            "reviewRequired": true
+          }
+        ]
       },
       "evidenceStatus": "structured_corroborated"
     },
