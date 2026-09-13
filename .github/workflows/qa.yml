@@ -17,6 +17,7 @@ on:
       - feature/architecture-stabilization-v1.8.4
       - v185-scoring-timer
       - v186-renderer-consolidation
+      - feature/editorial-media-batch-v1.8.7
 
 permissions:
   contents: read
@@ -40,6 +41,8 @@ jobs:
         run: npm test
       - name: Content integrity audit
         run: npm run audit
+      - name: Compile editorial review batch v1.8.7
+        run: npm run compile:editorial:v187
       - name: Editorial and geography report
         run: npm run report:content
       - name: General-culture curation report
@@ -75,6 +78,7 @@ jobs:
           path: |
             test-results/screenshots
             test-results/playwright
+            reports/editorial-batch-v187.json
             reports/content-metrics.json
             reports/culture-curation-v14.json
             reports/architecture-v17.json
