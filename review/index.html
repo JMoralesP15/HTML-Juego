@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#0b1016">
-  <title>QUÉ AÑO · Revisión editorial v1.8.7</title>
+  <title>QUÉ AÑO · Revisión editorial v1.8.7-c</title>
   <link rel="stylesheet" href="review.css">
 </head>
 <body>
   <a class="skip-link" href="#reviewMain">Saltar a la revisión</a>
   <header class="review-topbar">
     <div>
-      <span class="kicker">QUÉ AÑO · v1.8.7</span>
-      <h1>Consola editorial unificada</h1>
-      <p class="lede">Una sola ficha para revisar hecho y fuente, aprendizaje textual y fotografía documental. Los lotes editoriales se integran aquí y no afectan al juego hasta ser aprobados e integrados.</p>
+      <span class="kicker">QUÉ AÑO · v1.8.7-c</span>
+      <h1>Consola editorial · segunda pasada humana</h1>
+      <p class="lede">El feedback humano ya no se interpreta como un simple semáforo: <strong>? dudoso</strong> propone reemplazos, <strong>muy genérico</strong> reconstruye el aprendizaje y las visuales rechazadas reciben varias alternativas con trazabilidad y nivel de derechos.</p>
     </div>
     <div class="top-actions">
       <button id="importButton" class="button secondary">Importar JSON</button>
@@ -47,9 +47,10 @@
         <option value="reviewed">Revisadas</option>
         <option value="approved">Aprobadas</option>
         <option value="flagged">Con observaciones</option>
-        <option value="needs_review">Evidencia automática: revisar</option>
-        <option value="manual_verified">Verificadas manualmente</option>
-        <option value="structured_corroborated">Corroboradas estructuralmente</option>
+        <option value="doubtful">? Dudoso / reemplazar</option>
+        <option value="generic">Texto muy genérico</option>
+        <option value="review_source">Revisar fuente/título</option>
+        <option value="replacement">Con reemplazo propuesto</option>
       </select>
     </label>
     <label>Categoría
@@ -58,9 +59,10 @@
     <label>Imagen
       <select id="mediaFilter">
         <option value="all">Todas</option>
-        <option value="candidate">Con candidata</option>
-        <option value="none">Sin candidata</option>
+        <option value="candidate">Con alternativas</option>
+        <option value="none">Sin alternativa</option>
         <option value="unreviewed">Visual sin revisar</option>
+        <option value="rejected">Visual rechazada / derechos</option>
       </select>
     </label>
     <label class="search-label">Buscar
@@ -78,7 +80,7 @@
   </main>
 
   <footer class="review-footer">
-    <div class="shortcut-help"><kbd>←</kbd><kbd>→</kbd> navegar · <kbd>A</kbd> aprobar disponible · <kbd>R</kbd> revisar · <kbd>N</kbd> sin foto</div>
+    <div class="shortcut-help">La selección humana sigue siendo el gate: ninguna foto o reemplazo se publica automáticamente.</div>
     <div class="footer-actions"><button id="prevButton" class="button secondary">← Anterior</button><button id="saveNextButton" class="button primary">Guardar y siguiente →</button></div>
   </footer>
 
@@ -92,6 +94,12 @@
   <script src="../js/editorial-proposals-v182-tech.js"></script>
   <script src="../js/editorial-batch02-selection-v187.js"></script>
   <script src="../js/editorial-media-v187.js"></script>
-  <script src="review.js"></script>
+  <script src="../js/editorial-feedback-v187c.js"></script>
+  <script src="../js/editorial-replacements-v187c.js"></script>
+  <script src="../js/editorial-text-refinements-v187c.js"></script>
+  <script src="../js/editorial-text-refinements-v187c-fixes.js"></script>
+  <script src="../js/editorial-review-media-v187c.js"></script>
+  <script src="review-seed-v187c.js"></script>
+  <script src="review-v187c.js"></script>
 </body>
 </html>
