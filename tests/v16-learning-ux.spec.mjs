@@ -22,9 +22,14 @@ async function finishCurrentRound(page){
   await expect(page.locator('.summary-v11')).toBeVisible();
 }
 
-test('feedback enseña sobre el hito antes de ubicarlo en el atlas',async({page})=>{
+test('feedback enseña el hito con narrativa natural antes de ubicarlo en el atlas',async({page})=>{
   await boot(page);await answer(page);
-  const card=page.locator('.v16-learning-card');await expect(card).toBeVisible();await expect(card).toContainText('Qué fue');
+  const card=page.locator('.v16-learning-card');await expect(card).toBeVisible();
+  await expect(card).not.toContainText('Qué fue');
+  await expect(card).not.toContainText('Por qué importa');
+  await expect(card).not.toContainText('Dato para recordar');
+  await expect(card).not.toContainText('La fecha es el punto de entrada');
+  const paragraphs=await card.locator('.v16-learning-narrative').count();expect(paragraphs).toBeGreaterThanOrEqual(1);expect(paragraphs).toBeLessThanOrEqual(2);
   await expect(page.locator('.v16-context-button')).toHaveText('Profundizar');
   await expect(page.locator('.atlas-document.v16-context')).toBeHidden();
   await expect(page.locator('.v16-temporal-secondary')).toBeHidden();

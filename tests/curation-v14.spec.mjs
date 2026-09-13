@@ -42,6 +42,35 @@ test('Commons sólo acepta licencias abiertas con atribución visible',async({pa
   const licenseCheck=await page.evaluate(()=>({ok:__QA_V14__.licenseAllowed('CC BY-SA 4.0'),bad:__QA_V14__.licenseAllowed('CC BY-NC 4.0')}));expect(licenseCheck.ok).toBe(true);expect(licenseCheck.bad).toBe(false);
 });
 
+test('media curada v1.8 conserva precedencia aunque Commons responda tarde',async({page})=>{
+  await boot(page,{start:false});
+  const setup=await page.evaluate(()=>{
+    const q=QUESTIONS.find(x=>x.v18Media?.src);if(!q)return null;
+    q.__v184SavedMedia=JSON.parse(JSON.stringify(q.v18Media));
+    q.__v184SavedImageType=q.imageType;
+    q.__v184SavedImageSource=q.imageSource;
+    const media=q.__v184SavedMedia;
+    q.v18Media=null;q.imageType='';q.imageSource='';
+    round=createRound('practice',[q]);currentView='repaso';renderGame();
+    return {id:q.id,title:q.title,curatedSrc:media.src};
+  });
+  expect(setup).toBeTruthy();
+  await page.route('https://commons.wikimedia.org/w/api.php*',async route=>{
+    await new Promise(resolve=>setTimeout(resolve,500));
+    await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({query:{pages:{1:{title:`File:${setup.title}.jpg`,imageinfo:[{thumburl:'https://upload.wikimedia.org/late-open-image.jpg',url:'https://upload.wikimedia.org/late-open-image.jpg',extmetadata:{LicenseShortName:{value:'CC BY 4.0'},LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},Artist:{value:'Commons tardío'},ImageDescription:{value:`Documento tardío relacionado con ${setup.title}`}}}]}}}})});
+  });
+  await page.route('https://upload.wikimedia.org/late-open-image.jpg',async route=>route.fulfill({status:200,contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="120" height="80"><rect width="120" height="80" fill="#555"/></svg>'}));
+  const commonsRequest=page.waitForRequest(req=>req.url().startsWith('https://commons.wikimedia.org/w/api.php'));
+  await answer(page);
+  await commonsRequest;
+  await page.evaluate(id=>{const q=QUESTION_BY_ID.get(id);q.v18Media=q.__v184SavedMedia;q.imageType=q.__v184SavedImageType||'documentary';q.imageSource=q.__v184SavedImageSource||q.v18Media?.sourcePage||'';__QA_V18_MEDIA__.install()},setup.id);
+  await page.locator('[data-v16-action="context-toggle"]').click();
+  const curated=page.locator('.atlas-document-image[data-v18="1"]');await expect(curated).toBeVisible();
+  await page.waitForTimeout(800);
+  await expect(curated).toBeVisible();await expect(curated.locator('img')).toHaveAttribute('src',setup.curatedSrc);await expect(curated.locator('figcaption')).toContainText('CURADA v1.8');
+  await expect(page.locator('img[src="https://upload.wikimedia.org/late-open-image.jpg"]')).toHaveCount(0);
+});
+
 test('fallo de red conserva aprendizaje textual sin fabricar una placa decorativa',async({page})=>{
   await boot(page,{start:false});await page.route('https://commons.wikimedia.org/w/api.php*',route=>route.abort());
   await page.evaluate(()=>{const q=QUESTIONS.find(x=>!x.image)||QUESTIONS[0];round=createRound('practice',[q]);currentView='repaso';renderGame();setYear(q.year+2);commitAnswer(false)});

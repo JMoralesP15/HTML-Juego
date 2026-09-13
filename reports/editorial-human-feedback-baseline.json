@@ -1,0 +1,9 @@
+{
+  "schema": "que-ano-editorial-human-feedback-baseline",
+  "source": "editorial-review-v18-2026-09-13.json",
+  "questionCount": 300,
+  "factual": {"approved": 36, "review_source": 1, "pending": 263, "explicit_decisions": 37, "approval_rate_among_decided": 0.97297},
+  "narrative": {"approved": 2, "edit": 1, "generic": 8, "pending": 289, "explicit_decisions": 11, "generic_rate_among_decided": 0.72727},
+  "media": {"approved": 9, "anachronistic": 17, "rights_review": 2, "pending": 272, "explicit_decisions": 28, "anachronistic_rate_among_decided": 0.60714},
+  "caution": "Convenience sample, not a random sample. Rates are diagnostic signals, not population estimates."
+}

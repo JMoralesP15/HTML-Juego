@@ -13,6 +13,10 @@ on:
       - feature/architecture-editorial-consolidation-v1.7
       - feature/factual-editorial-verification-v1.8
       - feature/editorial-assist-v1.8.1
+      - feature/project-traceability-audit-v1.8.3
+      - feature/architecture-stabilization-v1.8.4
+      - v185-scoring-timer
+      - v186-renderer-consolidation
 
 permissions:
   contents: read
@@ -23,6 +27,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -46,13 +52,20 @@ jobs:
         run: npm run report:editorial-backlog
       - name: Factual verification quality
         run: npm run report:factual
+      - name: Regenerate project traceability and runtime reports
+        run: npm run audit:reports:v183
+      - name: Architecture ratchet guard v1.8.6
+        run: npm run guard:architecture:v186
+      - name: Canonical renderer ownership v1.8.6
+        run: npm run guard:renderer:v186
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
-      - name: Generate canonical visual baselines during bootstrap
-        run: npm run qa:regression -- --update-snapshots
       - name: Accessibility QA
         run: npm run qa:accessibility
+      - name: Deterministic visual contract regression QA
+        run: npm run qa:regression
       - name: Visual browser QA
+        if: ${{ always() && !cancelled() }}
         run: npm run qa:visual
       - name: Upload QA artifacts
         if: always()
@@ -65,9 +78,17 @@ jobs:
             reports/content-metrics.json
             reports/culture-curation-v14.json
             reports/architecture-v17.json
+            reports/architecture-budget-v186.json
+            reports/renderer-ownership-v186.json
             reports/editorial-quality-v17.json
             reports/editorial-review-backlog-v17.json
             reports/factual-quality-v18.json
             reports/factual-verification-v18.json
+            reports/project-traceability.json
+            reports/runtime-ownership.json
+            reports/global-collisions.json
+            reports/css-cascade-audit.json
+            reports/runtime-file-classification.json
+            reports/audit-baseline-v183.json
           if-no-files-found: ignore
           retention-days: 14

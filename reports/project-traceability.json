@@ -1,0 +1,38 @@
+{
+  "schema": "que-ano-project-traceability-v1.8.3",
+  "auditDate": "2026-09-13",
+  "baseRef": "feature/audit-contracts-editorial-batch02-v1.8.2",
+  "baseSha": "aaf5bd146c572fee1c600c4c0764a0f82bf0548e",
+  "mainSha": "9bff1d909bf9b6a87175c2999e566d5e45231677",
+  "mainToBaseCommitCount": 218,
+  "lineage": [
+    {"version":"v1.0","ref":"main","sha":"9bff1d909bf9b6a87175c2999e566d5e45231677","parent":null,"ancestorVerified":true},
+    {"version":"v1.1","ref":"feature/ui-game-loop-v1.1","sha":"a917a19c5d9d1920b3a56221fea0df00022739ab","parent":"9bff1d909bf9b6a87175c2999e566d5e45231677","ancestorVerified":true},
+    {"version":"archive-night-rc2","ref":"feature/archive-night-rc2","sha":"7c8b00f3b99d13806d8830d7dbd96c9fb209e87f","parent":"a917a19c5d9d1920b3a56221fea0df00022739ab","ancestorVerified":true},
+    {"version":"v1.2","ref":"feature/visual-identity-timer-context-v1.2","sha":"89736c97a02b7329cec783500ee7315657629c22","parent":"7c8b00f3b99d13806d8830d7dbd96c9fb209e87f","ancestorVerified":true},
+    {"version":"v1.2.1","ref":"feature/instrumentation-consolidation-v1.2.1","sha":"2fbb6117e35577448242953d069ec23406c83a06","parent":"89736c97a02b7329cec783500ee7315657629c22","ancestorVerified":true},
+    {"version":"v1.3","ref":"feature/product-loop-v1.3","sha":"c1ae4e1a85a6276c4883d0082433551909d36de5","parent":"2fbb6117e35577448242953d069ec23406c83a06","ancestorVerified":true},
+    {"version":"v1.4","ref":"feature/curation-atmosphere-v1.4","sha":"c170eaf8762828842d74548f5694c2a26d4e80c8","parent":"c1ae4e1a85a6276c4883d0082433551909d36de5","ancestorVerified":true},
+    {"version":"v1.5","ref":"feature/simplification-game-clarity-v1.5","sha":"7721f44dbb6f8593fe8fb4aebfdab9c48a694784","parent":"c170eaf8762828842d74548f5694c2a26d4e80c8","ancestorVerified":true},
+    {"version":"v1.6","ref":"feature/learning-result-ux-v1.6","sha":"53676ba16cea7ff66576a74ded00b5a88cf850ca","parent":"7721f44dbb6f8593fe8fb4aebfdab9c48a694784","ancestorVerified":true},
+    {"version":"v1.7","ref":"feature/architecture-editorial-consolidation-v1.7","sha":"1033aeb7d318b9f8dcc15acf430df3297c22fbfd","parent":"53676ba16cea7ff66576a74ded00b5a88cf850ca","ancestorVerified":true},
+    {"version":"v1.8","ref":"feature/factual-editorial-verification-v1.8","sha":"782ed5f67e599810cac9cc33dafe8400072f048d","parent":"1033aeb7d318b9f8dcc15acf430df3297c22fbfd","ancestorVerified":true},
+    {"version":"v1.8.1","ref":"feature/editorial-assist-v1.8.1","sha":"232d1c457a1ca9fb26913768e6a50865a478f060","parent":"782ed5f67e599810cac9cc33dafe8400072f048d","ancestorVerified":true},
+    {"version":"v1.8.2","ref":"feature/audit-contracts-editorial-batch02-v1.8.2","sha":"aaf5bd146c572fee1c600c4c0764a0f82bf0548e","parent":"232d1c457a1ca9fb26913768e6a50865a478f060","ancestorVerified":true}
+  ],
+  "integrationRef": {"ref":"infra/pages-setup","sha":"232d1c457a1ca9fb26913768e6a50865a478f060"},
+  "pullRequests": [
+    {"number":1,"head":"feature/ui-game-loop-v1.1","state":"closed","draft":true,"merged":false},
+    {"number":2,"head":"feature/archive-night-rc2","state":"closed","draft":true,"merged":true},
+    {"number":3,"head":"feature/visual-identity-timer-context-v1.2","state":"closed","draft":true,"merged":true},
+    {"number":4,"head":"feature/product-loop-v1.3","state":"open","draft":true,"merged":false},
+    {"number":5,"head":"feature/curation-atmosphere-v1.4","state":"open","draft":true,"merged":false},
+    {"number":6,"head":"feature/simplification-game-clarity-v1.5","state":"open","draft":true,"merged":false},
+    {"number":7,"head":"feature/learning-result-ux-v1.6","state":"open","draft":true,"merged":false},
+    {"number":8,"head":"feature/architecture-editorial-consolidation-v1.7","state":"open","draft":true,"merged":false},
+    {"number":9,"head":"feature/factual-editorial-verification-v1.8","state":"open","draft":true,"merged":false}
+  ],
+  "refsWithoutOwnPr": ["feature/instrumentation-consolidation-v1.2.1","feature/editorial-assist-v1.8.1","feature/audit-contracts-editorial-batch02-v1.8.2"],
+  "metrics": {"relevantRefs":14,"classifiedRefs":14,"relevantPrs":9,"classifiedPrs":9,"traceabilityCoverage":1},
+  "limitations": ["PR state is a point-in-time GitHub observation, not derivable from Git history alone.","Branch names are traceability labels only and are not used as architecture evidence."]
+}

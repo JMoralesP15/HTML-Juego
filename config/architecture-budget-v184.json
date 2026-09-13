@@ -1,0 +1,25 @@
+{
+  "schema": "que-ano-architecture-budget-v1.8.4",
+  "baseline": "v1.8.3-audit",
+  "policy": "Non-regression budget. Counts may improve without approval; worsening a hard limit requires an explicit architecture decision and baseline update in the same PR.",
+  "max": {
+    "activeScripts": 24,
+    "activeStylesheets": 5,
+    "staticCollisions": 31,
+    "behaviorPatches": 17,
+    "mutationObservers": 0,
+    "renderSubscriptions": 7,
+    "cssImportant": 811,
+    "repeatedCssSelectors": 99
+  },
+  "min": {
+    "classificationCoverage": 1,
+    "ownershipRatio": 0.3333333333333333,
+    "testProtectionRatio": 0.7777777777777778
+  },
+  "informational": {
+    "eventListeners": 33,
+    "contracts": 18,
+    "auditCompletenessScore": 100
+  }
+}
