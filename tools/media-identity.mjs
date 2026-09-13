@@ -1,11 +1,14 @@
 // Pure identity matching, independent of editorial prose and rights checks.
 const stop=new Set('the and for with para con del las los una uno first primer primera year ano anos album film movie pelicula lanzamiento de el en por que como fue su se'.split(' '));
 export const normalize=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-export const identityTokens=q=>[...new Set([q.title,q.entity?.replace(/-/g,' '),...(q.imageAliases||[])].join(' ').split(/\s+/).flatMap(x=>normalize(x).split(' ')).filter(t=>t.length>=3&&!stop.has(t)&&!/^\d+$/.test(t)))];
+export const identityTokens=q=>[...new Set([q.title,q.entity?.replace(/-/g,' '),...(q.imageAliases||[])].join(' ').split(/\s+/).flatMap(x=>normalize(x).split(' ')).filter(t=>t.length>=2&&!stop.has(t)&&!/^\d+$/.test(t)))];
 export function matchIdentity(q,blob){
   const words=new Set(normalize(blob).split(' ')),identity=identityTokens(q),matched=identity.filter(t=>words.has(t));
   const minimum=Math.min(2,identity.length);
-  return {matched,accepted:minimum>0&&matched.length>=minimum&&matched.length/identity.length>=0.5};
+  const jurisdiction=/voto|sufragio|presidencial|eleccion|constitucion/.test(normalize(q.title));
+  const region=normalize(q.region).split(' ').filter(t=>t.length>=3&&!stop.has(t));
+  const regionMatches=!jurisdiction||!region.length||region.every(t=>words.has(t));
+  return {matched,accepted:regionMatches&&minimum>0&&matched.length>=minimum&&matched.length/identity.length>=0.5};
 }
 export const photoMime=mime=>/^image\/(jpeg|png|webp|tiff)$/i.test(mime||'');
 export function captureYear(meta){
