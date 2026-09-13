@@ -8,9 +8,9 @@ Objetivo: convertir los hallazgos de la auditoría v1.8.3 en una primera iteraci
 
 **Problema:** la regresión móvil usaba `fullPage: true` para pregunta/feedback y podía capturar un diálogo abierto. La baseline terminaba midiendo altura documental y estado incidental, no sólo la experiencia objetivo.
 
-**Cambio:** cerrar diálogos de forma explícita, esperar la superficie semántica `.atlas-v12.is-question`/`.is-answered`, usar captura de viewport para pregunta y feedback, y reservar `fullPage` para summary.
+**Cambio:** cerrar diálogos de forma explícita, esperar la superficie semántica `.atlas-v12.is-question`/`.is-answered`, validar un contrato visual determinista de viewport, geometría, overflow y estado, generar capturas de viewport para pregunta/feedback y reservar `fullPage` como artifact para summary cuando corresponda.
 
-**Criterio de aceptación:** pregunta y feedback móvil producen capturas 390×844 estables; ninguna snapshot se actualiza automáticamente.
+**Criterio de aceptación:** pregunta y feedback móvil validan exactamente 390×844, no hay diálogo incidental ni overflow horizontal, y cada estado deja una captura revisable. Ninguna snapshot se actualiza automáticamente.
 
 ## 2. Learning Feedback narrativo
 
