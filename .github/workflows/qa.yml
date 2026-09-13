@@ -61,6 +61,7 @@ jobs:
       - name: Regression QA against frozen snapshots
         run: npm run qa:regression
       - name: Visual browser QA
+        if: ${{ always() && !cancelled() }}
         run: npm run qa:visual
       - name: Upload QA artifacts
         if: always()
