@@ -47,8 +47,10 @@ test('media curada v1.8 conserva precedencia aunque Commons responda tarde',asyn
   const setup=await page.evaluate(()=>{
     const q=QUESTIONS.find(x=>x.v18Media?.src);if(!q)return null;
     q.__v184SavedMedia=JSON.parse(JSON.stringify(q.v18Media));
+    q.__v184SavedImageType=q.imageType;
+    q.__v184SavedImageSource=q.imageSource;
     const media=q.__v184SavedMedia;
-    q.v18Media=null;
+    q.v18Media=null;q.imageType='';q.imageSource='';
     round=createRound('practice',[q]);currentView='repaso';renderGame();
     return {id:q.id,title:q.title,curatedSrc:media.src};
   });
@@ -61,7 +63,7 @@ test('media curada v1.8 conserva precedencia aunque Commons responda tarde',asyn
   const commonsRequest=page.waitForRequest(req=>req.url().startsWith('https://commons.wikimedia.org/w/api.php'));
   await answer(page);
   await commonsRequest;
-  await page.evaluate(id=>{const q=QUESTION_BY_ID.get(id);q.v18Media=q.__v184SavedMedia;__QA_V18_MEDIA__.install()},setup.id);
+  await page.evaluate(id=>{const q=QUESTION_BY_ID.get(id);q.v18Media=q.__v184SavedMedia;q.imageType=q.__v184SavedImageType||'documentary';q.imageSource=q.__v184SavedImageSource||q.v18Media?.sourcePage||'';__QA_V18_MEDIA__.install()},setup.id);
   await page.locator('[data-v16-action="context-toggle"]').click();
   const curated=page.locator('.atlas-document-image[data-v18="1"]');await expect(curated).toBeVisible();
   await page.waitForTimeout(800);
