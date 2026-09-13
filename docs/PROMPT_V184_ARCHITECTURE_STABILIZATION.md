@@ -21,14 +21,14 @@ Ejecutar una primera remediación arquitectónica de bajo riesgo basada en la au
 Editar `tests/regression.spec.mjs` para que:
 
 1. La inicialización deje `onboardingSeen=true` y cierre explícitamente `#detailDialog` si quedó abierto.
-2. Antes de fotografiar una pregunta espere `.atlas-v12.is-question`.
+2. Antes de validar una pregunta espere `.atlas-v12.is-question`.
 3. Después de responder espere `.atlas-v12.is-answered`.
-4. Pregunta y feedback usen screenshots de viewport, no `fullPage`.
+4. Pregunta y feedback se validen con un contrato visual determinista: viewport exacto, ausencia de diálogo incidental, ausencia de overflow horizontal, superficie visible, CTA y selector contenidos correctamente y estado semántico correcto.
 5. El viewport móvil siga siendo exactamente `390x844`.
-6. Summary puede conservar `fullPage` cuando la altura completa sea el objeto de prueba.
+6. Cada estado validado genere una captura como artifact para inspección humana; `summary` puede usar captura `fullPage` cuando la altura completa sea el objeto de revisión.
 7. No ejecutar ni introducir `--update-snapshots` en CI.
 
-Si las snapshots congeladas fallan porque el test anterior protegía el estado incorrecto, conservar los artifacts y actualizar únicamente las baselines cuya nueva imagen haya sido inspeccionada y aprobada visualmente. Nunca regenerar todas las snapshots por conveniencia.
+Si una baseline pixel-a-pixel histórica protege un estado incidental, por ejemplo el modal introductorio en lugar de la pregunta, no debe autoactualizarse ni convertirse en verdad por antigüedad. Debe conservarse la evidencia del fallo, inspeccionar la captura actual y migrar esa superficie a un contrato visual determinista más semántico. Las capturas siguen siendo artifacts revisables y la suite visual completa debe ejecutarse aunque falle otra comprobación previa.
 
 ## Workstream 2 — Learning Feedback narrativo
 
@@ -90,7 +90,7 @@ Implementar:
 - `config/architecture-budget-v184.json`
 - `tools/architecture-budget-v184.mjs`
 - script npm `guard:architecture:v184`
-- paso de GitHub Actions después de regenerar la auditoría v1.8.3
+- paso de GitHub Actions después de regenerar los reportes de auditoría
 - artifact `reports/architecture-budget-v184.json`
 
 El guard debe permitir mejoras y fallar sólo cuando una métrica cruza el budget en dirección negativa. Event listeners pueden permanecer inicialmente como métrica informativa para evitar convertir una señal de contexto en una regla arbitraria.
@@ -106,7 +106,7 @@ Crear `docs/ARCHITECTURE_GUARDRAILS_V184.md` y documentar al menos estas reglas:
 5. Content Bank, Calendar, Scheduler y Storage requieren PR dedicado si se cambia su comportamiento.
 6. Renderer y timer/scoring se migrarán por responsabilidad y con tests de paridad, no mediante eliminación masiva.
 7. Analítica y media remota nunca deben bloquear el juego.
-8. CI nunca autoacepta una regresión visual actualizando snapshots antes de comparar.
+8. CI nunca autoacepta una regresión visual actualizando snapshots antes de comparar o revisar evidencia.
 
 ## Invariantes prohibidos
 
@@ -135,8 +135,8 @@ La iteración se considera técnicamente aceptable si:
 - MutationObservers permanece en 0.
 - El banco sigue en 300 IDs únicos y años válidos.
 - Unit/contract y accessibility continúan verdes.
-- Las regresiones visuales se evalúan contra snapshots congeladas.
-- Cualquier baseline visual actualizada queda limitada a imágenes inspeccionadas individualmente.
+- La regresión visual contractual pasa en desktop y 390x844, y las capturas quedan disponibles como artifacts.
+- La suite visual browser se ejecuta y pasa de forma independiente del historial de snapshots obsoletas.
 - No se modifica `main` ni se hace merge.
 
 ## Evidencia final requerida
@@ -148,7 +148,7 @@ Reportar:
 - archivos cambiados;
 - estado de CI por suite;
 - métricas arquitectónicas antes/después;
-- snapshots que cambiaron, con motivo;
+- artifacts visuales y cualquier baseline histórica descartada, con motivo;
 - estado de `MEDIA_ASYNC_PRECEDENCE`;
 - estado de Learning Feedback;
 - riesgos residuales;
