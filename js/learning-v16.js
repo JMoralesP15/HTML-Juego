@@ -17,8 +17,8 @@
   const sourceName=value=>clean(value).replace(/\s*[·|-]\s*referencia general\s*$/i,'').replace(/\s*[·|-]\s*referencia heredada\s*$/i,'')||'Fuente';
   const setTextIfChanged=(el,text)=>{if(el&&el.textContent!==text)el.textContent=text};
   const sentence=value=>{const text=clean(value);return !text||/[.!?…]$/.test(text)?text:`${text}.`};
-  const isEditorialMeta=value=>/^(la fecha concreta registrada|la misma ficha|la ficha (?:sitúa|ubica|registra)|preguntamos|la fecha que preguntamos|contenido complementario|la ubicación temporal)/i.test(clean(value));
-  const meaningfulSentences=value=>sentences(value).filter(part=>!isEditorialMeta(part));
+  const isEditorialMeta=value=>/^(la fecha (?:concreta registrada|de fundación registrada)|la misma ficha|la ficha\b|(?:el lanzamiento|el estreno|la publicación) figura fechad[oa]|preguntamos|la fecha que preguntamos|contenido complementario|la ubicación temporal)/i.test(clean(value));
+  const meaningfulSentences=value=>sentences(value).filter(part=>/[\p{L}\p{N}]/u.test(part)&&!isEditorialMeta(part));
   const included=(value,collection)=>{const normalized=clean(value).toLocaleLowerCase('es');return !normalized||collection.some(item=>{const other=clean(item).toLocaleLowerCase('es');return !!other&&(other===normalized||other.includes(normalized))})};
 
   function currentQuestion(){
@@ -120,7 +120,7 @@
   function reviewCandidates(s){
     return (s?.answers||[]).filter(a=>a.skipped||Number(a.error)>5).sort((a,b)=>(b.skipped?1:0)-(a.skipped?1:0)||(Number(b.error)||0)-(Number(a.error)||0));
   }
-  function learningCue(q){const l=learningFor(q);return firstSentence(l.importance||l.memory||l.what||q.fact||q.context)}
+  function learningCue(q){const l=learningFor(q);return firstSentence(l.importance||l.memory||l.what)}
 
   function decorateSummary(s=lastSummary){
     const root=document.querySelector('.summary-v11');if(!root||!s)return;
@@ -153,7 +153,11 @@
     const q=displayQuestion(id);if(!q)return;
     const s=getState(),seen=discoveredIds(s).has(id),revealedInOrder=s.timelineDraft?.answered&&s.timelineDraft.ids.includes(id),answeredNow=round?.phase==='answer'&&round.questionIds[round.index]===id;if(!seen&&!revealedInOrder&&!answeredNow)return;
     const l=learningFor(q),st=s.questionStats[id],src=l.source&&safeURL(l.source),photo=safeAsset(q.image),usePhoto=photo&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;
-    const blocks=[];if(l.context)blocks.push(`<section><b>Contexto</b><p>${esc(l.context)}</p></section>`);if(l.importance&&!same(l.importance,l.context))blocks.push(`<section><b>Por qué importa</b><p>${esc(l.importance)}</p></section>`);if(q.fact&&!same(q.fact,l.context))blocks.push(`<section><b>Dato de la fecha</b><p>${esc(q.fact)}</p></section>`);
+    const blocks=[],used=[];
+    for(const [label,value] of [['Contexto',l.context||l.what],['Por qué importa',l.importance],['Dato de la fecha',meaningfulSentences(q.fact).join(' ')]]){
+      const extra=meaningfulSentences(value).filter(part=>!included(part,used)).join(' ');
+      if(extra){blocks.push(`<section><b>${label}</b><p>${esc(extra)}</p></section>`);used.push(extra)}
+    }
     openDialog(q.title,`<div class="v16-detail-head"><strong class="feedback-year">${q.year}</strong><span class="pill cat">${esc(q.category)}</span></div><div class="v16-detail-body">${blocks.join('')}</div>${usePhoto?`<figure class="v16-detail-image"><img src="${photo}" alt="${esc(q.imageAlt)}"><figcaption>${esc(q.imageCredit||'Imagen de apoyo')}${q.imageLicense?` · ${esc(q.imageLicense)}`:''}</figcaption></figure>`:''}${src?`<p class="source-note">Fuente · <a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(l.sourceLabel)}</a></p>`:''}${st?`<div class="metric-row v16-detail-metrics"><div class="metric"><b>${st.attempts}</b><span>intentos</span></div><div class="metric"><b>${fmt(st.avgError)}</b><span>error medio</span></div><div class="metric"><b>${fmt(st.bestError,0)}</b><span>mejor error</span></div></div>`:''}`);
     track('detail_opened',{question_id:q.id,source:'v16_detail'});
   };
@@ -180,3 +184,4 @@
   inspect();
   window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,learningNarrative,decorateSummary,inspect});
 })();
+
