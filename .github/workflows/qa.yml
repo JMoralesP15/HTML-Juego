@@ -18,6 +18,7 @@ on:
       - v185-scoring-timer
       - v186-renderer-consolidation
       - feature/editorial-media-batch-v1.8.7
+      - feature/editorial-remediation-v1.8.8
 
 permissions:
   contents: read
@@ -78,6 +79,7 @@ jobs:
           path: |
             test-results/screenshots
             test-results/playwright
+            reports/editorial-review-media-v188.json
             reports/editorial-batch-v187.json
             reports/content-metrics.json
             reports/culture-curation-v14.json
