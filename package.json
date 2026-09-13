@@ -15,14 +15,15 @@
     "audit:traceability:v183": "node tools/project-traceability-v183.mjs",
     "audit:runtime:v183": "node tools/runtime-layer-audit-v183.mjs",
     "audit:completion:v183": "node tools/audit-completion-v183.mjs",
+    "audit:reports:v183": "npm run audit:traceability:v183 && npm run audit:runtime:v183 && npm run audit:completion:v183",
     "test:audit:v183": "node tests/audit-v183.test.mjs",
-    "audit:v183": "npm run audit:traceability:v183 && npm run audit:runtime:v183 && npm run audit:completion:v183 && npm run test:audit:v183",
+    "audit:v183": "npm run audit:reports:v183 && npm run test:audit:v183",
     "guard:architecture:v184": "node tools/architecture-budget-v184.mjs",
     "test": "node tools/test.mjs",
     "qa:visual": "playwright test tests/archive-night.spec.mjs tests/atlas-v12.spec.mjs tests/visual.spec.mjs tests/product-v13.spec.mjs tests/curation-v14.spec.mjs tests/v15-simplification.spec.mjs tests/v16-learning-ux.spec.mjs tests/review-console.spec.mjs tests/editorial-assist-v181.spec.mjs",
     "qa:accessibility": "playwright test tests/accessibility.spec.mjs",
     "qa:regression": "playwright test tests/regression.spec.mjs",
-    "qa:all": "npm test && npm run audit && npm run report:content && npm run report:culture && npm run report:architecture && npm run report:editorial && npm run report:editorial-backlog && npm run report:factual && npm run audit:v183 && npm run guard:architecture:v184 && npm run qa:accessibility && npm run qa:regression && npm run qa:visual",
+    "qa:all": "npm test && npm run audit && npm run report:content && npm run report:culture && npm run report:architecture && npm run report:editorial && npm run report:editorial-backlog && npm run report:factual && npm run audit:reports:v183 && npm run guard:architecture:v184 && npm run qa:accessibility && npm run qa:regression && npm run qa:visual",
     "serve": "python -m http.server 8000"
   },
   "devDependencies": {
