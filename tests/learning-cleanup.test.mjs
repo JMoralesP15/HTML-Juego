@@ -9,4 +9,5 @@ const narrative=api.learningNarrative(q).join(' ');
 assert.equal(narrative,q.fact);
 assert.equal(api.learningFor(q).context,'');
 assert.equal(api.learningNarrative({fact:'Un avance real.',context:'Un avance real.',significance:'Un avance real.'}).length,1);
-console.log('3 learning cleanup assertions passed');
+assert.equal(api.learningNarrative({fact:'WhatsApp se lanzó en 2009.',context:'El lanzamiento figura fechado el enero de 2009. La ficha identifica al desarrollador como WhatsApp LLC.'}).join(' '),'WhatsApp se lanzó en 2009.');
+console.log('4 learning cleanup assertions passed');
