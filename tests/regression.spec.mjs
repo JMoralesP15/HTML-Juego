@@ -30,6 +30,13 @@ async function boot(page, width = 1440, height = 900) {
     lastSummary = null;
     showView('hoy', { focus: false });
     startDaily();
+    const dialog = document.getElementById('detailDialog');
+    if (dialog?.open) dialog.close();
+  });
+  await expect(page.locator('.atlas-v12.is-question')).toBeVisible();
+  await page.evaluate(() => {
+    const dialog = document.getElementById('detailDialog');
+    if (dialog?.open) dialog.close();
   });
 }
 
@@ -40,6 +47,7 @@ async function answer(page, offset = 0) {
     setYear(guess);
     commitAnswer();
   }, offset);
+  await expect(page.locator('.atlas-v12.is-answered')).toBeVisible();
 }
 
 async function finishRound(page, offset = 0) {
@@ -55,32 +63,33 @@ async function finishRound(page, offset = 0) {
   }, offset);
 }
 
-const shot = { fullPage: true, animations: 'disabled', maxDiffPixelRatio: 0.01, threshold: 0.25 };
+const viewportShot = { animations: 'disabled', maxDiffPixelRatio: 0.01, threshold: 0.25 };
+const fullPageShot = { ...viewportShot, fullPage: true };
 
 test('regresión visual · desktop canónico', async ({ page }) => {
   await boot(page);
-  await expect(page).toHaveScreenshot('desktop-question.png', shot);
+  await expect(page).toHaveScreenshot('desktop-question.png', viewportShot);
   await answer(page, 0);
-  await expect(page).toHaveScreenshot('desktop-feedback-exact.png', shot);
+  await expect(page).toHaveScreenshot('desktop-feedback-exact.png', viewportShot);
 
   await boot(page);
   await answer(page, 1);
-  await expect(page).toHaveScreenshot('desktop-feedback-near.png', shot);
+  await expect(page).toHaveScreenshot('desktop-feedback-near.png', viewportShot);
 
   await boot(page);
   await finishRound(page, 4);
   await expect(page.locator('.atlas-summary')).toBeVisible();
-  await expect(page).toHaveScreenshot('desktop-summary.png', shot);
+  await expect(page).toHaveScreenshot('desktop-summary.png', fullPageShot);
 });
 
 test('regresión visual · mobile 390x844', async ({ page }) => {
   await boot(page, 390, 844);
-  await expect(page).toHaveScreenshot('mobile-question-390x844.png', shot);
+  await expect(page).toHaveScreenshot('mobile-question-390x844.png', viewportShot);
   await answer(page, 1);
-  await expect(page).toHaveScreenshot('mobile-feedback-390x844.png', shot);
+  await expect(page).toHaveScreenshot('mobile-feedback-390x844.png', viewportShot);
 
   await boot(page, 390, 844);
   await finishRound(page, 8);
   await expect(page.locator('.atlas-summary')).toBeVisible();
-  await expect(page).toHaveScreenshot('mobile-summary-390x844.png', shot);
+  await expect(page).toHaveScreenshot('mobile-summary-390x844.png', fullPageShot);
 });
