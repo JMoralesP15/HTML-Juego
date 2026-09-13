@@ -13,7 +13,11 @@ function boot(){
  window.HTMLElement.prototype.getContext=function(){return new Proxy({},{get:()=>()=>{}})};
  window.matchMedia=q=>({matches:q.includes('pointer')});window.scrollTo=()=>{};
  const c=vm.createContext({console,document,window,location:{hash:''},navigator:{},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},requestAnimationFrame:fn=>fn(),setTimeout:()=>0,clearTimeout,Date,Map,Set,Math,JSON,Intl,Blob,URL});
- for(const name of ['content','scheduler','calendar','editorial','storage','game','panels','app'])vm.runInContext(fs.readFileSync(root+'/js/'+name+'.js','utf8'),c,{filename:name+'.js'});
+ // Engine-only harness: production renderer ownership lives in Atlas and is protected by Playwright.
+ // These aliases keep the lightweight VM focused on state/persistence without reintroducing runtime writers.
+ for(const name of ['content','scheduler','calendar','editorial','storage','game'])vm.runInContext(fs.readFileSync(root+'/js/'+name+'.js','utf8'),c,{filename:name+'.js'});
+ vm.runInContext('renderGame=legacyRenderGameV11;renderSummary=legacyRenderSummaryV11;',c,{filename:'engine-test-render-adapter.js'});
+ for(const name of ['panels','app'])vm.runInContext(fs.readFileSync(root+'/js/'+name+'.js','utf8'),c,{filename:name+'.js'});
  return {c,document,run:code=>vm.runInContext(code,c,{timeout:30000})};
 }
 let b=boot();const run=code=>b.run(code),check=(code,label)=>{assert.ok(run(code),label);checks.push(label)};

@@ -16,6 +16,7 @@ on:
       - feature/project-traceability-audit-v1.8.3
       - feature/architecture-stabilization-v1.8.4
       - v185-scoring-timer
+      - v186-renderer-consolidation
 
 permissions:
   contents: read
@@ -53,8 +54,10 @@ jobs:
         run: npm run report:factual
       - name: Regenerate project traceability and runtime reports
         run: npm run audit:reports:v183
-      - name: Architecture ratchet guard v1.8.5
-        run: npm run guard:architecture:v185
+      - name: Architecture ratchet guard v1.8.6
+        run: npm run guard:architecture:v186
+      - name: Canonical renderer ownership v1.8.6
+        run: npm run guard:renderer:v186
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Accessibility QA
@@ -75,7 +78,8 @@ jobs:
             reports/content-metrics.json
             reports/culture-curation-v14.json
             reports/architecture-v17.json
-            reports/architecture-budget-v185.json
+            reports/architecture-budget-v186.json
+            reports/renderer-ownership-v186.json
             reports/editorial-quality-v17.json
             reports/editorial-review-backlog-v17.json
             reports/factual-quality-v18.json
