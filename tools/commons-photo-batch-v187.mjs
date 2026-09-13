@@ -28,7 +28,7 @@ async function api(base,params,attempt=1){
     return await res.json();
   }catch(error){
     if(attempt>=3)throw error;
-    await sleep(500*Math.pow(2,attempt-1));
+    await sleep(250*Math.pow(2,attempt-1));
     return api(base,params,attempt+1);
   }
 }
@@ -54,14 +54,8 @@ function originalYear(meta){
   const m=raw.match(/\b(18\d{2}|19\d{2}|20\d{2})\b/);
   return m?Number(m[1]):null;
 }
-function semanticVocabulary(item,entity){
-  return uniq([item.title,item.wikimediaPageTitle,item.entity?.replace(/-/g,' '),...(entity?.names||[])]).flatMap(tokens);
-}
-function photoMimeOk(mime,blob){
-  if(/^image\/(jpeg|tiff|webp)$/i.test(mime))return true;
-  if(/^image\/png$/i.test(mime)&&photoHint.test(blob))return true;
-  return false;
-}
+function semanticVocabulary(item,entity){return uniq([item.title,item.wikimediaPageTitle,item.entity?.replace(/-/g,' '),...(entity?.names||[])]).flatMap(tokens)}
+function photoMimeOk(mime,blob){if(/^image\/(jpeg|tiff|webp)$/i.test(mime))return true;return /^image\/png$/i.test(mime)&&photoHint.test(blob)}
 function classifyVisual(item,yearOriginal,exactYear){
   const delta=Number.isFinite(yearOriginal)?yearOriginal-item.year:null;
   if(Number.isFinite(delta)&&Math.abs(delta)<=5)return {visualType:'contemporaneous_documentary_photo',warning:null};
@@ -72,46 +66,39 @@ function classifyVisual(item,yearOriginal,exactYear){
 function scoreCandidate(item,blob,vocab,yearOriginal){
   const n=norm(blob),matched=uniq(vocab.filter(t=>n.includes(t)));
   const exactYear=new RegExp(`(^|\\D)${item.year}(\\D|$)`).test(blob);
-  const hasPhotoHint=photoHint.test(blob);
-  const temporalDeltaYears=Number.isFinite(yearOriginal)?yearOriginal-item.year:null;
+  const hasPhotoHint=photoHint.test(blob),temporalDeltaYears=Number.isFinite(yearOriginal)?yearOriginal-item.year:null;
   const contemporaneous=Number.isFinite(yearOriginal)&&Math.abs(temporalDeltaYears)<=5;
   const score=matched.length*5+(exactYear?3:0)+(hasPhotoHint?2:0)+(contemporaneous?4:0);
-  return {score,matched,exactYear,hasPhotoHint,yearOriginal,temporalDeltaYears,contemporaneous};
+  return {score,matched,exactYear,yearOriginal,temporalDeltaYears,contemporaneous};
 }
-
 async function searchTitles(query){
-  const data=await api(COMMONS,{action:'query',list:'search',srnamespace:'6',srlimit:'10',srsearch:query});
+  const data=await api(COMMONS,{action:'query',list:'search',srnamespace:'6',srlimit:'15',srsearch:query});
   return (data?.query?.search||[]).map(x=>x.title).filter(Boolean);
 }
 async function discover(item,entity){
-  const names=uniq([entity?.en,entity?.es,...(entity?.names||[]),item.wikimediaPageTitle,item.title]).filter(Boolean);
+  const names=uniq([entity?.en,entity?.es,item.wikimediaPageTitle,item.title,...(entity?.names||[])]).filter(Boolean);
+  const primary=names[0]||item.title;
+  const plans=[`"${primary}" ${item.year}`,`"${primary}" photograph`];
   const queryAttempts=[],titleSets=[];
-  for(const name of names.slice(0,5)){
-    for(const query of [`"${name}" ${item.year}`,`"${name}" photograph`,`"${name}" photo`]){
-      try{
-        const titles=await searchTitles(query);
-        queryAttempts.push({query,status:'ok',resultCount:titles.length});
-        titleSets.push(...titles);
-      }catch(error){
-        queryAttempts.push({query,status:'error',error:String(error?.message||error),httpStatus:error?.status||null});
-      }
-      await sleep(90);
-    }
+  for(const query of plans){
+    try{const titles=await searchTitles(query);queryAttempts.push({query,status:'ok',resultCount:titles.length});titleSets.push(...titles)}
+    catch(error){queryAttempts.push({query,status:'error',error:String(error?.message||error),httpStatus:error?.status||null})}
+    await sleep(35);
+  }
+  if(!titleSets.length&&names[1]){
+    const query=`"${names[1]}"`;
+    try{const titles=await searchTitles(query);queryAttempts.push({query,status:'ok',resultCount:titles.length});titleSets.push(...titles)}
+    catch(error){queryAttempts.push({query,status:'error',error:String(error?.message||error),httpStatus:error?.status||null})}
   }
   const titles=uniq(titleSets).slice(0,30);
   if(!titles.length)return {status:queryAttempts.some(x=>x.status==='error')?'error':'no_candidate',queryAttempts,candidates:[]};
   let data;
-  try{
-    data=await api(COMMONS,{action:'query',prop:'imageinfo',titles:titles.join('|'),iiprop:'url|mime|extmetadata',iiurlwidth:'1200',iiextmetadatalanguage:'en',iiextmetadatafilter:'LicenseShortName|UsageTerms|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|DateTime|Categories'});
-  }catch(error){
-    queryAttempts.push({query:'imageinfo',status:'error',error:String(error?.message||error),httpStatus:error?.status||null});
-    return {status:'error',queryAttempts,candidates:[]};
-  }
+  try{data=await api(COMMONS,{action:'query',prop:'imageinfo',titles:titles.join('|'),iiprop:'url|mime|extmetadata',iiurlwidth:'1200',iiextmetadatalanguage:'en',iiextmetadatafilter:'LicenseShortName|UsageTerms|LicenseUrl|Artist|Credit|ImageDescription|DateTimeOriginal|DateTime|Categories'})}
+  catch(error){queryAttempts.push({query:'imageinfo',status:'error',error:String(error?.message||error),httpStatus:error?.status||null});return {status:'error',queryAttempts,candidates:[]}}
   const vocab=semanticVocabulary(item,entity),candidates=[];
   for(const page of data?.query?.pages||[]){
     const info=page.imageinfo?.[0],meta=info?.extmetadata||{};if(!info)continue;
-    const license=ext(meta,'LicenseShortName')||ext(meta,'UsageTerms');
-    const description=ext(meta,'ImageDescription'),categories=ext(meta,'Categories');
+    const license=ext(meta,'LicenseShortName')||ext(meta,'UsageTerms'),description=ext(meta,'ImageDescription'),categories=ext(meta,'Categories');
     const blob=`${page.title} ${description} ${categories}`;
     if(!info.url||!openLicense(license)||badVisual.test(blob))continue;
     const mime=clean(info.mime);if(!photoMimeOk(mime,blob))continue;
@@ -119,19 +106,9 @@ async function discover(item,entity){
     if(scored.matched.length<1||scored.score<7)continue;
     if(Number.isFinite(scored.temporalDeltaYears)&&Math.abs(scored.temporalDeltaYears)>40&&!scored.exactYear&&eventSensitiveCategories.has(item.category))continue;
     const type=classifyVisual(item,oy,scored.exactYear),warnings=[];
-    if(!Number.isFinite(oy))warnings.push('image_year_unknown');
-    if(type.warning)warnings.push(type.warning);
-    if(/\bcc by\b|\bcc-by\b/i.test(license))warnings.push('attribution_required');
-    if(scored.matched.length===1)warnings.push('single_alias_match');
-    if(!description)warnings.push('description_insufficient');
-    candidates.push({
-      fileTitle:page.title,mime,src:info.thumburl||info.url,original:info.url,
-      sourcePage:`https://commons.wikimedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g,'_')).replace(/%3A/g,':')}`,
-      artist:ext(meta,'Artist')||null,credit:ext(meta,'Credit')||null,license,licenseUrl:ext(meta,'LicenseUrl')||null,
-      description:description||null,visualType:type.visualType,entityMatch:true,matchedAliases:scored.matched,
-      eventYear:item.year,imageYear:scored.yearOriginal,temporalDeltaYears:scored.temporalDeltaYears,
-      exactYear:scored.exactYear,contemporaneous:scored.contemporaneous,score:scored.score,rejectionWarnings:warnings,reviewRequired:true
-    });
+    if(!Number.isFinite(oy))warnings.push('image_year_unknown');if(type.warning)warnings.push(type.warning);
+    if(/\bcc by\b|\bcc-by\b/i.test(license))warnings.push('attribution_required');if(scored.matched.length===1)warnings.push('single_alias_match');if(!description)warnings.push('description_insufficient');
+    candidates.push({fileTitle:page.title,mime,src:info.thumburl||info.url,original:info.url,sourcePage:`https://commons.wikimedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g,'_')).replace(/%3A/g,':')}`,artist:ext(meta,'Artist')||null,credit:ext(meta,'Credit')||null,license,licenseUrl:ext(meta,'LicenseUrl')||null,description:description||null,visualType:type.visualType,entityMatch:true,matchedAliases:scored.matched,eventYear:item.year,imageYear:scored.yearOriginal,temporalDeltaYears:scored.temporalDeltaYears,exactYear:scored.exactYear,contemporaneous:scored.contemporaneous,score:scored.score,rejectionWarnings:warnings,reviewRequired:true});
   }
   candidates.sort((a,b)=>b.score-a.score||Number(b.contemporaneous)-Number(a.contemporaneous)||Math.abs(a.temporalDeltaYears??999)-Math.abs(b.temporalDeltaYears??999));
   const top=candidates.slice(0,3);
@@ -142,20 +119,15 @@ const entities=await entityNames(input.items);
 let searched=0,success=0,noCandidate=0,errors=0,candidatesTotal=0,candidatesContemporaneous=0,laterOriginalArtifact=0;
 for(const item of input.items){
   searched++;
-  try{item.mediaSearch=await discover(item,entities.get(item.wikidataQid))}
-  catch(error){item.mediaSearch={status:'error',queryAttempts:[{query:'unexpected',status:'error',error:String(error?.message||error),httpStatus:error?.status||null}],candidates:[]}}
-  const candidates=item.mediaSearch?.candidates||[];
-  candidatesTotal+=candidates.length;
-  candidatesContemporaneous+=candidates.filter(x=>x.contemporaneous).length;
-  laterOriginalArtifact+=candidates.filter(x=>x.visualType==='later_photo_of_original_artifact').length;
+  try{item.mediaSearch=await discover(item,entities.get(item.wikidataQid))}catch(error){item.mediaSearch={status:'error',queryAttempts:[{query:'unexpected',status:'error',error:String(error?.message||error),httpStatus:error?.status||null}],candidates:[]}}
+  const candidates=item.mediaSearch?.candidates||[];candidatesTotal+=candidates.length;candidatesContemporaneous+=candidates.filter(x=>x.contemporaneous).length;laterOriginalArtifact+=candidates.filter(x=>x.visualType==='later_photo_of_original_artifact').length;
   if(item.mediaSearch.status==='found')success++;else if(item.mediaSearch.status==='no_candidate')noCandidate++;else errors++;
   if(searched%10===0)process.stdout.write(`[${searched}/100] found: ${success}; candidates: ${candidatesTotal}; no_candidate: ${noCandidate}; errors: ${errors}\n`);
-  await sleep(120);
+  await sleep(45);
 }
-input.version='1.8.7-b';
-input.generatedAt=new Date().toISOString();
+input.version='1.8.7-b';input.generatedAt=new Date().toISOString();
 input.summary={...input.summary,visualSearched:searched,searchSuccess:success,noCandidate,searchErrors:errors,candidatesTotal,candidatesTechnicallyEligible:candidatesTotal,candidatesContemporaneous,laterOriginalArtifact,mediaPolicy:'Candidate discovery only. Open-license photographic candidates are ranked for human review; no candidate is auto-approved or published.'};
-delete input.summary.commonsSearched;delete input.summary.commonsFound;delete input.summary.commonsErrors;delete input.summary.realPhotoCandidates;delete input.summary.withoutRealPhotoCandidate;
+for(const k of ['commonsSearched','commonsFound','commonsErrors','realPhotoCandidates','withoutRealPhotoCandidate'])delete input.summary[k];
 for(const item of input.items){delete item.mediaCandidate;delete item.mediaSearchError}
 fs.writeFileSync(path.join(root,'reports/editorial-batch-v187.json'),JSON.stringify(input,null,2)+'\n');
 console.log(JSON.stringify(input.summary,null,2));
