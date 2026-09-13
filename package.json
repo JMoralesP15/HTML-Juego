@@ -7,6 +7,8 @@
     "audit": "node tools/audit.mjs",
     "enrich:factual": "node tools/factual-enrichment-v18.mjs",
     "compile:editorial:v187": "node tools/editorial-batch-v187.mjs",
+    "enrich:media:v187": "node tools/commons-photo-batch-v187.mjs",
+    "export:editorial:v187": "node tools/export-editorial-batch-js-v187.mjs",
     "report:content": "node tools/content-report.mjs",
     "report:culture": "node tools/culture-report.mjs",
     "report:architecture": "node tools/architecture-report.mjs",
