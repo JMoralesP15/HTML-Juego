@@ -19,7 +19,7 @@
   const sentence=value=>{const text=clean(value);return !text||/[.!?…]$/.test(text)?text:`${text}.`};
   const isEditorialMeta=value=>/^(la fecha concreta registrada|la misma ficha|la ficha (?:sitúa|ubica|registra)|preguntamos|la fecha que preguntamos|contenido complementario|la ubicación temporal)/i.test(clean(value));
   const meaningfulSentences=value=>sentences(value).filter(part=>!isEditorialMeta(part));
-  const included=(value,collection)=>{const normalized=clean(value).toLocaleLowerCase('es');return !normalized||collection.some(item=>{const other=clean(item).toLocaleLowerCase('es');return other===normalized||other.includes(normalized)||normalized.includes(other)})};
+  const included=(value,collection)=>{const normalized=clean(value).toLocaleLowerCase('es');return !normalized||collection.some(item=>{const other=clean(item).toLocaleLowerCase('es');return !!other&&(other===normalized||other.includes(normalized))})};
 
   function currentQuestion(){
     try{if(typeof round==='undefined'||!round?.questionIds)return null;return displayQuestion(round.questionIds[round.index])||QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
@@ -108,7 +108,8 @@
     if(!toggle){toggle=document.createElement('button');toggle.type='button';toggle.className='v16-context-button';toggle.dataset.v16Action='context-toggle';toggle.setAttribute('aria-expanded','false');toggle.textContent='Profundizar';if(doc)doc.before(toggle);else card.after(toggle)}
     if(doc&&doc.dataset.v16Question!==q.id){
       doc.dataset.v16Question=q.id;doc.classList.add('v16-context');doc.classList.remove('v15-context-open');doc.classList.add('v15-collapsed-context');
-      const hasDeepContext=rebuildDeepContext(doc,q);doc.hidden=!hasDeepContext;toggle.hidden=!hasDeepContext;
+      const hasDeepContext=rebuildDeepContext(doc,q);doc.hidden=false;toggle.hidden=!hasDeepContext;
+      if(!hasDeepContext){doc.classList.remove('v15-collapsed-context');doc.classList.add('v15-context-open')}
     }
 
     const note=surface.querySelector('.v15-result-note');setTextIfChanged(note,a.skipped?'Fecha revelada y guardada para repaso.':a.timedOut?'Se agotó el tiempo; registramos el año que estaba seleccionado.':'La fecha queda registrada para tu repaso.');
