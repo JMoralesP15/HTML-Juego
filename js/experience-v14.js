@@ -1,5 +1,6 @@
 /* QUÉ AÑO v1.4 — atmósfera, lectura editorial e imágenes abiertas como progressive enhancement.
  * v1.7: la inspección visual usa el contrato de render y deja de observar mutaciones del DOM.
+ * v1.8.4: la media curada v1.8 tiene precedencia explícita sobre Commons, incluso tras una respuesta asíncrona tardía.
  */
 (function(){
   'use strict';
@@ -23,6 +24,7 @@
   function relevant(q,pageTitle){const wanted=tokens(q.title),found=new Set(tokens(pageTitle));return wanted.length===0||wanted.some(t=>found.has(t)||[...found].some(x=>x.includes(t)||t.includes(x)))}
   function safeHttp(value){try{const u=new URL(value);return u.protocol==='https:'?u.href:''}catch{return ''}}
   function licenseAllowed(name){const n=text(name).replace(/Creative Commons/ig,'CC').replace(/Attribution-ShareAlike/ig,'BY-SA').replace(/Attribution/ig,'BY').replace(/\s+/g,' ').trim();return !/NC|ND/i.test(n)&&ALLOWED_LICENSE.test(n)}
+  function hasCuratedMedia(q){return Boolean(q?.v18Media?.src)}
 
   function readCache(){try{return JSON.parse(localStorage.getItem(CACHE_KEY)||'{}')||{}}catch{return {}}}
   function writeCache(cache){try{localStorage.setItem(CACHE_KEY,JSON.stringify(cache))}catch{}}
@@ -49,9 +51,10 @@
   }
 
   function installMedia(media,q){
-    if(!media||!q)return;
+    if(!media||!q||hasCuratedMedia(q))return;
     const doc=document.querySelector('.atlas-document');if(!doc)return;
     let fig=doc.querySelector('.atlas-document-image');
+    if(fig?.dataset.v18==='1')return;
     if(!fig){fig=document.createElement('figure');fig.className='atlas-document-image';doc.prepend(fig);doc.classList.remove('no-image');doc.classList.add('has-image')}
     const img=document.createElement('img');img.src=media.src;img.alt=media.description||`Documento visual abierto relacionado con ${q.title}`;img.loading='lazy';img.referrerPolicy='no-referrer';
     const cap=document.createElement('figcaption');cap.className='v14-open-media-credit';
@@ -64,9 +67,12 @@
   }
 
   async function enrichMedia(q,key){
-    if(!q||key!==renderKey)return;
+    if(!q||key!==renderKey||hasCuratedMedia(q))return;
     if(q.imageType==='documentary'&&!q.v12GeneratedImage&&q.imageSource)return;
-    const media=await findOpenMedia(q);if(key!==renderKey||!media)return;installMedia(media,q)
+    const media=await findOpenMedia(q);
+    if(key!==renderKey||!media||hasCuratedMedia(q))return;
+    if(document.querySelector('.atlas-document-image[data-v18="1"]'))return;
+    installMedia(media,q)
   }
 
   function addCultureBadge(q){
@@ -113,5 +119,5 @@
 
   window.__QYA_RUNTIME__?.onRender(inspect);
   inspect();
-  window.__QA_V14__={version:VERSION,findOpenMedia,licenseAllowed,relevant,ambient,inspect,cacheKey:CACHE_KEY};
+  window.__QA_V14__={version:VERSION,findOpenMedia,licenseAllowed,relevant,hasCuratedMedia,ambient,inspect,cacheKey:CACHE_KEY};
 })();
