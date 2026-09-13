@@ -31,18 +31,30 @@ const items=ids.map((id,index)=>{
   if(!q)throw new Error(`Falta ${id} en banco`);
   const summary=proposal?.summary||q.context||q.fact||'';
   const expanded=proposal?.expanded||q.significance||'';
-  const media=e.media||q.v18Media||null;
+  const legacyMedia=e.media||q.v18Media||null;
   return {
     index:index+1,id,title:q.title,year:q.year,category:q.category,region:q.region||null,
     entity:q.entity||null,wikidataQid:e.wikimedia?.qid||null,wikimediaPageTitle:e.wikimedia?.pageTitle||null,
     sourceUrl:e.sourceUrl||proposal?.source||q.source||null,sourceLabel:e.sourceLabel||proposal?.sourceLabel||q.sourceLabel||null,
     textSource:proposal?'proposal':'current_bank',proposal,
     learning:{summary,expanded,dateNote:proposal?.dateNote||''},
-    textCheck:checkText(summary,expanded),mediaCandidate:media,evidenceStatus:e.status||null
+    textCheck:checkText(summary,expanded),
+    legacyMediaCandidate:legacyMedia,
+    mediaCandidate:null,
+    evidenceStatus:e.status||null
   };
 });
 const contractPass=x=>x.textCheck.summaryOk&&x.textCheck.expandedOk&&x.textCheck.noMetadiscourse;
-const summary={total:items.length,proposalReady:items.filter(x=>x.proposal).length,currentBankOnly:items.filter(x=>!x.proposal).length,textContractPass:items.filter(contractPass).length,textNeedsEdit:items.filter(x=>!contractPass(x)).length,withMediaCandidate:items.filter(x=>x.mediaCandidate).length,withoutMediaCandidate:items.filter(x=>!x.mediaCandidate).length};
+const summary={
+  total:items.length,
+  proposalReady:items.filter(x=>x.proposal).length,
+  currentBankOnly:items.filter(x=>!x.proposal).length,
+  textContractPass:items.filter(contractPass).length,
+  textNeedsEdit:items.filter(x=>!contractPass(x)).length,
+  legacyVisualCandidates:items.filter(x=>x.legacyMediaCandidate).length,
+  realPhotoCandidates:0,
+  withoutRealPhotoCandidate:items.length
+};
 const out={schema:'que-ano-editorial-batch-v1.8.7',version:'1.8.7-draft.1',batch:'batch-02-100',generatedAt:new Date().toISOString(),selectionRule:selection.selectionRule,summary,items};
 fs.mkdirSync(path.join(root,'reports'),{recursive:true});
 fs.writeFileSync(path.join(root,'reports/editorial-batch-v187.json'),JSON.stringify(out,null,2)+'\n');
