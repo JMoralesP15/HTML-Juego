@@ -1,6 +1,7 @@
 /* QUÉ AÑO v1.6 — aprendizaje, resultado y cierre de sesión.
  * Capa de producto: no cambia IDs, años, calendario, scheduler ni persistencia.
  * v1.7: resumen/feedback se sincronizan por el contrato de render, no por MutationObserver ni wrapper de renderSummary.
+ * v1.8.4: el feedback esencial usa narrativa natural; la taxonomía editorial queda fuera de la UI primaria.
  */
 (function(){
   'use strict';
@@ -14,6 +15,7 @@
   const firstSentence=value=>sentences(value)[0]||clean(value);
   const sourceName=value=>clean(value).replace(/\s*[·|-]\s*referencia general\s*$/i,'').replace(/\s*[·|-]\s*referencia heredada\s*$/i,'')||'Fuente';
   const setTextIfChanged=(el,text)=>{if(el&&el.textContent!==text)el.textContent=text};
+  const sentence=value=>{const text=clean(value);return !text||/[.!?…]$/.test(text)?text:`${text}.`};
 
   function currentQuestion(){
     try{if(typeof round==='undefined'||!round?.questionIds)return null;return displayQuestion(round.questionIds[round.index])||QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
@@ -39,18 +41,24 @@
 
   function learningBlocks(q){
     const l=learningFor(q),rows=[];
-    if(l.what)rows.push(['Qué fue',l.what]);
-    if(l.importance&&!same(l.importance,l.what))rows.push(['Por qué importa',l.importance]);
-    if(l.memory&&!same(l.memory,l.what)&&!same(l.memory,l.importance))rows.push(['Dato para recordar',l.memory]);
+    if(l.what)rows.push(['what',l.what]);
+    if(l.importance&&!same(l.importance,l.what))rows.push(['importance',l.importance]);
+    if(l.memory&&!same(l.memory,l.what)&&!same(l.memory,l.importance))rows.push(['memory',l.memory]);
     return rows.slice(0,3);
+  }
+
+  function learningNarrative(q){
+    const values=learningBlocks(q).map(([,value])=>sentence(value)).filter(Boolean),paragraphs=[];
+    if(values.length)paragraphs.push(values.slice(0,2).join(' '));
+    if(values.length>2)paragraphs.push(values[2]);
+    return paragraphs;
   }
 
   function makeLearningCard(q){
     const card=document.createElement('section');card.className='v16-learning-card';card.setAttribute('aria-label','Aprendizaje esencial');
-    const head=document.createElement('div');head.className='v16-learning-head';head.innerHTML='<span class="eyebrow">APRENDIZAJE ESENCIAL</span><p>La fecha es el punto de entrada. Esto es lo importante del hito.</p>';card.append(head);
-    for(const [label,value] of learningBlocks(q)){
-      const block=document.createElement('div');block.className='v16-learning-block';
-      const b=document.createElement('b'),p=document.createElement('p');b.textContent=label;p.textContent=value;block.append(b,p);card.append(block);
+    const head=document.createElement('div');head.className='v16-learning-head';head.innerHTML='<span class="eyebrow">APRENDIZAJE ESENCIAL</span>';card.append(head);
+    for(const value of learningNarrative(q)){
+      const p=document.createElement('p');p.className='v16-learning-narrative';p.textContent=value;card.append(p);
     }
     return card;
   }
@@ -157,5 +165,5 @@
 
   window.__QYA_RUNTIME__?.onRender(inspect);
   inspect();
-  window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,decorateSummary,inspect});
+  window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,learningNarrative,decorateSummary,inspect});
 })();
