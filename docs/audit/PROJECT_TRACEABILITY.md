@@ -1,6 +1,6 @@
 # QUÉ AÑO — Auditoría de trazabilidad y arquitectura v1.8.3
 
-Base: `feature/audit-contracts-editorial-batch02-v1.8.2` · corte 2026-09-13. Esta rama documenta y protege la auditoría; no refactoriza runtime ni modifica invariantes de juego.
+Base: `feature/audit-contracts-editorial-batch02-v1.8.2` · corte 2026-09-13. Draft PR: https://github.com/JMoralesP15/HTML-Juego/pull/10. Esta rama documenta y protege la auditoría; no refactoriza runtime ni modifica invariantes de juego.
 
 ## TRACEABILITY
 
@@ -32,7 +32,7 @@ P0: Learning Feedback contradice el contrato narrativo vigente. P1: render, time
 
 ## QA
 
-La auditoría prohíbe regenerar snapshots. El gate v1.8.3 debe ejecutar unit/contract, content audit, reports, auditoría runtime/traceability/completion, accessibility, regression sin `--update-snapshots` y visual QA. La rama no cambia snapshots productivos.
+La auditoría prohíbe regenerar snapshots. El workflow v1.8.3 ejecuta unit/contract, content audit, reports, auditoría runtime/traceability/completion, accessibility, regression contra baselines congeladas y visual QA. `fetch-depth: 0` permite verificar ancestría. No se usa `--update-snapshots`.
 
 ## CLAUDE FINDINGS
 
@@ -45,16 +45,16 @@ Los hallazgos externos están clasificados en `CLAUDE_FINDINGS_VERIFICATION.md` 
 - `contract_coverage = 18/18 = 100%`
 - `ownership_ratio = 6/18 = 33.3%`
 - `test_protection_ratio = 14/18 = 77.8%`
-- `audit_completeness_score`: calculado reproduciblemente por `tools/audit-completion-v183.mjs`; una categoría puede estar completa aunque contenga `UNKNOWN`/`REQUIRES_BROWSER`, siempre que el límite esté explícito.
+- `audit_completeness_score = 100/100`
 
 ## AUDIT COMPLETENESS
 
-La completitud mide cobertura del trabajo de auditoría, no salud arquitectónica. Sus pesos son: Traceability 20%, File classification 20%, Runtime ownership 20%, Contracts 15%, Tech debt 10%, CSS/global analysis 10%, Test mapping 5%. El objetivo es que todos los objetos estén inventariados o explícitamente marcados como no resolubles por estática.
+La completitud mide cobertura del trabajo de auditoría, no salud arquitectónica. Pesos: Traceability 20%, File classification 20%, Runtime ownership 20%, Contracts 15%, Tech debt 10%, CSS/global analysis 10%, Test mapping 5%. `tools/audit-completion-v183.mjs` reproduce el cálculo en `reports/audit-baseline-v183.json`. Un `UNKNOWN` o `REQUIRES_BROWSER` explícito puede coexistir con 100% de completitud porque el límite de evidencia está documentado.
 
 ## UNRESOLVED / REQUIRES_BROWSER
 
 - `MEDIA_ASYNC_PRECEDENCE`: v1.4 consulta Commons de forma asíncrona y v1.8 instala media curada. El orden de `<script>` no prueba por sí solo cuál queda finalmente en DOM bajo latencia real.
-- Cualquier colisión que dependa de interacción/estado y no pueda resolverse por estática debe permanecer aquí en vez de convertirse en una conclusión decorativa.
+- Cualquier colisión dependiente de interacción/estado que no pueda resolverse por estática debe permanecer aquí en vez de convertirse en una conclusión inventada.
 
 ## OBSOLETE CANDIDATES
 
