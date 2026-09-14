@@ -5,6 +5,8 @@ function replaceBackup(){if(!pendingBackup)return;setState(pendingBackup);pendin
 function applyEditorImport(){if(!pendingEdits)return;const s=getState();for(const [id,patch] of Object.entries(pendingEdits))s.editorOverrides[id]={...(s.editorOverrides[id]||{}),...patch};pendingEdits=null;setState(s);openEditor();toast('Correcciones de texto importadas')}
 const actions={
  'begin-answer':()=>qaHumanBegin(),
+ 'choose-topics':()=>{qaTimerStop();round=null;renderCover()},
+ 'start-human':()=>{const s=getState(),topics=s.preferences.categories||[];if(!topics.length&&!s.sessions.some(x=>x.date===dateKey())){startDaily();return}const qs=humanTopicQuestions(topics);if(!qs.length){toast('No hay eventos aprobados en estos temas.');return}startPractice('all','Todas',5,qs.map(q=>q.id))},
  'review-tab':b=>{reviewTab=b.dataset.tab==='practice'?'practice':'due';renderReview()},
  'start-daily':()=>startDaily(),answer:()=>commitAnswer(false),skip:()=>commitAnswer(true),next:()=>nextQuestion(),
  adjust:b=>setYear((round?.guess||1990)+Number(b.dataset.step)),
@@ -51,6 +53,8 @@ document.addEventListener('input',e=>{
   if(e.target.id==='volumeSetting'){const s=getState();s.preferences.volume=Number(e.target.value)/100;setState(s)}
 });
 document.addEventListener('change',e=>{
+ if(e.target.matches('[data-human-category]')){const s=getState();s.preferences.categories=[...document.querySelectorAll('[data-human-category]:checked')].map(x=>x.value);setState(s);const selected=s.preferences.categories,n=QUESTIONS.filter(q=>!selected.length||selected.includes(q.category)).length;$('friendlyTopicCount').textContent=`${n} eventos disponibles · hasta 5 por ronda`;$('friendlyStart').textContent=selected.length?'Jugar estos temas →':s.activeSession?'Continuar mi partida →':'Comenzar →';return}
+
  const id=e.target.id,v=e.target.value;
  if(id==='soundSetting'){const s=getState();s.preferences.sound=e.target.checked;setState(s);applyPreferences();tone('confirm')}
  if(id==='motionSetting'){const s=getState();s.preferences.motion=e.target.checked?'reduced':'system';setState(s);applyPreferences()}

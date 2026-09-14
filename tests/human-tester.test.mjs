@@ -39,3 +39,8 @@ assert.equal(run('practiceQuestions("Todas","all",10).length'),10);
 for(const fault of ['missing','invalid']){const failed=boot('',fault);assert.equal(failed('QUESTIONS.length'),0);assert.equal(failed('QUESTION_BY_ID.size'),0)}
 console.log('Human tester contracts passed (62 approved; 300 preserved; schedule, overrides, import, replacement).');
 
+assert.equal(run('new Set(dailyQuestions("2026-09-14").map(q=>q.category)).size'),5);
+assert.equal(run('humanTopicQuestions(["Historia"]).length'),3);
+assert.equal(run('humanTopicQuestions(["Cine","Música"]).every(q=>["Cine","Música"].includes(q.category))'),true);
+assert.equal(run('migrateState({preferences:{categories:["Inventada","Cine","Cine"]}}).preferences.categories.join()'),"Cine");
+

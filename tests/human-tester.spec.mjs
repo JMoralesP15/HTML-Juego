@@ -23,7 +23,7 @@ for(const width of [375,390])test(`approved copy and chosen image visible before
   const image=page.locator('.friendly-photo img');await expect(image).toHaveAttribute('src',await page.evaluate(()=>QUESTION_BY_ID.get('bitcoin').v18Media.src));
   await expect(page.locator('.friendly-photo')).toBeVisible();
   await expect(page.locator('.friendly-photo summary')).toHaveText('Cr\u00e9ditos y procedencia');
-  await page.getByRole('button',{name:'Aprender más',exact:true}).click();
+  await page.locator('.friendly-context summary').click();
   await expect(page.locator('.friendly-context')).toContainText(approved.expanded);
   await expect(page.locator('.friendly-context')).not.toContainText(approved.brief);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);

@@ -17,3 +17,12 @@ Aplicar a la edición humana publicada, manteniendo el banco de 62 eventos y sus
 - Texto aprobado íntegro accesible sin repetir el extracto; resumen final contiene cada evento respondido.
 - Pruebas de la edición humana, auditoría arquitectónica, accesibilidad y regresiones existentes pasan antes de publicar.
 
+## Segunda iteración: intereses y lenguaje del resultado
+El segundo conjunto de comentarios no demuestra que los hechos sean incorrectos ni que nadie se interese por ellos. Refuerza la hipótesis de desajuste entre temas y preferencias. El lote tiene 32 eventos de Chile sobre 62 (51,6 %), 8 de Cine, 5 de Música, 5 de Tecnología, 5 de Ciencia, 4 de Cultura y 3 de Historia; no hay Videojuegos aprobados. La selección anterior podía agrupar cinco hitos chilenos consecutivos. Esto es un sesgo de exposición verificable, distinto de la validez de cada evento.
+
+Prompt ajustado: incorporar elección múltiple de categorías aprobadas, persistida como preferencia validada. Sin selección, ofrecer mezcla; el calendario humano mezcla cinco categorías diferentes mediante selección determinista. Con selección, generar práctica de hasta cinco eventos únicos exclusivamente dentro de esos temas, sin completar un grupo pequeño con temas no elegidos. Preservar partidas diarias pendientes. Mostrar disponibilidad real y permitir cambiar de temas desde el cierre. No introducir eventos nuevos ni reescribir los textos aprobados a partir de dos opiniones. Registrar señales editoriales para revisión humana en un informe separado.
+
+El resultado debe describir el hecho, no exigir una inversión mental: «El evento ocurrió 5 años antes de tu estimación» si el año real es menor que la respuesta; «después» si es mayor. Mantener «¡Exacto!» y «Para recordar» para aciertos y omisiones. Reemplazar recomendaciones prescriptivas por elección del siguiente tema. El resumen principal de esta edición no utiliza «conviene» ni obliga a profundizar.
+
+Validación adicional: categoría única, selección múltiple, persistencia, categoría con tres eventos, mezcla de cinco categorías, exclusión de eventos no aprobados, ambos sentidos del desfase y ninguna recomendación prescriptiva. La auditoría del lote es de relevancia y presentación; no se presenta como verificación histórica independiente de 62 fuentes.
+

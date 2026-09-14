@@ -37,4 +37,21 @@ test('session ends with five learned events and no speed bonus',async({page})=>{
   await expect(page.getByRole('heading',{name:'Hoy aprendiste'})).toBeVisible();await expect(page.locator('.friendly-summary li')).toHaveCount(5);
   expect(await page.evaluate(()=>getState().sessions.at(-1).answers.every(a=>a.timeBonus===0))).toBe(true);
 });
+test('interests persist and a small category does not borrow unrelated events',async({page})=>{
+  await page.goto(url);await page.getByText('Elegir mis temas',{exact:true}).click();
+  await page.locator('[data-human-category][value="Historia"]').check();
+  await page.reload();await page.getByText('Elegir mis temas',{exact:true}).click();
+  await expect(page.locator('[data-human-category][value="Historia"]')).toBeChecked();
+  await page.getByRole('button',{name:'Jugar estos temas →'}).click();
+  expect(await page.evaluate(()=>round.questionIds.length)).toBe(3);
+  expect(await page.evaluate(()=>round.questionIds.every(id=>QUESTION_BY_ID.get(id).category==='Historia'))).toBe(true);
+});
+test('feedback locates the event relative to the estimate in both directions',async({page})=>{
+  await page.goto(url);await page.getByRole('button',{name:'Comenzar →',exact:true}).click();
+  for(const delta of [5,-5]){
+    await page.evaluate(delta=>{round.questionIds[round.index]='walkman';renderGame();qaHumanBegin();setYear(1979+delta);commitAnswer()},delta);
+    await expect(page.locator('.friendly-progress')).toContainText(`El evento ocurrió 5 años ${delta>0?'antes':'después'} de tu estimación`);
+    await page.locator('#primaryAction').click();
+  }
+});
 
