@@ -2,8 +2,23 @@ import {test,expect} from '@playwright/test';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
+
+async function openAdditionalContent(page){
+  const toggle=page.locator('[data-v16-action="context-toggle"]');
+  if(await toggle.isVisible()){
+    await expect(page.locator('.atlas-document')).toBeHidden();
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded','true');
+  }else{
+    await expect(toggle).toBeHidden();
+    await expect(page.locator('.atlas-document-copy > section')).toHaveCount(0);
+  }
+  await expect(page.locator('.atlas-document')).toBeVisible();
+  await expect(page.locator('.atlas-document-copy')).not.toContainText(/La fecha concreta registrada|La misma ficha|Referencia heredada|pendiente de revisión editorial/i);
+}
+
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
+const url=pathToFileURL(path.join(root,'index.html')).href+'?edition=full#main';
 
 async function boot(page,{width=390,height=844,start=true}={}){
   await page.addInitScript(()=>{window.__QUE_ANO_DISABLE_ANALYTICS__=true});
@@ -30,7 +45,7 @@ test('feedback móvil no desborda y conserva curaduría sin exponer metadata edi
   await boot(page,{width:375,height:667});await answer(page);
   await expect(page.locator('.v14-culture-badge')).toBeHidden();await expect(page.locator('.v16-learning-card')).toBeVisible();
   const m=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));expect(m.scroll).toBeLessThanOrEqual(m.client+1);
-  const toggle=page.locator('[data-v16-action="context-toggle"]');await toggle.click();await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).toContainText('CONTEXTO');await expect(page.locator('.atlas-document-copy')).not.toContainText(/Nivel editorial|Referencia heredada|pendiente de revisión editorial/i);
+  await openAdditionalContent(page);await expect(page.locator('.atlas-document')).toBeVisible();await expect(page.locator('.atlas-document-copy')).not.toContainText(/Nivel editorial|Referencia heredada|pendiente de revisión editorial/i);
 });
 
 test('Commons sólo acepta licencias abiertas con atribución visible',async({page})=>{
@@ -38,7 +53,7 @@ test('Commons sólo acepta licencias abiertas con atribución visible',async({pa
   const q=await page.evaluate(()=>{const x=QUESTIONS.find(q=>!q.image||q.imageType!=='documentary')||QUESTIONS[0];round=createRound('practice',[x]);currentView='repaso';renderGame();return {id:x.id,title:x.title}});
   await page.route('https://commons.wikimedia.org/w/api.php*',async route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({query:{pages:{1:{title:`File:${q.title}.jpg`,imageinfo:[{thumburl:'https://upload.wikimedia.org/mock-open-image.jpg',url:'https://upload.wikimedia.org/mock-open-image.jpg',extmetadata:{LicenseShortName:{value:'CC BY 4.0'},LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},Artist:{value:'Archivo QA'},ImageDescription:{value:`Documento relacionado con ${q.title}`}}}]}}}})}));
   await page.route('https://upload.wikimedia.org/mock-open-image.jpg',async route=>route.fulfill({status:200,contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="120" height="80"><rect width="120" height="80" fill="#333"/></svg>'}));
-  await answer(page);await page.locator('[data-v16-action="context-toggle"]').click();await expect(page.locator('.v14-open-media-credit')).toBeVisible({timeout:7000});await expect(page.locator('.v14-open-media-credit')).toContainText('CC BY 4.0');await expect(page.locator('.v14-open-media-credit a')).toHaveAttribute('href',/commons\.wikimedia\.org/);
+  await answer(page);await openAdditionalContent(page);await expect(page.locator('.v14-open-media-credit')).toBeVisible({timeout:7000});await expect(page.locator('.v14-open-media-credit')).toContainText('CC BY 4.0');await expect(page.locator('.v14-open-media-credit a')).toHaveAttribute('href',/commons\.wikimedia\.org/);
   const licenseCheck=await page.evaluate(()=>({ok:__QA_V14__.licenseAllowed('CC BY-SA 4.0'),bad:__QA_V14__.licenseAllowed('CC BY-NC 4.0')}));expect(licenseCheck.ok).toBe(true);expect(licenseCheck.bad).toBe(false);
 });
 
@@ -64,7 +79,7 @@ test('media curada v1.8 conserva precedencia aunque Commons responda tarde',asyn
   await answer(page);
   await commonsRequest;
   await page.evaluate(id=>{const q=QUESTION_BY_ID.get(id);q.v18Media=q.__v184SavedMedia;q.imageType=q.__v184SavedImageType||'documentary';q.imageSource=q.__v184SavedImageSource||q.v18Media?.sourcePage||'';__QA_V18_MEDIA__.install()},setup.id);
-  await page.locator('[data-v16-action="context-toggle"]').click();
+  await openAdditionalContent(page);
   const curated=page.locator('.atlas-document-image[data-v18="1"]');await expect(curated).toBeVisible();
   await page.waitForTimeout(800);
   await expect(curated).toBeVisible();await expect(curated.locator('img')).toHaveAttribute('src',setup.curatedSrc);await expect(curated.locator('figcaption')).toContainText('CURADA v1.8');
@@ -74,5 +89,6 @@ test('media curada v1.8 conserva precedencia aunque Commons responda tarde',asyn
 test('fallo de red conserva aprendizaje textual sin fabricar una placa decorativa',async({page})=>{
   await boot(page,{start:false});await page.route('https://commons.wikimedia.org/w/api.php*',route=>route.abort());
   await page.evaluate(()=>{const q=QUESTIONS.find(x=>!x.image)||QUESTIONS[0];round=createRound('practice',[q]);currentView='repaso';renderGame();setYear(q.year+2);commitAnswer(false)});
-  await page.waitForTimeout(900);await expect(page.locator('.v16-learning-card')).toBeVisible();await page.locator('[data-v16-action="context-toggle"]').click();await expect(page.locator('.atlas-document-copy')).toContainText('CONTEXTO');await expect(page.locator('.atlas-document-copy')).toBeVisible();await expect(page.locator('.atlas-document-image')).toHaveCount(0);
+  await page.waitForTimeout(900);await expect(page.locator('.v16-learning-card')).toBeVisible();await openAdditionalContent(page);await expect(page.locator('.atlas-document-copy')).toBeVisible();await expect(page.locator('.atlas-document-image')).toHaveCount(0);
 });
+

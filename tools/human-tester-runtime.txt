@@ -1,0 +1,17 @@
+// Applied after content enrichment and before storage/game initialization.
+// Runtime pool is authoritative; review console still loads the original bank.
+const HUMAN_TESTER_ACTIVE=typeof document!=='undefined'&&document.documentElement.dataset.editorialEdition==='human'&&new URLSearchParams(location.search).get('edition')!=='full';
+if(HUMAN_TESTER_ACTIVE){
+  const sourceBank=new Map(QUESTION_BY_ID);
+  QUESTIONS.splice(0,QUESTIONS.length);QUESTION_BY_ID.clear();
+  const approved=HUMAN_TESTER_RELEASE.items.map(item=>{
+    const q=sourceBank.get(item.id);if(!q)throw new Error('Approved event missing: '+item.id);
+    const {learning,media,approvedAt,...edits}=item;
+    return {...q,...edits,context:learning.summary,significance:learning.expanded,approvedLearning:learning,humanApproved:true,extendedContext:{},v14Context:{},v12GeneratedImage:false,v14GeneratedFallback:false,image:'',v18LegacyImage:null,imageAlt:'',imageCredit:'',imageType:'documentary',imageRole:'context',v18Media:media};
+  });
+  if(approved.length<10||new Set(approved.map(q=>q.id)).size!==approved.length)throw new Error('Invalid human tester release');
+  QUESTIONS.splice(0,QUESTIONS.length,...approved);QUESTION_BY_ID.clear();QUESTIONS.forEach(q=>QUESTION_BY_ID.set(q.id,q));
+  document.documentElement.classList.add('human-tester');
+  const version=document.querySelector('.brand .version');if(version)version.textContent=`PRUEBA · ${approved.length} eventos revisados`;
+}
+

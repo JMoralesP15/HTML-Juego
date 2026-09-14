@@ -14163,9 +14163,9 @@ for(const q of QUESTIONS){
   const e=QA_V18_EVIDENCE[q.id];
   if(!e)continue;
   q.v18Evidence=e;
-  if(e.sourceUrl)q.source=e.sourceUrl;
-  if(e.sourceLabel)q.sourceLabel=e.sourceLabel;
-  if(e.detail&&!q.context)q.context=e.detail;
-  if(e.media)q.v18Media=e.media;
+  if(e.status==='structured_corroborated'&&e.sourceUrl)q.source=e.sourceUrl;
+  if(e.status==='structured_corroborated'&&e.sourceLabel)q.sourceLabel=e.sourceLabel;
+  // Evidence detail stays in v18Evidence; it is not learning prose.
+  if(e.status==='structured_corroborated'&&e.media)q.v18Media=e.media;
 }
 window.__QA_V18_EVIDENCE__={version:'1.8.0-beta.1',rows:QA_V18_EVIDENCE};

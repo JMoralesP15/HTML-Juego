@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const url = pathToFileURL(path.join(root, 'index.html')).href + '#main';
+const url = pathToFileURL(path.join(root, 'index.html')).href + '?edition=full#main';
 const desktop={width:1440,height:900}, shortDesktop={width:1366,height:768}, mobile={width:390,height:844};
 
 async function boot(page,size=desktop){
@@ -36,3 +36,4 @@ test('Targets principales cumplen 44 px',async({page})=>{await boot(page,mobile)
 test('Reduced motion del sistema reduce transiciones',async({page})=>{await page.emulateMedia({reducedMotion:'reduce'});await boot(page,desktop);const durations=await page.locator('.archive-question-layout').evaluate(el=>({animation:getComputedStyle(el).animationDuration,transition:getComputedStyle(el).transitionDuration}));const first=v=>Number.parseFloat(String(v).split(',')[0])||0;expect(first(durations.animation)).toBeLessThanOrEqual(.001);expect(first(durations.transition)).toBeLessThanOrEqual(.001);await page.screenshot({path:'test-results/screenshots/v15-reduced-motion-1440x900.png',fullPage:true})});
 
 test('Resumen diario cierra la sesión sin CTA de loop infinito',async({page})=>{await boot(page,desktop);await page.evaluate(()=>{while(round){if(round.phase==='question'){const q=QUESTION_BY_ID.get(round.questionIds[round.index]);setYear(q.year);commitAnswer()}if(round?.phase==='answer')nextQuestion()}});await expect(page.locator('.archive-summary')).toBeVisible();await expect(page.locator('body')).toContainText('Archivo de hoy completo');await expect(page.locator('.summary-v11 .summary-primary')).toHaveCount(1);await expect(page.locator('.v16-review-actions .summary-primary')).toBeVisible();await expect(page.locator('.summary-v11')).not.toContainText('Juega otra');await page.screenshot({path:'test-results/screenshots/v16-resumen-1440x900.png',fullPage:true})});
+

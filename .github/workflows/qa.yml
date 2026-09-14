@@ -39,6 +39,8 @@ jobs:
         run: npm ci
       - name: Unit and contract tests
         run: npm test
+      - name: Human tester authorization contracts
+        run: npm run test:human-tester
       - name: Content integrity audit
         run: npm run audit
       - name: Compile editorial review batch v1.8.7
@@ -100,3 +102,4 @@ jobs:
             reports/audit-baseline-v183.json
           if-no-files-found: ignore
           retention-days: 14
+

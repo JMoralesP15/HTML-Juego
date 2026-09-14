@@ -1,6 +1,12 @@
 /* STORAGE — schema 5. Daily, practice and ordering have separate histories. */
-const STORE_KEY='que_ano_state_v10', SCHEMA_VERSION=5;
-const LEGACY_KEYS=['que_ano_state_v093','que_ano_state_v092','que_ano_state_v08','que_ano_state','que_ano_v04_state'];
+const IS_HUMAN_TESTER=typeof HUMAN_TESTER_ACTIVE!=='undefined'?HUMAN_TESTER_ACTIVE:Boolean(typeof window!=='undefined'&&window.location&&document.documentElement?.dataset.editorialEdition==='human'&&new URLSearchParams(window.location.search).get('edition')!=='full');
+if(IS_HUMAN_TESTER&&(typeof HUMAN_TESTER_RELEASE==='undefined'||QUESTIONS.length<10||QUESTIONS.some(q=>!q.humanApproved))){
+  QUESTIONS.splice(0,QUESTIONS.length);QUESTION_BY_ID.clear();
+  const loading=document.getElementById('view');if(loading)loading.textContent='No se pudo cargar la edición revisada. Recarga la página para volver a intentar.';
+  throw new Error('Human tester release unavailable; unreviewed bank blocked');
+}
+const STORE_KEY=IS_HUMAN_TESTER?'que_ano_tester_'+HUMAN_TESTER_RELEASE.id:'que_ano_state_v10', SCHEMA_VERSION=5;
+const LEGACY_KEYS=IS_HUMAN_TESTER?[]:['que_ano_state_v093','que_ano_state_v092','que_ano_state_v08','que_ano_state','que_ano_v04_state'];
 const GLOBAL_MIN_YEAR=1950, GLOBAL_MAX_YEAR=Math.max(2026,new Date().getFullYear());
 const DIFFICULTY_LABELS={facil:'Fácil',media:'Media',dificil:'Difícil'};
 const CATEGORY_COLORS={'Tecnología':'#7acff2','Cine':'#c3b2f2','Música':'#eeb0d4','Videojuegos':'#bcda8e','Cultura':'#efbc87','Ciencia':'#89d6c2','Chile':'#eeaaa4','Historia':'#f4d18b'};
@@ -17,6 +23,7 @@ function defaultTimelineStats(){return {rounds:0,perfect:0,positions:0,elements:
 function defaultState(){return {schemaVersion:SCHEMA_VERSION,sessions:[],reviewSessions:[],practiceSessions:[],bestStreak:0,achievements:[],questionStats:{},timeline:defaultTimelineStats(),timelineDraft:null,activeSession:null,practiceDraft:null,editorOverrides:{},reviewedIds:[],onboardingSeen:false,dailyIntroDate:'',preferences:{sound:false,volume:.25,motion:'system',palette:'amber'},recoveryIds:[],longTermIds:[]}}
 function normalizeAnswer(a){
   if(!a||!QUESTION_BY_ID.has(a.id))return null;
+  if(IS_HUMAN_TESTER&&a.actual!=null&&a.actual!==QUESTION_BY_ID.get(a.id).year)return null;
   const q=QUESTION_BY_ID.get(a.id),actual=Number.isInteger(a.actual)?a.actual:q.year;
   if(actual<GLOBAL_MIN_YEAR||actual>GLOBAL_MAX_YEAR)return null;
   const skipped=Boolean(a.skipped),guess=skipped?null:Number(a.guess);
@@ -108,6 +115,7 @@ const ACHIEVEMENTS=[
 ];
 function updateAchievements(s){const added=[];for(const a of ACHIEVEMENTS)if(!s.achievements.includes(a.id)&&a.value(s)>=a.goal){s.achievements.push(a.id);added.push(a.id)}return added}
 function availablePalettes(s=getState()){return ['amber',...(s.achievements.includes('first')?['ocean']:[]),...(s.achievements.includes('allcats')?['violet']:[])]}
-function displayQuestion(id){const q=QUESTION_BY_ID.get(id);return q?{...q,...(getState().editorOverrides[id]||{})}:null}
+function displayQuestion(id){const q=QUESTION_BY_ID.get(id);return q?{...q,...(IS_HUMAN_TESTER?{}:getState().editorOverrides[id]||{})}:null}
 function auditQuestionBank(){const issues={duplicateIds:[],yearRange:[],emptyKind:[],missingSource:[],missingImageAlt:[],invalidDifficulty:[],emptySubcategory:[],nearDuplicates:[],missingScheduleIds:[]},seen=new Set();for(const q of QUESTIONS){if(seen.has(q.id))issues.duplicateIds.push(q.id);seen.add(q.id);if(!Number.isInteger(q.year)||q.year<1950||q.year>GLOBAL_MAX_YEAR)issues.yearRange.push(q.id);if(!q.kind)issues.emptyKind.push(q.id);if(!safeURL(q.source)||!q.sourceLabel)issues.missingSource.push(q.id);if(q.image&&!q.imageAlt)issues.missingImageAlt.push(q.id);if(!DIFFICULTY_LABELS[q.difficulty])issues.invalidDifficulty.push(q.id);if(!q.subcategory)issues.emptySubcategory.push(q.id)}for(const q of SCHEDULE_BANK)if(!seen.has(q.id))issues.missingScheduleIds.push(q.id);const words=s=>new Set(s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/[^a-z0-9]+/).filter(Boolean));for(let i=0;i<QUESTIONS.length;i++)for(let j=i+1;j<QUESTIONS.length;j++){const a=words(QUESTIONS[i].title),b=words(QUESTIONS[j].title),common=[...a].filter(w=>b.has(w)).length;if(common/new Set([...a,...b]).size>.84)issues.nearDuplicates.push([QUESTIONS[i].id,QUESTIONS[j].id])}const countBy=k=>QUESTIONS.reduce((r,q)=>(r[q[k]]=(r[q[k]]||0)+1,r),{});return {total:QUESTIONS.length,versions:{content:CONTENT_VERSION,schedule:SCHEDULE_VERSION,schema:SCHEMA_VERSION},issues,warnings:{genericSources:QUESTIONS.filter(q=>!q.editorialVerified).map(q=>q.id)},category:countBy('category'),difficulty:countBy('difficulty'),region:countBy('region'),images:QUESTIONS.filter(q=>q.image).length,extendedContext:QUESTIONS.filter(q=>q.context).length}}
 function simulateSchedule(days=365){generateDailyScheduleThrough(days-1);const seen=new Map(),gaps=[],specials=[];for(let n=0;n<days;n++){const e=DAILY_SCHEDULE_CACHE.get(n);for(const q of e.questions){if(seen.has(q.id))gaps.push(n-seen.get(q.id));seen.set(q.id,n)}if(e.specialTheme)specials.push({date:dateKey(addDays(new Date(2026,0,1),n)),theme:e.specialTheme,match:e.questions.filter(q=>q.themes.includes(e.specialTheme)).length})}return {days,minGap:Math.min(...gaps),repeatsUnder30:gaps.filter(n=>n<30).length,allSpecialsValid:specials.every(s=>s.match>=4),specials}}
+

@@ -20,6 +20,26 @@ const refkeys=Object.keys(R.sourceReframes||{});if(refkeys.length!==2)fail.push(
 const applicable=generic.filter(id=>!doubtful.includes(id));const tkeys=Object.keys(T.items||{});if(tkeys.length!==applicable.length)fail.push(`text refinements=${tkeys.length}, expected ${applicable.length}`);
 for(const id of applicable){const x=T.items?.[id];if(!x){fail.push(`${id}: missing generic rewrite`);continue}const sw=words(x.summary),ew=words(x.expanded);if(sw<35||sw>80)fail.push(`${id}: summary ${sw} words (expected 35-80)`);if(ew<60||ew>140)fail.push(`${id}: expanded ${ew} words (expected 60-140)`);if(x.reviewRequired!==true)fail.push(`${id}: rewrite reviewRequired must be true`)}
 let mediaValidation='pending_generation';
-if(fs.existsSync(path.join(root,'reports/editorial-review-media-v187c.json'))){const M=JSON.parse(fs.readFileSync(path.join(root,'reports/editorial-review-media-v187c.json'),'utf8'));const generated=M.generatedAt&&M.summary?.searched===badMedia.length;if(generated){mediaValidation='validated';if(M.summary?.targetIds!==141)fail.push(`media targetIds=${M.summary?.targetIds}, expected 141`);for(const id of badMedia){const row=M.items?.[id];if(!row){fail.push(`${id}: missing generated media row`);continue}if((row.candidates||[]).length>6)fail.push(`${id}: >6 media candidates`);for(const c of row.candidates||[]){if(!['publishable','review_only'].includes(c.rightsTier))fail.push(`${id}: invalid rightsTier`);if(c.reviewRequired!==true)fail.push(`${id}: media candidate is not reviewRequired`)}}}}
+if(fs.existsSync(path.join(root,'reports/editorial-review-media-v187c.json'))){
+  const M=JSON.parse(fs.readFileSync(path.join(root,'reports/editorial-review-media-v187c.json'),'utf8'));
+  if(M.generatedAt){
+    mediaValidation='validated';
+    const rows=Object.values(M.items||{});
+    if(M.summary?.targetIds!==rows.length||M.summary?.searched!==rows.length)fail.push('media summary does not match generated rows');
+    for(const id of badMedia)if(!M.items?.[id])fail.push(`${id}: missing generated media row`);
+    let candidateCount=0;
+    for(const row of rows){
+      if(!['found','no_candidate','error'].includes(row.status))fail.push(`${row.id}: invalid search status`);
+      if((row.candidates||[]).length>6)fail.push(`${row.id}: >6 media candidates`);
+      candidateCount+=(row.candidates||[]).length;
+      for(const c of row.candidates||[]){
+        if(!['publishable','review_only'].includes(c.rightsTier))fail.push(`${row.id}: invalid rightsTier`);
+        if(c.reviewRequired!==true)fail.push(`${row.id}: media candidate is not reviewRequired`);
+        if(!c.src||!c.sourcePage)fail.push(`${row.id}: missing media provenance`);
+      }
+    }
+    if(M.summary?.totalCandidates!==candidateCount)fail.push('media candidate total does not match rows');
+  }
+}
 const report={pass:fail.length===0,mediaValidation,counts:{doubtful:doubtful.length,reviewSource:reviewSource.length,generic:generic.length,genericApplicable:applicable.length,replacements:rkeys.length,textRefinements:tkeys.length,badMedia:badMedia.length},failures:fail};
 fs.writeFileSync(path.join(root,'reports/editorial-v187c-validation.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(fail.length)process.exit(1);

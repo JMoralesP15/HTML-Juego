@@ -140,3 +140,77 @@ test('capturas de consola editorial v1.8.7-c desktop y móvil',async({page})=>{
   await boot(page);await page.selectOption('#statusFilter','doubtful');await page.screenshot({path:path.join(shotDir,'v187c-review-refinement-desktop.png'),fullPage:true});
   await boot(page,{width:390,height:844});await page.selectOption('#statusFilter','generic');await page.screenshot({path:path.join(shotDir,'v187c-review-refinement-mobile-390x844.png'),fullPage:true});
 });
+
+const tinyPNG=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4z8AAAAMBAQDJ/pLvAAAAAElFTkSuQmCC','base64');
+async function openImageForm(page){await page.locator('.custom-media > summary').click()}
+test('imagen manual por enlace conserva procedencia y derechos pendientes al recargar',async({page})=>{
+  await boot(page);await openImageForm(page);
+  await page.route('https://example.org/photo.png',route=>route.fulfill({status:200,contentType:'image/png',body:tinyPNG}));
+  await page.locator('#customImageUrl').fill('https://example.org/photo.png');
+  await page.locator('#customImageCredit').fill('Archivo de prueba');
+  await page.locator('#customImageSource').fill('https://example.org/origen');
+  await page.locator('[data-preview-image]').click();
+  await expect(page.locator('#customImagePreview')).toBeVisible();
+  await page.locator('[data-add-image]').click();
+  const saved=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getStore().records[api.getCurrent()]});
+  expect(saved.customImages).toHaveLength(1);expect(saved.customImages[0].sourcePage).toBe('https://example.org/origen');
+  expect(saved.mediaStatus).toBe('rights_review');expect(saved.mediaCandidateKey).toBe(saved.customImages[0].customId);
+  await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__);
+  const restored=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getCandidates(api.getCurrent()).filter(c=>c.provider==='manual')});
+  expect(restored).toHaveLength(1);expect(restored[0].src).toBe('https://example.org/photo.png');
+});
+test('archivo subido se incorpora al JSON exportado sin aprobación automática',async({page})=>{
+  await boot(page,{width:390,height:844});await openImageForm(page);
+  await page.locator('#customImageFile').setInputFiles({name:'foto.png',mimeType:'image/png',buffer:tinyPNG});
+  await page.locator('#customImageCredit').fill('Autora de prueba');
+  await page.locator('#customImageLicense').selectOption('own');
+  await page.locator('[data-preview-image]').click();await expect(page.locator('#customImagePreview')).toBeVisible();
+  await page.locator('[data-add-image]').click();
+  const id=await page.evaluate(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getCurrent());
+  const saved=await page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id],id);
+  expect(saved.mediaStatus).toBe('pending');expect(saved.customImages[0].src).toMatch(/^data:image\/jpeg;base64,/);
+  const downloading=page.waitForEvent('download');await page.locator('#exportButton').click();
+  const download=await downloading,exported=JSON.parse(fs.readFileSync(await download.path(),'utf8'));
+  expect(exported.records[id].customImages[0].src).toBe(saved.customImages[0].src);
+  await page.evaluate(()=>localStorage.removeItem('que-ano-editorial-review-v18'));await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__);
+  await page.locator('#importInput').setInputFiles({name:'review.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});
+  await expect.poll(()=>page.evaluate(id=>window.__QA_EDITORIAL_REVIEW_CONSOLE__.getStore().records[id]?.customImages?.length||0,id)).toBe(1);
+  await page.reload();await page.waitForFunction(()=>window.__QA_EDITORIAL_REVIEW_CONSOLE__);
+  await expect(page.locator('.visual-candidate-grid img[src^="data:image/jpeg"]')).toBeVisible();
+});
+test('enlace roto y archivo no admitido muestran errores sin crear una candidata',async({page})=>{
+  await boot(page);await openImageForm(page);
+  await page.route('https://example.org/broken.png',route=>route.abort());
+  await page.locator('#customImageUrl').fill('https://example.org/broken.png');await page.locator('[data-preview-image]').click();
+  await expect(page.locator('#customImageMessage')).toContainText('No se pudo cargar');
+  await page.locator('#customImageUrl').fill('');
+  await page.locator('#customImageFile').setInputFiles({name:'documento.pdf',mimeType:'application/pdf',buffer:Buffer.from('no image')});
+  await page.locator('[data-preview-image]').click();await expect(page.locator('#customImageMessage')).toContainText('Formato no admitido');
+  await expect(page.locator('#customImagePreview')).toBeHidden();
+});
+test('las imágenes manuales del original no pasan al evento de reemplazo',async({page})=>{
+  await boot(page);await page.selectOption('#statusFilter','doubtful');
+  await openImageForm(page);await page.locator('#customImageFile').setInputFiles({name:'foto.png',mimeType:'image/png',buffer:tinyPNG});
+  await page.locator('#customImageCredit').fill('Archivo de prueba');
+  await page.locator('[data-preview-image]').click();await expect(page.locator('#customImagePreview')).toBeVisible();await page.locator('[data-add-image]').click();
+  await page.locator('[data-replacement-choice="0"]').click();
+  const candidates=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getCandidates(api.getCurrent())});
+  expect(candidates).toEqual([]);
+  await openImageForm(page);await page.locator('#customImageFile').setInputFiles({name:'reemplazo.png',mimeType:'image/png',buffer:tinyPNG});
+  await page.locator('#customImageCredit').fill('Archivo para reemplazo');
+  await page.locator('[data-preview-image]').click();await expect(page.locator('#customImagePreview')).toBeVisible();await page.locator('[data-add-image]').click();
+  const added=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getCandidates(api.getCurrent())});
+  expect(added).toHaveLength(1);expect(added[0].eventScope).toBe('replacement:0');
+});
+
+test('si falta espacio no se pierde la revisión ni se simula guardar una imagen',async({page})=>{
+  await boot(page);await openImageForm(page);
+  await page.locator('#customImageFile').setInputFiles({name:'foto.png',mimeType:'image/png',buffer:tinyPNG});
+  await page.locator('#customImageCredit').fill('Archivo de prueba');
+  await page.locator('[data-preview-image]').click();await expect(page.locator('#customImagePreview')).toBeVisible();
+  await page.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key==='que-ano-editorial-review-v18'&&Object.values(JSON.parse(value).records||{}).some(r=>r.customImages?.length))throw new DOMException('Quota','QuotaExceededError');return original.call(this,key,value)}});
+  await page.locator('[data-add-image]').click();
+  await expect(page.locator('#customImageMessage')).toContainText('No se pudo guardar');
+  const saved=await page.evaluate(()=>{const api=window.__QA_EDITORIAL_REVIEW_CONSOLE__;return api.getStore().records[api.getCurrent()]});
+  expect(saved.customImages||[]).toHaveLength(0);await expect(page.locator('#customImagePreview')).toBeVisible();
+});

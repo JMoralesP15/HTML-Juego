@@ -1,0 +1,959 @@
+{
+  "total": 300,
+  "included": 62,
+  "excluded": [
+    {
+      "id": "ibmpc",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "mac",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "web",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "win95",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "google",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ipod",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "facebook",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "youtube",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "iphone",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "instagram",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "chatgpt",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "apollo11",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ussr",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "hubble",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "dolly",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "genome",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "curiosity",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "jwst",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bttf",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "jurassic",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "titanic",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "matrix",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "parasite",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sgtpepper",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "darkside",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "kida",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "discovery",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "backtoblack",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "inrainbows",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ram",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "gameboy",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "snes",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "playstation",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "pokemon",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "n64",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sims",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "xbox",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wii",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "minecraft",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "vhs",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "harrypotter",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wikipedia",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "netflixstream",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "intel4004",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "dynatac",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "netscape",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "amazon",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ebay",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "napster",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "paypal",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "twitter",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "airbnb",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "whatsapp",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "uber",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tiktok",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "applem1",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "poliovaccine",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "heart_transplant",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ivf",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "higgs",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "covid",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "cubancrisis",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "jfk",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "cubanrev",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sept11",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "falklands",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "et",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bladerunner",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "lionking",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "lotr",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "avatar",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "cityofgod",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "thriller",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "likeavirgin",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "thewall",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "rumours",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "badbunny",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "shakira",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "pacman",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tetris",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "supermario",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sf2",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wow",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ps2",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "fortnite",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "amongus",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "estallido2019",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "email1971",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "cienanos",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "davinci",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "cd1982",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "mtv",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "barbie",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "dragonball",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "friends",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "breakingbad",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "arpanet",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wwwproposal",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "linuxkernel",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "mpesa",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "android",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wechat",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "alphago",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "upiindia",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "rashomon",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sevensamurai",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "fourhundredblows",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "battlealgiers",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "2001film",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "exorcist",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "akiraanime",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "cinemaparadiso",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "chungkingexpress",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "amoresperros",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ytumama",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "oldboy",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "panslabyrinth",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "secretoojos",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "roma",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "portraitladyfire",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "rrr",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wildtales",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "kindofblue",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "getzgilberto",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "velvetbanana",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "derechovivir",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "construcao",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "clubedaesquina",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "artaud",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "transeurope",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "londoncalling",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "recatacanes",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "buenavista",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "homogenic",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "aeroplane",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "miseducation",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bocanada",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "siempreeshoy",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tpab",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "elmalquerer",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "motomami",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "pong",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "spaceinvaders",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "zelda",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "metroid",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "simcity",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "doom",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "residentevil",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "halflife",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "gta3",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "shadowcolossus",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "portal",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "darksouls",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "journeygame",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "lastofus",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "witcher3",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "celeste",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "discoelysium",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "hades",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "baldursgate3",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "blackmyth",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "lotrbook",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "mafalda",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sesamestreet",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "hellokitty",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "garfield",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "akiramanga",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "simpsons",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sailormoon",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tamagotchi",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "pokemonanime",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "teletubbies",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "firstdoodle",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "emoji",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bigbrother",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "goodreads",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tedonline",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "kindle",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "gangnam",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "btsdebut",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "hamilton",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "wordle",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "solarcell",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "atomicclock",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "platetectonics",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ctscan",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "voyager1",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "smallpox",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "pcr",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ozonehole",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "firstexoplanet",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "isszarya",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "shenzhou5",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "hayabusareturn",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "crispr2012",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "homonaledi",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tuyouyou",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "gravwaves",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "change4",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "blackholeimage",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "sarscov2genome",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "mrnavaccine",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "hopemars",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "chandrayaan3",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "osirisrex",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "womenvotechile",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "chileapec",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tlcue",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bacheletfirst",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "eclipsechile",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "indiarepublic",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "koreanarmistice",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bandung",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "suezcrisis",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ghanaindependence",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "algeriaindependence",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "marchwashington",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "praguespring",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "stonewall",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bangladesh",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "yomkippur",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "carnation",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "saigonfall",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "iranrevolution",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "solidaritypoland",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "bhopal",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "chernobyl",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "tiananmen",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "rwandagenocide",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "southafricaelection",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "goodfriday",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "eurolaunch",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "iraqinvasion",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "arabspingtunisia",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "eritreaethiopiapeace",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "beirutexplosion",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "talibankabul",
+      "reason": "human_approval_incomplete"
+    },
+    {
+      "id": "ukraineinvasion",
+      "reason": "human_approval_incomplete"
+    }
+  ]
+}
+
