@@ -22,6 +22,7 @@ for(const width of [375,390])test(`approved copy and chosen image visible before
   await expect(page.locator('.v16-learning-narrative').first()).toHaveText(approved.summary);
   const image=page.locator('.atlas-learn>.atlas-document-image img');await expect(image).toHaveAttribute('src',await page.evaluate(()=>QUESTION_BY_ID.get('bitcoin').v18Media.src));
   await expect(page.locator('.atlas-learn>.atlas-document-image')).toBeVisible();
+  await expect(page.locator('.atlas-learn>.atlas-document-image summary')).toHaveText('Cr\u00e9ditos y procedencia');
   await page.getByRole('button',{name:'Profundizar',exact:true}).click();
   await expect(page.locator('.atlas-document-copy')).toContainText(approved.expanded);
   await expect(page.locator('.atlas-document-copy')).not.toContainText(approved.summary);
