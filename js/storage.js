@@ -1,5 +1,10 @@
 /* STORAGE — schema 5. Daily, practice and ordering have separate histories. */
-const IS_HUMAN_TESTER=typeof HUMAN_TESTER_ACTIVE!=='undefined'&&HUMAN_TESTER_ACTIVE;
+const IS_HUMAN_TESTER=typeof HUMAN_TESTER_ACTIVE!=='undefined'?HUMAN_TESTER_ACTIVE:Boolean(typeof window!=='undefined'&&window.location&&document.documentElement?.dataset.editorialEdition==='human'&&new URLSearchParams(window.location.search).get('edition')!=='full');
+if(IS_HUMAN_TESTER&&(typeof HUMAN_TESTER_RELEASE==='undefined'||QUESTIONS.length<10||QUESTIONS.some(q=>!q.humanApproved))){
+  QUESTIONS.splice(0,QUESTIONS.length);QUESTION_BY_ID.clear();
+  const loading=document.getElementById('view');if(loading)loading.textContent='No se pudo cargar la edición revisada. Recarga la página para volver a intentar.';
+  throw new Error('Human tester release unavailable; unreviewed bank blocked');
+}
 const STORE_KEY=IS_HUMAN_TESTER?'que_ano_tester_'+HUMAN_TESTER_RELEASE.id:'que_ano_state_v10', SCHEMA_VERSION=5;
 const LEGACY_KEYS=IS_HUMAN_TESTER?[]:['que_ano_state_v093','que_ano_state_v092','que_ano_state_v08','que_ano_state','que_ano_v04_state'];
 const GLOBAL_MIN_YEAR=1950, GLOBAL_MAX_YEAR=Math.max(2026,new Date().getFullYear());

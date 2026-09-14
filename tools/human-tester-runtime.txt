@@ -2,8 +2,10 @@
 // Runtime pool is authoritative; review console still loads the original bank.
 const HUMAN_TESTER_ACTIVE=typeof document!=='undefined'&&document.documentElement.dataset.editorialEdition==='human'&&new URLSearchParams(location.search).get('edition')!=='full';
 if(HUMAN_TESTER_ACTIVE){
+  const sourceBank=new Map(QUESTION_BY_ID);
+  QUESTIONS.splice(0,QUESTIONS.length);QUESTION_BY_ID.clear();
   const approved=HUMAN_TESTER_RELEASE.items.map(item=>{
-    const q=QUESTION_BY_ID.get(item.id);if(!q)throw new Error('Approved event missing: '+item.id);
+    const q=sourceBank.get(item.id);if(!q)throw new Error('Approved event missing: '+item.id);
     const {learning,media,approvedAt,...edits}=item;
     return {...q,...edits,context:learning.summary,significance:learning.expanded,approvedLearning:learning,humanApproved:true,extendedContext:{},v14Context:{},v12GeneratedImage:false,v14GeneratedFallback:false,image:'',v18LegacyImage:null,imageAlt:'',imageCredit:'',imageType:'documentary',imageRole:'context',v18Media:media};
   });

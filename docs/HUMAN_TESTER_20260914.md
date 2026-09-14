@@ -17,3 +17,8 @@ Un filtro sobre el calendario de 300 eventos puede producir rondas vacías. Se r
 ## Datos de entrada
 300 registros; 63 con texto y visual aprobados (21%); 62 con las tres aprobaciones (20,67%). Apollo 11 está excluido por hecho pendiente. Las 62 selecciones se resuelven: 47 imágenes manuales, 9 candidatas automáticas elegidas por humano y 6 visuales actuales. Un reemplazo (usb) requiere también actualizar pregunta y año. Las licencias son declaraciones del export, no una auditoría jurídica.
 
+## Revisi�n posterior del producto
+La vista m�vil publicada reproduc�a metadiscurso y no mostraba la selecci�n humana. La edici�n nueva muestra la foto completa (sin recorte), cr�ditos desplegables y un resumen �nico. Se conserva el indicador de distancia temporal y el bot�n Siguiente accesible. Se a�adieron versiones a los recursos para evitar mezclar scripts antiguos con el nuevo HTML; los inventarios de arquitectura reconocen esos par�metros y mantienen el recuento real. Si falta la edici�n compilada o contiene IDs inv�lidos, se vac�a el conjunto y se bloquea el juego: nunca se recurre al banco sin revisar.
+
+Disponibilidad medida: 55 URLs respondieron con contenido de imagen, 6 archivos locales existen y 1 URL respondi� 429 (allendelection). Es una comprobaci�n puntual de cabeceras; no certifica disponibilidad permanente ni los derechos declarados.
+

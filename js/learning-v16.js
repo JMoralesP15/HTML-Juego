@@ -56,6 +56,7 @@
   }
 
   function learningNarrative(q){
+    if(q?.approvedLearning)return [q.approvedLearning.summary];
     const values=learningBlocks(q).map(([,value])=>sentence(value)).filter(Boolean),paragraphs=[];
     if(values.length)paragraphs.push(values.slice(0,2).join(' '));
     if(values.length>2)paragraphs.push(values[2]);

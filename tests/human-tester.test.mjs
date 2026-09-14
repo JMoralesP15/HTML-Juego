@@ -3,10 +3,15 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
-function boot(search=''){
-  const {document,window}=parseHTML(html),store=new Map();
+function boot(search='',fault=''){
+  const {document,window}=parseHTML(html),store=new Map();window.location={search};
   const context=vm.createContext({document,window,console,location:{search,hash:''},URL,URLSearchParams,Date,Map,Set,Math,JSON,Intl,localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
-  for(const name of ['content','scheduler','calendar','editorial','editorial-verification-v18','editorial-v18-manual','content-v12','curation-v14','storage','game'])vm.runInContext(fs.readFileSync(new URL(`../js/${name}.js`,import.meta.url),'utf8'),context,{filename:name});
+  for(const name of ['content','scheduler','calendar','editorial','editorial-verification-v18','editorial-v18-manual','content-v12','curation-v14','storage','game']){
+    if(fault==='missing'&&name==='curation-v14')continue;
+    let code=fs.readFileSync(new URL(`../js/${name}.js`,import.meta.url),'utf8');
+    if(fault==='invalid'&&name==='curation-v14')code=code.replace('/* HUMAN_TESTER_RELEASE_DATA */', '/* HUMAN_TESTER_RELEASE_DATA */').replace('const sourceBank=new Map(QUESTION_BY_ID);', 'HUMAN_TESTER_RELEASE.items[0].id="__invalid__";const sourceBank=new Map(QUESTION_BY_ID);');
+    try{vm.runInContext(code,context,{filename:name})}catch(error){if(!fault)throw error;}
+  }
   return code=>vm.runInContext(code,context);
 }
 const run=boot(),full=boot('?edition=full');
@@ -25,10 +30,12 @@ for(let d=1;d<=28;d++){
   assert.equal(run(`new Set(dailyQuestions('${key}').map(q=>q.id)).size`),5);
   assert.equal(run(`dailyQuestions('${key}').every(q=>q.humanApproved)`),true);
 }
-assert.equal(run('practiceQuestions("all",10).every(q=>q.humanApproved)'),true);
+assert.equal(run('practiceQuestions("Todas","all",10).every(q=>q.humanApproved)'),true);
 assert.equal(run('QUESTIONS.filter(q=>!reservedUpcomingIds().has(q.id)).length'),57);
 const release=JSON.parse(fs.readFileSync(new URL('../reports/human-tester-release.json',import.meta.url)));
 assert.equal(run('QUESTION_BY_ID.get("usb").year'),release.items.find(q=>q.id==='usb').year);
 assert.equal(run('QUESTION_BY_ID.get("usb").title'),release.items.find(q=>q.id==='usb').title);
+assert.equal(run('practiceQuestions("Todas","all",10).length'),10);
+for(const fault of ['missing','invalid']){const failed=boot('',fault);assert.equal(failed('QUESTIONS.length'),0);assert.equal(failed('QUESTION_BY_ID.size'),0)}
 console.log('Human tester contracts passed (62 approved; 300 preserved; schedule, overrides, import, replacement).');
 

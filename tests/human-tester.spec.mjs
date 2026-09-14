@@ -17,7 +17,7 @@ test('default release gates all pools and keeps a five-event session across relo
   await page.evaluate(()=>startTimeline());expect(await page.evaluate(()=>getState().timelineDraft.ids.every(id=>QUESTION_BY_ID.get(id).humanApproved))).toBe(true);
 });
 for(const width of [375,390])test(`approved copy and chosen image visible before expanding at ${width}px`,async({page})=>{
-  await boot(page,width);await page.evaluate(()=>{startPractice('all','Prueba',5);round.questionIds[0]='bitcoin';renderGame();commitAnswer(true)});
+  await boot(page,width);await page.evaluate(()=>{startPractice('all','Todas',5);round.questionIds[0]='bitcoin';renderGame();commitAnswer(true)});
   const approved=await page.evaluate(()=>QUESTION_BY_ID.get('bitcoin').approvedLearning);
   await expect(page.locator('.v16-learning-narrative').first()).toHaveText(approved.summary);
   const image=page.locator('.atlas-learn>.atlas-document-image img');await expect(image).toHaveAttribute('src',await page.evaluate(()=>QUESTION_BY_ID.get('bitcoin').v18Media.src));
