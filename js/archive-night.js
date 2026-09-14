@@ -20,6 +20,8 @@ function refreshHeader(){
 }
 
 function renderCover(){
+  if(IS_HUMAN_TESTER){setView(`<section class="surface friendly-game friendly-welcome"><span>5 preguntas para descubrir</span><h1>Un viaje por el tiempo</h1><ol><li>Lee la pregunta con calma.</li><li>Pulsa Estoy listo y elige el año en 15 segundos.</li><li>Descubre la respuesta. El contexto es opcional.</li></ol><p>Al final verás lo que aprendiste.</p><button class="primary" data-action="start-daily">${getState().activeSession?'Continuar mi partida':'Comenzar'} →</button></section>`);return}
+
   const s=getState(),entry=dailyEntry(),n=entry.questions.filter(q=>!discoveredIds(s).has(q.id)).length;
   setView(`<section class="surface cover archive-cover">
     <span class="cover-mark">ARCHIVO DE HOY</span>
