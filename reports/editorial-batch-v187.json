@@ -2,7 +2,7 @@
   "schema": "que-ano-editorial-batch-v1.8.7",
   "version": "1.8.7-b",
   "batch": "batch-02-100",
-  "generatedAt": "2026-09-13T14:28:37.332Z",
+  "generatedAt": "2026-09-14T03:52:00.175Z",
   "selectionRule": "100 IDs outside batch01; avoid records already materially touched in the human review when a same-category substitute exists; 12–13 per category.",
   "summary": {
     "total": 100,
@@ -835,11 +835,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 47.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 36.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/January_2008_Copenhagen_47.jpg/1280px-January_2008_Copenhagen_47.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/3/32/January_2008_Copenhagen_47.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_47.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/January_2008_Copenhagen_36.jpg/1280px-January_2008_Copenhagen_36.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/4/4c/January_2008_Copenhagen_36.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_36.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
