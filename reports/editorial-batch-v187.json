@@ -2,7 +2,7 @@
   "schema": "que-ano-editorial-batch-v1.8.7",
   "version": "1.8.7-b",
   "batch": "batch-02-100",
-  "generatedAt": "2026-09-14T03:52:00.175Z",
+  "generatedAt": "2026-09-14T14:44:03.731Z",
   "selectionRule": "100 IDs outside batch01; avoid records already materially touched in the human review when a same-category substitute exists; 12–13 per category.",
   "summary": {
     "total": 100,
@@ -17,8 +17,8 @@
     "searchSuccess": 80,
     "noCandidate": 20,
     "searchErrors": 0,
-    "candidatesTotal": 220,
-    "candidatesTechnicallyEligible": 220,
+    "candidatesTotal": 219,
+    "candidatesTechnicallyEligible": 219,
     "candidatesContemporaneous": 127,
     "laterOriginalArtifact": 17,
     "mediaPolicy": "Candidate discovery only. Open-license photographic candidates are ranked for human review; no candidate is auto-approved or published."
@@ -281,34 +281,6 @@
             "rejectionWarnings": [
               "later_photo_of_original_artifact",
               "attribution_required",
-              "single_alias_match"
-            ],
-            "reviewRequired": true
-          },
-          {
-            "fileTitle": "File:Sanden Heinrich Rif-Krieg 1909 Marokko Verwundeter.jpg",
-            "mime": "image/jpeg",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Sanden_Heinrich_Rif-Krieg_1909_Marokko_Verwundeter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Sanden_Heinrich_Rif-Krieg_1909_Marokko_Verwundeter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:Sanden_Heinrich_Rif-Krieg_1909_Marokko_Verwundeter.jpg",
-            "artist": "Heinrich Sanden",
-            "credit": "Über Land und Meer, Nr. 48, 1909, S. 1106, https://www.google.de/books/edition/%C3%9Cber_Land_und_Meer/phclp7ruuCwC?hl=de&gbpv=1&dq=Heinrich+Sanden&pg=PA1106&printsec=frontcover",
-            "license": "Public domain",
-            "licenseUrl": null,
-            "description": "[Credit:] Phot. Heinrich Sanden [Bildunterschrift:] Von den Kämpfen der Spanier im marokkanischen Riffgebiet: Transport Verwundeter; Foto in dem Artikel: »Notizblätter. Generalstreik und Bürgerkrieg«, in: Über Land und Meer, Nr. 48, 1909, S. 1106, https://www.google.de/books/edition/%C3%9Cber_Land_und_Meer/phclp7ruuCwC?hl=de&gbpv=1&dq=Heinrich+Sanden&pg=PA1106&printsec=frontcover Marokko, Rifkrieg (1909)",
-            "visualType": "documentary_photo",
-            "entityMatch": true,
-            "matchedAliases": [
-              "google"
-            ],
-            "eventYear": 1998,
-            "imageYear": 1909,
-            "temporalDeltaYears": -89,
-            "exactYear": false,
-            "contemporaneous": false,
-            "score": 7,
-            "rejectionWarnings": [
-              "high_temporal_delta",
               "single_alias_match"
             ],
             "reviewRequired": true
@@ -808,11 +780,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 15.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 16.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/January_2008_Copenhagen_15.jpg/1280px-January_2008_Copenhagen_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/e/ec/January_2008_Copenhagen_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_15.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/January_2008_Copenhagen_16.jpg/1280px-January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/2/28/January_2008_Copenhagen_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_16.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
@@ -835,11 +807,11 @@
             "reviewRequired": true
           },
           {
-            "fileTitle": "File:January 2008 Copenhagen 36.jpg",
+            "fileTitle": "File:January 2008 Copenhagen 23.jpg",
             "mime": "image/jpeg",
-            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/January_2008_Copenhagen_36.jpg/1280px-January_2008_Copenhagen_36.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "original": "https://upload.wikimedia.org/wikipedia/commons/4/4c/January_2008_Copenhagen_36.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_36.jpg",
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/January_2008_Copenhagen_23.jpg/1280px-January_2008_Copenhagen_23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/8/89/January_2008_Copenhagen_23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "sourcePage": "https://commons.wikimedia.org/wiki/File:January_2008_Copenhagen_23.jpg",
             "artist": "Syced",
             "credit": "Own work",
             "license": "CC0",
