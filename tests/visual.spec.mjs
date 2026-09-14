@@ -59,5 +59,16 @@ test('Repaso de dos preguntas adapta el progreso simplificado', async ({page}) =
 });
 
 test('Focus visible en YearSelector, CTA y No lo sé', async ({page}) => {
-  await boot(page,sizes[0]);const selectors=['#yearInput','#primaryAction','[data-action="skip"]'];for(const selector of selectors){const loc=page.locator(selector);await loc.focus();const outline=await loc.evaluate(el=>getComputedStyle(el).outlineStyle);expect(outline).not.toBe('none')}await page.screenshot({path:'test-results/screenshots/focus-yearselector-1440x900.png',fullPage:true});
+  await boot(page,sizes[0]);
+  // Wait for the renderer's scheduled initial focus before moving it ourselves.
+  await expect(page.locator('#yearInput')).toBeFocused();
+  await page.keyboard.press('Tab');
+  for(const selector of ['#yearInput','#primaryAction','[data-action="skip"]']){
+    const control=page.locator(selector);
+    await control.focus();
+    await expect(control).toBeFocused();
+    await expect(control).not.toHaveCSS('outline-style','none');
+    await expect(control).not.toHaveCSS('outline-width','0px');
+  }
+  await page.screenshot({path:'test-results/screenshots/focus-yearselector-1440x900.png',fullPage:true});
 });
