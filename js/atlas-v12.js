@@ -4,7 +4,7 @@
    v1.8.5: Atlas es el owner canónico de SCORING_TIMER. */
 
 const QA_TIMER_DURATION_MS=15000;
-const QA_TIMER_SCORING_VERSION='timer-v1';
+const QA_TIMER_SCORING_VERSION=IS_HUMAN_TESTER?'precision-reading-v1':'timer-v1';
 let qaTimer={key:null,interval:null,remainingMs:QA_TIMER_DURATION_MS,deadline:null,lastTickAt:null,paused:false,expired:false,announced5:false,lastSoundSecond:null};
 
 /* Los SVG editoriales están embebidos en content-v12.js: siguen siendo offline. */
@@ -38,6 +38,39 @@ sessionFromAnswers=function(date,answers,mode='daily',extra={}){
 if(typeof auditQuestionBank==='function'){
   const qaBaseAuditQuestionBank=auditQuestionBank;
   auditQuestionBank=function(){const r=qaBaseAuditQuestionBank();r.images=QUESTIONS.filter(q=>q.image).length;r.extendedContext=QUESTIONS.filter(q=>q.extendedContext).length;r.v12=typeof QA_V12_COVERAGE!=='undefined'?QA_V12_COVERAGE:null;return r};
+}
+
+// Learning edition: render ownership stays in Atlas; no additional runtime layer.
+let qaHumanReadyKey=null;
+function qaHumanBegin(){
+  if(!round||round.phase!=='question')return;
+  qaHumanReadyKey=qaTimerKey();renderGame();focusYear();
+}
+function qaHumanLearning(q){
+  const summary=q.approvedLearning?.summary||q.context||q.fact||'';
+  const brief=summary.match(/^.*?[.!?](?:\s|$)/s)?.[0]?.trim()||summary;
+  return {brief,rest:summary.slice(brief.length).trim(),expanded:q.approvedLearning?.expanded||q.significance||''};
+}
+function qaHumanRender(q){
+  const answering=round.phase==='question',ready=qaHumanReadyKey===qaTimerKey(),a=round.answers[round.index];
+  let body,footer;
+  if(answering){
+    body=`<header class="friendly-progress"><span>Pregunta ${round.index+1} de ${round.questionIds.length}</span>${ready?qaTimerHTML():'<span>Sin prisa para leer</span>'}</header><div class="friendly-question"><p class="friendly-topic">${esc(q.title)}</p><h1 id="questionTitle">${esc(q.prompt)}</h1></div>`;
+    if(ready)body+=`<div class="friendly-controls"><label for="yearInput">Tu año</label><div class="friendly-year"><button data-action="adjust" data-step="-1" aria-label="Restar un año">−1</button><input id="yearInput" type="number" inputmode="numeric" min="${GLOBAL_MIN_YEAR}" max="${GLOBAL_MAX_YEAR}" value="${round.guess}" aria-label="Año de tu estimación"><button data-action="adjust" data-step="1" aria-label="Sumar un año">+1</button></div><input id="yearSlider" type="range" min="${GLOBAL_MIN_YEAR}" max="${GLOBAL_MAX_YEAR}" value="${round.guess}" aria-label="Navegar por los años"><div class="friendly-range"><span>${GLOBAL_MIN_YEAR}</span><span>${GLOBAL_MAX_YEAR}</span></div></div>`;
+    footer=ready?'<button class="secondary" data-action="skip">No lo sé</button><button class="primary" id="primaryAction" data-action="answer">Confirmar año</button>':'<p>Al continuar tendrás 15 segundos para elegir un año.</p><button class="primary" id="primaryAction" data-action="begin-answer">Estoy listo →</button>';
+  }else{
+    qaTimerStop();const l=qaHumanLearning(q),m=q.v18Media;
+    const src=m?.src&&(safeURL(m.src)||safeAsset(m.src)||(/^data:image\/(png|jpeg|webp);base64,/.test(m.src)?m.src:''));
+    const provenance=m?.sourcePage?.indexOf('https://',8)>0?m.src:m?.sourcePage||m?.src;
+    body=`<header class="friendly-progress"><span>${round.index+1} de ${round.questionIds.length}</span><span>${a.skipped?'Para recordar':a.error===0?'¡Exacto!':`El evento ocurrió ${a.error} ${a.error===1?'año':'años'} ${a.actual<a.guess?'antes':'después'} de tu estimación`}</span></header><div class="friendly-result"><strong>${q.year}</strong><h1 id="questionTitle">${esc(q.title)}</h1></div>${src?`<figure class="friendly-photo"><img data-human-media src="${esc(src)}" alt="${esc(m.description||q.title)}" referrerpolicy="no-referrer"><figcaption><details><summary>Créditos y procedencia</summary><p>${esc(m.artist||'Procedencia indicada por editorial')} · ${esc(m.license||'Sin declaración de licencia')}</p>${safeURL(provenance)?`<a href="${esc(safeURL(provenance))}" target="_blank" rel="noopener noreferrer">Abrir fuente de la imagen ↗</a>`:''}</details></figcaption></figure>`:''}<p class="friendly-idea">${esc(l.brief)}</p><details class="friendly-context"><summary>Aprender más</summary>${l.rest?`<p>${esc(l.rest)}</p>`:''}${l.expanded?`<p>${esc(l.expanded)}</p>`:''}${safeURL(q.source)?`<a href="${esc(safeURL(q.source))}" target="_blank" rel="noopener noreferrer">${esc(q.sourceLabel||'Fuente del evento')} ↗</a>`:''}</details>`;
+    footer=`<button class="primary" id="primaryAction" data-action="next">${round.index===round.questionIds.length-1?'Ver lo aprendido':'Siguiente'} →</button>`;
+  }
+  setView(`<section class="surface friendly-game ${answering?'friendly-playing':'friendly-answered'}" aria-labelledby="questionTitle">${body}<footer class="friendly-footer">${footer}</footer></section>`);
+  if(answering&&ready)qaTimerStart();else if(answering){qaTimerStop();$('questionTitle')?.setAttribute('tabindex','-1');$('questionTitle')?.focus();}
+}
+function qaHumanSummary(s){
+  const rows=s.answers.map(a=>{const q=displayQuestion(a.id),l=qaHumanLearning(q);return `<li><strong>${a.actual} · ${esc(q.title)}</strong><p>${esc(l.brief)}</p></li>`}).join('');
+  setView(`<section class="surface friendly-game friendly-summary"><span>Sesión completada</span><h1>Hoy aprendiste</h1><p>${s.answers.length} fechas para recordar. ${s.exact} respuestas exactas.</p><ol>${rows}</ol><details><summary>Ver mis resultados</summary><p>${fmt(s.total,0)} puntos · ${fmt(s.avg)} años de diferencia media.</p></details><footer class="friendly-footer"><button class="primary" data-action="choose-topics">Elegir otra ronda →</button><button class="secondary" data-view="coleccion">Mi colección</button></footer></section>`);
 }
 
 function qaTimerKey(){return round&&round.phase==='question'?`${round.uid}:${round.index}:${round.questionIds[round.index]}`:null}
@@ -95,7 +128,7 @@ function qaTimerStop(reset=true){
   else{qaTimer.remainingMs=snap.remainingMs;qaTimer.deadline=Date.now()+snap.remainingMs;qaTimer.lastTickAt=null;qaTimer.paused=true}
   return snap;
 }
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState!=='visible')qaTimerPause();else qaTimerResume()});
+document.addEventListener('visibilitychange',()=>{if(IS_HUMAN_TESTER&&document.visibilityState!=='visible'&&round?.phase==='question'){qaHumanReadyKey=null;qaTimerStop();renderGame();return}if(document.visibilityState!=='visible')qaTimerPause();else qaTimerResume()});
 window.__QA_TIMER__={
   snapshot:qaTimerSnapshot,
   pause:qaTimerPause,
@@ -105,7 +138,7 @@ window.__QA_TIMER__={
 };
 
 const qaBaseShowView=showView;
-showView=function(name,opts={}){qaTimerStop();return qaBaseShowView(name,opts)};
+showView=function(name,opts={}){qaHumanReadyKey=null;qaTimerStop();return qaBaseShowView(name,opts)};
 
 function qaTimeBonus(basePoints,remainingMs){const factor=Math.max(0,Math.min(1,remainingMs/QA_TIMER_DURATION_MS));return Math.round(Math.min(basePoints*.30,300)*factor)}
 function qaResultState(a){if(a.skipped)return 'revealed';if(a.error===0)return 'exact';if(a.error<=2)return 'near';if(a.error<=10)return 'medium';return 'far'}
@@ -119,7 +152,7 @@ function qaResultGlyph(a){
 }
 function qaExtendedContext(q){return q.extendedContext||{what:q.context||q.fact,why:q.significance||'',locate:'',reviewNeeded:!q.editorialVerified,source:q.source,sourceLabel:q.sourceLabel}}
 function qaImageCaption(q){const type=q.imageType==='documentary'?'DOCUMENTO':q.imageType==='editorial'?'LÁMINA DE ARCHIVO':'IMAGEN DE APOYO';return `${type}${q.imageCredit?` · ${esc(q.imageCredit)}`:''}`}
-function qaTimerHTML(){return `<div class="atlas-timer" id="qaTimerShell" role="progressbar" aria-label="Tiempo restante para responder" aria-valuemin="0" aria-valuemax="15" aria-valuenow="15"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="timer-track" cx="60" cy="60" r="54" pathLength="100"/><circle id="qaTimerProgress" class="timer-progress" cx="60" cy="60" r="54" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/></svg><div class="timer-readout"><b id="qaTimerSeconds">15</b><span>SEG</span></div></div>`}
+function qaTimerHTML(){if(IS_HUMAN_TESTER)return `<div class="friendly-timer" id="qaTimerShell" role="progressbar" aria-label="Tiempo restante para responder" aria-valuemin="0" aria-valuemax="15" aria-valuenow="15"><b id="qaTimerSeconds">15</b><span>segundos</span></div>`;return `<div class="atlas-timer" id="qaTimerShell" role="progressbar" aria-label="Tiempo restante para responder" aria-valuemin="0" aria-valuemax="15" aria-valuenow="15"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="timer-track" cx="60" cy="60" r="54" pathLength="100"/><circle id="qaTimerProgress" class="timer-progress" cx="60" cy="60" r="54" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/></svg><div class="timer-readout"><b id="qaTimerSeconds">15</b><span>SEG</span></div></div>`}
 function qaArchiveRuler(){
   const marks=[];for(let y=Math.ceil(GLOBAL_MIN_YEAR/10)*10;y<=Math.floor(GLOBAL_MAX_YEAR/10)*10;y+=10){const pos=((y-GLOBAL_MIN_YEAR)/(GLOBAL_MAX_YEAR-GLOBAL_MIN_YEAR))*100;marks.push(`<span style="--mark:${pos.toFixed(2)}%"><i></i><b>${y}</b></span>`)}
   return `<div class="atlas-ruler" aria-hidden="true">${marks.join('')}</div>`;
@@ -142,6 +175,7 @@ function temporalScale(a){
 
 function renderGame(){
   if(!round)return;const q=displayQuestion(round.questionIds[round.index]);if(!q){toast('No se pudo recuperar esta pregunta.');return}
+  if(IS_HUMAN_TESTER){qaHumanRender(q);return}
   document.documentElement.style.setProperty('--cat',CATEGORY_COLORS[q.category]||'#7acff2');
   const answered=round.phase==='answer',a=round.answers[round.index],image=safeAsset(q.image),daily=round.mode==='daily',roundLabel=`Pregunta ${round.index+1} de ${round.questionIds.length}`,label=daily?`DESAFÍO #${challengeNumber(parseDateKey(round.date))}`:round.mode==='review'?'REPASO':'PRÁCTICA';
   if(answered)qaTimerStop();
@@ -160,9 +194,10 @@ function renderGame(){
 }
 
 function commitAnswer(skipped=false,options={}){
+  if(IS_HUMAN_TESTER&&qaHumanReadyKey!==qaTimerKey())return;
   if(!round||round.phase!=='question')return;
   const input=$('yearInput'),guess=Number(input?input.value:round.guess);if(!skipped&&(!Number.isInteger(guess)||guess<GLOBAL_MIN_YEAR||guess>GLOBAL_MAX_YEAR||input?.value==='')){toast(`Escribe un año entre ${GLOBAL_MIN_YEAR} y ${GLOBAL_MAX_YEAR}.`);input?.focus();return}
-  const snap=qaTimerStop(),s=getState(),q=displayQuestion(round.questionIds[round.index]),actual=QUESTION_BY_ID.get(q.id).year,isNew=!discoveredIds(s).has(q.id),error=skipped?null:Math.abs(guess-actual),basePoints=skipped?0:points(error),remainingMs=options.timedOut?0:snap.remainingMs,timeBonus=skipped?0:qaTimeBonus(basePoints,remainingMs),finalPoints=basePoints+timeBonus;
+  const snap=qaTimerStop(),s=getState(),q=displayQuestion(round.questionIds[round.index]),actual=QUESTION_BY_ID.get(q.id).year,isNew=!discoveredIds(s).has(q.id),error=skipped?null:Math.abs(guess-actual),basePoints=skipped?0:points(error),remainingMs=options.timedOut?0:snap.remainingMs,timeBonus=skipped||IS_HUMAN_TESTER?0:qaTimeBonus(basePoints,remainingMs),finalPoints=basePoints+timeBonus;
   const a={id:q.id,title:q.title,category:q.category,actual,guess:skipped?null:guess,error,basePoints,timeBonus,points:skipped?0:finalPoints,elapsedMs:Math.round(QA_TIMER_DURATION_MS-remainingMs),remainingMs:Math.round(remainingMs),timedOut:Boolean(options.timedOut),scoringVersion:QA_TIMER_SCORING_VERSION,skipped,assisted:round.assisted};
   $('answerAnnouncement').textContent=`Año real: ${actual}. ${answerDeltaCopy(a)}${skipped?'':` Precisión ${basePoints} puntos, bonus de tiempo ${timeBonus}, total ${finalPoints}.`}`;
   recordAnswer(s,a,dateKey());round.answers.push(a);round.phase='answer';if(isNew)round.newDiscoveries++;persistRound();renderGame();refreshHeader();tone(!skipped&&error===0?'exact':'confirm');if(options.timedOut)toast('Tiempo agotado · registramos tu estimación.');$('primaryAction')?.focus({preventScroll:true});
@@ -171,6 +206,7 @@ function commitAnswer(skipped=false,options={}){
 function qaFmtTime(ms){if(!Number.isFinite(ms))return '—';return `${(ms/1000).toLocaleString('es-CL',{minimumFractionDigits:1,maximumFractionDigits:1})} s`}
 function summarySignature(s){return `<div class="answer-signature archive-signature atlas-signature" aria-label="Resumen de los ${s.answers.length} archivos">${s.answers.map((a,i)=>{const status=a.skipped?'REVELADA':a.error===0?'EXACTA':a.error<=2?'CERCA':a.error<=10?'DESFASE':'SALTO';return `<button class="answer-signature-item state-${qaResultState(a)}" data-action="detail" data-id="${a.id}" aria-label="${esc(a.title)}. ${status}. Abrir contexto"><span class="signature-index">${String(i+1).padStart(2,'0')}</span><span class="signature-copy"><b>${esc(a.title)}</b><small>${a.skipped?`Año real ${a.actual}`:`${a.guess} → ${a.actual} · ${qaFmtTime(a.elapsedMs)}`}</small></span><strong>${status}</strong></button>`}).join('')}</div>`}
 function renderSummary(s){
+  if(IS_HUMAN_TESTER){if(!s)return;lastSummary=s;qaHumanSummary(s);return}
   if(!s)return;lastSummary=s;const state=getState(),isDaily=s.mode==='daily',errors=s.answers.filter(a=>a.skipped||a.error>5),timed=s.answers.filter(a=>Number.isFinite(a.elapsedMs)),avgTime=timed.length?mean(timed.map(a=>a.elapsedMs)):null,unlocked=(s.newAchievements||[]).map(id=>ACHIEVEMENTS.find(a=>a.id===id)).filter(Boolean),activity=isDaily?archiveRhythmLabel(state):'Sesión de práctica · sin impacto en tu ritmo diario';
   const discoveries=s.newDiscoveries?`<span><b>${s.newDiscoveries}</b><small>nuevas fechas</small></span>`:'',achievements=unlocked.length?`<span><b>${unlocked.length}</b><small>logros</small></span>`:'';
   const primary=errors.length?`<button class="primary summary-primary" data-action="review-results">Repasar ${errors.length} fecha${errors.length===1?'':'s'} →</button>`:`<button class="primary summary-primary" data-view="coleccion">Explorar colección →</button>`;

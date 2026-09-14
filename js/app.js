@@ -4,6 +4,9 @@ function exportBackup(){downloadJSON({app:'QUÉ AÑO',version:'1.0',exportedAt:n
 function replaceBackup(){if(!pendingBackup)return;setState(pendingBackup);pendingBackup=null;round=null;closeDialog();showView('hoy');toast('Progreso restaurado')}
 function applyEditorImport(){if(!pendingEdits)return;const s=getState();for(const [id,patch] of Object.entries(pendingEdits))s.editorOverrides[id]={...(s.editorOverrides[id]||{}),...patch};pendingEdits=null;setState(s);openEditor();toast('Correcciones de texto importadas')}
 const actions={
+ 'begin-answer':()=>qaHumanBegin(),
+ 'choose-topics':()=>{qaTimerStop();round=null;renderCover()},
+ 'start-human':()=>{const s=getState(),topics=s.preferences.categories||[];if(!topics.length&&!s.sessions.some(x=>x.date===dateKey())){startDaily();return}const qs=humanTopicQuestions(topics);if(!qs.length){toast('No hay eventos aprobados en estos temas.');return}startPractice('all','Todas',5,qs.map(q=>q.id))},
  'review-tab':b=>{reviewTab=b.dataset.tab==='practice'?'practice':'due';renderReview()},
  'start-daily':()=>startDaily(),answer:()=>commitAnswer(false),skip:()=>commitAnswer(true),next:()=>nextQuestion(),
  adjust:b=>setYear((round?.guess||1990)+Number(b.dataset.step)),
@@ -50,6 +53,8 @@ document.addEventListener('input',e=>{
   if(e.target.id==='volumeSetting'){const s=getState();s.preferences.volume=Number(e.target.value)/100;setState(s)}
 });
 document.addEventListener('change',e=>{
+ if(e.target.matches('[data-human-category]')){const s=getState();s.preferences.categories=[...document.querySelectorAll('[data-human-category]:checked')].map(x=>x.value);setState(s);const selected=s.preferences.categories,n=QUESTIONS.filter(q=>!selected.length||selected.includes(q.category)).length;$('friendlyTopicCount').textContent=`${n} eventos disponibles · hasta 5 por ronda`;$('friendlyStart').textContent=selected.length?'Jugar estos temas →':s.activeSession?'Continuar mi partida →':'Comenzar →';return}
+
  const id=e.target.id,v=e.target.value;
  if(id==='soundSetting'){const s=getState();s.preferences.sound=e.target.checked;setState(s);applyPreferences();tone('confirm')}
  if(id==='motionSetting'){const s=getState();s.preferences.motion=e.target.checked?'reduced':'system';setState(s);applyPreferences()}
@@ -69,7 +74,7 @@ document.addEventListener('keydown',e=>{
  if(e.key==='Escape'&&timelineSelection){timelineSelection=null;renderTimeline();return}
  if(!round)return;
  const target=e.target,gameTarget=target.id==='yearInput'||target.id==='yearSlider'||target.id==='primaryAction'||target.id==='main'||target===document.body;
- if(e.key==='Enter'&&gameTarget){e.preventDefault();if(e.repeat)return;if(round.phase==='question')commitAnswer();else nextQuestion();return}
+ if(e.key==='Enter'&&gameTarget){e.preventDefault();if(e.repeat)return;if(round.phase==='question'){if(IS_HUMAN_TESTER&&qaHumanReadyKey!==qaTimerKey())qaHumanBegin();else commitAnswer();}else nextQuestion();return}
  if(round.phase==='question'&&['ArrowLeft','ArrowRight'].includes(e.key)&&!['INPUT','SELECT','TEXTAREA','BUTTON'].includes(target.tagName)){e.preventDefault();setYear(round.guess+(e.key==='ArrowLeft'?-1:1)*(e.shiftKey?10:1))}
 });
 document.addEventListener('dragstart',e=>{const c=e.target.closest('[data-order-id]');if(c&&!getState().timelineDraft?.answered){draggedOrderId=c.dataset.orderId;e.dataTransfer?.setData('text/plain',draggedOrderId)}});
@@ -82,4 +87,5 @@ window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h===
 window.addEventListener('pagehide',()=>{if(round)persistRound()});
 // Expose read-only audit helpers for the bundled validation script and editorial panel.
 window.auditQuestionBank=auditQuestionBank;window.simulateSchedule=simulateSchedule;
-try{const s=getState();updateAchievements(s);setState(s);showView('hoy',{focus:false});if(location.hash==='#editor')openEditor();else if(!s.onboardingSeen){s.onboardingSeen=true;setState(s);openHelp()}}catch(error){$('view').innerHTML='<div class="empty-state"><h1>No pudimos abrir el juego</h1><p>Comprueba que descomprimiste el ZIP completo y que la carpeta js está junto al HTML. Conserva tu copia de progreso.</p></div>';console.error(error)}
+try{const s=getState();updateAchievements(s);setState(s);showView('hoy',{focus:false});if(location.hash==='#editor')openEditor();else if(!s.onboardingSeen){s.onboardingSeen=true;setState(s);if(!IS_HUMAN_TESTER)openHelp()}}catch(error){$('view').innerHTML='<div class="empty-state"><h1>No pudimos abrir el juego</h1><p>Comprueba que descomprimiste el ZIP completo y que la carpeta js está junto al HTML. Conserva tu copia de progreso.</p></div>';console.error(error)}
+

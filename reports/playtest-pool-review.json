@@ -1,0 +1,65 @@
+{
+  "scope": "Editorial relevance and presentation audit, not independent historical fact verification",
+  "sample": "Qualitative feedback from two people; not a representative sample",
+  "events": 62,
+  "categories": {
+    "Tecnología": 5,
+    "Historia": 3,
+    "Cine": 8,
+    "Música": 5,
+    "Chile": 32,
+    "Cultura": 4,
+    "Ciencia": 5
+  },
+  "difficulty": {
+    "media": 26,
+    "facil": 24,
+    "dificil": 12
+  },
+  "flags": [
+    {
+      "id": "walkman",
+      "title": "Sony Walkman",
+      "issues": [
+        "legacy_visual_human_approved_review_photo_preference"
+      ]
+    },
+    {
+      "id": "berlinwall",
+      "title": "Caída del Muro de Berlín",
+      "issues": [
+        "legacy_visual_human_approved_review_photo_preference"
+      ]
+    },
+    {
+      "id": "spirited",
+      "title": "El viaje de Chihiro",
+      "issues": [
+        "legacy_visual_human_approved_review_photo_preference"
+      ]
+    },
+    {
+      "id": "plebiscito88",
+      "title": "Plebiscito nacional",
+      "issues": [
+        "legacy_visual_human_approved_review_photo_preference"
+      ]
+    },
+    {
+      "id": "rubik",
+      "title": "Cubo de Rubik",
+      "issues": [
+        "legacy_visual_human_approved_review_photo_preference"
+      ]
+    },
+    {
+      "id": "dna",
+      "title": "Doble hélice del ADN",
+      "issues": [
+        "legacy_visual_human_approved_review_photo_preference"
+      ]
+    }
+  ],
+  "decision": "Keep human approvals; allow interests, diversify daily categories, explicitly label short pools. Flagged items require editorial judgement rather than automatic replacement."
+}
+
