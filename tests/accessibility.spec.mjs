@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const url = pathToFileURL(path.join(root, 'index.html')).href + '#main';
+const url = pathToFileURL(path.join(root, 'index.html')).href + '?edition=full#main';
 
 async function boot(page, { start = true } = {}) {
   await page.addInitScript(() => { window.__QUE_ANO_DISABLE_ANALYTICS__ = true; });

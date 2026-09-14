@@ -25,7 +25,7 @@ function renderCover(){
     <span class="cover-mark">ARCHIVO DE HOY</span>
     <div class="stack"><span class="eyebrow">${esc(new Date().toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'}))}</span><h1>QUÉ AÑO #${challengeNumber()}</h1></div>
     <p>Cinco hitos. Estima, revela y ubica cada fecha en tu mapa del tiempo.</p>
-    <div class="cover-meta"><span>2 fáciles · 2 medias · 1 difícil</span><span>${n} por descubrir</span>${entry.specialTheme?`<span>Especial ${esc(entry.specialTheme)}</span>`:''}</div>
+    <div class="cover-meta"><span>${IS_HUMAN_TESTER?'Selección aprobada por personas':'2 fáciles · 2 medias · 1 difícil'}</span><span>${n} por descubrir</span>${entry.specialTheme?`<span>Especial ${esc(entry.specialTheme)}</span>`:''}</div>
     <button class="primary" data-action="start-daily">Abrir el archivo →</button>
     <small>${archiveRhythmLabel(s)} · sin penalización por ausencias</small>
   </section>`)
@@ -193,3 +193,4 @@ document.addEventListener('keydown',e=>{
   const positive=e.key==='ArrowRight'||e.key==='ArrowUp';
   setYear(round.guess+(positive?1:-1)*(e.shiftKey?10:1));
 },{capture:true});
+

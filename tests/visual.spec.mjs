@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const url = pathToFileURL(path.join(root, 'index.html')).href + '#main';
+const url = pathToFileURL(path.join(root, 'index.html')).href + '?edition=full#main';
 const sizes = [
   {name:'1440x900', width:1440, height:900},
   {name:'1366x768', width:1366, height:768},

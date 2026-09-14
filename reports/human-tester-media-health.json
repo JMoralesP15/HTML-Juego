@@ -1,0 +1,367 @@
+{
+  "checkedAt": "2026-09-14T03:32:48.136Z",
+  "method": "GET headers, body cancelled; availability does not verify browser decode or rights",
+  "results": [
+    {
+      "id": "abbeyroad",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "adele21",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "id": "alien",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "allendelection",
+      "status": "unavailable",
+      "http": 429,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "almainauguration",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "bearstory",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "berlinwall",
+      "status": "local_present"
+    },
+    {
+      "id": "bitcoin",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/png"
+    },
+    {
+      "id": "brexitvote",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "centenario",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "chile_oecd",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "chile62",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "chileinternet",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "constitution1980",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "conventionelection",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "copa2015",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "coppernationalization",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "dna",
+      "status": "local_present"
+    },
+    {
+      "id": "dynamo",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "everest",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "id": "firstsms",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "gagarin",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "godfather",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "golpe1973",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "got",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "graciasvida",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "informedrettig",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "jaws",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/png"
+    },
+    {
+      "id": "lagospresident",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "lavoz80",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "lollachile",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "mandela",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "mercadolibre",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "metrosantiago",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "mineros",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "nevermind",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "nobelneruda",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "okcomputer",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/png"
+    },
+    {
+      "id": "panam2023",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "plebiscito88",
+      "status": "local_present"
+    },
+    {
+      "id": "psycho",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "pulp",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "qrcode",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "retorno90",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "rios1998",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "rubik",
+      "status": "local_present"
+    },
+    {
+      "id": "spirited",
+      "status": "local_present"
+    },
+    {
+      "id": "spotify",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "sputnik",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "starwars",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "studentmovement",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "teletonchile",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "terremoto27f",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "tiros1",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "toystory",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "transantiago",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "tvchile",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "tvn",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "usb",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "valdivia1960",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "id": "vinadelmarfestival",
+      "status": "reachable",
+      "http": 200,
+      "contentType": "image/png"
+    },
+    {
+      "id": "walkman",
+      "status": "local_present"
+    }
+  ]
+}
+

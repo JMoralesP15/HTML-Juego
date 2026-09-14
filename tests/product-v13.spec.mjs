@@ -18,7 +18,7 @@ async function openAdditionalContent(page){
 }
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
+const url=pathToFileURL(path.join(root,'index.html')).href+'?edition=full#main';
 
 async function boot(page,{width=1440,height=900,start=true}={}){
   await page.addInitScript(()=>{window.__QUE_ANO_DISABLE_ANALYTICS__=true});await page.setViewportSize({width,height});await page.goto(url);await page.waitForFunction(()=>typeof startDaily==='function'&&typeof __QA_V13__==='object'&&typeof __QA_V15__==='object'&&typeof __QA_V16__==='object');
@@ -58,3 +58,4 @@ test('Learning Gain compara la misma fecha entre días distintos',async({page})=
 test('Repaso muestra una recomendación de siguiente sesión',async({page})=>{
   await boot(page,{start:false});await page.evaluate(()=>showView('repaso',{focus:false}));await expect(page.locator('.v13-learning-panel')).toBeVisible();await expect(page.locator('[data-v13-action="smart-review"]')).toBeVisible();await expect(page.locator('.v13-learning-panel')).toContainText('SIGUIENTE SESIÓN');
 });
+

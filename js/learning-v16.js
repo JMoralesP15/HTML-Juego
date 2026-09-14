@@ -31,6 +31,7 @@
 
   function learningFor(q){
     if(!q)return {what:'',importance:'',memory:'',context:'',temporal:''};
+    if(q.approvedLearning)return {what:q.approvedLearning.summary,importance:'',memory:'',context:q.approvedLearning.expanded,temporal:'',source:clean(q.source),sourceLabel:sourceName(q.sourceLabel)};
     const fact=clean(q.fact),context=clean(q.context),significance=clean(q.significance);
     const contextSentences=meaningfulSentences(context),factSentences=meaningfulSentences(fact),significanceSentences=meaningfulSentences(significance);
     const what=contextSentences[0]||factSentences[0]||'';
@@ -113,6 +114,7 @@
     }
 
     const note=surface.querySelector('.v15-result-note');setTextIfChanged(note,a.skipped?'Fecha revelada y guardada para repaso.':a.timedOut?'Se agotó el tiempo; registramos el año que estaba seleccionado.':'La fecha queda registrada para tu repaso.');
+    if(note&&q.humanApproved)note.hidden=true;
     const primary=surface.querySelector('#primaryAction');if(primary){setTextIfChanged(primary,round.index===round.questionIds.length-1?'Ver resultados →':'Siguiente →');const label=round.index===round.questionIds.length-1?'Ver resultados':'Ir a la siguiente pregunta';if(primary.getAttribute('aria-label')!==label)primary.setAttribute('aria-label',label)}
     if(lastFeedbackKey!==key){lastFeedbackKey=key;track('learning_context_seen',{question_id:q.id,question_position:(round?.index??0)+1,learning_blocks:learningBlocks(q).length})}
   }
@@ -152,9 +154,9 @@
   openDetail=function(id){
     const q=displayQuestion(id);if(!q)return;
     const s=getState(),seen=discoveredIds(s).has(id),revealedInOrder=s.timelineDraft?.answered&&s.timelineDraft.ids.includes(id),answeredNow=round?.phase==='answer'&&round.questionIds[round.index]===id;if(!seen&&!revealedInOrder&&!answeredNow)return;
-    const l=learningFor(q),st=s.questionStats[id],src=l.source&&safeURL(l.source),photo=safeAsset(q.image),usePhoto=photo&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;
+    const l=learningFor(q),st=s.questionStats[id],src=l.source&&safeURL(l.source),photo=q.humanApproved?safeURL(q.v18Media?.src)||safeAsset(q.v18Media?.src):safeAsset(q.image),usePhoto=photo&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;
     const blocks=[],used=[];
-    for(const [label,value] of [['Contexto',l.context||l.what],['Por qué importa',l.importance],['Dato de la fecha',meaningfulSentences(q.fact).join(' ')]]){
+    for(const [label,value] of (q.approvedLearning?[['Aprendizaje esencial',l.what],['Para saber más',l.context]]:[['Contexto',l.context||l.what],['Por qué importa',l.importance],['Dato de la fecha',meaningfulSentences(q.fact).join(' ')]])){
       const extra=meaningfulSentences(value).filter(part=>!included(part,used)).join(' ');
       if(extra){blocks.push(`<section><b>${label}</b><p>${esc(extra)}</p></section>`);used.push(extra)}
     }
@@ -184,4 +186,5 @@
   inspect();
   window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,learningNarrative,decorateSummary,inspect});
 })();
+
 

@@ -29,12 +29,13 @@
     "guard:architecture:v187": "node tools/architecture-budget-v187.mjs",
     "guard:renderer:v186": "node tools/renderer-ownership-v186.mjs",
     "test": "node tools/test.mjs && npm run test:editorial-mobile",
-    "qa:visual": "playwright test tests/archive-night.spec.mjs tests/atlas-v12.spec.mjs tests/visual.spec.mjs tests/product-v13.spec.mjs tests/curation-v14.spec.mjs tests/v15-simplification.spec.mjs tests/v16-learning-ux.spec.mjs tests/review-console.spec.mjs tests/renderer-v186.spec.mjs",
+    "qa:visual": "playwright test tests/archive-night.spec.mjs tests/atlas-v12.spec.mjs tests/visual.spec.mjs tests/product-v13.spec.mjs tests/curation-v14.spec.mjs tests/v15-simplification.spec.mjs tests/v16-learning-ux.spec.mjs tests/review-console.spec.mjs tests/renderer-v186.spec.mjs tests/human-tester.spec.mjs",
     "qa:accessibility": "playwright test tests/accessibility.spec.mjs",
     "qa:regression": "playwright test tests/regression.spec.mjs",
     "qa:all": "npm test && npm run audit && npm run compile:editorial:v187 && npm run validate:editorial:v187c && npm run report:content && npm run report:culture && npm run report:architecture && npm run report:editorial && npm run report:editorial-backlog && npm run report:factual && npm run audit:reports:v183 && npm run guard:architecture:v187 && npm run guard:renderer:v186 && npm run qa:accessibility && npm run qa:regression && npm run qa:visual",
     "serve": "python -m http.server 8000",
-    "test:editorial-mobile": "node tests/media-identity.test.mjs && node tests/learning-cleanup.test.mjs"
+    "test:editorial-mobile": "node tests/media-identity.test.mjs && node tests/learning-cleanup.test.mjs",
+    "test:human-tester": "node tests/human-tester.test.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
@@ -42,3 +43,4 @@
     "linkedom": "0.18.13"
   }
 }
+

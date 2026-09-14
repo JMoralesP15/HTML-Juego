@@ -57,7 +57,7 @@
     const copy=document.createElement('div'),b=document.createElement('b'),small=document.createElement('small');b.textContent='Ambiente musical';small.textContent='Capa generativa opcional. Nunca se reproduce sin una acción tuya.';copy.append(b,small);
     const button=document.createElement('button');button.type='button';button.id='v15AmbientSetting';button.className='secondary';button.textContent=ambient?.enabled?'Desactivar':'Activar';button.setAttribute('aria-pressed',String(Boolean(ambient?.enabled)));
     row.append(copy,button);host.querySelector('.settings-row')?.after(row);
-    const note=host.querySelector('.source-note');if(note)note.textContent='QUÉ AÑO 1.7 beta · 300 hitos. Juego, fallback visual y sonidos funcionales siguen disponibles offline.';
+    const note=host.querySelector('.source-note');if(note)note.textContent=IS_HUMAN_TESTER?`Edición de prueba · ${QUESTIONS.length} eventos revisados. Las fotografías externas requieren conexión.`:'QUÉ AÑO 1.7 beta · 300 hitos. Juego, fallback visual y sonidos funcionales siguen disponibles offline.';
   };
 
   function setChrome(inGame){

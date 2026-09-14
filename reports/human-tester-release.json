@@ -1,0 +1,1111 @@
+{
+  "id": "human-20260914-9e6886cc",
+  "sourceSHA256": "9e6886cc6dc16c44203380489b874b468369e967a4b0625a8cba5ec0cac00f24",
+  "reviewSnapshot": "ee1c579ea0981329208e503292604876e81e1f4b",
+  "exportedAt": "2026-09-14T03:04:17.722Z",
+  "items": [
+    {
+      "id": "walkman",
+      "fact": "Sony lanzó el TPS-L2 en 1979 y convirtió la música portátil en un fenómeno masivo.",
+      "learning": {
+        "summary": "Sony puso a la venta el Walkman TPS-L2 en Japón en 1979. El pequeño reproductor de casetes hizo posible escuchar música con auriculares mientras se caminaba o viajaba y ayudó a convertir la escucha en una experiencia privada y portátil.",
+        "expanded": "El TPS-L2 tenía dos salidas para auriculares y un botón que permitía hablar con otra persona sin quitárselos. Su éxito abrió una categoría de productos que acompañó durante décadas la relación cotidiana entre música, movilidad y espacio público.",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "assets/pista_01.webp",
+        "artist": "Ilustración original generada para QUÉ AÑO v0.8",
+        "license": "",
+        "sourcePage": "https://www.moma.org/collection/works/185344",
+        "description": "Imagen seleccionada por revisión humana para Sony Walkman",
+        "selectionKey": "current"
+      },
+      "approvedAt": "2026-09-13T00:21:01.227Z"
+    },
+    {
+      "id": "bitcoin",
+      "fact": "La red Bitcoin se puso en marcha en 2009 con el bloque génesis.",
+      "learning": {
+        "summary": "La red Bitcoin comenzó a operar en enero de 2009 con la creación del bloque génesis. El sistema permitió registrar transferencias digitales en una cadena de bloques mantenida por una red distribuida, sin depender de una autoridad central que llevara un único libro contable.",
+        "expanded": "Bitcoin había sido descrito meses antes en un documento firmado por Satoshi Nakamoto. El arranque de la red convirtió esa propuesta en un sistema funcional: participantes independientes podían validar transacciones y competir por añadir nuevos bloques al historial compartido.",
+        "dateNote": "La pregunta se refiere al comienzo efectivo de la red en 2009, no a la publicación del documento técnico en 2008."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_HPEahXtXduna7nGNg13E3vcPtRZCQaocj89USBfgcQ&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_HPEahXtXduna7nGNg13E3vcPtRZCQaocj89USBfgcQ&s=10",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_HPEahXtXduna7nGNg13E3vcPtRZCQaocj89USBfgcQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Red Bitcoin",
+        "selectionKey": "custom:f3a0cdd6-9c77-44f8-a6e1-2db96d23ce8d"
+      },
+      "approvedAt": "2026-09-14T03:04:16.946Z"
+    },
+    {
+      "id": "berlinwall",
+      "fact": "La apertura del muro ocurrió en noviembre de 1989 y se convirtió en uno de los símbolos del fin de la Guerra Fría.",
+      "learning": {
+        "summary": "El Muro de Berlín se abrió el 9 de noviembre de 1989 después de casi tres décadas separando físicamente Berlín Oriental y Occidental. Miles de personas cruzaron los pasos fronterizos y comenzaron a desmontar un símbolo central de la división europea durante la Guerra Fría.",
+        "expanded": "La apertura no fue un hecho aislado: ocurrió en medio de protestas, reformas políticas y una crisis creciente en Alemania Oriental y otros países del bloque soviético. Menos de un año después, Alemania quedó reunificada y el equilibrio político europeo cambió de manera acelerada.",
+        "dateNote": "1989 corresponde a la apertura y caída política del muro; la reunificación alemana ocurrió en 1990."
+      },
+      "media": {
+        "src": "assets/pista_37.webp",
+        "artist": "Ilustración original generada para QUÉ AÑO v0.8",
+        "license": "",
+        "sourcePage": "https://es.wikipedia.org/wiki/Ca%C3%ADda_del_Muro_de_Berl%C3%ADn",
+        "description": "Imagen seleccionada por revisión humana para Caída del Muro de Berlín",
+        "selectionKey": "current"
+      },
+      "approvedAt": "2026-09-14T02:53:16.512Z"
+    },
+    {
+      "id": "jaws",
+      "fact": "Jaws se estrenó en 1975 y ayudó a consolidar el concepto moderno de blockbuster veraniego.",
+      "learning": {
+        "summary": "Tiburón se estrenó en 1975 y convirtió la amenaza de un gran tiburón blanco en un ejercicio de suspenso construido tanto por lo que se ve como por lo que permanece fuera de cuadro. Su éxito ayudó a establecer el modelo del gran estreno cinematográfico de verano.",
+        "expanded": "Los problemas del tiburón mecánico obligaron a Steven Spielberg a sugerir la presencia del animal mediante montaje, sonido y música, una limitación que terminó fortaleciendo la tensión. La película también demostró el potencial de estrenos amplios acompañados por campañas publicitarias masivas.",
+        "dateNote": "1975 corresponde al estreno original de la película."
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jaws_movie_poster.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original",
+        "artist": "wikipedia",
+        "license": "CC0",
+        "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jaws_movie_poster.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=originalhttps://upload.wikimedia.org/wikipedia/commons/9/93/Jaws_movie_poster.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original",
+        "description": "Imagen seleccionada por revisión humana para Tiburón",
+        "selectionKey": "custom:c29453d3-847a-4afc-8e68-7b6b1e5a83a8"
+      },
+      "approvedAt": "2026-09-14T02:43:51.599Z"
+    },
+    {
+      "id": "starwars",
+      "fact": "La película original de Star Wars llegó a los cines en 1977.",
+      "learning": {
+        "summary": "La primera Star Wars llegó a los cines en 1977 y combinó aventuras seriales, mitología, ciencia ficción y efectos visuales en una escala poco habitual para la época. Su éxito transformó la cultura popular y la manera en que Hollywood entendía las franquicias y el merchandising.",
+        "expanded": "La película que hoy conocemos como A New Hope introdujo a Luke Skywalker, Leia, Han Solo y Darth Vader. Sus efectos, diseño sonoro y universo narrativo ayudaron a consolidar un nuevo estándar para el cine de espectáculo y dieron origen a una franquicia transmedia de alcance global.",
+        "dateNote": "1977 corresponde al estreno de la película original."
+      },
+      "media": {
+        "src": "https://artofthemovies.co.uk/cdn/shop/products/IMG_0502.jpg?v=1663347853&width=1946",
+        "artist": "star warts",
+        "license": "CC0",
+        "sourcePage": "https://artofthemovies.co.uk/cdn/shop/products/IMG_0502.jpg?v=1663347853&width=1946",
+        "description": "Imagen seleccionada por revisión humana para Star Wars",
+        "selectionKey": "custom:d2bb0313-23cf-459a-9e7e-33176ee0a61c"
+      },
+      "approvedAt": "2026-09-14T02:44:57.743Z"
+    },
+    {
+      "id": "alien",
+      "fact": "Alien, dirigida por Ridley Scott, se estrenó en 1979.",
+      "learning": {
+        "summary": "Alien se estrenó en 1979 y mezcló ciencia ficción con terror claustrofóbico a bordo de la nave Nostromo. El diseño biomecánico de H. R. Giger y la construcción lenta de la amenaza dieron a la película una identidad visual y psicológica muy distinta de la aventura espacial dominante entonces.",
+        "expanded": "La aparición de Ripley, interpretada por Sigourney Weaver, también resultó influyente: el personaje terminó convirtiéndose en una referencia para protagonistas femeninas del cine de acción y ciencia ficción. El éxito de la película generó secuelas y una franquicia extensa.",
+        "dateNote": "1979 corresponde al estreno de la película original de Ridley Scott."
+      },
+      "media": {
+        "src": "https://www.telegraph.co.uk/multimedia/archive/03064/Alien-intro_3064438b.jpg",
+        "artist": "alien poster",
+        "license": "CC0",
+        "sourcePage": "https://www.telegraph.co.uk/multimedia/archive/03064/Alien-intro_3064438b.jpg",
+        "description": "Imagen seleccionada por revisión humana para Alien",
+        "selectionKey": "custom:888c0da8-ad04-4fe8-93ee-cee44b54030d"
+      },
+      "approvedAt": "2026-09-14T02:45:43.623Z"
+    },
+    {
+      "id": "pulp",
+      "learning": {
+        "summary": "Pulp Fiction se estrenó en 1994 y ganó la Palma de Oro en Cannes antes de convertirse en un fenómeno del cine independiente estadounidense. Su estructura fragmentada, diálogos extensos y mezcla de violencia con humor ayudaron a renovar el prestigio comercial de películas producidas fuera del modelo tradicional de los grandes estudios.",
+        "expanded": "Quentin Tarantino entrelazó varias historias criminales sin contarlas en orden cronológico, haciendo que escenas aparentemente separadas adquirieran sentido unas con otras. El éxito de la película impulsó a Miramax, consolidó carreras como las de Samuel L. Jackson y Uma Thurman y convirtió numerosos momentos del filme en referencias de cultura popular. Su estructura fragmentada, diálogos extensos y mezcla de violencia con humor ayudaron a renovar el prestigio comercial de películas producidas fuera del modelo tradicional de los grandes estudios.",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_.jpg",
+        "artist": "pulp fictiom",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_.jpg",
+        "description": "Imagen seleccionada por revisión humana para Pulp Fiction",
+        "selectionKey": "custom:45bff6a7-9d7c-48da-9b1e-518db8c35169"
+      },
+      "approvedAt": "2026-09-14T02:46:29.343Z"
+    },
+    {
+      "id": "spirited",
+      "fact": "El viaje de Chihiro se estrenó en Japón en 2001.",
+      "learning": {
+        "summary": "El viaje de Chihiro se estrenó en Japón en 2001. Hayao Miyazaki construyó una historia de crecimiento personal dentro de un mundo de espíritus, baños termales y criaturas ambiguas, combinando fantasía con observaciones sobre trabajo, consumo, identidad y memoria.",
+        "expanded": "La película se convirtió en uno de los mayores éxitos del cine japonés y ganó el Oscar a mejor largometraje animado. Su recepción internacional ayudó a ampliar el público mundial de Studio Ghibli y de la animación japonesa fuera de los circuitos especializados.",
+        "dateNote": "2001 corresponde al estreno japonés original."
+      },
+      "media": {
+        "src": "assets/pista_20.webp",
+        "artist": "Ilustración original generada para QUÉ AÑO v0.8",
+        "license": "",
+        "sourcePage": "https://es.wikipedia.org/wiki/El_viaje_de_Chihiro",
+        "description": "Imagen seleccionada por revisión humana para El viaje de Chihiro",
+        "selectionKey": "current"
+      },
+      "approvedAt": "2026-09-13T05:40:43.979Z"
+    },
+    {
+      "id": "nevermind",
+      "fact": "Nevermind fue publicado en 1991.",
+      "learning": {
+        "summary": "Nirvana publicó Nevermind en septiembre de 1991. El álbum llevó al grunge y a la escena alternativa de Seattle a una audiencia masiva, impulsado especialmente por “Smells Like Teen Spirit”, y alteró el equilibrio comercial del rock de comienzos de los noventa.",
+        "expanded": "Producido por Butch Vig, Nevermind fue el segundo álbum de Nirvana y el primero con Dave Grohl en la batería. Su inesperado éxito convirtió a una banda de circuito alternativo en un fenómeno mundial y abrió espacio comercial para una nueva generación de rock menos asociada al glam metal dominante.",
+        "dateNote": "1991 corresponde a la publicación del álbum."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbrXq0EiYloozJP7Tqx7KYqV4eUZS9WgB8L64Jk7nvrw&s",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbrXq0EiYloozJP7Tqx7KYqV4eUZS9WgB8L64Jk7nvrw&s",
+        "license": "CC BY",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbrXq0EiYloozJP7Tqx7KYqV4eUZS9WgB8L64Jk7nvrw&s",
+        "description": "Imagen seleccionada por revisión humana para Nevermind",
+        "selectionKey": "custom:4ff5a08f-8f7f-4e64-a0fa-9e5e6187e2c9"
+      },
+      "approvedAt": "2026-09-14T02:57:41.229Z"
+    },
+    {
+      "id": "okcomputer",
+      "fact": "OK Computer fue publicado en 1997.",
+      "learning": {
+        "summary": "Radiohead publicó OK Computer en 1997. El álbum combinó guitarras, texturas electrónicas y letras inquietas sobre tecnología, aislamiento y vida moderna, alejándose de una estructura de rock más convencional sin abandonar del todo la forma canción.",
+        "expanded": "Su producción amplió el vocabulario sonoro de la banda y consolidó a Radiohead como uno de los grupos centrales del rock de finales de los noventa. Muchas de sus preocupaciones sobre automatización, comunicación y ansiedad tecnológica adquirirían una resonancia aún mayor con el paso del tiempo.",
+        "dateNote": "1997 corresponde a la publicación original del álbum."
+      },
+      "media": {
+        "src": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/ba/Radioheadokcomputer.png/250px-Radioheadokcomputer.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+        "artist": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/ba/Radioheadokcomputer.png/250px-Radioheadokcomputer.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+        "license": "CC0",
+        "sourcePage": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/ba/Radioheadokcomputer.png/250px-Radioheadokcomputer.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+        "description": "Imagen seleccionada por revisión humana para OK Computer",
+        "selectionKey": "custom:e477ca80-fde7-4996-9417-9d349f7c0897"
+      },
+      "approvedAt": "2026-09-14T02:59:00.481Z"
+    },
+    {
+      "id": "chile62",
+      "learning": {
+        "summary": "Chile organizó la Copa Mundial de fútbol de 1962 apenas dos años después del terremoto de Valdivia. La selección chilena alcanzó las semifinales y terminó en tercer lugar, su mejor resultado histórico en una Copa del Mundo masculina.",
+        "expanded": "El torneo quedó asociado a figuras como Leonel Sánchez y a partidos de enorme intensidad, incluida la llamada Batalla de Santiago frente a Italia. Brasil terminó campeón, pero la actuación local convirtió el Mundial en uno de los grandes hitos deportivos de la historia chilena.",
+        "dateNote": "1962 corresponde al Mundial organizado en Chile."
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/3/32/Hist%C3%B3rica_chilenita_de_Honorino_Landa_contra_Brasil_en_el_mundial_del_62.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original",
+        "artist": "wikipedia",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/3/32/Hist%C3%B3rica_chilenita_de_Honorino_Landa_contra_Brasil_en_el_mundial_del_62.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original",
+        "description": "Imagen seleccionada por revisión humana para Mundial de Chile",
+        "selectionKey": "custom:3c6f6752-6e30-4bb4-801d-4f38ad9730ad"
+      },
+      "approvedAt": "2026-09-13T15:08:09.630Z"
+    },
+    {
+      "id": "plebiscito88",
+      "learning": {
+        "summary": "El 5 de octubre de 1988 Chile votó si Augusto Pinochet debía continuar en la presidencia por un nuevo periodo. La opción No obtuvo 54,7 % de los votos válidos y abrió el camino a elecciones presidenciales y parlamentarias competitivas al año siguiente.",
+        "expanded": "La consulta tuvo una participación masiva después de años sin elecciones nacionales competitivas. Su resultado no produjo un cambio inmediato de gobierno: Pinochet continuó hasta marzo de 1990, mientras se desarrollaba el proceso institucional que condujo a la transición democrática.",
+        "dateNote": "1988 corresponde al plebiscito; el cambio de gobierno ocurrió en 1990."
+      },
+      "media": {
+        "src": "assets/pista_31.webp",
+        "artist": "Ilustración original generada para QUÉ AÑO v0.8",
+        "license": "",
+        "sourcePage": "https://www.bcn.cl/historiapolitica/hitos_periodo/detalle_periodo.html?per=1973-1990",
+        "description": "Imagen seleccionada por revisión humana para Plebiscito nacional",
+        "selectionKey": "current"
+      },
+      "approvedAt": "2026-09-14T02:04:35.955Z"
+    },
+    {
+      "id": "retorno90",
+      "learning": {
+        "summary": "Patricio Aylwin asumió la presidencia de Chile el 11 de marzo de 1990. La ceremonia marcó el traspaso del poder ejecutivo desde Augusto Pinochet a un gobierno elegido democráticamente y el inicio de una nueva etapa institucional tras la dictadura.",
+        "expanded": "Ese mismo día volvió a funcionar plenamente el Congreso Nacional elegido en 1989. El proceso democrático no eliminó de inmediato las tensiones heredadas del régimen anterior, pero estableció autoridades civiles electas y abrió un periodo de reformas políticas, institucionales y de derechos humanos.",
+        "dateNote": "1990 corresponde a la asunción de Aylwin; el plebiscito que abrió el proceso fue en 1988 y las elecciones en 1989."
+      },
+      "media": {
+        "src": "https://static.emol.cl/emol50/Fotos/2020/03/10/file_20200310183517.jpg",
+        "artist": "Emol",
+        "license": "CC0",
+        "sourcePage": "https://static.emol.cl/emol50/Fotos/2020/03/10/file_20200310183517.jpg",
+        "description": "Imagen seleccionada por revisión humana para Retorno a la democracia",
+        "selectionKey": "custom:aa9044eb-e898-4242-a237-9eeadbdf0d0f"
+      },
+      "approvedAt": "2026-09-14T02:06:05.491Z"
+    },
+    {
+      "id": "mineros",
+      "learning": {
+        "summary": "Los 33 trabajadores atrapados en la mina San José fueron rescatados el 13 de octubre de 2010 después de permanecer 69 días bajo tierra. La operación utilizó la cápsula Fénix y fue seguida en directo por audiencias de todo el mundo.",
+        "expanded": "El derrumbe ocurrió el 5 de agosto y durante más de dos semanas no se sabía si los mineros seguían con vida. El 22 de agosto una sonda alcanzó el refugio y regresó con el mensaje “Estamos bien en el refugio los 33”, cambiando completamente el objetivo de la operación hacia un rescate de gran escala.",
+        "dateNote": "2010 corresponde tanto al accidente como al rescate; el hito del juego es el rescate de octubre."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_97G0uirK-7IutludkhUq6aoDLTqYoR7UHeD-kR4NLQ&s=10",
+        "artist": "biobio",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_97G0uirK-7IutludkhUq6aoDLTqYoR7UHeD-kR4NLQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Rescate de los 33 mineros",
+        "selectionKey": "custom:2cfc5e4a-6837-49ee-8650-ec7de412f2a0"
+      },
+      "approvedAt": "2026-09-14T02:18:02.618Z"
+    },
+    {
+      "id": "copa2015",
+      "fact": "Chile obtuvo su primera Copa América en 2015.",
+      "learning": {
+        "summary": "Chile ganó su primera Copa América en 2015 al derrotar a Argentina por penales en la final del Estadio Nacional. Después de décadas sin títulos oficiales de selecciones adultas, el triunfo transformó a una generación de futbolistas en referencia inmediata del deporte chileno.",
+        "expanded": "La final terminó 0-0 tras el tiempo reglamentario y suplementario. En la definición Chile convirtió sus cuatro penales y Argentina sólo uno; Alexis Sánchez ejecutó el lanzamiento decisivo. El título fue además obtenido como local, en un torneo organizado por Chile.",
+        "dateNote": "2015 corresponde al primer título de Copa América de la selección chilena adulta."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnpH3vq67EfB6C_VeHoHzDqdVHMCBWOJ5n3HaIE8ZINA&s=10",
+        "artist": "biobio",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnpH3vq67EfB6C_VeHoHzDqdVHMCBWOJ5n3HaIE8ZINA&s=10",
+        "description": "Imagen seleccionada por revisión humana para Primera Copa América de Chile",
+        "selectionKey": "custom:58780947-19f6-4e76-af4a-461d187ab258"
+      },
+      "approvedAt": "2026-09-14T02:23:47.908Z"
+    },
+    {
+      "id": "centenario",
+      "fact": "Chile ganó la Copa América Centenario en 2016.",
+      "learning": {
+        "summary": "Chile ganó la Copa América Centenario en 2016 y consiguió su segundo título continental consecutivo. La final volvió a ser frente a Argentina y otra vez se resolvió por penales después de un empate sin goles.",
+        "expanded": "El torneo especial se disputó en Estados Unidos para conmemorar cien años de la Copa América. Chile conservó el trofeo específico de la edición Centenario, encadenando los títulos de 2015 y 2016 en el periodo más exitoso de su selección adulta.",
+        "dateNote": "2016 corresponde a la Copa América Centenario, un torneo distinto de la Copa América 2015."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbSjaIJS0_WhzgJ6RR-mzVmtLOr2xrTMz_D7MVuSJ22XvZ1ltRNXs5CE9T&s=10",
+        "artist": "chile",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbSjaIJS0_WhzgJ6RR-mzVmtLOr2xrTMz_D7MVuSJ22XvZ1ltRNXs5CE9T&s=10",
+        "description": "Imagen seleccionada por revisión humana para Copa América Centenario",
+        "selectionKey": "custom:2f3e8356-8997-44a8-a788-f8bd227dced4"
+      },
+      "approvedAt": "2026-09-14T02:24:34.564Z"
+    },
+    {
+      "id": "rubik",
+      "fact": "Ernő Rubik creó el cubo en 1974; su expansión internacional llegaría unos años después.",
+      "learning": {
+        "summary": "Ernő Rubik creó en 1974 un prototipo de su cubo tridimensional mientras enseñaba arquitectura en Hungría. Lo que comenzó como una herramienta para pensar movimientos en el espacio terminó convirtiéndose en uno de los rompecabezas más reconocibles del mundo.",
+        "expanded": "Rubik patentó el mecanismo en 1975 y el producto comenzó a circular primero en Hungría como Magic Cube. A partir de 1980, ya rebautizado como Rubik’s Cube, se convirtió en un fenómeno internacional y dio origen a competencias de resolución cada vez más rápidas.",
+        "dateNote": "1974 corresponde a la creación del prototipo, no al lanzamiento internacional del juguete."
+      },
+      "media": {
+        "src": "assets/pista_43.webp",
+        "artist": "Ilustración original generada para QUÉ AÑO v0.8",
+        "license": "",
+        "sourcePage": "https://es.wikipedia.org/wiki/Cubo_de_Rubik",
+        "description": "Imagen seleccionada por revisión humana para Cubo de Rubik",
+        "selectionKey": "current"
+      },
+      "approvedAt": "2026-09-13T05:42:47.665Z"
+    },
+    {
+      "id": "spotify",
+      "learning": {
+        "summary": "Spotify se lanzó públicamente en varios países europeos en octubre de 2008. Su propuesta ofrecía escuchar música bajo demanda desde un catálogo en línea mediante versiones gratuitas con publicidad y planes de suscripción, una alternativa legal en un mercado todavía marcado por la descarga no autorizada.",
+        "expanded": "La empresa había sido fundada en 2006 y pasó años negociando licencias antes del lanzamiento. Con el tiempo, el streaming desplazó gran parte de las ventas de descargas y cambió cómo se distribuye, recomienda y monetiza la música grabada.",
+        "dateNote": "2008 corresponde al lanzamiento público; Spotify se había fundado dos años antes."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSexXc9TyvbjC4CxodztPuJvmn7fU8uBkPuj7AYaq843Q&s=10",
+        "artist": "sport",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSexXc9TyvbjC4CxodztPuJvmn7fU8uBkPuj7AYaq843Q&s=10",
+        "description": "Imagen seleccionada por revisión humana para Spotify",
+        "selectionKey": "custom:234914ba-dde3-425b-b402-9c36e30cd1c7"
+      },
+      "approvedAt": "2026-09-14T02:49:28.360Z"
+    },
+    {
+      "id": "dna",
+      "fact": "Watson y Crick publicaron su modelo de la doble hélice en 1953, apoyándose en datos de Rosalind Franklin y Maurice Wilkins.",
+      "learning": {
+        "summary": "En 1953 James Watson y Francis Crick publicaron en Nature un modelo de la estructura de doble hélice del ADN. El trabajo se apoyó en evidencia experimental producida por otros investigadores, entre ellos Rosalind Franklin y Maurice Wilkins.",
+        "expanded": "La estructura explicaba cómo dos cadenas complementarias podían almacenar información y sugería un mecanismo para copiarla. El modelo se convirtió en una base conceptual de la biología molecular, aunque la historia del descubrimiento también obliga a reconocer cómo se obtuvieron y compartieron los datos de difracción de rayos X.",
+        "dateNote": "1953 corresponde a la publicación del modelo de doble hélice."
+      },
+      "media": {
+        "src": "assets/pista_11.webp",
+        "artist": "Ilustración original generada para QUÉ AÑO v0.8",
+        "license": "",
+        "sourcePage": "https://es.wikipedia.org/wiki/H%C3%A9lice_doble",
+        "description": "Imagen seleccionada por revisión humana para Doble hélice del ADN",
+        "selectionKey": "current"
+      },
+      "approvedAt": "2026-09-14T02:28:23.595Z"
+    },
+    {
+      "id": "sputnik",
+      "fact": "El Sputnik 1 fue lanzado por la Unión Soviética en 1957, marcando el inicio de la carrera espacial.",
+      "learning": {
+        "summary": "La Unión Soviética lanzó Sputnik 1 el 4 de octubre de 1957, el primer satélite artificial que logró orbitar la Tierra. Sus señales de radio pudieron ser detectadas desde distintos lugares del planeta y demostraron de forma espectacular la capacidad soviética de lanzamiento espacial.",
+        "expanded": "Sputnik era una esfera de unos 58 centímetros y 83,6 kilogramos que completaba una órbita en aproximadamente 98 minutos. Su éxito inició la era espacial y aceleró la competencia tecnológica y política entre la Unión Soviética y Estados Unidos.",
+        "dateNote": "1957 corresponde al lanzamiento de Sputnik 1."
+      },
+      "media": {
+        "src": "https://i.pinimg.com/originals/c9/7a/84/c97a8493f0cc6c9f38caa05b7b51e9ae.jpg",
+        "artist": "sputnik",
+        "license": "CC0",
+        "sourcePage": "https://i.pinimg.com/originals/c9/7a/84/c97a8493f0cc6c9f38caa05b7b51e9ae.jpg",
+        "description": "Imagen seleccionada por revisión humana para Sputnik 1",
+        "selectionKey": "custom:283ad5b8-6221-4d3a-ba45-b2ed418a9975"
+      },
+      "approvedAt": "2026-09-14T02:33:08.586Z"
+    },
+    {
+      "id": "gagarin",
+      "fact": "Yuri Gagarin orbitó la Tierra a bordo del Vostok 1 en 1961.",
+      "learning": {
+        "summary": "Yuri Gagarin se convirtió en 1961 en el primer ser humano en viajar al espacio y completar una órbita alrededor de la Tierra. Su vuelo a bordo de Vostok 1 transformó la carrera espacial y dio a la Unión Soviética una victoria simbólica enorme frente a Estados Unidos.",
+        "expanded": "La misión duró menos de dos horas, pero requirió que Gagarin soportara el lanzamiento, la ingravidez y el reingreso en una nave que funcionaba de forma principalmente automática. Tras el vuelo fue celebrado internacionalmente y se convirtió en uno de los rostros más reconocibles de la era espacial. Su vuelo a bordo de Vostok 1 transformó la carrera espacial y dio a la Unión Soviética una victoria simbólica enorme frente a Estados Unidos.",
+        "dateNote": "1961 corresponde al vuelo de Vostok 1 del 12 de abril."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0m8rob2IDBHVJJ_VQ6KVxX-Gtp0ywDWgYAPMIslF4Sk8K1abOY8iqRKIR&s=10",
+        "artist": "yuri",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0m8rob2IDBHVJJ_VQ6KVxX-Gtp0ywDWgYAPMIslF4Sk8K1abOY8iqRKIR&s=10",
+        "description": "Imagen seleccionada por revisión humana para Yuri Gagarin",
+        "selectionKey": "custom:505d259b-ad3f-4f70-a2ec-b4ec37f2e737"
+      },
+      "approvedAt": "2026-09-14T02:34:04.176Z"
+    },
+    {
+      "id": "mandela",
+      "fact": "Nelson Mandela fue liberado en 1990, marcando el camino hacia el fin del apartheid.",
+      "learning": {
+        "summary": "Nelson Mandela salió de la prisión Victor Verster el 11 de febrero de 1990 después de pasar 27 años encarcelado. Su liberación se convirtió en una señal decisiva de que el sistema del apartheid entraba en una fase de negociación política irreversible.",
+        "expanded": "Días antes, el presidente F. W. de Klerk había levantado la prohibición sobre el ANC y otras organizaciones. Mandela pasó de prisionero político a negociador central del proceso que conduciría a las elecciones democráticas de 1994 y a su llegada a la presidencia de Sudáfrica.",
+        "dateNote": "1990 corresponde a su liberación; la presidencia de Mandela comenzó en 1994."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKtqrW4hWTN2ShmM3s639D-NmhG6ROyIcAMbcCBJbAGrcuJ4FM4spedTan&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKtqrW4hWTN2ShmM3s639D-NmhG6ROyIcAMbcCBJbAGrcuJ4FM4spedTan&s=10",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKtqrW4hWTN2ShmM3s639D-NmhG6ROyIcAMbcCBJbAGrcuJ4FM4spedTan&s=10",
+        "description": "Imagen seleccionada por revisión humana para Liberación de Nelson Mandela",
+        "selectionKey": "custom:7adc9a9b-1116-43e7-9efa-9b7a63c72de0"
+      },
+      "approvedAt": "2026-09-14T02:54:17.076Z"
+    },
+    {
+      "id": "godfather",
+      "fact": "El Padrino, de Francis Ford Coppola, se estrenó en 1972.",
+      "learning": {
+        "summary": "El Padrino se estrenó en 1972 bajo la dirección de Francis Ford Coppola. La adaptación de la novela de Mario Puzo convirtió la historia de la familia Corleone en un drama sobre poder, lealtad, negocios y violencia que trascendió ampliamente el género criminal.",
+        "expanded": "La película combinó grandes actuaciones, una puesta en escena sombría y una narración que humanizaba a personajes ligados al crimen organizado sin reducirlos a simples héroes o villanos. Su éxito dio origen a una trilogía y consolidó una de las referencias centrales del cine estadounidense de los años setenta.",
+        "dateNote": "1972 corresponde al estreno de la primera película, no a sus secuelas."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPEl6InlBbEmBmlY6Y0KGpBSkeOm4C-9FfoCyDs9dr9eDuSeHPnwdBgGR9&s=10",
+        "artist": "godfather",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPEl6InlBbEmBmlY6Y0KGpBSkeOm4C-9FfoCyDs9dr9eDuSeHPnwdBgGR9&s=10",
+        "description": "Imagen seleccionada por revisión humana para El Padrino",
+        "selectionKey": "custom:7e7006f1-406b-4c22-838f-6d15ee566424"
+      },
+      "approvedAt": "2026-09-14T02:42:34.256Z"
+    },
+    {
+      "id": "toystory",
+      "fact": "Toy Story se estrenó en 1995, la primera película enteramente animada por computadora.",
+      "learning": {
+        "summary": "Toy Story se estrenó en 1995 y fue el primer largometraje realizado íntegramente con animación generada por computador. El éxito de Pixar mostró que el CGI podía sostener una película completa con personajes expresivos y abrió un cambio tecnológico profundo en la industria de la animación.",
+        "expanded": "La historia de Woody y Buzz Lightyear funcionó porque la innovación técnica estaba al servicio de personajes y conflictos reconocibles, no sólo de una demostración tecnológica. Pixar y Disney convirtieron la película en una franquicia duradera, mientras otros estudios aceleraban la transición desde la animación tradicional hacia herramientas digitales. El éxito de Pixar mostró que el CGI podía sostener una película completa con personajes expresivos y abrió un cambio tecnológico profundo en la industria de la animación.",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2XUjrlzCSZ3KjotM_wwJMc09TU51t-Ex_oA2OT0OigOUufjG8nhSXF4&s=10",
+        "artist": "pixar",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2XUjrlzCSZ3KjotM_wwJMc09TU51t-Ex_oA2OT0OigOUufjG8nhSXF4&s=10",
+        "description": "Imagen seleccionada por revisión humana para Toy Story",
+        "selectionKey": "custom:022fbeb7-b3d3-4ca2-ba7d-950e950aa6a3"
+      },
+      "approvedAt": "2026-09-14T02:47:58.070Z"
+    },
+    {
+      "id": "abbeyroad",
+      "learning": {
+        "summary": "The Beatles publicaron Abbey Road en 1969, el último álbum que grabaron juntos aunque Let It Be apareció comercialmente después. El disco reunió experimentación de estudio, canciones individuales y un largo medley en la segunda cara, mientras su portada se convertía en una de las imágenes más imitadas de la música popular.",
+        "expanded": "Las tensiones internas del grupo ya eran fuertes, pero las sesiones produjeron piezas como Come Together, Something y Here Comes the Sun. La grabación aprovechó técnicas de estudio más sofisticadas y sintetizadores Moog, dejando un cierre creativo que contrasta con la ruptura de la banda poco después. El disco reunió experimentación de estudio, canciones individuales y un largo medley en la segunda cara, mientras su portada se convertía en una de las imágenes más imitadas de la música popular.",
+        "dateNote": "1969 corresponde a la publicación de Abbey Road; Let It Be se publicó en 1970 pero había sido grabado en gran parte antes."
+      },
+      "media": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/The_Beatles_Abbey_Road_album_cover.jpg/1280px-The_Beatles_Abbey_Road_album_cover.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
+        "artist": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/The_Beatles_Abbey_Road_album_cover.jpg/1280px-The_Beatles_Abbey_Road_album_cover.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
+        "license": "CC0",
+        "sourcePage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/The_Beatles_Abbey_Road_album_cover.jpg/1280px-The_Beatles_Abbey_Road_album_cover.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
+        "description": "Imagen seleccionada por revisión humana para Abbey Road",
+        "selectionKey": "custom:f98ff95e-f577-44ee-a31a-fb28d4e81bbc"
+      },
+      "approvedAt": "2026-09-14T02:57:04.506Z"
+    },
+    {
+      "id": "adele21",
+      "learning": {
+        "summary": "Adele publicó 21 en 2011 y convirtió una colección de canciones sobre ruptura y duelo amoroso en uno de los mayores éxitos discográficos del siglo XXI. Su combinación de baladas, soul y una voz muy reconocible funcionó en una época en que las ventas físicas ya caían frente al consumo digital.",
+        "expanded": "Rolling in the Deep, Someone Like You y Set Fire to the Rain llevaron el álbum a públicos muy distintos y sostuvieron sus ventas durante meses. 21 ganó numerosos premios Grammy y demostró que un disco centrado en interpretación vocal y composición tradicional todavía podía convertirse en un fenómeno global en plena transición de la industria musical. Su combinación de baladas, soul y una voz muy reconocible funcionó en una época en que las ventas físicas ya caían frente al consumo digital.",
+        "dateNote": "2011 corresponde a la publicación inicial del álbum 21."
+      },
+      "media": {
+        "src": "https://http2.mlstatic.com/D_NQ_NP_605856-CBT109702532591_032026-O.webp",
+        "artist": "https://http2.mlstatic.com/D_NQ_NP_605856-CBT109702532591_032026-O.webp",
+        "license": "CC0",
+        "sourcePage": "https://http2.mlstatic.com/D_NQ_NP_605856-CBT109702532591_032026-O.webp",
+        "description": "Imagen seleccionada por revisión humana para 21",
+        "selectionKey": "custom:11b2c371-6177-4121-bd07-cbd258be440d"
+      },
+      "approvedAt": "2026-09-14T02:59:44.660Z"
+    },
+    {
+      "id": "valdivia1960",
+      "learning": {
+        "summary": "El terremoto de Valdivia de 1960 alcanzó magnitud 9,5, la mayor registrada instrumentalmente hasta hoy. El sismo y el tsunami posterior devastaron amplias zonas del sur de Chile y generaron olas que cruzaron el océano Pacífico hasta Hawái y Japón.",
+        "expanded": "El evento formó parte de una secuencia sísmica que afectó al centro-sur chileno durante varios días. Además de destruir ciudades, alteró ríos, costas y terrenos completos, obligando a evacuaciones y reconstrucción durante años. Su escala convirtió a Chile en una referencia mundial para el estudio de terremotos de subducción y tsunamis. El sismo y el tsunami posterior devastaron amplias zonas del sur de Chile y generaron olas que cruzaron el océano Pacífico hasta Hawái y Japón.",
+        "dateNote": "1960 corresponde al gran terremoto del 22 de mayo, conocido también como terremoto de Valdivia."
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Valdivia_after_earthquake%2C_1960_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "artist": "Pierre St. Amand",
+        "license": "Public domain",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Valdivia_after_earthquake%2C_1960_(cropped).jpg",
+        "description": "Earthquake damage to good quality, wood-frame houses in Valdivia, Chile , 1960.",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Valdivia_after_earthquake%2C_1960_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-13T14:40:09.377Z"
+    },
+    {
+      "id": "golpe1973",
+      "learning": {
+        "summary": "El golpe de Estado del 11 de septiembre de 1973 derrocó al gobierno de Salvador Allende y dio inicio a una dictadura militar encabezada por Augusto Pinochet. El quiebre institucional marcó profundamente la política chilena y estuvo acompañado por persecución, prisión, tortura, ejecuciones y exilio de opositores.",
+        "expanded": "Las Fuerzas Armadas y Carabineros tomaron el control de puntos estratégicos mientras La Moneda fue bombardeada y Allende murió en el palacio presidencial. Después del golpe se disolvió el Congreso, se restringieron libertades políticas y se estableció una junta militar. Las violaciones sistemáticas de derechos humanos cometidas durante la dictadura fueron posteriormente documentadas por comisiones oficiales y procesos judiciales. El periodo terminó con la transición democrática iniciada en 1990.",
+        "dateNote": "El hito corresponde al golpe de Estado del 11 de septiembre de 1973."
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Golpe_de_Estado_1973.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "artist": "Biblioteca del Congreso Nacional de Chile",
+        "license": "CC BY 3.0 cl",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Golpe_de_Estado_1973.jpg",
+        "description": "Coup of September 11, 1973. Bombing of La Moneda (presidential palace)",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Golpe_de_Estado_1973.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-13T15:12:26.312Z"
+    },
+    {
+      "id": "nobelneruda",
+      "learning": {
+        "summary": "Pablo Neruda recibió el Premio Nobel de Literatura en 1971 y se convirtió en el segundo escritor chileno en obtenerlo después de Gabriela Mistral. El galardón reconoció una obra poética de enorme influencia internacional y reforzó la presencia de la literatura chilena y latinoamericana en el canon mundial.",
+        "expanded": "Neruda ya era una figura internacional por libros como Veinte poemas de amor y una canción desesperada y Canto general, además de su actividad política y diplomática. La Academia Sueca destacó una poesía capaz de dar vida al destino y los sueños de un continente, una formulación que conectó su trayectoria personal con una dimensión latinoamericana más amplia. El premio reconoció una obra poética de enorme influencia internacional y reforzó la presencia de la literatura chilena y latinoamericana en el canon mundial.",
+        "dateNote": "1971 corresponde al anuncio y entrega del Nobel a Pablo Neruda."
+      },
+      "media": {
+        "src": "https://www.memoriachilena.gob.cl/602/articles-76623_thumbnail.jpg",
+        "artist": "Memoria Chilena",
+        "license": "CC0",
+        "sourcePage": "https://www.memoriachilena.gob.cl/602/articles-76623_thumbnail.jpg",
+        "description": "Imagen seleccionada por revisión humana para Nobel de Literatura para Neruda",
+        "selectionKey": "custom:61a6216d-1eab-43f7-811f-56aa7b8c42e6"
+      },
+      "approvedAt": "2026-09-13T15:12:03.299Z"
+    },
+    {
+      "id": "rios1998",
+      "learning": {
+        "summary": "Marcelo Ríos alcanzó el número 1 del ranking ATP en 1998, el primer latinoamericano en lograrlo.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://assets.radioagricultura.cl/2020/04/Marcelo-Rios-celebrates.jpg",
+        "artist": "agricultura",
+        "license": "CC0",
+        "sourcePage": "https://assets.radioagricultura.cl/2020/04/Marcelo-Rios-celebrates.jpg",
+        "description": "Imagen seleccionada por revisión humana para Marcelo Ríos, número 1 del mundo",
+        "selectionKey": "custom:775ce201-91c0-43ee-897c-392d7bbd6106"
+      },
+      "approvedAt": "2026-09-14T02:11:14.849Z"
+    },
+    {
+      "id": "terremoto27f",
+      "learning": {
+        "summary": "El terremoto del 27 de febrero de 2010 alcanzó magnitud 8,8 y afectó gran parte de la zona centro-sur de Chile. El sismo y el tsunami posterior provocaron cientos de muertes, daños masivos en infraestructura y una larga discusión sobre alertas, reconstrucción y preparación frente a desastres.",
+        "expanded": "El epicentro se ubicó frente a la costa de la Región del Maule y el movimiento duró varios minutos. Localidades costeras sufrieron inundaciones por tsunami y millones de personas quedaron temporalmente sin servicios básicos. La reconstrucción de viviendas, puentes, hospitales y escuelas se extendió durante años. El sismo y el tsunami posterior provocaron cientos de muertes, daños masivos en infraestructura y una larga discusión sobre alertas, reconstrucción y preparación frente a desastres.",
+        "dateNote": "27F se refiere al terremoto ocurrido en la madrugada del 27 de febrero de 2010."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5pqJp-b67nFvZXme0chtj-kwpzek-lJdBWs5lulxHeA&s",
+        "artist": "biobio",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5pqJp-b67nFvZXme0chtj-kwpzek-lJdBWs5lulxHeA&s",
+        "description": "Imagen seleccionada por revisión humana para Terremoto y tsunami del 27F",
+        "selectionKey": "custom:bd632014-a6ae-4325-ac5f-cfc462ce0c48"
+      },
+      "approvedAt": "2026-09-14T02:19:54.701Z"
+    },
+    {
+      "id": "got",
+      "learning": {
+        "summary": "Game of Thrones se estrenó en 2011 y adaptó las novelas de George R. R. Martin en una serie de fantasía política de escala cinematográfica. Sus batallas, giros narrativos y conversación semanal convirtieron la televisión de suscripción en un gran acontecimiento global durante buena parte de la década de 2010.",
+        "expanded": "La serie construyó un reparto enorme y varias tramas simultáneas alrededor del poder en Westeros. Su disposición a eliminar personajes centrales rompía expectativas de la audiencia, mientras el crecimiento de presupuesto permitió episodios comparables con superproducciones de cine. El desenlace fue muy discutido, pero la influencia industrial del programa fue indudable. Sus batallas, giros narrativos y conversación semanal convirtieron la televisión de suscripción en un gran acontecimiento global durante buena parte de la década de 2010.",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStiS0nCpINFWyrmx2VYPFmmrDmZArt2XSH55jFVGxR1w&s=10",
+        "artist": "s",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStiS0nCpINFWyrmx2VYPFmmrDmZArt2XSH55jFVGxR1w&s=10",
+        "description": "Imagen seleccionada por revisión humana para Game of Thrones (serie)",
+        "selectionKey": "custom:f7ef6d14-579d-4b66-acbd-ddf066172751"
+      },
+      "approvedAt": "2026-09-14T02:51:30.389Z"
+    },
+    {
+      "id": "firstsms",
+      "fact": "El primer SMS fue enviado en diciembre de 1992 y decía Merry Christmas.",
+      "learning": {
+        "summary": "El primer mensaje SMS fue enviado en diciembre de 1992 desde un computador a un teléfono móvil y decía “Merry Christmas”. Ese experimento abrió paso a una forma breve de comunicación que durante los años 2000 se convirtió en una práctica cotidiana antes de la expansión de la mensajería por Internet.",
+        "expanded": "El ingeniero Neil Papworth envió el mensaje a un directivo de Vodafone durante una prueba de red. Los primeros teléfonos no permitían responder directamente, pero a medida que los operadores habilitaron el servicio y los equipos incorporaron teclados adecuados, los mensajes de texto desarrollaron abreviaturas, hábitos y modelos de negocio propios. Ese experimento abrió paso a una forma breve de comunicación que durante los años 2000 se convirtió en una práctica cotidiana antes de la expansión de la mensajería por Internet.",
+        "dateNote": "1992 corresponde al primer SMS de prueba; la adopción masiva llegó años después."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr6en4q6oS2QX4X5BgvHje5lPLj2pDZVMw4ctmJJldDQ&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr6en4q6oS2QX4X5BgvHje5lPLj2pDZVMw4ctmJJldDQ&s=10",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr6en4q6oS2QX4X5BgvHje5lPLj2pDZVMw4ctmJJldDQ&s=10https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr6en4q6oS2QX4X5BgvHje5lPLj2pDZVMw4ctmJJldDQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Primer mensaje SMS",
+        "selectionKey": "custom:a28fbdee-2c24-4e4a-8031-960c72f339e7"
+      },
+      "approvedAt": "2026-09-14T03:00:26.053Z"
+    },
+    {
+      "id": "qrcode",
+      "learning": {
+        "summary": "Denso Wave desarrolló el código QR en Japón en 1994 para identificar piezas con mayor rapidez en procesos industriales. Su diseño podía almacenar más información que un código de barras convencional y leerse con velocidad desde distintos ángulos, características que facilitaron usos muy alejados de la fábrica original.",
+        "expanded": "El equipo liderado por Masahiro Hara buscaba un código capaz de manejar más caracteres y de localizarse rápidamente en una imagen. Los tres grandes cuadrados de las esquinas permiten reconocer su orientación. Denso Wave decidió no restringir el uso de la especificación mediante el ejercicio de sus patentes, y con la expansión de cámaras y teléfonos inteligentes el QR pasó de la logística industrial a pagos, entradas, menús y enlaces cotidianos.",
+        "dateNote": "El hito corresponde al desarrollo del código QR por Denso Wave en 1994."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQA7ISbY4bUuIeLKk0w89tnAZjA48lM5I_tdFHhdCUaxiH2uLqtotXMiv&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQA7ISbY4bUuIeLKk0w89tnAZjA48lM5I_tdFHhdCUaxiH2uLqtotXMiv&s=10",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQA7ISbY4bUuIeLKk0w89tnAZjA48lM5I_tdFHhdCUaxiH2uLqtotXMiv&s=10",
+        "description": "Imagen seleccionada por revisión humana para Invención del código QR",
+        "selectionKey": "custom:aa6a0079-8782-4758-b21d-69dddc75ed36"
+      },
+      "approvedAt": "2026-09-14T03:01:06.444Z"
+    },
+    {
+      "id": "usb",
+      "title": "Tamagotchi",
+      "prompt": "¿En qué año apareció el Tamagotchi original en Japón?",
+      "fact": "Bandai lanzó el Tamagotchi en Japón en 1996 y convirtió la mascota virtual en un fenómeno mundial.",
+      "source": "https://es.wikipedia.org/wiki/Tamagotchi",
+      "sourceLabel": "Referencia inicial para revisión",
+      "year": 1996,
+      "category": "Cultura",
+      "learning": {
+        "summary": "Bandai lanzó el Tamagotchi en Japón en 1996 y convirtió la mascota virtual en un fenómeno mundial.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY1Q00oPSAiILAvzKm_LJy9sjitgM1Tv9W5CCNhqz9Qw&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY1Q00oPSAiILAvzKm_LJy9sjitgM1Tv9W5CCNhqz9Qw&s=10",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY1Q00oPSAiILAvzKm_LJy9sjitgM1Tv9W5CCNhqz9Qw&s=10",
+        "description": "Imagen seleccionada por revisión humana para Tamagotchi",
+        "selectionKey": "custom:59df009b-543e-42b4-aff1-bb3677aea678"
+      },
+      "approvedAt": "2026-09-14T03:02:23.751Z"
+    },
+    {
+      "id": "mercadolibre",
+      "learning": {
+        "summary": "Mercado Libre fue fundada en Argentina en 1999 y llevó un modelo de compraventa en línea pensado para América Latina a una región donde el comercio electrónico todavía era incipiente. Con el tiempo amplió su actividad hacia pagos digitales, logística, crédito y servicios para vendedores.",
+        "expanded": "Marcos Galperin fundó la compañía mientras el acceso a Internet comenzaba a expandirse en la región. El sitio nació como un marketplace que conectaba compradores y vendedores, pero su desarrollo terminó requiriendo soluciones a problemas locales como pagos, confianza y distribución. Esa evolución explica por qué Mercado Pago y la infraestructura logística se volvieron tan importantes como la plataforma de publicaciones original.",
+        "dateNote": "El hito toma la fundación de Mercado Libre en 1999."
+      },
+      "media": {
+        "src": "https://ohmygeek.net/wp-content/uploads/2024/02/Mercado-Libre-Meli.jpg",
+        "artist": "https://ohmygeek.net/wp-content/uploads/2024/02/Mercado-Libre-Meli.jpg",
+        "license": "CC0",
+        "sourcePage": "https://ohmygeek.net/wp-content/uploads/2024/02/Mercado-Libre-Meli.jpg",
+        "description": "Imagen seleccionada por revisión humana para Mercado Libre",
+        "selectionKey": "custom:84e1dd0f-6095-4066-9198-dbd81a20c398"
+      },
+      "approvedAt": "2026-09-14T03:03:30.237Z"
+    },
+    {
+      "id": "psycho",
+      "learning": {
+        "summary": "Psicosis se estrenó en 1960 y desafió las expectativas del público al cambiar abruptamente de protagonista y convertir un motel aparentemente corriente en escenario de horror. La escena de la ducha, el montaje y la música de Bernard Herrmann se volvieron referencias fundamentales del suspenso cinematográfico.",
+        "expanded": "Alfred Hitchcock reforzó el misterio controlando la promoción y pidiendo a los cines que no permitieran entrar una vez comenzada la función. La película trabajó con un presupuesto relativamente pequeño y en blanco y negro, pero su influencia sobre el thriller, el terror psicológico y el futuro cine slasher fue enorme. La escena de la ducha, el montaje y la música de Bernard Herrmann se volvieron referencias fundamentales del suspenso cinematográfico.",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/6/61/Hitchcock_Leigh_Psycho.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "artist": "Shamley Productions , Paramount Pictures",
+        "license": "Public domain",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Hitchcock_Leigh_Psycho.jpg",
+        "description": "Photo of Alfred Hitchcock & Janet Leigh from the 1960 film Psycho",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/6/61/Hitchcock_Leigh_Psycho.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-14T02:41:33.751Z"
+    },
+    {
+      "id": "dynamo",
+      "fact": "Dynamo fue publicado en Argentina en 1992.",
+      "learning": {
+        "summary": "Soda Stereo publicó Dynamo en 1992 y llevó su sonido hacia guitarras densas, capas de efectos y una estética cercana al shoegaze y al rock alternativo. Aunque no fue el mayor éxito comercial inmediato del grupo, con el tiempo se convirtió en uno de sus discos más valorados por la influencia que ejerció sobre escenas posteriores del rock latinoamericano.",
+        "expanded": "Después del alcance masivo de Canción animal, la banda eligió un camino menos directo y trabajó el estudio como una fuente de texturas. Canciones como Primavera 0 y En remolinos combinan melodía pop con distorsión y ambientes, mostrando una búsqueda que se alejaba de repetir fórmulas exitosas. Aunque no fue el mayor éxito comercial inmediato del grupo, con el tiempo se convirtió en uno de sus discos más valorados por la influencia que ejerció sobre escenas posteriores del rock latinoamericano.",
+        "dateNote": "1992 corresponde a la publicación de Dynamo."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYNgpoFhIAuhJftseZXNkFYxAfFm3SLMDUkHVavQgAKdo59Z2ffDeWjk&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYNgpoFhIAuhJftseZXNkFYxAfFm3SLMDUkHVavQgAKdo59Z2ffDeWjk&s=10",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYNgpoFhIAuhJftseZXNkFYxAfFm3SLMDUkHVavQgAKdo59Z2ffDeWjk&s=10",
+        "description": "Imagen seleccionada por revisión humana para Dynamo",
+        "selectionKey": "custom:e2fc0f82-de0a-43dd-935f-fed90d23ca87"
+      },
+      "approvedAt": "2026-09-14T02:58:17.617Z"
+    },
+    {
+      "id": "everest",
+      "title": "Primera ascensión confirmada al Everest",
+      "prompt": "¿En qué año se consiguió por primera vez una ascensión confirmada a la cima del Everest?",
+      "fact": "La primera ascensión confirmada a la cima del Everest se logró en 1953.",
+      "source": "https://www.britannica.com/place/Mount-Everest",
+      "sourceLabel": "Encyclopaedia Britannica · Mount Everest",
+      "learning": {
+        "summary": "La primera ascensión confirmada ocurrió en 1953.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/156F9/production/_107110878_gettyimages-963236362.jpg.webp",
+        "artist": "bbc",
+        "license": "CC0",
+        "sourcePage": "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/156F9/production/_107110878_gettyimages-963236362.jpg.webphttps://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/156F9/production/_107110878_gettyimages-963236362.jpg.webp",
+        "description": "Imagen seleccionada por revisión humana para Primera ascensión confirmada al Everest",
+        "selectionKey": "custom:8f7b1fd7-6abd-441f-aa9b-54bdd995278d"
+      },
+      "approvedAt": "2026-09-14T02:29:40.945Z"
+    },
+    {
+      "id": "tiros1",
+      "fact": "TIROS-1 fue lanzado en 1960.",
+      "learning": {
+        "summary": "TIROS-1 fue lanzado en 1960 y se convirtió en el primer satélite meteorológico experimental exitoso. Sus imágenes de nubes demostraron que observar el clima desde el espacio podía mejorar pronósticos y seguimiento de grandes sistemas atmosféricos.",
+        "expanded": "El satélite llevaba cámaras de televisión que enviaban fotografías de la cobertura nubosa a estaciones en Tierra. Operó durante sólo unas semanas, pero produjo miles de imágenes y mostró una perspectiva imposible de obtener desde observatorios terrestres, abriendo el camino a la meteorología satelital moderna. Sus imágenes de nubes demostraron que observar el clima desde el espacio podía mejorar pronósticos y seguimiento de grandes sistemas atmosféricos.",
+        "dateNote": "1960 corresponde al lanzamiento de TIROS-1 el 1 de abril."
+      },
+      "media": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/William_G._Stroud_displays_TIROS-I_circuitry_ppmsca.03126.jpg/1280px-William_G._Stroud_displays_TIROS-I_circuitry_ppmsca.03126.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "artist": "Warren K. Leffler",
+        "license": "Public domain",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:William_G._Stroud_displays_TIROS-I_circuitry_ppmsca.03126.jpg",
+        "description": "William G. Stroud of NASA (center-left), project manager of the TIROS I, displaying the satellite circuitry to Lyndon B. Johnson (right) and others",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/b/b9/William_G._Stroud_displays_TIROS-I_circuitry_ppmsca.03126.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-14T02:33:25.563Z"
+    },
+    {
+      "id": "tvchile",
+      "learning": {
+        "summary": "La Universidad Católica de Valparaíso realizó en 1957 una transmisión pública experimental de televisión, uno de los hitos iniciales del medio en Chile. Esas primeras emisiones universitarias prepararon el camino para canales regulares que durante la década siguiente convertirían la televisión en un centro de información y entretenimiento nacional.",
+        "expanded": "En sus inicios la televisión chilena fue impulsada principalmente por universidades y tenía cobertura muy limitada. Los equipos eran escasos y las transmisiones experimentales, pero la posibilidad de enviar imagen y sonido en directo abrió una nueva etapa que se consolidaría con estaciones permanentes y redes nacionales. Esas primeras emisiones universitarias prepararon el camino para canales regulares que durante la década siguiente convertirían la televisión en un centro de información y entretenimiento nacional.",
+        "dateNote": "1957 corresponde a una transmisión pública experimental en Valparaíso, no al inicio de TVN ni a la masificación nacional."
+      },
+      "media": {
+        "src": "https://museodeprensa.udp.cl/cms/wp-content/uploads/2014/07/UCV-TV.jpg",
+        "artist": "UCV",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "",
+        "description": "Imagen seleccionada por revisión humana para Primera transmisión televisiva chilena",
+        "selectionKey": "custom:d87d4414-5258-461a-94db-3a9b035ad66a"
+      },
+      "approvedAt": "2026-09-13T14:37:24.964Z"
+    },
+    {
+      "id": "vinadelmarfestival",
+      "learning": {
+        "summary": "El Festival Internacional de la Canción de Viña del Mar celebró su primera edición en 1960 y con el tiempo se convirtió en uno de los eventos musicales televisados más importantes de América Latina. La combinación de competencia, artistas invitados y reacción del público de la Quinta Vergara creó una tradición anual profundamente asociada al verano chileno.",
+        "expanded": "El festival comenzó como una actividad mucho más pequeña vinculada a la ciudad y fue creciendo junto con la televisión. Con el tiempo recibió artistas latinoamericanos e internacionales de enorme popularidad y desarrolló símbolos propios como las antorchas y gaviotas entregadas por el público. La combinación de competencia, artistas invitados y reacción del público de la Quinta Vergara creó una tradición anual profundamente asociada al verano chileno.",
+        "dateNote": "1960 corresponde a la primera edición del Festival de Viña del Mar."
+      },
+      "media": {
+        "src": "https://s.13.cl/sites/default/files/rec/articulos/field-imagen/2026-02/Captura%20de%20pantalla%202026-02-20%20172611.png",
+        "artist": "Canal 13",
+        "license": "CC0",
+        "sourcePage": "https://s.13.cl/sites/default/files/rec/articulos/field-imagen/2026-02/Captura%20de%20pantalla%202026-02-20%20172611.png",
+        "description": "Imagen seleccionada por revisión humana para Primer Festival de Viña del Mar",
+        "selectionKey": "custom:9f6e6e90-6769-4728-9e21-29f1916f6e68"
+      },
+      "approvedAt": "2026-09-13T14:39:44.310Z"
+    },
+    {
+      "id": "graciasvida",
+      "fact": "La canción fue publicada en 1966.",
+      "learning": {
+        "summary": "Violeta Parra publicó Gracias a la vida en 1966 dentro de su último álbum de estudio, y la canción terminó convirtiéndose en una de las obras chilenas más interpretadas internacionalmente. Su letra de agradecimiento, marcada por imágenes simples y universales, permitió que la canción viajara mucho más allá del folclore chileno.",
+        "expanded": "Versiones de Mercedes Sosa, Joan Baez y numerosos artistas ayudaron a convertirla en un repertorio compartido en América Latina y otros países. La canción adquirió significados distintos según cada contexto político o personal, pero mantuvo una asociación fuerte con la figura de Violeta Parra y la Nueva Canción Chilena. Su letra de agradecimiento, marcada por imágenes simples y universales, permitió que la canción viajara mucho más allá del folclore chileno.",
+        "dateNote": "1966 corresponde a la publicación de la canción en el álbum Las últimas composiciones."
+      },
+      "media": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Pza_San_Carlos_%C3%91uble_-_Gracias_a_la_Vida_-_Parra_Violeta_Placa.jpg/1280px-Pza_San_Carlos_%C3%91uble_-_Gracias_a_la_Vida_-_Parra_Violeta_Placa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "artist": "José Joaquín Cortes",
+        "license": "CC BY-SA 4.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Pza_San_Carlos_%C3%91uble_-_Gracias_a_la_Vida_-_Parra_Violeta_Placa.jpg",
+        "description": "Placa con texto de \"Gracias a la Vida\" de Estatua de Violeta Parra en Plaza de armas de San Carlos, Ñuble, Chile.",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Pza_San_Carlos_%C3%91uble_-_Gracias_a_la_Vida_-_Parra_Violeta_Placa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-13T15:09:20.251Z"
+    },
+    {
+      "id": "tvn",
+      "learning": {
+        "summary": "Televisión Nacional de Chile inició transmisiones nacionales regulares en 1969 con la idea de construir una red capaz de cubrir un territorio largo y geográficamente complejo. El canal público se convirtió en uno de los principales espacios de noticias, entretenimiento y cultura compartida del país durante décadas.",
+        "expanded": "La expansión de TVN requirió instalar infraestructura de transmisión en distintas regiones y conectar audiencias que hasta entonces dependían de señales locales. Como medio estatal, su historia también quedó estrechamente vinculada a debates sobre pluralismo, financiamiento y autonomía editorial. El canal público se convirtió en uno de los principales espacios de noticias, entretenimiento y cultura compartida del país durante décadas.",
+        "dateNote": "1969 corresponde al inicio de las transmisiones regulares de alcance nacional de TVN."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWF_NY5Ij8EwA0I6JT1L_OitNSursPHPtFW2VjBeITkg&s",
+        "artist": "tvn",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWF_NY5Ij8EwA0I6JT1L_OitNSursPHPtFW2VjBeITkg&s",
+        "description": "Imagen seleccionada por revisión humana para Primera transmisión nacional de TVN",
+        "selectionKey": "custom:b419e24f-52dd-45db-8c4f-df54a3876a46"
+      },
+      "approvedAt": "2026-09-13T15:10:18.944Z"
+    },
+    {
+      "id": "allendelection",
+      "learning": {
+        "summary": "Allende obtuvo la primera mayoría en septiembre de 1970 y fue ratificado por el Congreso.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Salvador_Allende_%281970%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "artist": "Revista argentina Primera Plana, Nº 404, 27 de octubre de 1970",
+        "license": "Public domain",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Salvador_Allende_(1970).jpg",
+        "description": "Salvador Allende Gossens (Valparaíso, 26 de junio de 1908 - Santiago, 11 de septiembre de 1973) 1970 revista",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Salvador_Allende_%281970%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-13T15:10:33.468Z"
+    },
+    {
+      "id": "coppernationalization",
+      "learning": {
+        "summary": "La reforma constitucional fue aprobada en julio de 1971.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "artist": "Biblioteca del Congreso Nacional - Chile",
+        "license": "CC BY-SA 3.0 cl",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:AllendeNacionalizacion.jpg",
+        "description": "Salvador Allende firma el decreto promulgatorio de la reforma constitucional que da inicio a la nacionalizacion del cobre",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/9/93/AllendeNacionalizacion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-13T15:10:48.144Z"
+    },
+    {
+      "id": "metrosantiago",
+      "learning": {
+        "summary": "El Metro de Santiago inauguró en 1975 su primer tramo de la Línea 1 entre San Pablo y La Moneda. La nueva red cambió progresivamente la movilidad de la capital y se convirtió en una de las infraestructuras urbanas más utilizadas de Chile.",
+        "expanded": "El proyecto había requerido años de planificación y obras en una ciudad que crecía rápidamente. Con nuevas líneas y extensiones, el sistema pasó de un corredor inicial a una red que conecta comunas muy distintas, influyendo también en comercio, vivienda y desarrollo alrededor de sus estaciones. La nueva red cambió progresivamente la movilidad de la capital y se convirtió en una de las infraestructuras urbanas más utilizadas de Chile.",
+        "dateNote": "1975 corresponde a la apertura del primer tramo de la Línea 1."
+      },
+      "media": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Metro_Los_Orientales%2C_L%C3%ADnea_4.jpg/1280px-Metro_Los_Orientales%2C_L%C3%ADnea_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "artist": "User13121989",
+        "license": "CC BY-SA 4.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Metro_Los_Orientales%2C_L%C3%ADnea_4.jpg",
+        "description": "Estación de Metro de Santiago, línea 4. Los Orientales",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/3/31/Metro_Los_Orientales%2C_L%C3%ADnea_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-13T15:12:53.760Z"
+    },
+    {
+      "id": "teletonchile",
+      "fact": "La primera campaña televisiva se realizó en 1978.",
+      "learning": {
+        "summary": "La primera campaña televisiva de la Teletón chilena se realizó en 1978 y reunió durante una transmisión prolongada a canales, artistas y público para financiar rehabilitación infantil. El formato se transformó en uno de los eventos televisivos y solidarios más reconocibles del país, repetido durante décadas con una meta de recaudación pública.",
+        "expanded": "Don Francisco encabezó una campaña que buscaba financiar infraestructura y atención para niños con discapacidad motora. La participación simultánea de distintos canales y la idea de una maratón televisiva dieron al evento un carácter excepcional dentro de una televisión normalmente competitiva. El formato se transformó en uno de los eventos televisivos y solidarios más reconocibles del país, repetido durante décadas con una meta de recaudación pública.",
+        "dateNote": "1978 corresponde a la primera Teletón chilena."
+      },
+      "media": {
+        "src": "https://media-front.elmostrador.cl/2014/11/donfrancisco1-700x455.jpg",
+        "artist": "el mostrador",
+        "license": "CC0",
+        "sourcePage": "https://media-front.elmostrador.cl/2014/11/donfrancisco1-700x455.jpg",
+        "description": "Imagen seleccionada por revisión humana para Primera Teletón chilena",
+        "selectionKey": "custom:e190d4ef-d36a-4c7e-89d5-e0f96b2638f5"
+      },
+      "approvedAt": "2026-09-14T02:00:32.269Z"
+    },
+    {
+      "id": "constitution1980",
+      "learning": {
+        "summary": "El plebiscito se celebró el 11 de septiembre de 1980, bajo la dictadura y sin registros electorales vigentes. La Constitución entró en vigor en marzo de 1981: la consulta y su entrada en vigencia ocurrieron en años distintos.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://www.surdoc.cl/sites/default/files/record_images/img_6127_surdoc.jpg",
+        "artist": "surdoc",
+        "license": "CC BY",
+        "sourcePage": "https://www.surdoc.cl/sites/default/files/record_images/img_6127_surdoc.jpg",
+        "description": "Imagen seleccionada por revisión humana para Plebiscito constitucional bajo Pinochet",
+        "selectionKey": "custom:2cf508ca-b336-454f-a3e7-ad196eb4664b"
+      },
+      "approvedAt": "2026-09-14T02:02:33.730Z"
+    },
+    {
+      "id": "lavoz80",
+      "fact": "El álbum debut fue publicado de forma independiente en 1984.",
+      "learning": {
+        "summary": "Los Prisioneros publicaron de forma independiente su álbum debut La voz de los 80 en 1984, en un Chile marcado por dictadura, desigualdad y una industria musical pequeña. Las letras directas y el sonido austero de canciones como La voz de los 80 y Sexo convirtieron al grupo en una referencia generacional del rock chileno.",
+        "expanded": "El disco fue grabado con recursos limitados y circuló primero en casete antes de obtener una edición más amplia. Jorge González escribía sobre jóvenes, consumo, televisión y aspiraciones con un lenguaje muy distinto del rock dominante, lo que ayudó a que la banda conectara con públicos que se reconocían en esas tensiones. Las letras directas y el sonido austero de canciones como La voz de los 80 y Sexo convirtieron al grupo en una referencia generacional del rock chileno.",
+        "dateNote": "1984 corresponde a la edición independiente inicial; la distribución masiva creció después."
+      },
+      "media": {
+        "src": "https://akamai.sscdn.co/uploadfile/letras/albuns/9/7/7/d/684061546618876.jpg",
+        "artist": "akamai",
+        "license": "CC BY-SA",
+        "sourcePage": "https://akamai.sscdn.co/uploadfile/letras/albuns/9/7/7/d/684061546618876.jpg",
+        "description": "Imagen seleccionada por revisión humana para La voz de los '80",
+        "selectionKey": "custom:510e5f4e-9784-4e6f-90eb-b02ea5192cd8"
+      },
+      "approvedAt": "2026-09-14T02:03:40.551Z"
+    },
+    {
+      "id": "informedrettig",
+      "fact": "El informe de la Comisión Nacional de Verdad y Reconciliación fue presentado en 1991.",
+      "learning": {
+        "summary": "El informe de la Comisión Nacional de Verdad y Reconciliación fue presentado en 1991.",
+        "expanded": "",
+        "dateNote": ""
+      },
+      "media": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Informe_Rettig.jpg/1280px-Informe_Rettig.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "artist": "Ciberprofe",
+        "license": "CC BY-SA 3.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Informe_Rettig.jpg",
+        "description": "Informe de la Comisión Nacional de Verdad y Reconcialiación de Chile que investigó los crímenes políticos durante la era de Pinochet",
+        "selectionKey": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Informe_Rettig.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+      },
+      "approvedAt": "2026-09-14T02:06:27.019Z"
+    },
+    {
+      "id": "chileinternet",
+      "fact": "La conexión académica chilena a Internet se estableció en 1992.",
+      "learning": {
+        "summary": "En 1992 universidades chilenas establecieron una conexión académica permanente a Internet, integrando al país a una red global que todavía estaba lejos del uso doméstico masivo. Ese enlace ayudó a desarrollar comunidades técnicas y académicas que luego sostendrían la expansión comercial de Internet durante los años noventa.",
+        "expanded": "Las primeras conexiones estaban concentradas en instituciones de investigación y utilizaban capacidades que hoy parecen mínimas. Aun así, permitieron correo electrónico, intercambio de datos y acceso a servicios internacionales de una manera mucho más directa que las redes anteriores. Ese enlace ayudó a desarrollar comunidades técnicas y académicas que luego sostendrían la expansión comercial de Internet durante los años noventa.",
+        "dateNote": "1992 corresponde al establecimiento de una conexión académica chilena a Internet; el acceso masivo llegó después."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzvfvr9Yh6sx4eUSdIqz45twO4tbqtUmLNiBUxDItiXQ&s=10",
+        "artist": "Chile",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzvfvr9Yh6sx4eUSdIqz45twO4tbqtUmLNiBUxDItiXQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Primera conexión chilena a Internet",
+        "selectionKey": "custom:4b55a78e-9265-4729-bde8-e44e3fbb6445"
+      },
+      "approvedAt": "2026-09-14T02:07:48.247Z"
+    },
+    {
+      "id": "lagospresident",
+      "fact": "Ricardo Lagos asumió el cargo en marzo de 2000.",
+      "learning": {
+        "summary": "Ricardo Lagos asumió la presidencia de Chile en marzo de 2000, convirtiéndose en el tercer mandatario de la etapa democrática iniciada en 1990. Su gobierno quedó asociado a reformas institucionales, infraestructura urbana y la firma de tratados comerciales que profundizaron la apertura internacional del país.",
+        "expanded": "Durante su mandato se implementaron cambios como el sistema de concesiones y se negociaron acuerdos con Estados Unidos y la Unión Europea. En 2005 se aprobaron reformas constitucionales que eliminaron varios enclaves heredados de la dictadura, aunque otros debates políticos siguieron abiertos. Su gobierno quedó asociado a reformas institucionales, infraestructura urbana y la firma de tratados comerciales que profundizaron la apertura internacional del país.",
+        "dateNote": "2000 corresponde a la asunción de Ricardo Lagos el 11 de marzo."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbED3y4JBA40y-z0M_Dr5JDmOSLf67HIpPB86TFpYCpe4EnI5Q3DDjFGs&s=10",
+        "artist": "lagos",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbED3y4JBA40y-z0M_Dr5JDmOSLf67HIpPB86TFpYCpe4EnI5Q3DDjFGs&s=10",
+        "description": "Imagen seleccionada por revisión humana para Ricardo Lagos asume la presidencia",
+        "selectionKey": "custom:9a8f3e1b-8577-4322-b709-12c3fe435d6b"
+      },
+      "approvedAt": "2026-09-14T02:12:47.145Z"
+    },
+    {
+      "id": "transantiago",
+      "fact": "La puesta en marcha integral ocurrió en febrero de 2007.",
+      "learning": {
+        "summary": "Transantiago comenzó su operación integral en febrero de 2007 con el objetivo de unificar buses y Metro bajo un sistema coordinado de transporte público. La puesta en marcha produjo graves problemas de recorridos, frecuencias e información y se convirtió en uno de los ejemplos más recordados de una reforma pública implementada de forma deficiente.",
+        "expanded": "El sistema reemplazó de manera abrupta la antigua red de micros amarillas y esperaba que los usuarios combinaran buses troncales, alimentadores y Metro usando una tarjeta integrada. La falta inicial de buses y la sobrecarga del Metro obligaron a realizar ajustes durante años y marcaron fuertemente la evaluación pública del proyecto. La puesta en marcha produjo graves problemas de recorridos, frecuencias e información y se convirtió en uno de los ejemplos más recordados de una reforma pública implementada de forma deficiente.",
+        "dateNote": "2007 corresponde a la puesta en marcha integral del 10 de febrero."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUUk2DgRtpPDwCQ_JA0SeuxUwFkx5CsJ4LBEPJNnjDPQ&s=10",
+        "artist": "transantiago",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUUk2DgRtpPDwCQ_JA0SeuxUwFkx5CsJ4LBEPJNnjDPQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Inicio de Transantiago",
+        "selectionKey": "custom:256bda84-e916-416c-8366-c54eb459ad08"
+      },
+      "approvedAt": "2026-09-14T02:14:43.190Z"
+    },
+    {
+      "id": "chile_oecd",
+      "fact": "Chile ingresó a la OCDE en 2010.",
+      "learning": {
+        "summary": "Chile ingresó a la OCDE en 2010 y se convirtió en el primer país sudamericano en incorporarse a la organización. La membresía simbolizó una estrategia de integración con economías desarrolladas y sometió al país a comparaciones periódicas sobre educación, productividad, impuestos y políticas sociales.",
+        "expanded": "El proceso de adhesión implicó revisar normas y políticas públicas en múltiples áreas. Desde entonces los informes y estadísticas de la OCDE se convirtieron en referencias frecuentes del debate chileno, tanto para destacar avances como para mostrar brechas frente a otros países miembros. La membresía simbolizó una estrategia de integración con economías desarrolladas y sometió al país a comparaciones periódicas sobre educación, productividad, impuestos y políticas sociales.",
+        "dateNote": "2010 corresponde al ingreso formal de Chile a la OCDE."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyXrS4JAhFh7Q8tUkmkWhYqgC16YbYftRFSTUHOn_9Rg&s=10",
+        "artist": "a",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyXrS4JAhFh7Q8tUkmkWhYqgC16YbYftRFSTUHOn_9Rg&s=10",
+        "description": "Imagen seleccionada por revisión humana para Chile ingresa a la OCDE",
+        "selectionKey": "custom:f57e0b66-36df-457a-9195-86a7b03e3cd8"
+      },
+      "approvedAt": "2026-09-14T02:17:08.768Z"
+    },
+    {
+      "id": "studentmovement",
+      "fact": "Las movilizaciones por educación marcaron la agenda pública de 2011.",
+      "learning": {
+        "summary": "Las movilizaciones estudiantiles de 2011 pusieron la educación en el centro de la agenda pública chilena mediante marchas masivas, tomas y debates televisados. Las demandas sobre gratuidad, lucro y calidad tuvieron efectos políticos que continuaron durante años y contribuyeron a reformas posteriores del sistema educacional.",
+        "expanded": "El movimiento reunió principalmente a estudiantes universitarios y secundarios, con dirigentes que luego tendrían carreras políticas nacionales. Más que una protesta aislada, abrió una discusión extensa sobre endeudamiento, desigualdad y responsabilidad del Estado en educación. Sus consignas pasaron de las calles al Congreso y mantuvieron durante años la reforma educacional como una prioridad política nacional. Las demandas sobre gratuidad, lucro y calidad tuvieron efectos políticos que continuaron durante años y contribuyeron a reformas posteriores del sistema educacional.",
+        "dateNote": "2011 corresponde al ciclo de movilizaciones estudiantiles que alcanzó mayor intensidad durante ese año."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGUp9v_yHUac2m08btscPDXMMD_CqmjI1NuYHwg9glMx9htAVwLH1NGBC6&s=10",
+        "artist": "chile",
+        "license": "CC BY",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGUp9v_yHUac2m08btscPDXMMD_CqmjI1NuYHwg9glMx9htAVwLH1NGBC6&s=10",
+        "description": "Imagen seleccionada por revisión humana para Movilización estudiantil chilena",
+        "selectionKey": "custom:bf3e7cbf-8b2c-4be9-b8f0-837608300a55"
+      },
+      "approvedAt": "2026-09-14T02:21:17.772Z"
+    },
+    {
+      "id": "lollachile",
+      "fact": "Lollapalooza Chile debutó en 2011.",
+      "learning": {
+        "summary": "Lollapalooza Chile debutó en 2011 en Santiago y fue la primera edición del festival realizada fuera de Estados Unidos. Su llegada consolidó el modelo de grandes festivales internacionales con múltiples escenarios y ayudó a integrar a Chile en circuitos regulares de giras globales.",
+        "expanded": "La primera edición se realizó en el Parque O’Higgins y reunió artistas internacionales y locales durante dos días. El éxito permitió que el evento se repitiera anualmente y que la marca se expandiera también a otros países de América Latina. Su llegada consolidó el modelo de grandes festivales internacionales con múltiples escenarios y ayudó a integrar a Chile en circuitos regulares de giras globales.",
+        "dateNote": "2011 corresponde a la primera edición de Lollapalooza Chile."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6u_Rnb0zc3D5YHhH0vF3E3ukalQDaB7vY9NlFjWaAfQ&s=10",
+        "artist": "lolla",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6u_Rnb0zc3D5YHhH0vF3E3ukalQDaB7vY9NlFjWaAfQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Primer Lollapalooza Chile",
+        "selectionKey": "custom:06476bf7-01ab-49c4-973f-908fb432968e"
+      },
+      "approvedAt": "2026-09-14T02:21:59.763Z"
+    },
+    {
+      "id": "almainauguration",
+      "fact": "ALMA fue inaugurado en el llano de Chajnantor en 2013.",
+      "learning": {
+        "summary": "ALMA fue inaugurado oficialmente en 2013 en el llano de Chajnantor, en el desierto de Atacama, a más de cinco mil metros de altura. El conjunto de radiotelescopios aprovecha el aire extremadamente seco del norte de Chile para observar longitudes de onda que permiten estudiar gas frío, formación de estrellas y galaxias distantes.",
+        "expanded": "ALMA es una colaboración internacional entre instituciones de Europa, Norteamérica y Asia con apoyo de Chile. Sus decenas de antenas funcionan como un solo instrumento mediante interferometría, logrando una resolución muy alta y reforzando la posición de Chile como uno de los centros mundiales de astronomía observacional. El conjunto de radiotelescopios aprovecha el aire extremadamente seco del norte de Chile para observar longitudes de onda que permiten estudiar gas frío, formación de estrellas y galaxias distantes.",
+        "dateNote": "2013 corresponde a la inauguración oficial; el observatorio comenzó operaciones científicas antes."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9m91cSLDPTnG9Eg9WyW0o7eP21eY0uk8WwXvYRsv2FQ&s=10",
+        "artist": "Alma",
+        "license": "CC BY",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9m91cSLDPTnG9Eg9WyW0o7eP21eY0uk8WwXvYRsv2FQ&s=10",
+        "description": "Imagen seleccionada por revisión humana para Inauguración de ALMA",
+        "selectionKey": "custom:28036500-154d-4d48-a98e-5fa83636e64c"
+      },
+      "approvedAt": "2026-09-14T02:22:53.858Z"
+    },
+    {
+      "id": "bearstory",
+      "fact": "El cortometraje ganó el Oscar en 2016.",
+      "learning": {
+        "summary": "Historia de un oso ganó el Oscar a mejor cortometraje animado en 2016 y se convirtió en la primera producción chilena en obtener un premio de la Academia. El corto utiliza la historia de un oso separado de su familia como una metáfora de exilio y pérdida inspirada en experiencias de la dictadura chilena.",
+        "expanded": "Dirigida por Gabriel Osorio y producida por Punkrobot, la obra construye dentro de una caja mecánica un pequeño espectáculo sobre una familia arrancada de su hogar. La victoria tuvo gran impacto simbólico en la industria audiovisual chilena porque mostró que un equipo local podía competir y ganar en una de las ceremonias más visibles del cine mundial. El corto utiliza la historia de un oso separado de su familia como una metáfora de exilio y pérdida inspirada en experiencias de la dictadura chilena.",
+        "dateNote": "2016 corresponde a la entrega del Oscar; el cortometraje había sido estrenado antes."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsZvSh1h6OwGR0QBxCWQZR1_cwIKkVtNenQknKfJiROtgQVnYmGDFQA1g&s=10",
+        "artist": "historia de un oso",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsZvSh1h6OwGR0QBxCWQZR1_cwIKkVtNenQknKfJiROtgQVnYmGDFQA1g&s=10",
+        "description": "Imagen seleccionada por revisión humana para Oscar para Historia de un oso",
+        "selectionKey": "custom:e91cf5bf-4f9b-462b-a54f-cdc480c28ead"
+      },
+      "approvedAt": "2026-09-14T02:25:24.344Z"
+    },
+    {
+      "id": "conventionelection",
+      "fact": "La elección se realizó en mayo de 2021.",
+      "learning": {
+        "summary": "Chile eligió en mayo de 2021 a los integrantes de una Convención Constitucional encargada de redactar una propuesta de nueva Constitución. La elección destacó por reglas de paridad de género, escaños reservados para pueblos indígenas y una alta presencia de candidaturas independientes.",
+        "expanded": "La Convención surgió del proceso abierto tras el plebiscito de 2020 y comenzó a sesionar en julio de 2021. El texto que elaboró fue sometido a plebiscito en septiembre de 2022 y rechazado por la mayoría, por lo que la elección de 2021 forma parte de un proceso más amplio que no terminó con una nueva Constitución. La elección destacó por reglas de paridad de género, escaños reservados para pueblos indígenas y una alta presencia de candidaturas independientes.",
+        "dateNote": "2021 corresponde a la elección de convencionales; el plebiscito del texto ocurrió en 2022."
+      },
+      "media": {
+        "src": "https://www.usach.cl/sites/default/files/styles/noticias/public/Foto_Nota_Principal_alt_1_Loncon__%28Agencia_UNO%29_%281%29.jpg?itok=NGYVvahi",
+        "artist": "biobio",
+        "license": "CC0",
+        "sourcePage": "https://www.usach.cl/sites/default/files/styles/noticias/public/Foto_Nota_Principal_alt_1_Loncon__%28Agencia_UNO%29_%281%29.jpg?itok=NGYVvahi",
+        "description": "Imagen seleccionada por revisión humana para Elección de la Convención Constitucional",
+        "selectionKey": "custom:c9a2f1fb-6961-49e8-a0c7-a11a8ea176ef"
+      },
+      "approvedAt": "2026-09-14T02:26:52.772Z"
+    },
+    {
+      "id": "panam2023",
+      "fact": "Los Juegos Panamericanos de Santiago se realizaron en 2023.",
+      "learning": {
+        "summary": "Santiago recibió en 2023 los Juegos Panamericanos y Parapanamericanos, el mayor evento multideportivo organizado hasta entonces en Chile. La competencia reunió a miles de atletas del continente y dejó infraestructura deportiva nueva o renovada, además de una fuerte presencia de público local.",
+        "expanded": "Los Panamericanos se desarrollaron en octubre y noviembre, seguidos por los Parapanamericanos. Chile obtuvo varias de sus mejores actuaciones históricas en deportes diversos y el Parque Estadio Nacional concentró buena parte de las sedes, convirtiéndose en uno de los legados más visibles del evento. La competencia reunió a miles de atletas del continente y dejó infraestructura deportiva nueva o renovada, además de una fuerte presencia de público local.",
+        "dateNote": "2023 corresponde a la realización de Santiago 2023."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIa-6nPBXTv10pv8UdY7h4GmGel-x548Ae_O2BGLd2ETGF9JF5C_rNXCI&s=10",
+        "artist": "fiu",
+        "license": "Fotografía propia · uso autorizado por quien la agrega",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIa-6nPBXTv10pv8UdY7h4GmGel-x548Ae_O2BGLd2ETGF9JF5C_rNXCI&s=10",
+        "description": "Imagen seleccionada por revisión humana para Juegos Panamericanos Santiago",
+        "selectionKey": "custom:6b9d8b52-5b6a-4103-aacc-db7cfd5b94df"
+      },
+      "approvedAt": "2026-09-14T02:27:51.233Z"
+    },
+    {
+      "id": "brexitvote",
+      "fact": "El referéndum se celebró en junio de 2016.",
+      "learning": {
+        "summary": "El Reino Unido votó en junio de 2016 a favor de abandonar la Unión Europea, con un 52 % aproximado de votos por Leave. El resultado abrió años de negociación política y terminó con la salida formal británica de la UE en 2020.",
+        "expanded": "La campaña enfrentó argumentos sobre soberanía, inmigración, regulación y economía. El resultado varió fuertemente entre regiones y generaciones, provocó la renuncia del primer ministro David Cameron y abrió una prolongada discusión sobre la relación futura con Europa. También reactivó tensiones territoriales en Escocia e Irlanda del Norte. El resultado abrió años de negociación política y terminó con la salida formal británica de la UE en 2020.",
+        "dateNote": "2016 corresponde al referéndum; el Reino Unido salió formalmente de la Unión Europea en 2020."
+      },
+      "media": {
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9X_3162PU2pWT7rqemBssWYIYPtuDOZ76eYTJkMoaeAsCa5GdUtLYdUdk&s=10",
+        "artist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9X_3162PU2pWT7rqemBssWYIYPtuDOZ76eYTJkMoaeAsCa5GdUtLYdUdk&s=10",
+        "license": "CC0",
+        "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9X_3162PU2pWT7rqemBssWYIYPtuDOZ76eYTJkMoaeAsCa5GdUtLYdUdk&s=10",
+        "description": "Imagen seleccionada por revisión humana para Referéndum del Brexit",
+        "selectionKey": "custom:f6f1cac8-7fad-4164-b2c0-ed29caea287f"
+      },
+      "approvedAt": "2026-09-14T02:55:21.908Z"
+    }
+  ]
+}
+

@@ -21,18 +21,23 @@
     if(phase!=='answer')return;
     const doc=document.querySelector('.atlas-document');if(!doc)return;
     const media=q.v18Media;
-    let fig=doc.querySelector('.atlas-document-image');
+    const host=q.humanApproved?doc.closest('.atlas-learn'):doc;
+    let fig=host.querySelector('.atlas-document-image');
     if(!fig){fig=document.createElement('figure');fig.className='atlas-document-image';doc.prepend(fig)}
+    if(q.humanApproved)host.querySelector('.atlas-learn-head')?.after(fig);
+    if(fig.dataset.selection===media.src)return;
+    fig.dataset.selection=media.src;
     doc.classList.remove('no-image');doc.classList.add('has-image');
     const img=document.createElement('img');img.src=media.src;img.alt=media.description||`Imagen documental relacionada con ${q.title}`;img.loading='lazy';img.referrerPolicy='no-referrer';
     const cap=document.createElement('figcaption');cap.className='v14-open-media-credit v18-curated-media-credit';
-    const strong=document.createElement('strong');strong.textContent='IMAGEN ABIERTA · CURADA v1.8';
+    const strong=document.createElement('strong');strong.textContent=q.humanApproved?'IMAGEN ELEGIDA POR REVISIÓN HUMANA':'IMAGEN ABIERTA · CURADA v1.8';
     const detail=document.createElement('span');detail.textContent=`${media.artist} · ${media.license}`;
     const source=document.createElement('a');source.href=media.sourcePage;source.target='_blank';source.rel='noopener noreferrer';source.textContent='Procedencia y licencia ↗';
-    cap.append(strong,detail,source);fig.replaceChildren(img,cap);fig.dataset.v18='1';
-    img.addEventListener('error',()=>{fig.remove();doc.classList.remove('has-image');doc.classList.add('no-image')},{once:true});
+    if(q.humanApproved){const credits=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Cr�ditos y procedencia';credits.append(summary,detail,source);cap.append(credits)}else cap.append(strong,detail,source);fig.replaceChildren(img,cap);fig.dataset.v18='1';
+    img.addEventListener('error',()=>{img.remove();const notice=document.createElement('p');notice.textContent='La imagen elegida no pudo cargarse. Puedes abrir su procedencia.';fig.prepend(notice);doc.classList.remove('has-image');doc.classList.add('no-image')},{once:true});
   }
 
   window.__QYA_RUNTIME__?.onRender(install);install();
   window.__QA_V18_MEDIA__={version:VERSION,install};
 })();
+

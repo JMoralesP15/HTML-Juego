@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
+const url=pathToFileURL(path.join(root,'index.html')).href+'?edition=full#main';
 const desktop={width:1440,height:900},mobile={width:390,height:844},smallMobile={width:375,height:667};
 
 async function boot(page,size=desktop){
@@ -33,3 +33,4 @@ test('historial legacy sigue siendo válido sin campos de tiempo',async({page})=
 for(const [name,size] of [['1440x900',desktop],['390x844',mobile],['375x667',smallMobile]])test(`v1.7 no genera overflow horizontal ${name}`,async({page})=>{const errors=await boot(page,size);const metrics=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));expect(metrics.scroll).toBeLessThanOrEqual(metrics.client+1);expect(errors).toEqual([]);await page.screenshot({path:`test-results/screenshots/v17-pregunta-${name}.png`,fullPage:true})});
 test('summary incorpora tiempo sin abrir un loop infinito',async({page})=>{await boot(page);await page.evaluate(()=>{while(round){if(round.phase==='question'){const q=QUESTION_BY_ID.get(round.questionIds[round.index]);__QA_TIMER__.setRemaining(8000);setYear(q.year);commitAnswer()}if(round?.phase==='answer')nextQuestion()}});await expect(page.locator('.atlas-summary')).toBeVisible();await expect(page.locator('.atlas-summary')).toContainText('tiempo medio');await expect(page.locator('.summary-v11 .summary-primary')).toHaveCount(1);await expect(page.locator('.summary-v11')).not.toContainText('Juega otra');await page.screenshot({path:'test-results/screenshots/v17-summary-1440x900.png',fullPage:true})});
 test('reduced motion sigue anulando transiciones de la nueva identidad',async({page})=>{await page.emulateMedia({reducedMotion:'reduce'});await boot(page);const duration=await page.locator('.atlas-year-instrument .year-step').first().evaluate(el=>getComputedStyle(el).transitionDuration);expect(Number.parseFloat(duration)||0).toBeLessThanOrEqual(.001)});
+

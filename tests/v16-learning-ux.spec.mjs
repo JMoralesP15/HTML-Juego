@@ -19,7 +19,7 @@ async function openAdditionalContent(page){
 }
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
+const url=pathToFileURL(path.join(root,'index.html')).href+'?edition=full#main';
 const shotDir=path.join(root,'test-results','screenshots');
 
 async function boot(page,{width=1366,height=768,start=true}={}){
@@ -96,3 +96,4 @@ test('integridad histórica sigue congelada en 300 hitos',async({page})=>{
   await boot(page,{start:false});const r=await page.evaluate(()=>({total:QUESTIONS.length,ids:new Set(QUESTIONS.map(q=>q.id)).size,badYears:QUESTIONS.filter(q=>!Number.isInteger(q.year)).length,calendar:typeof auditCalendar==='function'?auditCalendar():null}));
   expect(r.total).toBe(300);expect(r.ids).toBe(300);expect(r.badYears).toBe(0);if(r.calendar)expect(r.calendar.mismatches).toEqual([]);
 });
+

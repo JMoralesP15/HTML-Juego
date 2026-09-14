@@ -18,7 +18,7 @@ async function openAdditionalContent(page){
 }
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
+const url=pathToFileURL(path.join(root,'index.html')).href+'?edition=full#main';
 
 async function boot(page,{width=390,height=844,start=true}={}){
   await page.addInitScript(()=>{window.__QUE_ANO_DISABLE_ANALYTICS__=true});
@@ -91,3 +91,4 @@ test('fallo de red conserva aprendizaje textual sin fabricar una placa decorativ
   await page.evaluate(()=>{const q=QUESTIONS.find(x=>!x.image)||QUESTIONS[0];round=createRound('practice',[q]);currentView='repaso';renderGame();setYear(q.year+2);commitAnswer(false)});
   await page.waitForTimeout(900);await expect(page.locator('.v16-learning-card')).toBeVisible();await openAdditionalContent(page);await expect(page.locator('.atlas-document-copy')).toBeVisible();await expect(page.locator('.atlas-document-image')).toHaveCount(0);
 });
+

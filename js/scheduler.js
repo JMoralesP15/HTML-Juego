@@ -62,10 +62,15 @@ function generateDailyScheduleThrough(targetN){
 }
 function resetScheduleCache(){DAILY_SCHEDULE_CACHE.clear();SCHEDULE_HISTORY.length=0;SCHEDULE_LAST_DAY.clear();SCHEDULE_MAX_DAY=-1}
 function dailyEntry(key=dateKey()){
+  if(typeof HUMAN_TESTER_ACTIVE!=='undefined'&&HUMAN_TESTER_ACTIVE){
+    const day=Math.floor(Date.UTC(...key.split('-').map((n,i)=>Number(n)-(i===1?1:0)))/86400000),offset=((day*5)%QUESTIONS.length+QUESTIONS.length)%QUESTIONS.length;
+    return {questions:Array.from({length:5},(_,i)=>QUESTIONS[(offset+i)%QUESTIONS.length]),specialTheme:null};
+  }
   if(typeof PUBLISHED_CALENDAR!=='undefined'&&PUBLISHED_CALENDAR.has(key)){const row=PUBLISHED_CALENDAR.get(key);return {questions:row.ids.map(id=>SCHEDULE_BANK.find(q=>q.id===id)),specialTheme:row.specialTheme}}
   const epoch=new Date(2026,0,1),d=parseDateKey(key),n=challengeNumber(d)-1;
   if(n<0){const last=new Map(),history=[];return makeDaySchedule(key,Math.abs(n),history,last)}
   generateDailyScheduleThrough(n);return DAILY_SCHEDULE_CACHE.get(n);
 }
 function dailyQuestions(key=dateKey()){return dailyEntry(key).questions.map(q=>QUESTION_BY_ID.get(q.id))}
-function reservedUpcomingIds(days=7){const ids=new Set();for(let i=0;i<=days;i++)dailyQuestions(dateKey(addDays(new Date(),i))).forEach(q=>ids.add(q.id));return ids}
+function reservedUpcomingIds(days=7){if(typeof HUMAN_TESTER_ACTIVE!=='undefined'&&HUMAN_TESTER_ACTIVE)days=0;const ids=new Set();for(let i=0;i<=days;i++)dailyQuestions(dateKey(addDays(new Date(),i))).forEach(q=>ids.add(q.id));return ids}
+
