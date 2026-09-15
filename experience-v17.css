@@ -135,6 +135,7 @@
 .human-tester .friendly-footer .primary{background:var(--friendly-violet);border-color:var(--friendly-violet);color:#fff}
 .human-tester .friendly-footer .secondary{background:transparent;border-color:#765eb6;color:var(--friendly-violet-soft)}
 .human-tester .friendly-game summary,.human-tester .friendly-game a{color:var(--friendly-violet-soft)}
+.human-tester .friendly-game .friendly-topic{display:none}
 .human-tester .friendly-game :focus-visible{outline-color:#e8d9ff}
 .human-tester .friendly-result strong{color:var(--friendly-event)}
 .human-tester .friendly-photo{background:var(--friendly-surface-deep);border:1px solid #493678}
