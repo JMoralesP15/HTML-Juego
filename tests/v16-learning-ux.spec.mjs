@@ -3,8 +3,23 @@ import path from 'node:path';
 import fs from 'node:fs';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
+
+async function openAdditionalContent(page){
+  const toggle=page.locator('[data-v16-action="context-toggle"]');
+  if(await toggle.isVisible()){
+    await expect(page.locator('.atlas-document')).toBeHidden();
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded','true');
+  }else{
+    await expect(toggle).toBeHidden();
+    await expect(page.locator('.atlas-document-copy > section')).toHaveCount(0);
+  }
+  await expect(page.locator('.atlas-document')).toBeVisible();
+  await expect(page.locator('.atlas-document-copy')).not.toContainText(/La fecha concreta registrada|La misma ficha|Referencia heredada|pendiente de revisión editorial/i);
+}
+
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const url=pathToFileURL(path.join(root,'index.html')).href+'#main';
+const url=pathToFileURL(path.join(root,'index.html')).href+'?edition=full#main';
 const shotDir=path.join(root,'test-results','screenshots');
 
 async function boot(page,{width=1366,height=768,start=true}={}){
@@ -31,12 +46,12 @@ test('feedback enseña el hito con narrativa natural antes de ubicarlo en el atl
   await expect(card).not.toContainText('La fecha es el punto de entrada');
   const paragraphs=await card.locator('.v16-learning-narrative').count();expect(paragraphs).toBeGreaterThanOrEqual(1);expect(paragraphs).toBeLessThanOrEqual(2);
   await expect(page.locator('.v16-context-button')).toHaveText('Profundizar');
-  await expect(page.locator('.atlas-document.v16-context')).toBeHidden();
+  await expect(page.locator('.atlas-document-copy > section')).toHaveCount(0);
   await expect(page.locator('.v16-temporal-secondary')).toBeHidden();
 });
 
 test('Profundizar abre contexto sin mostrar estados editoriales internos',async({page})=>{
-  await boot(page);await answer(page);const b=page.locator('.v16-context-button');await b.click();
+  await boot(page);await page.evaluate(()=>{const original=qaExtendedContext;qaExtendedContext=q=>({...original(q),locate:'Este proceso histórico conecta transformaciones sociales de varias generaciones.'})});await answer(page);const b=page.locator('.v16-context-button');await b.click();
   await expect(b).toHaveAttribute('aria-expanded','true');await expect(page.locator('.atlas-document.v16-context')).toBeVisible();
   await expect(page.locator('.atlas-document.v16-context')).not.toContainText('Referencia heredada');
   await expect(page.locator('.atlas-document.v16-context')).not.toContainText('pendiente de revisión editorial');
@@ -69,11 +84,11 @@ test('ficha de detalle limpia la atribución genérica y estados internos',async
 test('capturas v1.6: resultado, contexto y resumen en desktop y móvil',async({page})=>{
   fs.mkdirSync(shotDir,{recursive:true});
   await boot(page,{width:1366,height:768});await answer(page);await page.screenshot({path:path.join(shotDir,'v16-desktop-feedback.png'),fullPage:true});
-  await page.locator('.v16-context-button').click();await page.screenshot({path:path.join(shotDir,'v16-desktop-context.png'),fullPage:true});
+  await openAdditionalContent(page);await page.screenshot({path:path.join(shotDir,'v16-desktop-context.png'),fullPage:true});
   await finishCurrentRound(page);await page.screenshot({path:path.join(shotDir,'v16-desktop-summary.png'),fullPage:true});
 
   await boot(page,{width:390,height:844});await answer(page);await page.screenshot({path:path.join(shotDir,'v16-mobile-feedback-390x844.png'),fullPage:true});
-  await page.locator('.v16-context-button').click();await page.screenshot({path:path.join(shotDir,'v16-mobile-context-390x844.png'),fullPage:true});
+  await openAdditionalContent(page);await page.screenshot({path:path.join(shotDir,'v16-mobile-context-390x844.png'),fullPage:true});
   await finishCurrentRound(page);await page.screenshot({path:path.join(shotDir,'v16-mobile-summary-390x844.png'),fullPage:true});
 });
 
@@ -81,3 +96,4 @@ test('integridad histórica sigue congelada en 300 hitos',async({page})=>{
   await boot(page,{start:false});const r=await page.evaluate(()=>({total:QUESTIONS.length,ids:new Set(QUESTIONS.map(q=>q.id)).size,badYears:QUESTIONS.filter(q=>!Number.isInteger(q.year)).length,calendar:typeof auditCalendar==='function'?auditCalendar():null}));
   expect(r.total).toBe(300);expect(r.ids).toBe(300);expect(r.badYears).toBe(0);if(r.calendar)expect(r.calendar.mismatches).toEqual([]);
 });
+

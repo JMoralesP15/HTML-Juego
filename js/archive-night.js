@@ -20,12 +20,14 @@ function refreshHeader(){
 }
 
 function renderCover(){
+  if(IS_HUMAN_TESTER){const selected=getState().preferences.categories||[],categories=[...new Set(QUESTIONS.map(q=>q.category))].sort((a,b)=>a.localeCompare(b,'es'));const count=QUESTIONS.filter(q=>!selected.length||selected.includes(q.category)).length;setView(`<section class="surface friendly-game friendly-welcome"><span>Una ronda para descubrir</span><h1>Un viaje por el tiempo</h1><ol><li>Lee la pregunta con calma.</li><li>Pulsa Estoy listo y elige el año en 15 segundos.</li><li>Descubre la respuesta. El contexto es opcional.</li></ol><details class="friendly-topics"><summary>Elegir mis temas</summary><p>Marca uno o varios. Sin selección, mezclamos todos.</p><fieldset><legend>¿Qué te interesa?</legend>${categories.map(c=>`<label><input type="checkbox" data-human-category value="${esc(c)}" ${selected.includes(c)?'checked':''}><span>${esc(c)} <small>${QUESTIONS.filter(q=>q.category===c).length}</small></span></label>`).join('')}</fieldset></details><p id="friendlyTopicCount" aria-live="polite">${count} eventos disponibles · hasta 5 por ronda</p><p>No necesitas acertar exacto: descubrir la fecha también es parte del juego.</p><button id="friendlyStart" class="primary" data-action="start-human">${selected.length?'Jugar estos temas':getState().activeSession?'Continuar mi partida':'Comenzar'} →</button></section>`);return}
+
   const s=getState(),entry=dailyEntry(),n=entry.questions.filter(q=>!discoveredIds(s).has(q.id)).length;
   setView(`<section class="surface cover archive-cover">
     <span class="cover-mark">ARCHIVO DE HOY</span>
     <div class="stack"><span class="eyebrow">${esc(new Date().toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'}))}</span><h1>QUÉ AÑO #${challengeNumber()}</h1></div>
     <p>Cinco hitos. Estima, revela y ubica cada fecha en tu mapa del tiempo.</p>
-    <div class="cover-meta"><span>2 fáciles · 2 medias · 1 difícil</span><span>${n} por descubrir</span>${entry.specialTheme?`<span>Especial ${esc(entry.specialTheme)}</span>`:''}</div>
+    <div class="cover-meta"><span>${IS_HUMAN_TESTER?'Selección aprobada por personas':'2 fáciles · 2 medias · 1 difícil'}</span><span>${n} por descubrir</span>${entry.specialTheme?`<span>Especial ${esc(entry.specialTheme)}</span>`:''}</div>
     <button class="primary" data-action="start-daily">Abrir el archivo →</button>
     <small>${archiveRhythmLabel(s)} · sin penalización por ausencias</small>
   </section>`)
@@ -193,3 +195,4 @@ document.addEventListener('keydown',e=>{
   const positive=e.key==='ArrowRight'||e.key==='ArrowUp';
   setYear(round.guess+(positive?1:-1)*(e.shiftKey?10:1));
 },{capture:true});
+

@@ -1,0 +1,92 @@
+name: Editorial media batch v1.8.7
+
+on:
+  push:
+    branches:
+      - feature/editorial-media-batch-v1.8.7
+    paths:
+      - js/content.js
+      - js/editorial-proposals-v182-history.js
+      - js/editorial-proposals-v182-science.js
+      - js/editorial-proposals-v182-tech.js
+      - data/editorial-proposals-v187-batch02.json
+      - reports/factual-verification-v18.json
+      - review/index.html
+      - review/review-v187b.js
+      - tests/review-console.spec.mjs
+      - tools/editorial-batch-v187.mjs
+      - tools/commons-photo-batch-v187.mjs
+      - tools/export-editorial-batch-js-v187.mjs
+      - package.json
+      - .github/workflows/editorial-media-v187.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-media-v187-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  media-batch:
+    if: ${{ !contains(github.event.head_commit.message, '[media-v187-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/editorial-media-batch-v1.8.7
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Compile 100-event editorial batch
+        run: npm run compile:editorial:v187
+      - name: Discover open documentary photo candidates
+        run: npm run enrich:media:v187
+      - name: Export static manifest for reviewer
+        run: npm run export:editorial:v187
+      - name: Validate editorial batch contract
+        run: |
+          node --input-type=module - <<'NODE'
+          import fs from 'node:fs';
+          const data=JSON.parse(fs.readFileSync('reports/editorial-batch-v187.json','utf8'));
+          const items=data.items||[];
+          if(items.length!==100) throw new Error(`Expected 100 items, got ${items.length}`);
+          if(data.summary?.proposalReady!==100) throw new Error(`Expected proposalReady=100, got ${data.summary?.proposalReady}`);
+          if(data.summary?.textContractPass!==100) throw new Error(`Expected textContractPass=100, got ${data.summary?.textContractPass}`);
+          if(data.summary?.sourced!==100) throw new Error(`Expected sourced=100, got ${data.summary?.sourced}`);
+          if(data.summary?.visualSearched!==100) throw new Error(`Expected visualSearched=100, got ${data.summary?.visualSearched}`);
+          for(const item of items){
+            if(!['found','no_candidate','error','blocked'].includes(item.mediaSearch?.status)) throw new Error(`${item.id}: unresolved media status`);
+            if((item.mediaSearch?.candidates||[]).length>3) throw new Error(`${item.id}: more than 3 candidates`);
+            for(const candidate of item.mediaSearch?.candidates||[]){
+              if(!candidate.sourcePage||!candidate.license) throw new Error(`${item.id}: candidate without provenance/license`);
+              if(candidate.reviewRequired!==true) throw new Error(`${item.id}: candidate not explicitly reviewRequired`);
+            }
+          }
+          console.log(JSON.stringify(data.summary,null,2));
+          NODE
+      - name: Commit generated manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/editorial-batch-v187.json js/editorial-media-v187.js
+          if git diff --cached --quiet; then
+            echo "No v1.8.7 media manifest changes"
+          else
+            git commit -m "chore: generate v1.8.7 editorial media batch [media-v187-generated]"
+            git pull --rebase origin feature/editorial-media-batch-v1.8.7
+            git push origin HEAD:feature/editorial-media-batch-v1.8.7
+          fi
+      - name: Upload editorial batch artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-media-batch-v187
+          path: |
+            reports/editorial-batch-v187.json
+            js/editorial-media-v187.js
+          retention-days: 14

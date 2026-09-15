@@ -6,8 +6,8 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const write=(name,data)=>fs.writeFileSync(path.join(root,'reports',name),JSON.stringify(data,null,2)+'\n');
 const html=read('index.html');
-const scripts=[...html.matchAll(/<script[^>]+src="([^"]+\.js)"/g)].map(m=>m[1]);
-const styles=[...html.matchAll(/<link[^>]+href="([^"]+\.css)"/g)].map(m=>m[1]);
+const scripts=[...html.matchAll(/<script[^>]+src="([^"]+\.js)(?:\?[^"\s]*)?"/g)].map(m=>m[1]);
+const styles=[...html.matchAll(/<link[^>]+href="([^"]+\.css)(?:\?[^"\s]*)?"/g)].map(m=>m[1]);
 
 const classification={
   'js/content.js':'CANONICAL_ACTIVE','js/scheduler.js':'CANONICAL_ACTIVE','js/calendar.js':'CANONICAL_ACTIVE','js/editorial.js':'CANONICAL_ACTIVE','js/editorial-verification-v18.js':'CANONICAL_ACTIVE','js/editorial-v18-manual.js':'CANONICAL_ACTIVE','js/content-v12.js':'TRANSITIONAL_ACTIVE','js/curation-v14.js':'TRANSITIONAL_ACTIVE','js/storage.js':'CANONICAL_ACTIVE','js/game.js':'TRANSITIONAL_ACTIVE','js/panels.js':'CANONICAL_ACTIVE','js/archive-night.js':'TRANSITIONAL_ACTIVE','js/archive-numbering.js':'LEGACY_REQUIRED','js/atlas-v12.js':'TRANSITIONAL_ACTIVE','js/app.js':'CANONICAL_ACTIVE','js/runtime-contract.js':'CANONICAL_ACTIVE','js/semantic-contract.js':'TRANSITIONAL_ACTIVE','js/analytics-config.js':'CANONICAL_ACTIVE','js/analytics-v17.js':'CANONICAL_ACTIVE','js/product-v13.js':'TRANSITIONAL_ACTIVE','js/experience-v14.js':'TRANSITIONAL_ACTIVE','js/simplification-v15.js':'TRANSITIONAL_ACTIVE','js/learning-v16.js':'TRANSITIONAL_ACTIVE','js/experience-v18.js':'CANONICAL_ACTIVE',
@@ -47,3 +47,4 @@ const cascade={schema:'que-ano-css-cascade-audit-v1.8.3',auditDate:'2026-09-13',
 fs.mkdirSync(path.join(root,'reports'),{recursive:true});
 write('runtime-file-classification.json',fileClassification);write('runtime-ownership.json',runtime);write('global-collisions.json',globals);write('css-cascade-audit.json',cascade);
 console.log(JSON.stringify({classification:fileClassification.metrics,ownership:runtime.signals,css:{totalImportant:cascade.totalImportant,repeatedSelectorCount:cascade.repeatedSelectorCount}},null,2));
+

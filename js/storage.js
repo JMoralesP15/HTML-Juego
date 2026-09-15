@@ -1,6 +1,12 @@
 /* STORAGE — schema 5. Daily, practice and ordering have separate histories. */
-const STORE_KEY='que_ano_state_v10', SCHEMA_VERSION=5;
-const LEGACY_KEYS=['que_ano_state_v093','que_ano_state_v092','que_ano_state_v08','que_ano_state','que_ano_v04_state'];
+const IS_HUMAN_TESTER=typeof HUMAN_TESTER_ACTIVE!=='undefined'?HUMAN_TESTER_ACTIVE:Boolean(typeof window!=='undefined'&&window.location&&document.documentElement?.dataset.editorialEdition==='human'&&new URLSearchParams(window.location.search).get('edition')!=='full');
+if(IS_HUMAN_TESTER&&(typeof HUMAN_TESTER_RELEASE==='undefined'||QUESTIONS.length<10||QUESTIONS.some(q=>!q.humanApproved))){
+  QUESTIONS.splice(0,QUESTIONS.length);QUESTION_BY_ID.clear();
+  const loading=document.getElementById('view');if(loading)loading.textContent='No se pudo cargar la edición revisada. Recarga la página para volver a intentar.';
+  throw new Error('Human tester release unavailable; unreviewed bank blocked');
+}
+const STORE_KEY=IS_HUMAN_TESTER?'que_ano_tester_'+HUMAN_TESTER_RELEASE.id:'que_ano_state_v10', SCHEMA_VERSION=5;
+const LEGACY_KEYS=IS_HUMAN_TESTER?[]:['que_ano_state_v093','que_ano_state_v092','que_ano_state_v08','que_ano_state','que_ano_v04_state'];
 const GLOBAL_MIN_YEAR=1950, GLOBAL_MAX_YEAR=Math.max(2026,new Date().getFullYear());
 const DIFFICULTY_LABELS={facil:'Fácil',media:'Media',dificil:'Difícil'};
 const CATEGORY_COLORS={'Tecnología':'#7acff2','Cine':'#c3b2f2','Música':'#eeb0d4','Videojuegos':'#bcda8e','Cultura':'#efbc87','Ciencia':'#89d6c2','Chile':'#eeaaa4','Historia':'#f4d18b'};
@@ -14,9 +20,10 @@ const validKey=k=>typeof k==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(k)&&dateKey(pa
 function safeURL(url){try{const u=new URL(url);return ['https:','http:'].includes(u.protocol)?u.href:''}catch{return ''}}
 function safeAsset(url){return typeof url==='string'&&/^assets\/[a-zA-Z0-9_/-]+\.(webp|jpg|jpeg|png)$/.test(url)&&!url.includes('..')?url:''}
 function defaultTimelineStats(){return {rounds:0,perfect:0,positions:0,elements:0,currentStreak:0,bestStreak:0,decades:{}}}
-function defaultState(){return {schemaVersion:SCHEMA_VERSION,sessions:[],reviewSessions:[],practiceSessions:[],bestStreak:0,achievements:[],questionStats:{},timeline:defaultTimelineStats(),timelineDraft:null,activeSession:null,practiceDraft:null,editorOverrides:{},reviewedIds:[],onboardingSeen:false,dailyIntroDate:'',preferences:{sound:false,volume:.25,motion:'system',palette:'amber'},recoveryIds:[],longTermIds:[]}}
+function defaultState(){return {schemaVersion:SCHEMA_VERSION,sessions:[],reviewSessions:[],practiceSessions:[],bestStreak:0,achievements:[],questionStats:{},timeline:defaultTimelineStats(),timelineDraft:null,activeSession:null,practiceDraft:null,editorOverrides:{},reviewedIds:[],onboardingSeen:false,dailyIntroDate:'',preferences:{sound:false,volume:.25,motion:'system',palette:'amber',categories:[]},recoveryIds:[],longTermIds:[]}}
 function normalizeAnswer(a){
   if(!a||!QUESTION_BY_ID.has(a.id))return null;
+  if(IS_HUMAN_TESTER&&a.actual!=null&&a.actual!==QUESTION_BY_ID.get(a.id).year)return null;
   const q=QUESTION_BY_ID.get(a.id),actual=Number.isInteger(a.actual)?a.actual:q.year;
   if(actual<GLOBAL_MIN_YEAR||actual>GLOBAL_MAX_YEAR)return null;
   const skipped=Boolean(a.skipped),guess=skipped?null:Number(a.guess);
@@ -51,7 +58,7 @@ function migrateState(input){
   for(const [id,v] of Object.entries(raw.editorOverrides||{})){if(!QUESTION_BY_ID.has(id)||!v||typeof v!=='object')continue;s.editorOverrides[id]={};for(const k of allowed)if(typeof v[k]==='string'&&v[k].length<=4000)s.editorOverrides[id][k]=k==='source'?safeURL(v[k]):v[k];}
   s.reviewedIds=Array.isArray(raw.reviewedIds)?raw.reviewedIds.filter(id=>QUESTION_BY_ID.has(id)):[];
   s.onboardingSeen=Boolean(raw.onboardingSeen);s.dailyIntroDate=validKey(raw.dailyIntroDate)?raw.dailyIntroDate:'';
-  const p=raw.preferences||{};s.preferences={sound:Boolean(p.sound),volume:Math.max(0,Math.min(1,num(p.volume,.25))),motion:p.motion==='reduced'?'reduced':'system',palette:['amber','ocean','violet'].includes(p.palette)?p.palette:'amber'};
+  const p=raw.preferences||{};s.preferences={sound:Boolean(p.sound),volume:Math.max(0,Math.min(1,num(p.volume,.25))),motion:p.motion==='reduced'?'reduced':'system',palette:['amber','ocean','violet'].includes(p.palette)?p.palette:'amber',categories:Array.isArray(p.categories)?[...new Set(p.categories.filter(c=>QUESTIONS.some(q=>q.category===c)))]:[]};
   s.recoveryIds=Array.isArray(raw.recoveryIds)?raw.recoveryIds.filter(id=>QUESTION_BY_ID.has(id)):[];s.longTermIds=Array.isArray(raw.longTermIds)?raw.longTermIds.filter(id=>QUESTION_BY_ID.has(id)):[];
   return s;
 }
@@ -93,6 +100,10 @@ function practiceQuestions(category='Todas',mode='all',count=5,explicitIds=null)
   if(mode==='reinforce')return pool.filter(q=>seen.has(q.id)).sort((a,b)=>(s.questionStats[b.id]?.avgError||0)-(s.questionStats[a.id]?.avgError||0)).slice(0,limit);
   return shuffled(pool,hashString(`${Date.now()}|${Math.random()}|${category}|${mode}`)).slice(0,limit);
 }
+function humanTopicQuestions(categories=getState().preferences.categories||[]){
+  const pool=QUESTIONS.filter(q=>!categories.length||categories.includes(q.category));
+  return selectHumanQuestions(pool,hashString(`${Date.now()}|${Math.random()}`));
+}
 const ACHIEVEMENTS=[
  {id:'first',title:'Primera coordenada',desc:'Completa tu primer desafío diario.',goal:1,value:s=>s.sessions.length},
  {id:'streak7',title:'Una semana en el tiempo',desc:'Alcanza una racha diaria de siete días.',goal:7,value:s=>Math.max(s.bestStreak,calcStreak(s.sessions))},
@@ -108,6 +119,7 @@ const ACHIEVEMENTS=[
 ];
 function updateAchievements(s){const added=[];for(const a of ACHIEVEMENTS)if(!s.achievements.includes(a.id)&&a.value(s)>=a.goal){s.achievements.push(a.id);added.push(a.id)}return added}
 function availablePalettes(s=getState()){return ['amber',...(s.achievements.includes('first')?['ocean']:[]),...(s.achievements.includes('allcats')?['violet']:[])]}
-function displayQuestion(id){const q=QUESTION_BY_ID.get(id);return q?{...q,...(getState().editorOverrides[id]||{})}:null}
+function displayQuestion(id){const q=QUESTION_BY_ID.get(id);return q?{...q,...(IS_HUMAN_TESTER?{}:getState().editorOverrides[id]||{})}:null}
 function auditQuestionBank(){const issues={duplicateIds:[],yearRange:[],emptyKind:[],missingSource:[],missingImageAlt:[],invalidDifficulty:[],emptySubcategory:[],nearDuplicates:[],missingScheduleIds:[]},seen=new Set();for(const q of QUESTIONS){if(seen.has(q.id))issues.duplicateIds.push(q.id);seen.add(q.id);if(!Number.isInteger(q.year)||q.year<1950||q.year>GLOBAL_MAX_YEAR)issues.yearRange.push(q.id);if(!q.kind)issues.emptyKind.push(q.id);if(!safeURL(q.source)||!q.sourceLabel)issues.missingSource.push(q.id);if(q.image&&!q.imageAlt)issues.missingImageAlt.push(q.id);if(!DIFFICULTY_LABELS[q.difficulty])issues.invalidDifficulty.push(q.id);if(!q.subcategory)issues.emptySubcategory.push(q.id)}for(const q of SCHEDULE_BANK)if(!seen.has(q.id))issues.missingScheduleIds.push(q.id);const words=s=>new Set(s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/[^a-z0-9]+/).filter(Boolean));for(let i=0;i<QUESTIONS.length;i++)for(let j=i+1;j<QUESTIONS.length;j++){const a=words(QUESTIONS[i].title),b=words(QUESTIONS[j].title),common=[...a].filter(w=>b.has(w)).length;if(common/new Set([...a,...b]).size>.84)issues.nearDuplicates.push([QUESTIONS[i].id,QUESTIONS[j].id])}const countBy=k=>QUESTIONS.reduce((r,q)=>(r[q[k]]=(r[q[k]]||0)+1,r),{});return {total:QUESTIONS.length,versions:{content:CONTENT_VERSION,schedule:SCHEDULE_VERSION,schema:SCHEMA_VERSION},issues,warnings:{genericSources:QUESTIONS.filter(q=>!q.editorialVerified).map(q=>q.id)},category:countBy('category'),difficulty:countBy('difficulty'),region:countBy('region'),images:QUESTIONS.filter(q=>q.image).length,extendedContext:QUESTIONS.filter(q=>q.context).length}}
 function simulateSchedule(days=365){generateDailyScheduleThrough(days-1);const seen=new Map(),gaps=[],specials=[];for(let n=0;n<days;n++){const e=DAILY_SCHEDULE_CACHE.get(n);for(const q of e.questions){if(seen.has(q.id))gaps.push(n-seen.get(q.id));seen.set(q.id,n)}if(e.specialTheme)specials.push({date:dateKey(addDays(new Date(2026,0,1),n)),theme:e.specialTheme,match:e.questions.filter(q=>q.themes.includes(e.specialTheme)).length})}return {days,minGap:Math.min(...gaps),repeatsUnder30:gaps.filter(n=>n<30).length,allSpecialsValid:specials.every(s=>s.match>=4),specials}}
+

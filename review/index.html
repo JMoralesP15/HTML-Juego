@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#0b1016">
-  <title>QUÉ AÑO · Revisión editorial v1.8.1</title>
+  <title>QUÉ AÑO · Revisión editorial v1.8.7-c</title>
   <link rel="stylesheet" href="review.css">
-  <link rel="stylesheet" href="editorial-assist-v181.css">
 </head>
 <body>
   <a class="skip-link" href="#reviewMain">Saltar a la revisión</a>
   <header class="review-topbar">
     <div>
-      <span class="kicker">QUÉ AÑO · v1.8.1</span>
-      <h1>Consola de revisión editorial</h1>
-      <p class="lede">Revisa hechos, textos e imágenes por separado. El lote narrativo v1.8.1 añade 50 propuestas que no afectan al juego hasta que se aprueben e integren.</p>
+      <span class="kicker">QUÉ AÑO · v1.8.7-c</span>
+      <h1>Consola editorial · segunda pasada humana</h1>
+      <p class="lede">El feedback humano ya no se interpreta como un simple semáforo: <strong>? dudoso</strong> propone reemplazos, <strong>muy genérico</strong> reconstruye el aprendizaje y las visuales rechazadas reciben varias alternativas con trazabilidad y nivel de derechos.</p>
     </div>
     <div class="top-actions">
       <button id="importButton" class="button secondary">Importar JSON</button>
@@ -26,13 +25,21 @@
 
   <section class="dashboard" aria-label="Resumen de revisión">
     <div class="metric"><span>Revisadas</span><strong id="metricReviewed">0 / 300</strong><small id="metricPercent">0%</small></div>
-    <div class="metric"><span>Aprobadas</span><strong id="metricApproved">0</strong><small>las tres dimensiones</small></div>
+    <div class="metric"><span>Aprobadas</span><strong id="metricApproved">0</strong><small>hecho + texto + visual</small></div>
     <div class="metric"><span>Con observaciones</span><strong id="metricFlagged">0</strong><small>requieren volver</small></div>
     <div class="metric"><span>Sin foto aceptable</span><strong id="metricNoPhoto">0</strong><small>estado válido</small></div>
     <div class="progress-track" aria-hidden="true"><i id="progressBar"></i></div>
   </section>
 
   <section class="filters" aria-label="Filtros">
+    <label>Lote
+      <select id="batchFilter">
+        <option value="all">Todos los eventos</option>
+        <option value="batch-02-100">Lote 02 · 100 eventos</option>
+        <option value="batch-01-50">Lote 01 · 50 eventos</option>
+        <option value="none">Sin lote editorial</option>
+      </select>
+    </label>
     <label>Estado
       <select id="statusFilter">
         <option value="all">Todas</option>
@@ -40,9 +47,10 @@
         <option value="reviewed">Revisadas</option>
         <option value="approved">Aprobadas</option>
         <option value="flagged">Con observaciones</option>
-        <option value="needs_review">Evidencia automática: revisar</option>
-        <option value="manual_verified">Verificadas manualmente</option>
-        <option value="structured_corroborated">Corroboradas estructuralmente</option>
+        <option value="doubtful">? Dudoso / reemplazar</option>
+        <option value="generic">Texto muy genérico</option>
+        <option value="review_source">Revisar fuente/título</option>
+        <option value="replacement">Con reemplazo propuesto</option>
       </select>
     </label>
     <label>Categoría
@@ -51,9 +59,10 @@
     <label>Imagen
       <select id="mediaFilter">
         <option value="all">Todas</option>
-        <option value="candidate">Con candidata</option>
-        <option value="none">Sin candidata</option>
-        <option value="unreviewed">Imagen sin revisar</option>
+        <option value="candidate">Con alternativas</option>
+        <option value="none">Sin alternativa</option>
+        <option value="unreviewed">Visual sin revisar</option>
+        <option value="rejected">Visual rechazada / derechos</option>
       </select>
     </label>
     <label class="search-label">Buscar
@@ -67,34 +76,30 @@
       <div class="queue-header"><strong id="queueCount">0 resultados</strong><span id="currentPosition">0 / 0</span></div>
       <div id="queueList" class="queue-list"></div>
     </aside>
-
-    <article class="review-card" id="reviewCard" aria-live="polite">
-      <div class="empty-state">Cargando las 300 fichas editoriales…</div>
-    </article>
+    <article class="review-card" id="reviewCard" aria-live="polite"><div class="empty-state">Cargando las 300 fichas editoriales…</div></article>
   </main>
 
   <footer class="review-footer">
-    <div class="shortcut-help"><kbd>←</kbd><kbd>→</kbd> navegar · <kbd>A</kbd> aprobar lo disponible · <kbd>R</kbd> marcar revisión · <kbd>N</kbd> aceptar sin foto</div>
-    <div class="footer-actions">
-      <button id="prevButton" class="button secondary">← Anterior</button>
-      <button id="saveNextButton" class="button primary">Guardar y siguiente →</button>
-    </div>
+    <div class="shortcut-help">La selección humana sigue siendo el gate: ninguna foto o reemplazo se publica automáticamente.</div>
+    <div class="footer-actions"><button id="prevButton" class="button secondary">← Anterior</button><button id="saveNextButton" class="button primary">Guardar y siguiente →</button></div>
   </footer>
-
-  <dialog id="confirmDialog">
-    <form method="dialog">
-      <h2 id="confirmTitle">Confirmar</h2>
-      <p id="confirmText"></p>
-      <div class="dialog-actions"><button value="cancel" class="button secondary">Cancelar</button><button value="ok" class="button danger">Continuar</button></div>
-    </form>
-  </dialog>
 
   <script src="../js/content.js"></script>
   <script src="../js/editorial.js"></script>
   <script src="../js/editorial-verification-v18.js"></script>
   <script src="../js/editorial-v18-manual.js"></script>
   <script src="../js/editorial-proposals-v181-batch1.js"></script>
-  <script src="review.js"></script>
-  <script src="editorial-assist-v181.js"></script>
+  <script src="../js/editorial-proposals-v182-history.js"></script>
+  <script src="../js/editorial-proposals-v182-science.js"></script>
+  <script src="../js/editorial-proposals-v182-tech.js"></script>
+  <script src="../js/editorial-batch02-selection-v187.js"></script>
+  <script src="../js/editorial-media-v187.js"></script>
+  <script src="../js/editorial-feedback-v187c.js"></script>
+  <script src="../js/editorial-replacements-v187c.js"></script>
+  <script src="../js/editorial-text-refinements-v187c.js"></script>
+  <script src="../js/editorial-text-refinements-v187c-fixes.js"></script>
+  <script src="../js/editorial-review-media-v187c.js"></script>
+  <script src="review-seed-v187c.js"></script>
+  <script src="review-v187c.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
  * Capa de producto: no cambia IDs, años, calendario, scheduler ni persistencia.
  * v1.7: resumen/feedback se sincronizan por el contrato de render, no por MutationObserver ni wrapper de renderSummary.
  * v1.8.4: el feedback esencial usa narrativa natural; la taxonomía editorial queda fuera de la UI primaria.
+ * v1.8.8: elimina metadiscurso editorial y evita repetir el aprendizaje en el contexto expandido.
  */
 (function(){
   'use strict';
@@ -16,6 +17,9 @@
   const sourceName=value=>clean(value).replace(/\s*[·|-]\s*referencia general\s*$/i,'').replace(/\s*[·|-]\s*referencia heredada\s*$/i,'')||'Fuente';
   const setTextIfChanged=(el,text)=>{if(el&&el.textContent!==text)el.textContent=text};
   const sentence=value=>{const text=clean(value);return !text||/[.!?…]$/.test(text)?text:`${text}.`};
+  const isEditorialMeta=value=>/^(la fecha (?:concreta registrada|de fundación registrada)|la misma ficha|la ficha\b|(?:el lanzamiento|el estreno|la publicación) figura fechad[oa]|preguntamos|la fecha que preguntamos|contenido complementario|la ubicación temporal)/i.test(clean(value));
+  const meaningfulSentences=value=>sentences(value).filter(part=>/[\p{L}\p{N}]/u.test(part)&&!isEditorialMeta(part));
+  const included=(value,collection)=>{const normalized=clean(value).toLocaleLowerCase('es');return !normalized||collection.some(item=>{const other=clean(item).toLocaleLowerCase('es');return !!other&&(other===normalized||other.includes(normalized))})};
 
   function currentQuestion(){
     try{if(typeof round==='undefined'||!round?.questionIds)return null;return displayQuestion(round.questionIds[round.index])||QUESTION_BY_ID.get(round.questionIds[round.index])||null}catch{return null}
@@ -27,16 +31,20 @@
 
   function learningFor(q){
     if(!q)return {what:'',importance:'',memory:'',context:'',temporal:''};
-    const fact=clean(q.fact),context=clean(q.context),significance=clean(q.significance),contextSentences=sentences(context);
-    const what=firstSentence(context||fact);
-    let importance=significance;
+    if(q.approvedLearning)return {what:q.approvedLearning.summary,importance:'',memory:'',context:q.approvedLearning.expanded,temporal:'',source:clean(q.source),sourceLabel:sourceName(q.sourceLabel)};
+    const fact=clean(q.fact),context=clean(q.context),significance=clean(q.significance);
+    const contextSentences=meaningfulSentences(context),factSentences=meaningfulSentences(fact),significanceSentences=meaningfulSentences(significance);
+    const what=contextSentences[0]||factSentences[0]||'';
+    let importance=significanceSentences.join(' ');
     if(!importance&&contextSentences.length>1)importance=contextSentences.slice(1,3).join(' ');
     let memory='';
-    if(fact&&!same(fact,what)&&!/^(preguntamos|la fecha que preguntamos)/i.test(fact))memory=fact;
+    const cleanFact=factSentences.join(' ');
+    if(cleanFact&&!same(cleanFact,what))memory=cleanFact;
     if(!memory&&contextSentences.length>2)memory=contextSentences.at(-1);
     if(memory&&same(memory,importance))memory='';
     const ext=typeof qaExtendedContext==='function'?qaExtendedContext(q):(q.extendedContext||{});
-    return {what,importance,memory,context:context||fact,temporal:clean(ext?.locate),source:clean(q.source),sourceLabel:sourceName(q.sourceLabel)};
+    const temporal=meaningfulSentences(ext?.locate).join(' ');
+    return {what,importance,memory,context:contextSentences.join(' '),temporal,source:clean(q.source),sourceLabel:sourceName(q.sourceLabel)};
   }
 
   function learningBlocks(q){
@@ -48,6 +56,7 @@
   }
 
   function learningNarrative(q){
+    if(q?.approvedLearning)return [q.approvedLearning.summary];
     const values=learningBlocks(q).map(([,value])=>sentence(value)).filter(Boolean),paragraphs=[];
     if(values.length)paragraphs.push(values.slice(0,2).join(' '));
     if(values.length>2)paragraphs.push(values[2]);
@@ -64,19 +73,21 @@
   }
 
   function rebuildDeepContext(doc,q){
-    if(!doc||!q)return;
+    if(!doc||!q)return false;
     const l=learningFor(q),copy=doc.querySelector('.atlas-document-copy');
     if(q.v12GeneratedImage||q.v14GeneratedFallback){
       const fig=doc.querySelector('.atlas-document-image');if(fig)fig.remove();doc.classList.remove('has-image');doc.classList.add('no-image');
     }
-    if(!copy)return;
-    const parts=[];
-    if(l.context)parts.push(`<section><span>CONTEXTO</span><p>${esc(l.context)}</p></section>`);
-    if(l.importance&&!same(l.importance,l.context))parts.push(`<section><span>POR QUÉ IMPORTA</span><p>${esc(l.importance)}</p></section>`);
-    if(l.temporal)parts.push(`<section class="v16-temporal-secondary"><span>UBICACIÓN TEMPORAL</span><p>${esc(l.temporal)}</p></section>`);
+    if(!copy)return false;
+    const essential=learningBlocks(q).map(([,value])=>value),parts=[];
+    const contextExtra=meaningfulSentences(l.context).filter(value=>!included(value,essential)).join(' ');
+    if(contextExtra)parts.push(`<section><span>CONTEXTO</span><p>${esc(contextExtra)}</p></section>`);
+    if(l.importance&&!included(l.importance,[...essential,contextExtra]))parts.push(`<section><span>POR QUÉ IMPORTA</span><p>${esc(l.importance)}</p></section>`);
+    if(l.temporal&&!included(l.temporal,[...essential,contextExtra,l.importance]))parts.push(`<section class="v16-temporal-secondary"><span>UBICACIÓN TEMPORAL</span><p>${esc(l.temporal)}</p></section>`);
     const src=l.source&&safeURL(l.source)?`<a class="atlas-source" href="${esc(safeURL(l.source))}" target="_blank" rel="noopener noreferrer">Fuente · ${esc(l.sourceLabel)} ↗</a>`:'';
-    copy.innerHTML=`${parts.join('')}<footer>${src}<small>Contenido complementario. La ubicación temporal es secundaria al contexto del hito.</small></footer>`;
+    copy.innerHTML=`${parts.join('')}${src?`<footer>${src}</footer>`:''}`;
     doc.querySelectorAll('.v14-editorial-note').forEach(x=>x.remove());
+    return parts.length>0;
   }
 
   function decorateDifficulty(){
@@ -97,9 +108,14 @@
     const doc=learn.querySelector('.atlas-document');
     if(!card){card=makeLearningCard(q);if(doc)doc.before(card);else learn.querySelector('.atlas-learn-head')?.after(card)}
     if(!toggle){toggle=document.createElement('button');toggle.type='button';toggle.className='v16-context-button';toggle.dataset.v16Action='context-toggle';toggle.setAttribute('aria-expanded','false');toggle.textContent='Profundizar';if(doc)doc.before(toggle);else card.after(toggle)}
-    if(doc&&doc.dataset.v16Question!==q.id){doc.dataset.v16Question=q.id;doc.classList.add('v16-context');doc.classList.remove('v15-context-open');doc.classList.add('v15-collapsed-context');rebuildDeepContext(doc,q)}
+    if(doc&&doc.dataset.v16Question!==q.id){
+      doc.dataset.v16Question=q.id;doc.classList.add('v16-context');doc.classList.remove('v15-context-open');doc.classList.add('v15-collapsed-context');
+      const hasDeepContext=rebuildDeepContext(doc,q);doc.hidden=false;toggle.hidden=!hasDeepContext;
+      if(!hasDeepContext){doc.classList.remove('v15-collapsed-context');doc.classList.add('v15-context-open')}
+    }
 
     const note=surface.querySelector('.v15-result-note');setTextIfChanged(note,a.skipped?'Fecha revelada y guardada para repaso.':a.timedOut?'Se agotó el tiempo; registramos el año que estaba seleccionado.':'La fecha queda registrada para tu repaso.');
+    if(note&&q.humanApproved)note.hidden=true;
     const primary=surface.querySelector('#primaryAction');if(primary){setTextIfChanged(primary,round.index===round.questionIds.length-1?'Ver resultados →':'Siguiente →');const label=round.index===round.questionIds.length-1?'Ver resultados':'Ir a la siguiente pregunta';if(primary.getAttribute('aria-label')!==label)primary.setAttribute('aria-label',label)}
     if(lastFeedbackKey!==key){lastFeedbackKey=key;track('learning_context_seen',{question_id:q.id,question_position:(round?.index??0)+1,learning_blocks:learningBlocks(q).length})}
   }
@@ -107,7 +123,7 @@
   function reviewCandidates(s){
     return (s?.answers||[]).filter(a=>a.skipped||Number(a.error)>5).sort((a,b)=>(b.skipped?1:0)-(a.skipped?1:0)||(Number(b.error)||0)-(Number(a.error)||0));
   }
-  function learningCue(q){const l=learningFor(q);return firstSentence(l.importance||l.memory||l.what||q.fact||q.context)}
+  function learningCue(q){const l=learningFor(q);return firstSentence(l.importance||l.memory||l.what)}
 
   function decorateSummary(s=lastSummary){
     const root=document.querySelector('.summary-v11');if(!root||!s)return;
@@ -139,8 +155,12 @@
   openDetail=function(id){
     const q=displayQuestion(id);if(!q)return;
     const s=getState(),seen=discoveredIds(s).has(id),revealedInOrder=s.timelineDraft?.answered&&s.timelineDraft.ids.includes(id),answeredNow=round?.phase==='answer'&&round.questionIds[round.index]===id;if(!seen&&!revealedInOrder&&!answeredNow)return;
-    const l=learningFor(q),st=s.questionStats[id],src=l.source&&safeURL(l.source),photo=safeAsset(q.image),usePhoto=photo&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;
-    const blocks=[];if(l.context)blocks.push(`<section><b>Contexto</b><p>${esc(l.context)}</p></section>`);if(l.importance&&!same(l.importance,l.context))blocks.push(`<section><b>Por qué importa</b><p>${esc(l.importance)}</p></section>`);if(q.fact&&!same(q.fact,l.context))blocks.push(`<section><b>Dato de la fecha</b><p>${esc(q.fact)}</p></section>`);
+    const l=learningFor(q),st=s.questionStats[id],src=l.source&&safeURL(l.source),photo=q.humanApproved?safeURL(q.v18Media?.src)||safeAsset(q.v18Media?.src):safeAsset(q.image),usePhoto=photo&&!q.v12GeneratedImage&&!q.v14GeneratedFallback;
+    const blocks=[],used=[];
+    for(const [label,value] of (q.approvedLearning?[['Aprendizaje esencial',l.what],['Para saber más',l.context]]:[['Contexto',l.context||l.what],['Por qué importa',l.importance],['Dato de la fecha',meaningfulSentences(q.fact).join(' ')]])){
+      const extra=meaningfulSentences(value).filter(part=>!included(part,used)).join(' ');
+      if(extra){blocks.push(`<section><b>${label}</b><p>${esc(extra)}</p></section>`);used.push(extra)}
+    }
     openDialog(q.title,`<div class="v16-detail-head"><strong class="feedback-year">${q.year}</strong><span class="pill cat">${esc(q.category)}</span></div><div class="v16-detail-body">${blocks.join('')}</div>${usePhoto?`<figure class="v16-detail-image"><img src="${photo}" alt="${esc(q.imageAlt)}"><figcaption>${esc(q.imageCredit||'Imagen de apoyo')}${q.imageLicense?` · ${esc(q.imageLicense)}`:''}</figcaption></figure>`:''}${src?`<p class="source-note">Fuente · <a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(l.sourceLabel)}</a></p>`:''}${st?`<div class="metric-row v16-detail-metrics"><div class="metric"><b>${st.attempts}</b><span>intentos</span></div><div class="metric"><b>${fmt(st.avgError)}</b><span>error medio</span></div><div class="metric"><b>${fmt(st.bestError,0)}</b><span>mejor error</span></div></div>`:''}`);
     track('detail_opened',{question_id:q.id,source:'v16_detail'});
   };
@@ -167,3 +187,5 @@
   inspect();
   window.__QA_V16__=Object.freeze({version:VERSION,learningFor,learningBlocks,learningNarrative,decorateSummary,inspect});
 })();
+
+

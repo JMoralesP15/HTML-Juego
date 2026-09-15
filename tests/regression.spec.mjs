@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const url = pathToFileURL(path.join(root, 'index.html')).href + '#main';
+const url = pathToFileURL(path.join(root, 'index.html')).href + '?edition=full#main';
 const FIXED_NOW = '2026-09-12T12:00:00.000Z';
 const shotDir = path.join(root, 'test-results', 'screenshots');
 
@@ -161,3 +161,4 @@ test('regresión visual contractual · mobile 390x844', async ({ page }) => {
   await expect(page.locator('.atlas-summary')).toBeVisible();
   await assertVisualContract(page, 'summary', 'mobile-summary-390x844');
 });
+

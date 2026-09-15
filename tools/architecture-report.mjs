@@ -4,8 +4,8 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
-const css=[...html.matchAll(/<link[^>]+href="([^"]+\.css)"/g)].map(m=>m[1]);
-const scripts=[...html.matchAll(/<script[^>]+src="([^"]+\.js)"/g)].map(m=>m[1]);
+const css=[...html.matchAll(/<link[^>]+href="([^"]+\.css)(?:\?[^"\s]*)?"/g)].map(m=>m[1]);
+const scripts=[...html.matchAll(/<script[^>]+src="([^"]+\.js)(?:\?[^"\s]*)?"/g)].map(m=>m[1]);
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const activeSources=scripts.map(src=>({src,code:read(src)}));
 const count=(re,code)=>[...code.matchAll(re)].length;
@@ -39,3 +39,4 @@ report.pass.all=Object.values(report.pass).every(Boolean);
 const out=path.join(root,'reports');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'architecture-v17.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));
 if(!report.pass.all)process.exitCode=1;
+

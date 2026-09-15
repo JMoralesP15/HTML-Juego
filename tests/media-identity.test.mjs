@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {matchIdentity,photoMime,captureYear} from '../tools/media-identity.mjs';
+assert.equal(matchIdentity({title:'Primer voto femenino presidencial',region:'Chile',fact:'La misma ficha sitúa el hito en Chile'},'Eva Perón votando Argentina 1951').accepted,false);
+assert.equal(matchIdentity({title:'IBM PC'},'IBM PC model 5150').accepted,true);
+assert.equal(matchIdentity({title:'Google'},'googled unrelated street').accepted,false);
+assert.equal(photoMime('application/pdf'),false);
+assert.equal(photoMime('image/svg+xml'),false);
+assert.equal(captureYear({DateTime:{value:'2025'}}),null);
+assert.equal(captureYear({DateTimeOriginal:{value:'circa 1951 or 1952'}}),null);
+assert.equal(captureYear({DateTimeOriginal:{value:'1952-09-04'}}),1952);
+assert.equal(matchIdentity({title:'Primer voto femenino presidencial',region:'Chile'},'Sufragio femenino en Argentina voto femenino Buenos Aires 1948').accepted,false);
+assert.equal(matchIdentity({title:'IBM PC'},'IBM headquarters office photograph').accepted,false);
+console.log('10 media identity assertions passed');

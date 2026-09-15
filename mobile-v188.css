@@ -1,0 +1,65 @@
+/* QUÉ AÑO v1.8.8 — mobile play pass.
+ * Transitional mobile layer. It changes layout only; game rules and content remain canonical.
+ */
+@media (max-width:760px){
+  :root{--mobile-nav-h:64px}
+  html{min-height:100%;background:#0b1016}
+  body{min-height:100dvh;overflow-x:hidden}
+  .app-shell{width:100%;min-height:100dvh;padding-inline:max(10px,env(safe-area-inset-left),env(safe-area-inset-right))!important;padding-bottom:calc(var(--mobile-nav-h) + env(safe-area-inset-bottom))!important;display:flex!important;flex-direction:column!important}
+  .topbar{position:sticky;top:0;z-index:40;flex:0 0 auto;padding-top:env(safe-area-inset-top);background:color-mix(in srgb,#0b1016 94%,transparent);backdrop-filter:blur(12px)}
+  main{display:flex!important;flex:1 0 auto!important;min-height:0!important}
+  main>.view,.view{width:100%;min-height:0!important;display:flex!important;flex-direction:column!important}
+  .main-nav{position:fixed!important;z-index:50;left:0;right:0;bottom:0;height:calc(var(--mobile-nav-h) + env(safe-area-inset-bottom));padding:0 max(6px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(6px,env(safe-area-inset-left));grid-template-columns:repeat(5,minmax(0,1fr))!important;overflow:visible!important;background:color-mix(in srgb,#0b1219 96%,transparent);border-top:1px solid #354254;box-shadow:0 -10px 30px #0008;backdrop-filter:blur(14px)}
+  .main-nav button{min-width:0!important;min-height:56px!important;padding:7px 3px!important;gap:4px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;font-size:.58rem!important;letter-spacing:.02em!important;line-height:1.1!important}
+  .main-nav .nav-symbol{display:block!important;font-size:1rem!important}
+  .main-nav button.active::after{left:16%!important;right:16%!important}
+  body.v15-in-game .app-shell{padding-bottom:0!important}
+  body.v15-in-game .main-nav{display:none!important}
+  .archive-cover{width:100%;min-height:calc(100dvh - 54px - var(--mobile-nav-h) - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;justify-content:flex-start!important;align-items:stretch!important;text-align:left!important;padding:clamp(26px,7vh,58px) clamp(20px,7vw,32px) 28px!important;gap:18px!important}
+  .archive-cover .stack{max-width:18rem}
+  .archive-cover h1{font-size:clamp(3rem,15vw,4.8rem)!important;line-height:.92!important}
+  .archive-cover>p{font-size:1rem!important;line-height:1.55!important;max-width:32ch}
+  .archive-cover .primary{width:100%;min-height:52px;margin-top:auto}
+  .archive-cover>small{line-height:1.45}
+  .atlas-v12.is-question,.atlas-v12.is-answered{width:100%;min-height:calc(100dvh - 54px - env(safe-area-inset-top))!important;display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;align-content:stretch!important}
+  .atlas-v12.is-question .atlas-question-layout{min-height:0!important;height:100%!important}
+  .atlas-v12.is-question .atlas-estimator{display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
+  .atlas-v12.is-question .atlas-slider{margin-top:clamp(10px,2.5vh,22px)!important}
+  .atlas-v12 .game-footer{position:sticky!important;bottom:0!important;z-index:30!important;margin-top:auto!important;min-height:64px!important;padding:8px 12px calc(8px + env(safe-area-inset-bottom))!important;background:color-mix(in srgb,#0b1219 96%,transparent)!important;border-top:1px solid #354254!important;backdrop-filter:blur(12px)}
+  .atlas-v12 .game-footer .primary{min-height:48px!important}
+  .atlas-v12.is-question #primaryAction{flex:1!important;min-width:0!important}
+  .atlas-v12.is-question .game-footer .row{width:100%;display:grid!important;grid-template-columns:minmax(82px,.34fr) minmax(0,1fr)!important}
+  .atlas-v12.is-question .game-footer .text-button{min-height:48px!important}
+  .atlas-v12.is-answered .atlas-feedback{min-height:0!important}
+  .atlas-v12.is-answered .atlas-reveal,.atlas-v12.is-answered .atlas-learn{padding-inline:18px!important}
+  .atlas-v12.is-answered .atlas-learn{padding-bottom:24px!important}
+  .atlas-v12.is-answered .v16-learning-narrative{font-size:1rem!important;line-height:1.58!important}
+  .atlas-v12.is-answered .v16-context-button{min-height:48px!important}
+  :is(button,a,input[type=range],input[type=number],[tabindex]):not([tabindex="-1"]){touch-action:manipulation}
+  button,.icon-button,.year-step{min-height:44px}
+  .toast{bottom:calc(var(--mobile-nav-h) + 14px + env(safe-area-inset-bottom))!important;max-width:calc(100vw - 28px)}
+  body.v15-in-game .toast{bottom:calc(76px + env(safe-area-inset-bottom))!important}
+}
+@media (max-width:360px){
+  .topbar{padding-inline:0!important}
+  .brand{font-size:1.12rem!important}
+  .header-actions .icon-button{font-size:.66rem!important;padding-inline:7px!important}
+  .atlas-v12.is-question .atlas-editorial{padding:13px 14px 7px!important}
+  .atlas-v12.is-question .atlas-editorial h1{font-size:clamp(1.9rem,9.5vw,2.45rem)!important}
+  .atlas-v12.is-question .atlas-estimator{padding-inline:9px!important}
+  .atlas-v12.is-question .atlas-year-instrument{grid-template-columns:42px 42px minmax(96px,1fr) 42px 42px!important;gap:3px!important}
+  .atlas-v12.is-question .atlas-year-instrument .year-step{width:42px!important;min-width:42px!important;height:46px!important}
+}
+@media (max-width:760px) and (max-height:520px) and (orientation:landscape){
+  .topbar{position:relative;min-height:44px!important}
+  .atlas-v12.is-question,.atlas-v12.is-answered{min-height:calc(100dvh - 44px)!important}
+  .atlas-v12.is-question .atlas-header{padding-block:6px!important}
+  .atlas-v12.is-question .atlas-editorial{padding-block:9px 5px!important}
+  .atlas-v12.is-question .atlas-editorial h1{font-size:1.65rem!important}
+  .atlas-v12.is-question .atlas-editorial .prompt{font-size:.86rem!important}
+  .atlas-v12.is-question .atlas-estimator{padding-block:4px!important}
+  .atlas-v12.is-question .atlas-slider{margin-top:3px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .main-nav,.topbar,.atlas-v12 .game-footer{scroll-behavior:auto!important;transition:none!important}
+}
