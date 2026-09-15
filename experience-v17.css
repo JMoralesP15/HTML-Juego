@@ -109,3 +109,38 @@
 
 .human-tester:has(.friendly-game) #weeklyActivity{display:none}
 
+/* Dirección cromática seleccionada: Morado eléctrico.
+   Un solo color de acción y un acento cálido para la fecha real. */
+.human-tester .friendly-game{
+  --friendly-bg:#17102f;
+  --friendly-surface:#211640;
+  --friendly-surface-deep:#130d27;
+  --friendly-line:#6e58a8;
+  --friendly-text:#f5efff;
+  --friendly-muted:#c8bde8;
+  --friendly-violet:#8b2cff;
+  --friendly-violet-soft:#c8a8ff;
+  --friendly-event:#ffd34d;
+  background:var(--friendly-bg);
+  color:var(--friendly-text);
+  border:1px solid #493678;
+}
+.human-tester .friendly-game h1{color:var(--friendly-text)}
+.human-tester .friendly-progress,.human-tester .friendly-footer p,.human-tester .friendly-range{color:var(--friendly-muted)}
+.human-tester .friendly-timer{background:#30205a;color:var(--friendly-text)}
+.human-tester .friendly-timer[data-urgent="true"]{background:#5a2635}
+.human-tester .friendly-year input{border-color:#765eb6;background:var(--friendly-surface-deep);color:var(--friendly-text)}
+.human-tester .friendly-controls input[type="range"]{accent-color:var(--friendly-violet)}
+.human-tester .friendly-footer{border-top-color:#493678}
+.human-tester .friendly-footer .primary{background:var(--friendly-violet);border-color:var(--friendly-violet);color:#fff}
+.human-tester .friendly-footer .secondary{background:transparent;border-color:#765eb6;color:var(--friendly-violet-soft)}
+.human-tester .friendly-game summary,.human-tester .friendly-game a{color:var(--friendly-violet-soft)}
+.human-tester .friendly-game :focus-visible{outline-color:#e8d9ff}
+.human-tester .friendly-result strong{color:var(--friendly-event)}
+.human-tester .friendly-photo{background:var(--friendly-surface-deep);border:1px solid #493678}
+.human-tester .friendly-context{border-top-color:#493678}
+.human-tester .friendly-summary li{border-bottom-color:#493678}
+.human-tester .friendly-topics label{border-color:#765eb6;background:transparent}
+.human-tester .friendly-topics label:has(input:checked){background:#30205a;border-color:var(--friendly-violet-soft)}
+.human-tester .friendly-topics input{accent-color:var(--friendly-violet)}
+
