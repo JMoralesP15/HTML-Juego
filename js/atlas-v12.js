@@ -55,7 +55,7 @@ function qaHumanRender(q){
   const answering=round.phase==='question',ready=qaHumanReadyKey===qaTimerKey(),a=round.answers[round.index];
   let body,footer;
   if(answering){
-    body=`<header class="friendly-progress"><span>Pregunta ${round.index+1} de ${round.questionIds.length}</span>${ready?qaTimerHTML():'<span>Sin prisa para leer</span>'}</header><div class="friendly-question"><p class="friendly-topic">${esc(q.title)}</p><h1 id="questionTitle">${esc(q.prompt)}</h1></div>`;
+    body=`<header class="friendly-progress"><span>Pregunta ${round.index+1} de ${round.questionIds.length}</span>${ready?qaTimerHTML():'<span>Sin prisa para leer</span>'}</header><div class="friendly-question"><h1 id="questionTitle">${esc(q.prompt)}</h1></div>`;
     if(ready)body+=`<div class="friendly-controls"><label for="yearInput">Tu año</label><div class="friendly-year"><button data-action="adjust" data-step="-1" aria-label="Restar un año">−1</button><input id="yearInput" type="number" inputmode="numeric" min="${GLOBAL_MIN_YEAR}" max="${GLOBAL_MAX_YEAR}" value="${round.guess}" aria-label="Año de tu estimación"><button data-action="adjust" data-step="1" aria-label="Sumar un año">+1</button></div><input id="yearSlider" type="range" min="${GLOBAL_MIN_YEAR}" max="${GLOBAL_MAX_YEAR}" value="${round.guess}" aria-label="Navegar por los años"><div class="friendly-range"><span>${GLOBAL_MIN_YEAR}</span><span>${GLOBAL_MAX_YEAR}</span></div></div>`;
     footer=ready?'<button class="secondary" data-action="skip">No lo sé</button><button class="primary" id="primaryAction" data-action="answer">Confirmar año</button>':'<p>Al continuar tendrás 15 segundos para elegir un año.</p><button class="primary" id="primaryAction" data-action="begin-answer">Estoy listo →</button>';
   }else{
@@ -222,3 +222,4 @@ openDetail=function(id){
 
 const qaBaseRenderStats=renderStats;
 renderStats=function(){qaBaseRenderStats();if(statsState.tab!=='summary')return;const timed=statsSessions().flatMap(s=>s.answers).filter(a=>Number.isFinite(a.elapsedMs));if(timed.length<3)return;const row=document.querySelector('.metric-row');if(!row)return;const item=document.createElement('div');item.className='metric atlas-time-metric';item.innerHTML=`<b>${qaFmtTime(mean(timed.map(a=>a.elapsedMs)))}</b><span>tiempo medio de respuesta</span>`;row.appendChild(item)};
+
